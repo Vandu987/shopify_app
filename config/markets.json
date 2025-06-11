@@ -8,22 +8,5 @@
  * ------------------------------------------------------------
  */
 {
-  "current": {
-    "sections": {
-      "header": {
-        "type": "header",
-        "settings": {
-          "logo": "shopify://shop_images/macbook-air-on-desk.jpg"
-        }
-      },
-      "homepage": {
-        "type": "homepage",
-        "settings": {}
-      }
-    },
-    "content_for_index": []
-  },
-  "presets": {
-    "Default": {}
-  }
+  "markets": {}
 }
