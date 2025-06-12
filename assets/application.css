@@ -311,10 +311,10 @@ body {
     color: #fff;
 }
 .slide-text h2,.slide-text p {
-    padding: 0 50px;
+    padding: 0 70px;
 }
 .slide-text a{
-    margin-left: 50px;
+    margin-left: 70px;
 }
 }
 @media (max-width: 576px) {
