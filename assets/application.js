@@ -32,6 +32,12 @@ document.addEventListener('DOMContentLoaded', function() {
     };
   }
 });
-document.querySelector('.close_search').addEventListener('click', function() {
-  document.querySelector('.search_form').style.display = 'none';
+document.addEventListener('DOMContentLoaded', function() {
+    const close = document.querySelector('.close_search');
+    const searchForm = document.querySelector('.search_form');
+    if (close && searchForm) {
+        close.addEventListener('click', function() {
+            searchForm.style.display = 'none';
+        });
+    }
 });
