@@ -129,10 +129,10 @@ body {
 /* Responsive Styles */
 @media (max-width: 768px) {
   .header-nav {
-    display: none;
     position: absolute;
     top: 100%;
-    left: 0;
+    left: -200%;
+    transition: all .3s ease-in-out;
     width: 100%;
     background-color: #ffffff;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
@@ -140,7 +140,7 @@ body {
   }
 
   .header-nav.active {
-    display: block;
+    left: 0;
   }
 
   .nav-list {
