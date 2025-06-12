@@ -304,10 +304,10 @@ text-decoration: none;
 
 /* ==========================================  collaction listing  ========================================== */
 .product-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
-  gap: 20px;
-  margin-top: 30px;
+ display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 20px;
+    margin-top: 30px;
 }
 
 .product-card {
@@ -319,6 +319,12 @@ text-decoration: none;
 
 .product-image-wrapper {
   position: relative;
+  width: 100%;
+  height: 200px;
+}
+.product-image-wrapper {
+  width: 100%;
+  height: 100%;
 }
 
 .badge.sale {
