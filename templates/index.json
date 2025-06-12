@@ -67,7 +67,23 @@
             "link": "shopify://collections/shoes"
           }
         },
+        "category_JzXVhk": {
+          "type": "category",
+          "settings": {
+            "image": "shopify://shop_images/bachon-ka-adda_51cf270b-99d4-4222-85f5-4b08d7f54b16.png",
+            "title": "test",
+            "link": "shopify://collections/shoes"
+          }
+        },
         "category_rFiYpf": {
+          "type": "category",
+          "settings": {
+            "image": "shopify://shop_images/earbuds.webp",
+            "title": "test-2",
+            "link": "shopify://products/figures"
+          }
+        },
+        "category_3LDV9n": {
           "type": "category",
           "settings": {
             "image": "shopify://shop_images/earbuds.webp",
@@ -86,7 +102,9 @@
       },
       "block_order": [
         "category_trwfDc",
+        "category_JzXVhk",
         "category_rFiYpf",
+        "category_3LDV9n",
         "category_B9WgXH"
       ],
       "name": "Featured Categories",
@@ -95,10 +113,10 @@
         "subheading": "Shop all"
       }
     },
-    "featured_categories_VWAQ9B": {
+    "featured_categories_YrTjYR": {
       "type": "featured-categories",
       "blocks": {
-        "category_pB6J3C": {
+        "category_yKqziY": {
           "type": "category",
           "settings": {
             "image": "shopify://shop_images/bachon-ka-adda_51cf270b-99d4-4222-85f5-4b08d7f54b16.png",
@@ -106,7 +124,7 @@
             "link": "shopify://collections/shoes"
           }
         },
-        "category_z3bKWe": {
+        "category_yttcqD": {
           "type": "category",
           "settings": {
             "image": "shopify://shop_images/earbuds.webp",
@@ -114,7 +132,7 @@
             "link": "shopify://products/figures"
           }
         },
-        "category_dQPCih": {
+        "category_nypwic": {
           "type": "category",
           "settings": {
             "image": "shopify://shop_images/macbook-air-on-desk.jpg",
@@ -124,9 +142,9 @@
         }
       },
       "block_order": [
-        "category_pB6J3C",
-        "category_z3bKWe",
-        "category_dQPCih"
+        "category_yKqziY",
+        "category_yttcqD",
+        "category_nypwic"
       ],
       "name": "Featured Categories",
       "settings": {
@@ -139,6 +157,6 @@
     "hero_slider_c9yric",
     "homepage",
     "featured_categories_4nQniL",
-    "featured_categories_VWAQ9B"
+    "featured_categories_YrTjYR"
   ]
 }
