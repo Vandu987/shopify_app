@@ -1,0 +1,84 @@
+{%- liquid
+  assign logo_width = section.settings.logo_width | default: 250
+  assign logo_height = section.settings.logo_height | default: 100
+  assign menu = section.settings.menu
+-%}
+
+<header class="site-header" role="banner">
+  <div class="header-container page-width">
+    <!-- Logo -->
+    <div class="header-logo">
+      <a href="{{ routes.root_url }}" class="logo-link">
+        {%- if section.settings.logo -%}
+          {%- assign logo_alt = section.settings.logo.alt | default: shop.name -%}
+          {%- assign logo_height = logo_width | divided_by: section.settings.logo.aspect_ratio -%}
+          {{ section.settings.logo | image_url: width: logo_width | image_tag:
+            class: 'logo-image',
+            widths: '50, 100, 150, 200, 250, 300, 400, 500',
+            height: logo_height,
+            width: logo_width,
+            alt: logo_alt
+          }}
+        {%- else -%}
+          <span class="logo-text">{{ shop.name }}</span>
+        {%- endif -%}
+      </a>
+    </div>
+
+    <!-- Main Navigation -->
+    <nav class="header-nav" role="navigation">
+      <ul class="nav-list">
+        {%- for link in linklists[menu].links -%}
+          <li class="nav-item {% if link.active %}active{% endif %}">
+            <a href="{{ link.url }}" class="nav-link">{{ link.title }}</a>
+          </li>
+        {%- endfor -%}
+      </ul>
+    </nav>
+
+    <!-- Icons (Cart, Search, Account) -->
+    <div class="header-icons">
+      <a href="{{ routes.search_url }}" class="icon-link search-icon">
+        {% render 'icon-search' %}
+      </a>
+      <a href="{{ routes.cart_url }}" class="icon-link cart-icon">
+        {% render 'icon-cart' %}
+        <span class="cart-count">{{ cart.item_count }}</span>
+      </a>
+      {% if shop.customer_accounts_enabled %}
+        <a href="{{ routes.account_url }}" class="icon-link account-icon">
+          {% render 'icon-account' %}
+        </a>
+      {% endif %}
+    </div>
+  </div>
+</header>
+
+{% schema %}
+{
+  "name": "Header",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "logo",
+      "label": "Logo Image"
+    },
+    {
+      "type": "range",
+      "id": "logo_width",
+      "min": 50,
+      "max": 500,
+      "step": 10,
+      "unit": "px",
+      "label": "Logo Width",
+      "default": 200
+    },
+    {
+      "type": "link_list",
+      "id": "menu",
+      "label": "Menu",
+      "default": "main-menu"
+    }
+  ]
+}
+{% endschema %}
