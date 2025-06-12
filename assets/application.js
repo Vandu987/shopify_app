@@ -33,5 +33,5 @@ document.addEventListener('DOMContentLoaded', function() {
   }
 });
 document.querySelector('.close_search').addEventListener('click', function() {
-  document.querySelector('.search-form').style.display = 'none';
+  document.querySelector('.search_form').style.display = 'none';
 });
