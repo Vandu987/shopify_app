@@ -394,9 +394,12 @@ text-decoration: none;
   cursor: pointer;
   border: 1px solid #ddd;
 }
-.product-page-wrapper .main-image img {
+.product-page-wrapper .main-image {
   width: 100%;
   max-width: 400px;
+}
+.product-page-wrapper .main-image img {
+  width: 100%;
   border: 1px solid #ccc;
 }
 .product-page-wrapper .product-info {
