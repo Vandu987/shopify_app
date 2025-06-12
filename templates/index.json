@@ -62,22 +62,25 @@
         "category_trwfDc": {
           "type": "category",
           "settings": {
-            "title": "",
-            "link": ""
+            "image": "shopify://shop_images/bachon-ka-adda_51cf270b-99d4-4222-85f5-4b08d7f54b16.png",
+            "title": "test",
+            "link": "shopify://collections/shoes"
           }
         },
         "category_rFiYpf": {
           "type": "category",
           "settings": {
-            "title": "",
-            "link": ""
+            "image": "shopify://shop_images/earbuds.webp",
+            "title": "test-2",
+            "link": "shopify://products/figures"
           }
         },
         "category_B9WgXH": {
           "type": "category",
           "settings": {
-            "title": "",
-            "link": ""
+            "image": "shopify://shop_images/macbook-air-on-desk.jpg",
+            "title": "test-3",
+            "link": "shopify://collections/shoes"
           }
         }
       },
@@ -91,11 +94,51 @@
         "heading": "all Categories",
         "subheading": "Shop all"
       }
+    },
+    "featured_categories_VWAQ9B": {
+      "type": "featured-categories",
+      "blocks": {
+        "category_pB6J3C": {
+          "type": "category",
+          "settings": {
+            "image": "shopify://shop_images/bachon-ka-adda_51cf270b-99d4-4222-85f5-4b08d7f54b16.png",
+            "title": "test",
+            "link": "shopify://collections/shoes"
+          }
+        },
+        "category_z3bKWe": {
+          "type": "category",
+          "settings": {
+            "image": "shopify://shop_images/earbuds.webp",
+            "title": "test-2",
+            "link": "shopify://products/figures"
+          }
+        },
+        "category_dQPCih": {
+          "type": "category",
+          "settings": {
+            "image": "shopify://shop_images/macbook-air-on-desk.jpg",
+            "title": "test-3",
+            "link": "shopify://collections/shoes"
+          }
+        }
+      },
+      "block_order": [
+        "category_pB6J3C",
+        "category_z3bKWe",
+        "category_dQPCih"
+      ],
+      "name": "Featured Categories",
+      "settings": {
+        "heading": "all Categories",
+        "subheading": "Shop all"
+      }
     }
   },
   "order": [
     "hero_slider_c9yric",
     "homepage",
-    "featured_categories_4nQniL"
+    "featured_categories_4nQniL",
+    "featured_categories_VWAQ9B"
   ]
 }
