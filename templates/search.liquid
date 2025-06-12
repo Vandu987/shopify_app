@@ -3,7 +3,7 @@
     <input type="search" name="q" value="{{ search.terms | escape }}">
     <button type="submit">{% render 'icon-search' %}</button>
   </form>
-  <span>#&tims;</span>
+  <span class="colse_search">#&tims;</span>
 
   {% if search.performed %}
     {% for item in search.results %}
