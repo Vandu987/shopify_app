@@ -53,11 +53,49 @@
     },
     "homepage": {
       "type": "homepage",
+      "disabled": true,
       "settings": {}
+    },
+    "featured_categories_4nQniL": {
+      "type": "featured-categories",
+      "blocks": {
+        "category_trwfDc": {
+          "type": "category",
+          "settings": {
+            "title": "",
+            "link": ""
+          }
+        },
+        "category_rFiYpf": {
+          "type": "category",
+          "settings": {
+            "title": "",
+            "link": ""
+          }
+        },
+        "category_B9WgXH": {
+          "type": "category",
+          "settings": {
+            "title": "",
+            "link": ""
+          }
+        }
+      },
+      "block_order": [
+        "category_trwfDc",
+        "category_rFiYpf",
+        "category_B9WgXH"
+      ],
+      "name": "Featured Categories",
+      "settings": {
+        "heading": "Featured Categories",
+        "subheading": "Shop all"
+      }
     }
   },
   "order": [
     "hero_slider_c9yric",
-    "homepage"
+    "homepage",
+    "featured_categories_4nQniL"
   ]
 }
