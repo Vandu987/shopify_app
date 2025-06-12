@@ -279,12 +279,12 @@ body {
 
 .category-item {
   text-align: center;
-  width: 160px;
+  width: 200px;
 }
 
 .category-item img {
-  width: 140px;
-  height: 140px;
+  width: 180px;
+  height: 180px;
   border-radius: 50%;
   object-fit: cover;
   background: #f9f9f9;
