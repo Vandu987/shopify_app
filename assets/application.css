@@ -297,7 +297,7 @@ body {
   .header-container {
     position: relative;
   }
-.slide-image {
+.slide-image,.slide-content,.hero-slider-wrapper {
     width: 100%;
 }
 .slide-text {
