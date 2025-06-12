@@ -35,7 +35,7 @@ document.addEventListener('DOMContentLoaded', function() {
 document.addEventListener('DOMContentLoaded', function() {
     const close = document.querySelector('.close_search');
     const searchForm = document.querySelector('.search_form');
-    if (close && searchForm) {
+    if (close) {
         close.addEventListener('click', function() {
             searchForm.style.display = 'none';
         });
