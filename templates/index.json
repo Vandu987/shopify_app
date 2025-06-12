@@ -62,22 +62,25 @@
         "category_trwfDc": {
           "type": "category",
           "settings": {
-            "title": "",
-            "link": ""
+            "image": "shopify://shop_images/bachon-ka-adda_51cf270b-99d4-4222-85f5-4b08d7f54b16.png",
+            "title": "test",
+            "link": "shopify://collections/shoes"
           }
         },
         "category_rFiYpf": {
           "type": "category",
           "settings": {
-            "title": "",
-            "link": ""
+            "image": "shopify://shop_images/earbuds.webp",
+            "title": "test-2",
+            "link": "shopify://products/figures"
           }
         },
         "category_B9WgXH": {
           "type": "category",
           "settings": {
-            "title": "",
-            "link": ""
+            "image": "shopify://shop_images/macbook-air-on-desk.jpg",
+            "title": "test-3",
+            "link": "shopify://collections/shoes"
           }
         }
       },
