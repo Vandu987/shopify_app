@@ -139,6 +139,7 @@ body {
 }
 
 .search-modal-content {
+    margin-top: 80px;
   background: transparent;
   padding: 20px;
   border-radius: 5px;
