@@ -214,6 +214,7 @@ body {
     display: flex;
     width: 90%;
     margin: auto;
+    position: relative;
 }
 .slide-image {
   flex: 1;
