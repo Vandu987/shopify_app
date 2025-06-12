@@ -370,13 +370,20 @@ text-decoration: none;
 
 /* ============================ single product page ============================ */
 .product-page-wrapper {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 30px;
-  margin-top: 30px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px;
+    margin-top: 30px;
+    justify-content: center;
+    align-items: flex-start;
 }
 .product-page-wrapper .product-gallery {
   width: 45%;
+      width: 45%;
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-start;
+    gap: 10px;
 }
 .product-page-wrapper .thumbnails {
   display: flex;
@@ -390,7 +397,7 @@ text-decoration: none;
 }
 .product-page-wrapper .main-image img {
   width: 100%;
-  max-width: 500px;
+  max-width: 400px;
   border: 1px solid #ccc;
 }
 .product-page-wrapper .product-info {
