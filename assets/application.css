@@ -207,6 +207,11 @@ body {
   display: flex;
   flex-wrap: wrap;
 }
+.slide-content{
+    display: flex;
+    width: 80%;
+    margin: auto;
+}
 .slide-image {
   flex: 1;
   padding: 10px;
