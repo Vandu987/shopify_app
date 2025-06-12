@@ -20,6 +20,41 @@
     {% endfor %}
   </div>
 </div>
+
+<style>
+.featured-categories-section {
+  padding: 40px 20px;
+}
+
+.featured-categories-section .category-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 30px;
+  margin-top: 30px;
+}
+
+.category-item {
+  text-align: center;
+  max-width: 150px;
+}
+
+.category-item img {
+  width: 100%;
+  border-radius: 50%;
+  transition: transform 0.3s ease;
+}
+
+.category-item img:hover {
+  transform: scale(1.05);
+}
+
+.category-item p {
+  margin-top: 10px;
+  font-weight: bold;
+}
+</style>
+
 {% schema %}
 {
   "name": "Featured Categories",
@@ -64,9 +99,19 @@
   "presets": [
     {
       "name": "Featured Categories",
-      "category": "Custom"
+      "category": "Custom",
+      "blocks": [
+        {
+          "type": "category"
+        },
+        {
+          "type": "category"
+        },
+        {
+          "type": "category"
+        }
+      ]
     }
   ]
 }
 {% endschema %}
-
