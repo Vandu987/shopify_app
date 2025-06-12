@@ -72,7 +72,7 @@ document.addEventListener("DOMContentLoaded", function () {
   function startAutoplay() {
     autoplayInterval = setInterval(() => {
       showSlide(index + 1);
-    }, 3000);
+    }, 4000);
   }
 
   function stopAutoplay() {
