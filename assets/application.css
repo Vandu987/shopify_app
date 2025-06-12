@@ -272,9 +272,10 @@ body {
 
 .category-grid {
   display: flex;
-  flex-wrap: wrap;
   justify-content: center;
-  gap: 40px;
+  flex-wrap: wrap;
+  gap: 30px;
+  margin-top: 30px;
 }
 
 .category-item {
@@ -285,10 +286,8 @@ body {
 .category-item img {
   width: 180px;
   height: 180px;
-  border-radius: 50%;
   object-fit: cover;
-  background: #f9f9f9;
-  padding: 10px;
+  border-radius: 50%;
 }
 
 .category-item p {
@@ -296,6 +295,8 @@ body {
   font-weight: bold;
   color: #ff6b6b;
 }
+
+
 /* Responsive Styles */
 @media (max-width: 768px) {
   .header-nav {
