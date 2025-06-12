@@ -51,14 +51,6 @@
       "name": "Hero Slider",
       "settings": {}
     },
-    "featured_categories_4FJHdH": {
-      "type": "featured-categories",
-      "name": "Featured Categories",
-      "settings": {
-        "heading": "Featured Categories",
-        "subheading": "Shop all"
-      }
-    },
     "homepage": {
       "type": "homepage",
       "settings": {}
@@ -66,7 +58,6 @@
   },
   "order": [
     "hero_slider_c9yric",
-    "featured_categories_4FJHdH",
     "homepage"
   ]
 }
