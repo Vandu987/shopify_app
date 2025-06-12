@@ -4,14 +4,13 @@
 <div class="product-page-wrapper">
   <!-- Left Section: Product Images -->
   <div class="product-gallery">
+    <div class="main-image">
+      <img id="ProductPhotoImg" src="{{ featured_image | img_url: '800x' }}" alt="{{ featured_image.alt | escape }}">
+    </div>
     <div class="thumbnails">
       {% for image in product.images %}
         <img src="{{ image | img_url: '100x100' }}" alt="{{ image.alt | escape }}" class="thumb" onclick="document.getElementById('ProductPhotoImg').src='{{ image | img_url: '800x' }}'">
       {% endfor %}
-    </div>
-
-    <div class="main-image">
-      <img id="ProductPhotoImg" src="{{ featured_image | img_url: '800x' }}" alt="{{ featured_image.alt | escape }}">
     </div>
   </div>
 
