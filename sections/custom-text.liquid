@@ -1,0 +1,23 @@
+<!-- sections/custom-text.liquid -->
+{% schema %}
+{
+  "name": "Custom Text",
+  "tag": "section",
+  "class": "custom-text-section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "This is a custom heading"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Custom Text Section"
+    }
+  ]
+}
+{% endschema %}
+
+<h2>{{ section.settings.heading }}</h2>
