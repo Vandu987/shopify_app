@@ -1,7 +1,7 @@
 {% paginate search.results by 10 %}
-  <form action="/search" method="get" role="search">
+  <form action="/search" method="get" role="search" class="search_form">
     <input type="search" name="q" value="{{ search.terms | escape }}">
-    <button type="submit">search</button>
+    <button type="submit">{% render 'icon-search' %}</button>
   </form>
 
   {% if search.performed %}
