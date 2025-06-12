@@ -38,9 +38,11 @@
               {% endif %}
             </div>
 
-            {% unless product.available %}
-              <span class="sold-out">Sold Out</span>
-            {% endunless %}
+             {% if current_variant.available %}
+              <button type="submit" name="add" id="AddToCart">Add to cart</button>
+            {% else %}
+              <button type="submit" disabled>Sold Out</button>
+            {% endif %}
           </div>
         </div>
       {% endfor %}
