@@ -282,6 +282,7 @@ body {
 .category-item {
   text-align: center;
   width: 200px;
+  text-decoration: none;
 }
 
 .category-item img {
