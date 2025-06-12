@@ -62,50 +62,50 @@
         "category_trwfDc": {
           "type": "category",
           "settings": {
-            "image": "shopify://shop_images/bachon-ka-adda_51cf270b-99d4-4222-85f5-4b08d7f54b16.png",
-            "title": "test",
+            "image": "shopify://shop_images/6330053146.webp",
+            "title": "Robots",
             "link": "shopify://collections/shoes"
           }
         },
-        "category_JzXVhk": {
+        "category_je9xcr": {
           "type": "category",
           "settings": {
-            "image": "shopify://shop_images/bachon-ka-adda_51cf270b-99d4-4222-85f5-4b08d7f54b16.png",
-            "title": "test",
+            "image": "shopify://shop_images/6330053146.webp",
+            "title": "Robots",
             "link": "shopify://collections/shoes"
           }
         },
-        "category_rFiYpf": {
+        "category_XBmHxq": {
           "type": "category",
           "settings": {
-            "image": "shopify://shop_images/earbuds.webp",
-            "title": "test-2",
-            "link": "shopify://products/figures"
+            "image": "shopify://shop_images/6330053146.webp",
+            "title": "Robots",
+            "link": "shopify://collections/shoes"
           }
         },
-        "category_3LDV9n": {
+        "category_QChkbe": {
           "type": "category",
           "settings": {
-            "image": "shopify://shop_images/earbuds.webp",
-            "title": "test-2",
-            "link": "shopify://products/figures"
+            "image": "shopify://shop_images/6330053146.webp",
+            "title": "Robots",
+            "link": "shopify://collections/shoes"
           }
         },
-        "category_B9WgXH": {
+        "category_AeT8Eb": {
           "type": "category",
           "settings": {
-            "image": "shopify://shop_images/macbook-air-on-desk.jpg",
-            "title": "test-3",
+            "image": "shopify://shop_images/6330053146.webp",
+            "title": "Robots",
             "link": "shopify://collections/shoes"
           }
         }
       },
       "block_order": [
         "category_trwfDc",
-        "category_JzXVhk",
-        "category_rFiYpf",
-        "category_3LDV9n",
-        "category_B9WgXH"
+        "category_je9xcr",
+        "category_XBmHxq",
+        "category_QChkbe",
+        "category_AeT8Eb"
       ],
       "name": "Featured Categories",
       "settings": {
