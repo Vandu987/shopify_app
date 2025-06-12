@@ -194,6 +194,9 @@ body {
 
 /*========================== section hero ============================ */
 .hero-slider-wrapper {
+  width: 80%;
+  max-width: 1200px;
+  margin: auto;
   position: relative;
   overflow: hidden;
 }
@@ -209,7 +212,7 @@ body {
 }
 .slide-content{
     display: flex;
-    width: 80%;
+    width: 100%;
     margin: auto;
 }
 .slide-image {
