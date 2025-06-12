@@ -1,29 +1,91 @@
 {% assign current_variant = product.selected_or_first_available_variant %}
 {% assign featured_image = current_variant.featured_image | default: product.featured_image %}
-<img src="{{ featured_image | img_url: 'large' }}" alt="{{ featured_image.alt | escape }}" id="ProductPhotoImg">
-{% for image in product.images %}
-  <a href="{{ image.src | img_url: 'large' }}">
-    <img src="{{ image.src | img_url: 'compact' }}" alt="{{ image.alt | escape }}">
-  </a>
-{% endfor %}
-<h1>{{ product.title }}</h1>
-<form action="/cart/add" method="post" enctype="multipart/form-data" id="AddToCartForm">
-  <select name="id" id="productSelect">
-    {% for variant in product.variants %}
-      {% if variant.available %}
-        <option value="{{ variant.id }}">
-          {{ variant.title }} - {{ variant.price | money_with_currency }}
-        </option>
+
+<div class="product-page-wrapper">
+  <!-- Left Section: Product Images -->
+  <div class="product-gallery">
+    <div class="thumbnails">
+      {% for image in product.images %}
+        <img src="{{ image | img_url: '100x100' }}" alt="{{ image.alt | escape }}" class="thumb" onclick="document.getElementById('ProductPhotoImg').src='{{ image | img_url: '800x' }}'">
+      {% endfor %}
+    </div>
+
+    <div class="main-image">
+      <img id="ProductPhotoImg" src="{{ featured_image | img_url: '800x' }}" alt="{{ featured_image.alt | escape }}">
+    </div>
+  </div>
+
+  <!-- Right Section: Product Info -->
+  <div class="product-info">
+    <h1>{{ product.title }}</h1>
+
+    <div class="rating-stars">★★★★★</div>
+
+    <div class="price">
+      {% if current_variant.compare_at_price > current_variant.price %}
+        <span class="sale-price">{{ current_variant.price | money }}</span>
+        <span class="compare-price">{{ current_variant.compare_at_price | money }}</span>
+        {% assign discount = current_variant.compare_at_price | minus: current_variant.price | times: 100 | divided_by: current_variant.compare_at_price %}
+        <span class="discount-badge">-{{ discount | round }}%</span>
       {% else %}
-        <option disabled="disabled">
-          {{ variant.title }} - sold out
-        </option>
+        <span class="regular-price">{{ current_variant.price | money }}</span>
       {% endif %}
-    {% endfor %}
-  </select>
-  {{ current_variant.price | money }}
-  <label for="Quantity">quantity</label>
-  <input type="number" id="Quantity" name="quantity" value="1" min="1">
-  <button type="submit" name="add" id="AddToCart">Add to cart</button>
-</form>
-<div>{{ product.description }}</div>
+    </div>
+
+    <!-- Availability -->
+    {% if current_variant.available %}
+      <p><strong>LEFT IN STOCK</strong></p>
+    {% else %}
+      <p style="color: red;"><strong>Sold Out</strong></p>
+    {% endif %}
+
+    <!-- Delivery Estimate -->
+    {% assign today = 'now' | date: '%s' %}
+    {% assign start_date = today | plus: 2 | date: "%a, %b %d, %Y" %}
+    {% assign end_date = today | plus: 6 | date: "%a, %b %d, %Y" %}
+    <p>📦 Products will be delivered between <strong>{{ start_date }}</strong> and <strong>{{ end_date }}</strong>.</p>
+
+    <!-- Add to Cart Form -->
+    <form action="/cart/add" method="post" enctype="multipart/form-data" id="AddToCartForm">
+      {% if product.variants.size > 1 %}
+        <label for="productSelect">Choose Variant:</label>
+        <select name="id" id="productSelect">
+          {% for variant in product.variants %}
+            <option value="{{ variant.id }}" {% if variant == current_variant %}selected{% endif %}>
+              {{ variant.title }} - {{ variant.price | money }}
+            </option>
+          {% endfor %}
+        </select>
+      {% else %}
+        <input type="hidden" name="id" value="{{ current_variant.id }}">
+      {% endif %}
+
+      <label for="Quantity">Quantity:</label>
+      <input type="number" id="Quantity" name="quantity" value="1" min="1">
+
+      {% if current_variant.available %}
+        <button type="submit" name="add" id="AddToCart">Add to cart</button>
+      {% else %}
+        <button type="submit" disabled>Sold Out</button>
+      {% endif %}
+    </form>
+
+    <div class="buy-now-button">
+      <button onclick="document.getElementById('AddToCartForm').submit()">Buy it now</button>
+    </div>
+
+    <!-- Trust Badges -->
+    <div class="trust-badges">
+      <div>🚚 Orders ship in 1 business day</div>
+      <div>🚀 Free shipping</div>
+      <div>🔄 30 day guarantee</div>
+      <div>🛡️ 2 year warranty</div>
+    </div>
+  </div>
+</div>
+
+<!-- Product Description -->
+<div class="product-description">
+  <h3>Product description</h3>
+  {{ product.description }}
+</div>
