@@ -32,28 +32,25 @@ document.addEventListener('DOMContentLoaded', function() {
     };
   }
 });
-console.log('Script loaded');
+  document.addEventListener('DOMContentLoaded', function() {
+      const closeBtn = document.querySelector('.close_search');
+      const searchForm = document.querySelector('.search_form'); 
+      
+      console.log('DOM fully loaded');
+      console.log('closeBtn:', closeBtn);
+      console.log('searchForm:', searchForm);
 
-document.addEventListener('DOMContentLoaded', function() {
-    console.log('DOM fully loaded');
-
-    const closeBtn = document.querySelector('.close_search');
-    const searchForm = document.querySelector('.search_form'); 
-    
-    console.log('closeBtn:', closeBtn);
-    console.log('searchForm:', searchForm);
-
-    if (closeBtn && searchForm) {
-        closeBtn.addEventListener('click', function(e) {
-            e.preventDefault(); 
-            searchForm.style.display = 'none';
-            console.log('Close button clicked - Form hidden');
-        });
-    } else {
-        console.error('Elements not found:', {
-            closeBtn: !!closeBtn, 
-            searchForm: !!searchForm
-        });
-    }
-});
+      if (closeBtn && searchForm) {
+          closeBtn.addEventListener('click', function(e) {
+              e.preventDefault(); 
+              searchForm.style.display = 'none';
+              console.log('Close button clicked - Form hidden');
+          });
+      } else {
+          console.error('Elements not found:', {
+              closeBtn: !!closeBtn, 
+              searchForm: !!searchForm
+          });
+      }
+  });
 
