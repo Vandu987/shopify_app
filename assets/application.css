@@ -296,7 +296,9 @@ text-decoration: none;
 
 .category-item p {
   margin-top: 30px;
-  font-weight: bold;
+  font-weight: 700;
+  font-size: 20px;
+  text-transform: capitalize;
   color: #ff6b6b;
 }
 
