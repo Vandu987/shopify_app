@@ -160,8 +160,9 @@ body {
 }
 .colse_search {
     position: absolute;
-    top: 10px;
-    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    right: -30px;
     color: #000000;
     font-size: 20px;
     cursor: pointer;
