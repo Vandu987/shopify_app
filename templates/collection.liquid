@@ -1,19 +1,55 @@
-{% paginate collection.products by 2 %}
-  <h1>{{ collection.title }}</h1>
-  {% for product in collection.products %}
-    <div>
-     <a href="{{ product.url | within: collection }}">
-        <img src="{{ product.featured_image.src | img_url: 'large' }}" alt="{{ product.featured_image.alt | escape }}">
-      </a>
-      {{ product.price | money }}
-      <a href="{{ product.url | within: collection }}">{{ product.title }}</a>
-      {% unless product.available %}<br><strong>sold out</strong>{% endunless %}
-     
+{% paginate collection.products by 12 %}
+  <h1 class="collection-title">{{ collection.title }}</h1>
+
+  <div class="collection-filters">
+    <label>
+      <input type="checkbox" onchange="location.href='{{ collection.url }}?constraint=in-stock';" {% if current_tags contains 'in-stock' %}checked{% endif %}>
+      In stock
+    </label>
+  </div>
+
+  {% if collection.products.size > 0 %}
+    <div class="product-grid">
+      {% for product in collection.products %}
+        <div class="product-card">
+          <a href="{{ product.url | within: collection }}">
+            <div class="product-image-wrapper">
+              <img src="{{ product.featured_image | img_url: '400x' }}" alt="{{ product.title }}">
+              
+              {% assign first_variant = product.variants.first %}
+              {% if product.compare_at_price_max > product.price %}
+                {% assign discount = 100 | minus: product.price | times: 100 | divided_by: product.compare_at_price_max %}
+                <span class="badge sale">-{{ discount | round }}% SALE</span>
+              {% endif %}
+            </div>
+          </a>
+          
+          <div class="product-details">
+            <div class="rating-placeholder">⭐️⭐️⭐️⭐️⭐️</div>
+            
+            <a class="product-title" href="{{ product.url | within: collection }}">{{ product.title }}</a>
+            
+            <div class="product-price">
+              {% if product.compare_at_price_max > product.price %}
+                <span class="current-price">{{ product.price | money }}</span>
+                <span class="old-price">{{ product.compare_at_price_max | money }}</span>
+              {% else %}
+                <span class="current-price">{{ product.price | money }}</span>
+              {% endif %}
+            </div>
+
+            {% unless product.available %}
+              <span class="sold-out">Sold Out</span>
+            {% endunless %}
+          </div>
+        </div>
+      {% endfor %}
     </div>
   {% else %}
-    <p>no matches</p>
-  {% endfor %}
-  {% if paginate.pages > 1 %}
-    {{ paginate | default_pagination }}
+    <p>No products found in this collection.</p>
   {% endif %}
+
+  <div class="pagination">
+    {{ paginate | default_pagination }}
+  </div>
 {% endpaginate %}
