@@ -194,7 +194,7 @@ body {
 
 /*========================== section hero ============================ */
 .hero-slider-wrapper {
-  width: 80%;
+  width: 90%;
   max-width: 1200px;
   margin: auto;
   position: relative;
@@ -212,7 +212,7 @@ body {
 }
 .slide-content{
     display: flex;
-    width: 100%;
+    width: 90%;
     margin: auto;
 }
 .slide-image {
@@ -243,14 +243,17 @@ body {
   margin-top: 10px;
 }
 .prev-slide, .next-slide {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  background: #333;
-  color: white;
-  padding: 10px;
-  border: none;
-  cursor: pointer;
+    width: 40px;
+    height: 40px;
+    border-radius: 11px;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: #7c7c7c;
+    color: #fff;
+    padding: 10px;
+    border: none;
+    cursor: pointer;
 }
 .prev-slide { left: 10px; }
 .next-slide { right: 10px; }
