@@ -322,7 +322,7 @@ text-decoration: none;
   width: 100%;
   height: 200px;
 }
-.product-image-wrapper {
+.product-image-wrapper img{
   width: 100%;
   height: 100%;
 }
