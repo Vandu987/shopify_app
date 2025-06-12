@@ -163,8 +163,7 @@ body {
     background: #0000009e;
 }
 .search_form input[type="search"] {
-    max-width: 400px;
-    width: 90%;
+    width: 80%;
     background: transparent;
     border: none;
     outline: none;
