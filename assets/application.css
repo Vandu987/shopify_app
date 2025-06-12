@@ -1,5 +1,7 @@
 body {
     background-color: rgb(251, 251, 232);
+    margin: 0;
+    padding: 0;
 }
 
 .homepage {
