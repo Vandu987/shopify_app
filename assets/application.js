@@ -62,14 +62,39 @@ document.addEventListener("DOMContentLoaded", function () {
   const nextBtn = document.querySelector(".next-slide");
   const prevBtn = document.querySelector(".prev-slide");
   let index = 0;
+  let autoplayInterval;
 
   function showSlide(i) {
     index = (i + slides.length) % slides.length;
     slider.style.transform = "translateX(" + (-index * 100) + "%)";
   }
 
-  nextBtn.addEventListener("click", () => showSlide(index + 1));
-  prevBtn.addEventListener("click", () => showSlide(index - 1));
+  function startAutoplay() {
+    autoplayInterval = setInterval(() => {
+      showSlide(index + 1);
+    }, 3000);
+  }
+
+  function stopAutoplay() {
+    clearInterval(autoplayInterval);
+  }
+
+  nextBtn.addEventListener("click", () => {
+    showSlide(index + 1);
+    stopAutoplay();
+    startAutoplay();
+  });
+
+  prevBtn.addEventListener("click", () => {
+    showSlide(index - 1);
+    stopAutoplay();
+    startAutoplay();
+  });
+
+  // Hover par autoplay stop, hover hatne par resume
+  slider.addEventListener("mouseenter", stopAutoplay);
+  slider.addEventListener("mouseleave", startAutoplay);
 
   showSlide(index);
+  startAutoplay();
 });
