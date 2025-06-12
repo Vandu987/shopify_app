@@ -297,6 +297,12 @@ body {
   .header-container {
     position: relative;
   }
+.slide-content {
+    height: 350px;
+}
+.slide-image {
+    height: 100%;
+}
 .slide-image,.slide-content,.hero-slider-wrapper {
     width: 100%;
 }
@@ -323,5 +329,8 @@ body {
 @media (max-width: 576px) {
     .slide-text h2 {
     font-size: 24px;
+}
+.slide-content {
+    height: 250px;
 }
 }
