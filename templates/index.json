@@ -1,10 +1,14 @@
-
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "sections": {
-    "homepage": {
-      "type": "homepage",
-      "settings": {}
-    },
     "hero_slider_c9yric": {
       "type": "hero-slider",
       "blocks": {
@@ -46,10 +50,14 @@
       ],
       "name": "Hero Slider",
       "settings": {}
+    },
+    "homepage": {
+      "type": "homepage",
+      "settings": {}
     }
   },
   "order": [
-    "homepage",
-    "hero_slider_c9yric"
+    "hero_slider_c9yric",
+    "homepage"
   ]
 }
