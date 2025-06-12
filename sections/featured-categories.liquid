@@ -4,7 +4,7 @@
   <div class="category-grid">
     {% for block in section.blocks %}
       {% if block.type == 'category' %}
-        <div class="category-item">
+        <div class="category-item" {{ block.shopify_attributes }}>
           {% if block.settings.link %}
             <a href="{{ block.settings.link }}">
           {% endif %}
@@ -20,6 +20,26 @@
     {% endfor %}
   </div>
 </div>
+
+<style>
+.category-grid {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 30px;
+  margin-top: 30px;
+}
+.category-item img {
+  width: 150px;
+  height: 150px;
+  object-fit: cover;
+  border-radius: 50%;
+}
+.category-item p {
+  margin-top: 10px;
+  font-weight: bold;
+}
+</style>
 
 {% schema %}
 {
@@ -68,13 +88,10 @@
       "category": "Custom",
       "blocks": [
         {
-          "type": "category"
-        },
-        {
-          "type": "category"
-        },
-        {
-          "type": "category"
+          "type": "category",
+          "settings": {
+            "title": "Example Category"
+          }
         }
       ]
     }
