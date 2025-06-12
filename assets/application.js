@@ -55,3 +55,21 @@ document.addEventListener('DOMContentLoaded', function() {
   }
 });
 
+// ================================ hero section ================================
+document.addEventListener("DOMContentLoaded", function () {
+  const slides = document.querySelectorAll(".slide");
+  const slider = document.querySelector(".hero-slider");
+  const nextBtn = document.querySelector(".next-slide");
+  const prevBtn = document.querySelector(".prev-slide");
+  let index = 0;
+
+  function showSlide(i) {
+    index = (i + slides.length) % slides.length;
+    slider.style.transform = "translateX(" + (-index * 100) + "%)";
+  }
+
+  nextBtn.addEventListener("click", () => showSlide(index + 1));
+  prevBtn.addEventListener("click", () => showSlide(index - 1));
+
+  showSlide(index);
+});
