@@ -178,6 +178,7 @@ body {
     border: none;
     outline: none;
     color: #ffffff;
+    cursor: pointer;
 }
 .close_search {
     position: absolute;
