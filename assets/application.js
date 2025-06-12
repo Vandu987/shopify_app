@@ -32,20 +32,26 @@ document.addEventListener('DOMContentLoaded', function() {
     };
   }
 });
-  document.addEventListener('DOMContentLoaded', function() {
-      const closeBtn = document.querySelector('.close_search');
-      const searchForm = document.querySelector('.search_form'); 
+ document.addEventListener('DOMContentLoaded', function () {
+  const openBtn = document.getElementById('open-search-modal');
+  const closeBtn = document.getElementById('close-search-modal');
+  const modal = document.getElementById('search-modal');
 
-      if (closeBtn && searchForm) {
-          closeBtn.addEventListener('click', function(e) {
-              e.preventDefault(); 
-              searchForm.style.display = 'none';
-          });
-      } else {
-          console.error('Elements not found:', {
-              closeBtn: !!closeBtn, 
-              searchForm: !!searchForm
-          });
+  if (openBtn && closeBtn && modal) {
+    openBtn.addEventListener('click', function (e) {
+      e.preventDefault();
+      modal.style.display = 'flex';
+    });
+
+    closeBtn.addEventListener('click', function () {
+      modal.style.display = 'none';
+    });
+
+    window.addEventListener('click', function (e) {
+      if (e.target === modal) {
+        modal.style.display = 'none';
       }
-  });
+    });
+  }
+});
 
