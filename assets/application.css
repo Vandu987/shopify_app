@@ -316,6 +316,9 @@ body {
 .slide-text a{
     margin-left: 70px;
 }
+.slide-text,.slide-image{
+    padding: 0;
+}
 }
 @media (max-width: 576px) {
     .slide-text h2 {
