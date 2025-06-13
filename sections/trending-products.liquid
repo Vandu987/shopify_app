@@ -8,7 +8,11 @@
         <div class="nt-product-card">
           <a href="{{ product.url }}">
             <div class="nt-image-wrapper">
-              <img src="{{ product.featured_image | img_url: '400x' }}" alt="{{ product.title }}">
+              {% assign second_image = product.images[1] %}
+              <img class="nt-main-image" src="{{ product.featured_image | img_url: '400x' }}" alt="{{ product.title }}">
+              {% if second_image %}
+                <img class="nt-hover-image" src="{{ second_image | img_url: '400x' }}" alt="{{ product.title }}">
+              {% endif %}
 
               {% if product.compare_at_price_max > product.price %}
                 {% assign discount = product.compare_at_price_max | minus: product.price | times: 100 | divided_by: product.compare_at_price_max %}
@@ -34,6 +38,7 @@
     {% endfor %}
   </div>
 </div>
+
 
 {% schema %}
 {
