@@ -22,40 +22,25 @@
           </a>
 
           <div class="nt-product-info">
-           <div class="nt-stars">
-  {% assign rating = product.metafields.custom.rating.value | default: 4.5 | plus: 0 %}
+           <div class="nt-stars-text">
+  {% assign rating = product.metafields.custom.rating.value | default: 5.0 | plus: 0 %}
   {% assign full_stars = rating | floor %}
-  {% assign has_half = rating > full_stars %}
+  {% assign has_half_star = rating > full_stars %}
   
-  {% for i in (1..5) %}
-    {% if i <= full_stars %}
-      <!-- Full Star -->
-      <svg width="16" height="16" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-        <path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"
-              style="fill: #FFD700;" />
-      </svg>
-    
-    {% elsif has_half and i == full_stars | plus: 1 %}
-      <!-- Half Star -->
-      <svg width="16" height="16" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-        <defs>
-          <linearGradient id="half-{{ product.id }}-{{ forloop.index }}" x1="0" y1="0" x2="1" y2="0">
-            <stop offset="50%" stop-color="#FFD700" />
-            <stop offset="50%" stop-color="#E0E0E0" />
-          </linearGradient>
-        </defs>
-        <path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"
-              fill="url(#half-{{ product.id }}-{{ forloop.index }})" />
-      </svg>
-    
-    {% else %}
-      <!-- Empty Star -->
-      <svg width="16" height="16" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-        <path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"
-              style="fill: #E0E0E0;" />
-      </svg>
+  <span class="stars">
+    {% for i in (1..full_stars) %}
+      <span class="star full">★</span>
+    {% endfor %}
+
+    {% if has_half_star %}
+      <span class="star half">★</span>
     {% endif %}
-  {% endfor %}
+
+    {% assign empty_stars = 5 | minus: full_stars | minus: (has_half_star | plus: 0) %}
+    {% for i in (1..empty_stars) %}
+      <span class="star empty">★</span>
+    {% endfor %}
+  </span>
 </div>
 
 
