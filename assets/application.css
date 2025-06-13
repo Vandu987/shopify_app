@@ -225,11 +225,10 @@ main{
   flex: 1;
   padding: 10px;
   width: 75%;
-  border-radius: 20px;
-  overflow: hidden;
 }
 .slide-image img {
   width: 100%;
+  border-radius: 20px;
 }
 .slide-text {
   flex: 1;
