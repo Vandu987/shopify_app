@@ -292,6 +292,26 @@ main{
 .category-item {
   text-align: center;
   width: 200px;
+  position: relative;
+  background: transparent;
+}
+.category-item::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: auto;
+  right: 0;
+  width: 0;
+  height: 100%;
+  background-color: rgba(255, 107, 107, 0.2);
+  border-radius: 30px;
+  transition: all 0.3s ease-in-out;
+  z-index: -1;
+}
+.category-item:hover::before {
+  width: 100%;
+    left: 0;
+  right: auto;
 }
 .category-item a{
 text-decoration: none;
