@@ -37,9 +37,7 @@
       {{ content_for_layout }}
     </main>
 
-    {% section 'custom-footer' %}
-
-    {{ content_for_footer }} {# Required for some scripts and apps #}
+   {{ content_for_footer }}
     {{ 'application.js' | asset_url | script_tag }}
   </body>
 </html>
