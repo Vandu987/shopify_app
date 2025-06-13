@@ -22,36 +22,38 @@
           </a>
 
           <div class="nt-product-info">
-           <div class="nt-stars text-center">
-              {% assign rating = product.metafields.custom.rating | default: 5 %}
+           <div class="nt-stars">
+              <div class="nt-stars">
+              {% assign rating = product.metafields.custom.rating | default: 5.0 %}
               {% assign full_stars = rating | floor %}
               {% assign has_half_star = rating > full_stars %}
               
               {% for i in (1..5) %}
                 {% if i <= full_stars %}
                   <!-- Full Star -->
-                  <svg class="nt-star" width="16" height="16" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                    <path fill="#FFD700" d="M12 .587l3.668 7.568 8.332 1.151-6.064 5.9 1.504 8.294L12 18.896l-7.44 4.604 1.504-8.294-6.064-5.9 8.332-1.151z"/>
+                  <svg class="nt-star" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" width="20" height="20">
+                    <path fill="#FFD700" d="M10 15l-5.878 3.09 1.123-6.545L.49 6.91l6.561-.954L10 0l2.949 5.956 6.561.954-4.755 4.635 1.123 6.545z"/>
                   </svg>
                 {% elsif has_half_star and i == full_stars | plus: 1 %}
                   <!-- Half Star -->
-                  <svg class="nt-star" width="16" height="16" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                  <svg class="nt-star" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" width="20" height="20">
                     <defs>
-                      <linearGradient id="halfGrad{{ forloop.index }}" x1="0" y1="0" x2="100%" y2="0">
-                        <stop offset="50%" stop-color="#FFD700"/>
-                        <stop offset="50%" stop-color="#E0E0E0"/>
+                      <linearGradient id="halfGold{{ forloop.index }}" x1="0" x2="1" y1="0" y2="0">
+                        <stop offset="50%" stop-color="#FFD700" />
+                        <stop offset="50%" stop-color="#E0E0E0" />
                       </linearGradient>
                     </defs>
-                    <path fill="url(#halfGrad{{ forloop.index }})" d="M12 .587l3.668 7.568 8.332 1.151-6.064 5.9 1.504 8.294L12 18.896l-7.44 4.604 1.504-8.294-6.064-5.9 8.332-1.151z"/>
+                    <path fill="url(#halfGold{{ forloop.index }})" d="M10 15l-5.878 3.09 1.123-6.545L.49 6.91l6.561-.954L10 0l2.949 5.956 6.561.954-4.755 4.635 1.123 6.545z"/>
                   </svg>
                 {% else %}
                   <!-- Empty Star -->
-                  <svg class="nt-star" width="16" height="16" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                    <path fill="#E0E0E0" d="M12 .587l3.668 7.568 8.332 1.151-6.064 5.9 1.504 8.294L12 18.896l-7.44 4.604 1.504-8.294-6.064-5.9 8.332-1.151z"/>
+                  <svg class="nt-star" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" width="20" height="20">
+                    <path fill="#E0E0E0" d="M10 15l-5.878 3.09 1.123-6.545L.49 6.91l6.561-.954L10 0l2.949 5.956 6.561.954-4.755 4.635 1.123 6.545z"/>
                   </svg>
                 {% endif %}
               {% endfor %}
             </div>
+
 
             <p class="nt-title">{{ product.title }}</p>
             <div class="nt-price">
