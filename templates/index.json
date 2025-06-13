@@ -145,47 +145,36 @@
         "product_hRmmqD",
         "product_Rp88M3"
       ],
-      "name": "Now Trending",
       "settings": {
         "heading": "Now Trending"
       }
     },
-    "featured_categories_YrTjYR": {
-      "type": "featured-categories",
+    "must_have_toys_3GRYar": {
+      "type": "must-have-toys",
       "blocks": {
-        "category_yKqziY": {
+        "category_yzKKCL": {
           "type": "category",
           "settings": {
-            "image": "shopify://shop_images/bachon-ka-adda_51cf270b-99d4-4222-85f5-4b08d7f54b16.png",
-            "title": "test",
-            "link": "shopify://collections/robots"
+            "category_name": "Board Games",
+            "product_1": "adorable-crawling-crab",
+            "product_2": "test",
+            "view_all_text": "VIEW ALL"
           }
         },
-        "category_yttcqD": {
-          "type": "category",
+        "product_bGYaqj": {
+          "type": "product",
           "settings": {
-            "image": "shopify://shop_images/earbuds.webp",
-            "title": "test-2",
-            "link": "shopify://products/figures"
-          }
-        },
-        "category_nypwic": {
-          "type": "category",
-          "settings": {
-            "image": "shopify://shop_images/macbook-air-on-desk.jpg",
-            "title": "test-3",
-            "link": "shopify://collections/robots"
+            "product": "adorable-crawling-crab"
           }
         }
       },
       "block_order": [
-        "category_yKqziY",
-        "category_yttcqD",
-        "category_nypwic"
+        "category_yzKKCL",
+        "product_bGYaqj"
       ],
+      "name": "Must-Have Toys",
       "settings": {
-        "heading": "all Categories",
-        "subheading": "Shop all"
+        "heading": "Must-Have Toys"
       }
     }
   },
@@ -194,6 +183,6 @@
     "homepage",
     "featured_categories_4nQniL",
     "trending_products_K33rfc",
-    "featured_categories_YrTjYR"
+    "must_have_toys_3GRYar"
   ]
 }
