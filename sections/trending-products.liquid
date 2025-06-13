@@ -22,7 +22,7 @@
           </a>
 
           <div class="nt-product-info">
-           <div class="nt-stars">
+           <div class="nt-stars text-center">
               {% assign rating = product.metafields.custom.rating | default: 5 %}
               {% assign full_stars = rating | floor %}
               {% assign has_half_star = rating > full_stars %}
@@ -30,24 +30,24 @@
               {% for i in (1..5) %}
                 {% if i <= full_stars %}
                   <!-- Full Star -->
-                  <svg class="nt-star full-star" width="16" height="16" viewBox="0 0 24 24" fill="#FFD700" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M12 .587l3.668 7.568 8.332 1.151-6.064 5.9 1.504 8.294L12 18.896l-7.44 4.604 1.504-8.294-6.064-5.9 8.332-1.151z"/>
+                  <svg class="nt-star" width="16" height="16" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path fill="#FFD700" d="M12 .587l3.668 7.568 8.332 1.151-6.064 5.9 1.504 8.294L12 18.896l-7.44 4.604 1.504-8.294-6.064-5.9 8.332-1.151z"/>
                   </svg>
                 {% elsif has_half_star and i == full_stars | plus: 1 %}
                   <!-- Half Star -->
-                  <svg class="nt-star half-star" width="16" height="16" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                  <svg class="nt-star" width="16" height="16" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                     <defs>
-                      <linearGradient id="halfGrad">
+                      <linearGradient id="halfGrad{{ forloop.index }}" x1="0" y1="0" x2="100%" y2="0">
                         <stop offset="50%" stop-color="#FFD700"/>
                         <stop offset="50%" stop-color="#E0E0E0"/>
                       </linearGradient>
                     </defs>
-                    <path d="M12 .587l3.668 7.568 8.332 1.151-6.064 5.9 1.504 8.294L12 18.896l-7.44 4.604 1.504-8.294-6.064-5.9 8.332-1.151z" fill="url(#halfGrad)"/>
+                    <path fill="url(#halfGrad{{ forloop.index }})" d="M12 .587l3.668 7.568 8.332 1.151-6.064 5.9 1.504 8.294L12 18.896l-7.44 4.604 1.504-8.294-6.064-5.9 8.332-1.151z"/>
                   </svg>
                 {% else %}
                   <!-- Empty Star -->
-                  <svg class="nt-star empty-star" width="16" height="16" viewBox="0 0 24 24" fill="#E0E0E0" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M12 .587l3.668 7.568 8.332 1.151-6.064 5.9 1.504 8.294L12 18.896l-7.44 4.604 1.504-8.294-6.064-5.9 8.332-1.151z"/>
+                  <svg class="nt-star" width="16" height="16" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path fill="#E0E0E0" d="M12 .587l3.668 7.568 8.332 1.151-6.064 5.9 1.504 8.294L12 18.896l-7.44 4.604 1.504-8.294-6.064-5.9 8.332-1.151z"/>
                   </svg>
                 {% endif %}
               {% endfor %}
