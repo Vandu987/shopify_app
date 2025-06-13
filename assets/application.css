@@ -483,7 +483,7 @@ text-decoration: none;
 /* =================================== Now Trending Section - Unique Styles =================================== */
 /* Now Trending Section - Unique Styles */
 .nt-section {
-  padding: 50px 20px;
+  padding: 50px 80px;
   background: #fdfdfd;
 }
 .nt-heading {
@@ -568,7 +568,7 @@ text-decoration: none;
 /* =========================== must-have-toys-section =========================== */
 .must-haves-wrapper {
   background-color: #e6f2ff;
-  padding: 40px 50px;
+  padding: 40px 80px;
   font-family: 'Comic Sans MS', cursive, sans-serif;
 }
 
