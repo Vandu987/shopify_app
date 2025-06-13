@@ -449,7 +449,82 @@ text-decoration: none;
 .product-page-wrapper .buy-now-button {
   margin-top: 10px;
 }
-
+/* =================================== Now Trending Section - Unique Styles =================================== */
+.nt-section {
+  padding: 50px 20px;
+  background: #fdfdfd;
+}
+.nt-heading {
+  font-family: 'Marker Felt', cursive;
+  font-size: 2.4rem;
+  color: #1b1b1b;
+  margin-bottom: 35px;
+}
+.nt-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 24px;
+}
+.nt-product-card {
+  background: #ffffff;
+  border: 1px solid #e2e2e2;
+  border-radius: 8px;
+  overflow: hidden;
+  transition: transform 0.3s ease;
+}
+.nt-product-card:hover {
+  transform: translateY(-5px);
+}
+.nt-image-wrapper {
+  position: relative;
+}
+.nt-image-wrapper img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+.nt-discount-badge {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  background: #e60023;
+  color: #fff;
+  padding: 5px 10px;
+  font-size: 12px;
+  font-weight: bold;
+  border-radius: 4px;
+}
+.nt-product-info {
+  padding: 15px;
+  text-align: center;
+}
+.nt-stars {
+  color: #ffb400;
+  font-size: 14px;
+  margin-bottom: 5px;
+}
+.nt-title {
+  font-size: 16px;
+  font-weight: 600;
+  margin-bottom: 8px;
+  color: #333;
+}
+.nt-price {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+}
+.nt-price-current {
+  font-size: 16px;
+  font-weight: bold;
+  color: #222;
+}
+.nt-price-old {
+  font-size: 14px;
+  color: #888;
+  text-decoration: line-through;
+}
 /* Responsive Styles */
 @media (max-width: 768px) {
   .header-nav {
