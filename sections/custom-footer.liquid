@@ -1,13 +1,13 @@
-{% comment %}
-  Custom Footer Section — KidsToys Style (Fixed with blocks)
+{% comment %} 
+  Custom Footer Section — KidsToys Style
 {% endcomment %}
 
 <footer class="custom-footer">
   <div class="footer-top">
     <div class="footer-left">
-      <h4>Booster & Revolution</h4>
+      <h4>Booster & revolution</h4>
       <p>Use this text to share information about your brand with your customers. Describe a product, share announcements or welcome customers to your store.</p>
-      <p>This is a Demo Store created for booster theme. You may buy products on <a href="https://www.hamleys.in/" target="_blank">Hamleys website</a>.</p>
+      <p>This is a Demo Store created for booster theme. If you would like to buy the products in this store you may buy them on <a href="https://www.hamleys.in/" target="_blank">Hamleys website</a>.</p>
     </div>
 
     <div class="footer-center">
@@ -17,18 +17,13 @@
     <div class="footer-right">
       <h4>More links</h4>
       <ul>
-        {% for block in section.blocks %}
-          {% if block.type == 'link' %}
-            <li><a href="{{ block.settings.url }}">{{ block.settings.title }}</a></li>
-          {% endif %}
+        {% for link in section.settings.links %}
+          <li><a href="{{ link.url }}">{{ link.title }}</a></li>
         {% endfor %}
       </ul>
-
       <div class="footer-icons">
-        {% for block in section.blocks %}
-          {% if block.type == 'icon' %}
-            <a href="{{ block.settings.url }}" target="_blank">{{ block.settings.icon | raw }}</a>
-          {% endif %}
+        {% for icon in section.settings.social_icons %}
+          <a href="{{ icon.url }}" target="_blank">{{ icon.icon | raw }}</a>
         {% endfor %}
       </div>
     </div>
@@ -39,72 +34,6 @@
   </div>
 </footer>
 
-<style>
-.custom-footer {
-  background-color: #0066cc;
-  color: #fff;
-  padding: 40px 20px 0;
-  font-family: 'Poppins', sans-serif;
-}
-.footer-top {
-  display: flex;
-  justify-content: space-between;
-  flex-wrap: wrap;
-  gap: 20px;
-}
-.footer-left,
-.footer-right {
-  flex: 1;
-  min-width: 250px;
-  font-size: 14px;
-  line-height: 1.6;
-}
-.footer-left a {
-  color: #fff;
-  text-decoration: underline;
-}
-.footer-center {
-  flex: 1;
-  text-align: center;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-.footer-logo {
-  font-family: 'Patrick Hand', cursive;
-  font-size: 36px;
-  margin: 0;
-}
-.footer-right ul {
-  list-style: none;
-  padding: 0;
-  margin: 10px 0 20px;
-}
-.footer-right ul li a {
-  color: #fff;
-  text-decoration: none;
-  font-size: 13px;
-  line-height: 1.8;
-}
-.footer-icons a {
-  margin-right: 10px;
-  font-size: 20px;
-  color: #fff;
-  text-decoration: none;
-}
-.footer-bottom {
-  background-color: #1a1f24;
-  text-align: center;
-  padding: 15px 10px;
-  margin-top: 30px;
-  font-size: 13px;
-}
-.footer-bottom a {
-  color: #fff;
-  text-decoration: underline;
-}
-</style>
-
 {% schema %}
 {
   "name": "Custom Footer",
@@ -114,74 +43,34 @@
       "id": "logo_text",
       "label": "Footer Logo Text",
       "default": "KidsToys"
-    }
-  ],
-  "blocks": [
+    },
     {
-      "type": "link",
-      "name": "Footer Link",
-      "settings": [
-        {
-          "type": "text",
-          "id": "title",
-          "label": "Link Text",
-          "default": "Helpdesk"
-        },
-        {
-          "type": "url",
-          "id": "url",
-          "label": "Link URL",
-          "default": "#"
-        }
+      "type": "list",
+      "id": "links",
+      "label": "Footer Links",
+      "default": [
+        { "title": "Helpdesk", "url": "#" },
+        { "title": "FAQs", "url": "#" },
+        { "title": "Orders", "url": "#" },
+        { "title": "Returns", "url": "#" }
       ]
     },
     {
-      "type": "icon",
-      "name": "Social Icon",
-      "settings": [
-        {
-          "type": "html",
-          "id": "icon",
-          "label": "HTML Icon",
-          "default": "<i class='fa fa-facebook'></i>"
-        },
-        {
-          "type": "url",
-          "id": "url",
-          "label": "Icon Link",
-          "default": "https://facebook.com"
-        }
+      "type": "list",
+      "id": "social_icons",
+      "label": "Social Icons (HTML)",
+      "default": [
+        { "icon": "<i class='fa fa-facebook'></i>", "url": "https://facebook.com" },
+        { "icon": "<i class='fa fa-instagram'></i>", "url": "https://instagram.com" },
+        { "icon": "<i class='fa fa-whatsapp'></i>", "url": "https://wa.me/" },
+        { "icon": "<i class='fa fa-youtube'></i>", "url": "https://youtube.com" }
       ]
     }
   ],
-  "max_blocks": 12,
   "presets": [
     {
       "name": "KidsToys Footer",
-      "category": "Custom",
-      "blocks": [
-        {
-          "type": "link",
-          "settings": {
-            "title": "Helpdesk",
-            "url": "#"
-          }
-        },
-        {
-          "type": "link",
-          "settings": {
-            "title": "FAQs",
-            "url": "#"
-          }
-        },
-        {
-          "type": "icon",
-          "settings": {
-            "icon": "<i class='fa fa-instagram'></i>",
-            "url": "https://instagram.com"
-          }
-        }
-      ]
+      "category": "Custom"
     }
   ]
 }
