@@ -29,24 +29,24 @@
   
   {% for i in (1..5) %}
     {% if i <= full_stars %}
-      <!-- Full star -->
-      <svg class="nt-star" width="20" height="20" viewBox="0 0 24 24">
+      <!-- Full star (gold) -->
+      <svg width="20" height="20" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
         <path fill="#FFD700" d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/>
       </svg>
     {% elsif remainder > 0 and i == full_stars + 1 %}
-      <!-- Half star -->
-      <svg class="nt-star" width="20" height="20" viewBox="0 0 24 24">
+      <!-- Half star (gold left, gray right) -->
+      <svg width="20" height="20" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
         <defs>
-          <linearGradient id="half-{{ product.id }}-{{ forloop.index }}" x1="0" y1="0" x2="100%" y2="0">
+          <linearGradient id="halfgrad-{{ product.id }}-{{ i }}" x1="0" y1="0" x2="100%" y2="0">
             <stop offset="50%" stop-color="#FFD700"/>
             <stop offset="50%" stop-color="#E0E0E0"/>
           </linearGradient>
         </defs>
-        <path fill="url(#half-{{ product.id }}-{{ forloop.index }})" d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/>
+        <path fill="url(#halfgrad-{{ product.id }}-{{ i }})" d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/>
       </svg>
     {% else %}
-      <!-- Empty star -->
-      <svg class="nt-star" width="20" height="20" viewBox="0 0 24 24">
+      <!-- Empty star (gray) -->
+      <svg width="20" height="20" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
         <path fill="#E0E0E0" d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/>
       </svg>
     {% endif %}
