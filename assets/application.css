@@ -17,7 +17,9 @@ main{
 .logo {
     width: 25%;
 }
-
+.text-center{
+    text-align: center;
+}
 /* Header Styles */
 .site-header {
   background-color: #ffffff;
@@ -476,6 +478,8 @@ text-decoration: none;
 }
 .nt-heading {
   font-family: 'Marker Felt', cursive;
+  text-align: center;
+  font-weight: bold;
   font-size: 2.4rem;
   color: #1b1b1b;
   margin-bottom: 35px;
