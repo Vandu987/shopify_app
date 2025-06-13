@@ -192,6 +192,17 @@
       "type": "homepage",
       "disabled": true,
       "settings": {}
+    },
+    "video_promo_split_t74yGz": {
+      "type": "video-promo-split",
+      "name": "Video Promo Section",
+      "settings": {
+        "heading": "Experience Nerf Ultra blasters for an Ultimate time!",
+        "subtext": "The furthest flying Nerf darts EVER, featuring an innovative flight tip, Aerofin technology and Nerf Ultra foam. Take your game to the next level with Nerf Ultra blasters and darts!",
+        "video_url": "https://youtu.be/jwLobSjA1F4?si=2eN8YaYWXZP4M8bG",
+        "button_label": "Get this now!",
+        "button_link": "shopify://collections/all"
+      }
     }
   },
   "order": [
@@ -199,6 +210,7 @@
     "featured_categories_4nQniL",
     "trending_products_K33rfc",
     "must_have_toys_3GRYar",
-    "homepage"
+    "homepage",
+    "video_promo_split_t74yGz"
   ]
 }
