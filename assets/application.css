@@ -305,7 +305,7 @@ main{
   height: 100%;
   background-color: rgba(255, 107, 107, 0.2);
   border-radius: 30px;
-  transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in;
   z-index: -1;
 }
 .category-item:hover::before {
