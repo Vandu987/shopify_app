@@ -22,7 +22,17 @@
           </a>
 
           <div class="nt-product-info">
-            <div class="nt-stars">⭐️⭐️⭐️⭐️⭐️</div>
+            <div class="nt-stars">
+              {% assign rating = product.metafields.custom.rating | default: 5 %}
+              {% for i in (1..5) %}
+                {% if i <= rating %}
+                  ★
+                {% else %}
+                  ☆
+                {% endif %}
+              {% endfor %}
+            </div>
+
             <p class="nt-title">{{ product.title }}</p>
             <div class="nt-price">
               {% if product.compare_at_price_max > product.price %}
@@ -38,8 +48,6 @@
     {% endfor %}
   </div>
 </div>
-
-
 {% schema %}
 {
   "name": "Now Trending",
