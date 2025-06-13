@@ -157,7 +157,7 @@
           "settings": {
             "title": "Board Games",
             "collection": "robots",
-            "view_all_url": ""
+            "view_all_url": "shopify://collections/robots"
           }
         },
         "column_PzRtmD": {
@@ -165,7 +165,7 @@
           "settings": {
             "title": "Board Games",
             "collection": "robots",
-            "view_all_url": ""
+            "view_all_url": "shopify://collections/robots"
           }
         },
         "column_fUDzQP": {
@@ -173,7 +173,7 @@
           "settings": {
             "title": "Board Games",
             "collection": "robots",
-            "view_all_url": ""
+            "view_all_url": "shopify://collections/robots"
           }
         }
       },
