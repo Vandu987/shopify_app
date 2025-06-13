@@ -474,7 +474,6 @@ text-decoration: none;
 /* =================================== Now Trending Section - Unique Styles =================================== */
 .nt-section {
   padding: 50px 20px;
-  background: #fdfdfd;
 }
 .nt-heading {
   font-family: 'Marker Felt', cursive;
@@ -483,6 +482,7 @@ text-decoration: none;
   font-size: 2.4rem;
   color: #1b1b1b;
   margin-bottom: 35px;
+  margin-top: 0;
 }
 .nt-grid {
   display: grid;
