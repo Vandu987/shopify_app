@@ -1,0 +1,114 @@
+<div class="must-have-toys-section">
+  <h2 class="section-heading">{{ section.settings.heading }}</h2>
+  
+  <div class="toys-grid">
+    {% for block in section.blocks %}
+      {% case block.type %}
+        {% when 'category' %}
+          <div class="toy-category" {{ block.shopify_attributes }}>
+            <h3 class="category-name">{{ block.settings.category_name }}</h3>
+            
+            {% if block.settings.product_1 %}
+              {% assign product = all_products[block.settings.product_1] %}
+              <div class="toy-product">
+                <a href="{{ product.url }}">
+                  <p class="product-title">{{ product.title }}</p>
+                  <p class="product-price">{{ product.price | money }}</p>
+                </a>
+              </div>
+            {% endif %}
+            
+            {% if block.settings.product_2 %}
+              {% assign product = all_products[block.settings.product_2] %}
+              <div class="toy-product">
+                <a href="{{ product.url }}">
+                  <p class="product-title">{{ product.title }}</p>
+                  <p class="product-price">{{ product.price | money }}</p>
+                </a>
+              </div>
+            {% endif %}
+            
+            <a href="#" class="view-all">{{ block.settings.view_all_text }}</a>
+          </div>
+          
+        {% when 'product' %}
+          {% assign product = all_products[block.settings.product] %}
+          <div class="standalone-product" {{ block.shopify_attributes }}>
+            <a href="{{ product.url }}">
+              <p class="product-title">{{ product.title }}</p>
+              <p class="product-price">{{ product.price | money }}</p>
+            </a>
+          </div>
+      {% endcase %}
+    {% endfor %}
+  </div>
+</div>
+{% schema %}
+{
+  "name": "Must-Have Toys",
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Section Heading",
+      "default": "Must-Have Toys"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "category",
+      "name": "Product Category",
+      "settings": [
+        {
+          "type": "text",
+          "id": "category_name",
+          "label": "Category Name"
+        },
+        {
+          "type": "product",
+          "id": "product_1",
+          "label": "Product 1"
+        },
+        {
+          "type": "product",
+          "id": "product_2",
+          "label": "Product 2"
+        },
+        {
+          "type": "text",
+          "id": "view_all_text",
+          "label": "View All Text",
+          "default": "VIEW ALL"
+        }
+      ]
+    },
+    {
+      "type": "product",
+      "name": "Standalone Product",
+      "settings": [
+        {
+          "type": "product",
+          "id": "product",
+          "label": "Product"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Must-Have Toys",
+      "blocks": [
+        {
+          "type": "category",
+          "settings": {
+            "category_name": "Board Games"
+          }
+        },
+        {
+          "type": "product"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}
