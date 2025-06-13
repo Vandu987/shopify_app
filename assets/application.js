@@ -1,4 +1,19 @@
 // Put your application javascript here
+// This file is used to add custom JavaScript functionality to the Shopify theme.
+//             "image": "shopify://shop_images/featured-category-1.jpg",
+// ================================ header section ================================
+document.addEventListener("DOMContentLoaded", function () {
+  const header = document.querySelector('.site-header');
+
+  window.addEventListener('scroll', function () {
+    if (window.scrollY > 50) {
+      header.classList.add('scrolled');
+    } else {
+      header.classList.remove('scrolled');
+    }
+  });
+});
+
 // Mobile menu toggle functionality
 document.addEventListener('DOMContentLoaded', function() {
   const mobileMenuToggle = document.createElement('button');
