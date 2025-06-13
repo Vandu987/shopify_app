@@ -515,11 +515,12 @@ text-decoration: none;
 .nt-image-wrapper {
   position: relative;
   overflow: hidden;
+  height: 220px;
 }
 .nt-main-image,
 .nt-hover-image {
   width: 100%;
-  height: auto;
+  height: 100%;
   display: block;
   transition: transform 0.4s ease, opacity 0.4s ease;
 }
