@@ -277,7 +277,14 @@ main{
 .prev-slide { left: 10px; }
 .next-slide { right: 10px; }
 /* ================= featured-category section ==============================  */
-
+.fc-subheading {
+  font-family: 'Marker Felt', cursive;
+  text-align: center;
+  font-weight: bold;
+  font-size: 22px;
+  color: #1b1b1b;
+  margin-bottom: 10px;
+}
 .featured-categories-section {
   padding: 40px 0;
   text-align: center;
@@ -481,7 +488,7 @@ text-decoration: none;
   font-weight: bold;
   font-size: 2.4rem;
   color: #1b1b1b;
-  margin-bottom: 35px;
+  margin-bottom: 50px;
   margin-top: 0;
 }
 .nt-grid {
