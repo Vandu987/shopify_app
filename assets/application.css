@@ -225,10 +225,10 @@ main{
 }
 .slide-image {
   padding: 10px;
-  width: 50%;
+  width: 40%;
 }
 .slide-text {
-  width: 50%;
+  width: 60%;
   display: flex;
   flex-direction: column;
   justify-content: center;
