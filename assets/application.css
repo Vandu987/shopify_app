@@ -701,7 +701,10 @@ text-decoration: none;
 .slide-image img{
   border-radius: 0;
 }
- 
+ .nt-section,.must-haves-wrapper  {
+  padding-left: 20px;
+  padding-right: 20px;
+ }
 }
 @media (max-width: 576px) {
     .slide-text h2 {
@@ -709,5 +712,8 @@ text-decoration: none;
 }
 .slide-content {
     height: 250px;
+}
+.must-haves-heading,.nt-heading{
+  font-size: 24px;
 }
 }
