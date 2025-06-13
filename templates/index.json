@@ -152,27 +152,36 @@
     "must_have_toys_3GRYar": {
       "type": "must-have-toys",
       "blocks": {
-        "category_yzKKCL": {
-          "type": "category",
+        "column_TBK4mk": {
+          "type": "column",
           "settings": {
-            "category_name": "Board Games",
-            "product_1": "adorable-crawling-crab",
-            "product_2": "test",
-            "view_all_text": "VIEW ALL"
+            "title": "Board Games",
+            "collection": "robots",
+            "view_all_url": ""
           }
         },
-        "product_bGYaqj": {
-          "type": "product",
+        "column_PzRtmD": {
+          "type": "column",
           "settings": {
-            "product": "adorable-crawling-crab"
+            "title": "Board Games",
+            "collection": "robots",
+            "view_all_url": ""
+          }
+        },
+        "column_fUDzQP": {
+          "type": "column",
+          "settings": {
+            "title": "Board Games",
+            "collection": "robots",
+            "view_all_url": ""
           }
         }
       },
       "block_order": [
-        "category_yzKKCL",
-        "product_bGYaqj"
+        "column_TBK4mk",
+        "column_PzRtmD",
+        "column_fUDzQP"
       ],
-      "name": "Must-Have Toys",
       "settings": {
         "heading": "Must-Have Toys"
       }
