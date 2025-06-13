@@ -15,7 +15,7 @@
         "slide_K3zHb8": {
           "type": "slide",
           "settings": {
-            "image": "shopify://shop_images/macbook-air-on-desk.jpg",
+            "image": "shopify://shop_images/4322112064.jpg",
             "heading": "Your Heading Here",
             "subheading": "Your subheading goes here",
             "button_text": "Shop Now",
@@ -25,7 +25,7 @@
         "slide_F8Q4iH": {
           "type": "slide",
           "settings": {
-            "image": "shopify://shop_images/earbuds.webp",
+            "image": "shopify://shop_images/7161033686.jpg",
             "heading": "Your Heading Here",
             "subheading": "Your subheading goes here",
             "button_text": "Shop Now",
@@ -35,7 +35,7 @@
         "slide_W6MQ37": {
           "type": "slide",
           "settings": {
-            "image": "shopify://shop_images/bachon-ka-adda.png",
+            "image": "shopify://shop_images/6330053146.webp",
             "heading": "Your Heading Here",
             "subheading": "Your subheading goes here",
             "button_text": "Shop Now",
@@ -48,7 +48,6 @@
         "slide_F8Q4iH",
         "slide_W6MQ37"
       ],
-      "name": "Hero Slider",
       "settings": {}
     },
     "homepage": {
@@ -107,7 +106,6 @@
         "category_QChkbe",
         "category_AeT8Eb"
       ],
-      "name": "Featured Categories",
       "settings": {
         "heading": "Feauted Categories",
         "subheading": "Shop all"
@@ -146,7 +144,6 @@
         "category_yttcqD",
         "category_nypwic"
       ],
-      "name": "Featured Categories",
       "settings": {
         "heading": "all Categories",
         "subheading": "Shop all"
