@@ -510,6 +510,9 @@ text-decoration: none;
 .slide-text,.slide-image{
     padding: 0;
 }
+.slide-image img{
+  border-radius: 0;
+}
 }
 @media (max-width: 576px) {
     .slide-text h2 {
