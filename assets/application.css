@@ -218,7 +218,7 @@ main{
 .slide-content{
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    justify-content: center;
     width: 90%;
     margin: auto;
     position: relative;
