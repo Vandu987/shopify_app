@@ -22,31 +22,37 @@
           </a>
 
           <div class="nt-product-info">
-            {% assign rating = product.metafields.custom.rating.value | default: 0 %}
-            {% assign full_stars = rating | floor %}
-            {% assign has_half_star = rating > full_stars %}
-            {% assign empty_stars = 5 | minus: full_stars | minus: has_half_star %}
-
-            <div class="star-rating" aria-label="Rating: {{ rating }} out of 5">
-              {% for i in (1..full_stars) %}
-                <svg class="star-icon" viewBox="0 0 24 24" fill="#FFD700" width="20" height="20">
-                  <path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>
-                </svg>
-              {% endfor %}
-
-              {% if has_half_star %}
-                <svg class="star-icon" viewBox="0 0 24 24" fill="#FFD700" width="20" height="20">
-                  <path d="M12 15.4L8.24 17.67 9.24 13.39 5.91 10.51l4.38-.38L12 6.1v9.3z"/>
-                  <path d="M22 9.24l-7.19-.62L12 2v13.4l6.18 3.6-1.64-7.03L22 9.24z" fill="#ddd"/>
-                </svg>
-              {% endif %}
-
-              {% for i in (1..empty_stars) %}
-                <svg class="star-icon" viewBox="0 0 24 24" fill="#ddd" width="20" height="20">
-                  <path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>
-                </svg>
+           <div class="nt-stars">
+              {% assign rating = product.metafields.custom.rating | default: 5 %}
+              {% assign full_stars = rating | floor %}
+              {% assign has_half_star = rating > full_stars %}
+              
+              {% for i in (1..5) %}
+                {% if i <= full_stars %}
+                  <!-- Full Star -->
+                  <svg class="nt-star full-star" width="16" height="16" viewBox="0 0 24 24" fill="#FFD700" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M12 .587l3.668 7.568 8.332 1.151-6.064 5.9 1.504 8.294L12 18.896l-7.44 4.604 1.504-8.294-6.064-5.9 8.332-1.151z"/>
+                  </svg>
+                {% elsif has_half_star and i == full_stars | plus: 1 %}
+                  <!-- Half Star -->
+                  <svg class="nt-star half-star" width="16" height="16" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <defs>
+                      <linearGradient id="halfGrad">
+                        <stop offset="50%" stop-color="#FFD700"/>
+                        <stop offset="50%" stop-color="#E0E0E0"/>
+                      </linearGradient>
+                    </defs>
+                    <path d="M12 .587l3.668 7.568 8.332 1.151-6.064 5.9 1.504 8.294L12 18.896l-7.44 4.604 1.504-8.294-6.064-5.9 8.332-1.151z" fill="url(#halfGrad)"/>
+                  </svg>
+                {% else %}
+                  <!-- Empty Star -->
+                  <svg class="nt-star empty-star" width="16" height="16" viewBox="0 0 24 24" fill="#E0E0E0" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M12 .587l3.668 7.568 8.332 1.151-6.064 5.9 1.504 8.294L12 18.896l-7.44 4.604 1.504-8.294-6.064-5.9 8.332-1.151z"/>
+                  </svg>
+                {% endif %}
               {% endfor %}
             </div>
+
             <p class="nt-title">{{ product.title }}</p>
             <div class="nt-price">
               {% if product.compare_at_price_max > product.price %}
@@ -62,6 +68,9 @@
     {% endfor %}
   </div>
 </div>
+
+
+
 {% schema %}
 {
   "name": "Now Trending",
