@@ -1,0 +1,157 @@
+{% comment %}
+  Dynamic KidsToys Footer - Fully Editable
+{% endcomment %}
+
+<footer class="kids-toys-footer">
+  <div class="footer-container">
+    <!-- Brand Information Section -->
+    <div class="footer-brand">
+      <h2 class="footer-logo">{{ section.settings.brand_name }}</h2>
+      <h3 class="footer-tagline">{{ section.settings.tagline }}</h3>
+      <div class="footer-description">
+        {{ section.settings.description }}
+      </div>
+      <div class="footer-disclaimer">
+        {{ section.settings.disclaimer | replace: 'Hamleys website', '<a href="' | append: section.settings.hamleys_url | append: '" class="external-link" target="_blank">Hamleys website</a>' }}
+      </div>
+    </div>
+
+    <!-- Links Section -->
+    <div class="footer-links-section">
+      <h3 class="links-heading">{{ section.settings.links_heading }}</h3>
+      <ul class="footer-links">
+        {% for block in section.blocks %}
+          {% if block.type == 'link' %}
+            <li>
+              <a href="{{ block.settings.url }}" class="footer-link">
+                {{ block.settings.title }}
+              </a>
+            </li>
+          {% endif %}
+        {% endfor %}
+      </ul>
+    </div>
+  </div>
+
+  <!-- Copyright Section -->
+  <div class="footer-copyright">
+    {{ section.settings.copyright_text }}
+  </div>
+</footer>
+
+
+{% schema %}
+{
+  "name": "Footer",
+  "tag": "footer",
+  "class": "shopify-section-footer",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Brand Information"
+    },
+    {
+      "type": "text",
+      "id": "brand_name",
+      "label": "Brand Name",
+      "default": "KidsToys™"
+    },
+    {
+      "type": "text",
+      "id": "tagline",
+      "label": "Tagline",
+      "default": "Booster 6 revolution"
+    },
+    {
+      "type": "richtext",
+      "id": "description",
+      "label": "Description",
+      "default": "<p>Use this text to share information about your brand with your customers. Describe a product, share announcements or welcome customers to your store.</p>"
+    },
+    {
+      "type": "richtext",
+      "id": "disclaimer",
+      "label": "Disclaimer",
+      "default": "<p>This is a Demo Store created for booster theme. If you would like to buy the products in this store you may buy them on Hamleys website.</p>"
+    },
+    {
+      "type": "url",
+      "id": "hamleys_url",
+      "label": "Hamleys Website URL",
+      "default": "https://www.hamleys.in/"
+    },
+    {
+      "type": "header",
+      "content": "Links Section"
+    },
+    {
+      "type": "text",
+      "id": "links_heading",
+      "label": "Links Heading",
+      "default": "More links"
+    },
+    {
+      "type": "header",
+      "content": "Copyright"
+    },
+    {
+      "type": "richtext",
+      "id": "copyright_text",
+      "label": "Copyright Text",
+      "default": "<p>Designed and developed by BoosterThemes™</p>"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "link",
+      "name": "Footer Link",
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Link Text",
+          "default": "Helpdesk"
+        },
+        {
+          "type": "url",
+          "id": "url",
+          "label": "Link URL",
+          "default": "/"
+        }
+      ]
+    }
+  ],
+  "default": {
+    "blocks": [
+      {
+        "type": "link",
+        "settings": {
+          "title": "Helpdesk",
+          "url": "/pages/helpdesk"
+        }
+      },
+      {
+        "type": "link",
+        "settings": {
+          "title": "FAQs",
+          "url": "/pages/faqs"
+        }
+      },
+      {
+        "type": "link",
+        "settings": {
+          "title": "Orders",
+          "url": "/pages/orders"
+        }
+      },
+      {
+        "type": "link",
+        "settings": {
+          "title": "Returns",
+          "url": "/pages/returns"
+        }
+      }
+    ]
+  }
+}
+{% endschema %}
