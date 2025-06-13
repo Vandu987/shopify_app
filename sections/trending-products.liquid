@@ -15,31 +15,14 @@
               {% endif %}
 
               {% if product.compare_at_price_max > product.price %}
-                {% assign discount = product.compare_at_price_max | minus: product.price | times: 100.0 | divided_by: product.compare_at_price_max %}
+                {% assign discount = product.compare_at_price_max | minus: product.price | times: 100 | divided_by: product.compare_at_price_max %}
                 <span class="nt-discount-badge">-{{ discount | round }}% SALE</span>
               {% endif %}
             </div>
           </a>
+
           <div class="nt-product-info">
-            <div class="nt-stars-text">
-              {% assign rating = product.metafields.custom.rating.value | default: 5.0 | plus: 0 %}
-              {% assign full_stars = rating | floor %}
-              {% assign has_half_star = rating > full_stars %}
-              {% assign empty_stars = 5 | minus: full_stars | minus: (has_half_star | plus: 0) %}
-
-              <span class="stars">
-                {% for i in (1..full_stars) %}
-                  <span class="star full">★</span>
-                {% endfor %}
-                {% if has_half_star %}
-                  <span class="star half">★</span>
-                {% endif %}
-                {% for i in (1..empty_stars) %}
-                  <span class="star empty">★</span>
-                {% endfor %}
-              </span>
-            </div>
-
+            <div class="nt-stars">⭐️⭐️⭐️⭐️⭐️</div>
             <p class="nt-title">{{ product.title }}</p>
             <div class="nt-price">
               {% if product.compare_at_price_max > product.price %}
@@ -55,7 +38,6 @@
     {% endfor %}
   </div>
 </div>
-
 
 {% schema %}
 {
@@ -87,9 +69,15 @@
       "name": "Now Trending",
       "category": "Custom",
       "blocks": [
-        { "type": "product" },
-        { "type": "product" },
-        { "type": "product" }
+        {
+          "type": "product"
+        },
+        {
+          "type": "product"
+        },
+        {
+          "type": "product"
+        }
       ]
     }
   ]
