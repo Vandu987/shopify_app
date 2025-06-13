@@ -515,7 +515,7 @@ text-decoration: none;
 .nt-image-wrapper {
   position: relative;
   overflow: hidden;
-  height: 220px;
+  height:220px;
 }
 .nt-main-image,
 .nt-hover-image {
@@ -555,9 +555,10 @@ text-decoration: none;
   text-align: center;
 }
 .nt-stars {
-  color: #ffb400;
   font-size: 14px;
+  color: #ffb400;
   margin-bottom: 5px;
+  letter-spacing: 2px;
 }
 .nt-title {
   font-size: 16px;
