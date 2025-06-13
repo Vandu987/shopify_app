@@ -1,31 +1,31 @@
-<div class="now-trending-section">
-  <h2 class="section-title text-center">{{ section.settings.heading }}</h2>
+<div class="nt-section">
+  <h2 class="nt-heading text-center">{{ section.settings.heading }}</h2>
 
-  <div class="trending-products-grid">
+  <div class="nt-grid">
     {% for block in section.blocks %}
       {% assign product = all_products[block.settings.product] %}
       {% if product %}
-        <div class="product-card">
+        <div class="nt-product-card">
           <a href="{{ product.url }}">
-            <div class="product-image-wrapper">
+            <div class="nt-image-wrapper">
               <img src="{{ product.featured_image | img_url: '400x' }}" alt="{{ product.title }}">
 
               {% if product.compare_at_price_max > product.price %}
                 {% assign discount = product.compare_at_price_max | minus: product.price | times: 100 | divided_by: product.compare_at_price_max %}
-                <span class="badge sale">-{{ discount | round }}% SALE</span>
+                <span class="nt-discount-badge">-{{ discount | round }}% SALE</span>
               {% endif %}
             </div>
           </a>
 
-          <div class="product-info">
-            <div class="stars">⭐️⭐️⭐️⭐️⭐️</div>
-            <p class="product-title">{{ product.title }}</p>
-            <div class="product-price">
+          <div class="nt-product-info">
+            <div class="nt-stars">⭐️⭐️⭐️⭐️⭐️</div>
+            <p class="nt-title">{{ product.title }}</p>
+            <div class="nt-price">
               {% if product.compare_at_price_max > product.price %}
-                <span class="current-price">{{ product.price | money }}</span>
-                <span class="old-price">{{ product.compare_at_price_max | money }}</span>
+                <span class="nt-price-current">{{ product.price | money }}</span>
+                <span class="nt-price-old">{{ product.compare_at_price_max | money }}</span>
               {% else %}
-                <span class="current-price">{{ product.price | money }}</span>
+                <span class="nt-price-current">{{ product.price | money }}</span>
               {% endif %}
             </div>
           </div>
@@ -34,65 +34,6 @@
     {% endfor %}
   </div>
 </div>
-
-<style>
-.now-trending-section {
-  padding: 40px 20px;
-}
-.section-title {
-  font-family: "Comic Sans MS", cursive, sans-serif;
-  font-size: 2rem;
-  margin-bottom: 30px;
-}
-.trending-products-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-  gap: 20px;
-}
-.product-card {
-  border: 1px solid #eee;
-  padding: 10px;
-  text-align: center;
-  position: relative;
-  background: #fff;
-}
-.product-image-wrapper {
-  position: relative;
-}
-.product-image-wrapper img {
-  max-width: 100%;
-  height: auto;
-}
-.badge.sale {
-  position: absolute;
-  top: 10px;
-  left: 10px;
-  background: red;
-  color: #fff;
-  padding: 3px 7px;
-  font-size: 12px;
-  border-radius: 3px;
-}
-.stars {
-  margin: 10px 0;
-}
-.product-title {
-  font-size: 16px;
-  font-weight: 500;
-}
-.product-price {
-  margin-top: 5px;
-}
-.current-price {
-  font-weight: bold;
-  color: #000;
-}
-.old-price {
-  text-decoration: line-through;
-  color: #888;
-  margin-left: 5px;
-}
-</style>
 
 {% schema %}
 {
