@@ -15,7 +15,7 @@
         "slide_K3zHb8": {
           "type": "slide",
           "settings": {
-            "image": "shopify://shop_images/macbook-air-on-desk.jpg",
+            "image": "shopify://shop_images/4322112064.jpg",
             "heading": "Your Heading Here",
             "subheading": "Your subheading goes here",
             "button_text": "Shop Now",
@@ -48,7 +48,6 @@
         "slide_F8Q4iH",
         "slide_W6MQ37"
       ],
-      "name": "Hero Slider",
       "settings": {}
     },
     "homepage": {
@@ -107,7 +106,6 @@
         "category_QChkbe",
         "category_AeT8Eb"
       ],
-      "name": "Featured Categories",
       "settings": {
         "heading": "Feauted Categories",
         "subheading": "Shop all"
@@ -146,7 +144,6 @@
         "category_yttcqD",
         "category_nypwic"
       ],
-      "name": "Featured Categories",
       "settings": {
         "heading": "all Categories",
         "subheading": "Shop all"
