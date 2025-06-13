@@ -558,15 +558,17 @@ text-decoration: none;
   display: flex;
   gap: 4px;
   align-items: center;
-  justify-content: flex-start;
+  justify-content: center;
+}
+
+.nt-star {
+  width: 20px;
+  height: 20px;
+  display: inline-block;
 }
 .nt-star:hover {
   transform: scale(1.1);
   transition: transform 0.2s ease;
-}
-.nt-star {
-  width: 20px;
-  height: 20px;
 }
 .nt-title {
   font-size: 16px;
