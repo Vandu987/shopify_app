@@ -23,31 +23,31 @@
 
           <div class="nt-product-info">
            <div class="nt-stars">
-  {% assign rating = product.metafields.custom.rating.value | default: 5.0 | plus: 0 %}
+  {% assign rating = product.metafields.custom.rating.value | default: 4.5 | plus: 0 %}
   {% assign full_stars = rating | floor %}
-  {% assign remainder = rating | minus: full_stars %}
+  {% assign has_half = rating | modulo: 1 | round: 1 %}
   
   {% for i in (1..5) %}
     {% if i <= full_stars %}
-      <!-- Full star (gold) -->
-      <svg width="20" height="20" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-        <path fill="#FFD700" d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/>
+      <!-- Full Star -->
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="#FFD700">
+        <path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/>
       </svg>
-    {% elsif remainder > 0 and i == full_stars + 1 %}
-      <!-- Half star (gold left, gray right) -->
-      <svg width="20" height="20" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+    {% elsif has_half > 0 and i == full_stars + 1 %}
+      <!-- Half Star -->
+      <svg width="16" height="16" viewBox="0 0 24 24">
         <defs>
-          <linearGradient id="halfgrad-{{ product.id }}-{{ i }}" x1="0" y1="0" x2="100%" y2="0">
+          <linearGradient id="half-{{ product.id }}-{{ i }}" x1="0" y1="0" x2="100%" y2="0">
             <stop offset="50%" stop-color="#FFD700"/>
             <stop offset="50%" stop-color="#E0E0E0"/>
           </linearGradient>
         </defs>
-        <path fill="url(#halfgrad-{{ product.id }}-{{ i }})" d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/>
+        <path fill="url(#half-{{ product.id }}-{{ i }})" d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/>
       </svg>
     {% else %}
-      <!-- Empty star (gray) -->
-      <svg width="20" height="20" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-        <path fill="#E0E0E0" d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/>
+      <!-- Empty Star -->
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="#E0E0E0">
+        <path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/>
       </svg>
     {% endif %}
   {% endfor %}
