@@ -1,113 +1,149 @@
-<div class="must-have-toys-section">
-  <h2 class="section-heading">{{ section.settings.heading }}</h2>
-  
-  <div class="toys-grid">
+{% comment %} 
+  Section: Must-Haves Toys (Board Games, Figures, Puzzles)
+{% endcomment %}
+
+<div class="must-haves-wrapper">
+  <h2 class="must-haves-heading text-center">{{ section.settings.heading }}</h2>
+  <div class="must-haves-columns">
     {% for block in section.blocks %}
-      {% case block.type %}
-        {% when 'category' %}
-          <div class="toy-category" {{ block.shopify_attributes }}>
-            <h3 class="category-name">{{ block.settings.category_name }}</h3>
-            
-            {% if block.settings.product_1 %}
-              {% assign product = all_products[block.settings.product_1] %}
-              <div class="toy-product">
-                <a href="{{ product.url }}">
-                  <p class="product-title">{{ product.title }}</p>
-                  <p class="product-price">{{ product.price | money }}</p>
-                </a>
+      <div class="must-haves-column">
+        <div class="column-header">
+          <h3>{{ block.settings.title }}</h3>
+          {% if block.settings.view_all_url != blank %}
+            <a href="{{ block.settings.view_all_url }}" class="view-all">VIEW ALL</a>
+          {% endif %}
+        </div>
+        <div class="product-list">
+          {% assign collection = collections[block.settings.collection] %}
+          {% for product in collection.products limit: 3 %}
+            <div class="product-item">
+              <img src="{{ product.featured_image | img_url: '120x' }}" alt="{{ product.title }}">
+              <div>
+                <p class="product-title">{{ product.title }}</p>
+                <p class="product-price">{{ product.price | money }}</p>
               </div>
-            {% endif %}
-            
-            {% if block.settings.product_2 %}
-              {% assign product = all_products[block.settings.product_2] %}
-              <div class="toy-product">
-                <a href="{{ product.url }}">
-                  <p class="product-title">{{ product.title }}</p>
-                  <p class="product-price">{{ product.price | money }}</p>
-                </a>
-              </div>
-            {% endif %}
-            
-            <a href="#" class="view-all">{{ block.settings.view_all_text }}</a>
-          </div>
-          
-        {% when 'product' %}
-          {% assign product = all_products[block.settings.product] %}
-          <div class="standalone-product" {{ block.shopify_attributes }}>
-            <a href="{{ product.url }}">
-              <p class="product-title">{{ product.title }}</p>
-              <p class="product-price">{{ product.price | money }}</p>
-            </a>
-          </div>
-      {% endcase %}
+            </div>
+          {% endfor %}
+        </div>
+      </div>
     {% endfor %}
   </div>
 </div>
+
+<style>
+.must-haves-wrapper {
+  background-color: #e6f2ff;
+  padding: 40px 20px;
+  font-family: 'Comic Sans MS', cursive, sans-serif;
+}
+
+.must-haves-heading {
+  font-size: 32px;
+  margin-bottom: 40px;
+  font-weight: bold;
+}
+
+.must-haves-columns {
+  display: flex;
+  justify-content: space-between;
+  gap: 40px;
+  flex-wrap: wrap;
+}
+
+.must-haves-column {
+  flex: 1;
+  min-width: 250px;
+}
+
+.column-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+.column-header h3 {
+  font-size: 20px;
+  margin: 0;
+}
+
+.column-header .view-all {
+  font-size: 12px;
+  color: #000;
+  text-decoration: underline;
+}
+
+.product-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.product-item {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.product-item img {
+  width: 60px;
+  height: 60px;
+  object-fit: contain;
+}
+
+.product-title {
+  font-size: 14px;
+  margin: 0 0 2px;
+  font-weight: bold;
+}
+
+.product-price {
+  font-size: 13px;
+  color: #333;
+  margin: 0;
+}
+</style>
+
 {% schema %}
 {
-  "name": "Must-Have Toys",
+  "name": "Must-Haves Toys",
   "settings": [
     {
       "type": "text",
       "id": "heading",
-      "label": "Section Heading",
-      "default": "Must-Have Toys"
+      "label": "Main Heading",
+      "default": "Must-haves Toys"
     }
   ],
   "blocks": [
     {
-      "type": "category",
-      "name": "Product Category",
+      "type": "column",
+      "name": "Toy Category",
       "settings": [
         {
           "type": "text",
-          "id": "category_name",
-          "label": "Category Name"
+          "id": "title",
+          "label": "Column Title",
+          "default": "Board Games"
         },
         {
-          "type": "product",
-          "id": "product_1",
-          "label": "Product 1"
+          "type": "collection",
+          "id": "collection",
+          "label": "Select Collection"
         },
         {
-          "type": "product",
-          "id": "product_2",
-          "label": "Product 2"
-        },
-        {
-          "type": "text",
-          "id": "view_all_text",
-          "label": "View All Text",
-          "default": "VIEW ALL"
-        }
-      ]
-    },
-    {
-      "type": "product",
-      "name": "Standalone Product",
-      "settings": [
-        {
-          "type": "product",
-          "id": "product",
-          "label": "Product"
+          "type": "url",
+          "id": "view_all_url",
+          "label": "View All Link"
         }
       ]
     }
   ],
+  "max_blocks": 3,
   "presets": [
     {
-      "name": "Must-Have Toys",
-      "blocks": [
-        {
-          "type": "category",
-          "settings": {
-            "category_name": "Board Games"
-          }
-        },
-        {
-          "type": "product"
-        }
-      ]
+      "name": "Must-Haves Toys Layout",
+      "category": "Custom"
     }
   ]
 }
