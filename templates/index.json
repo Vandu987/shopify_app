@@ -50,11 +50,6 @@
       ],
       "settings": {}
     },
-    "homepage": {
-      "type": "homepage",
-      "disabled": true,
-      "settings": {}
-    },
     "featured_categories_4nQniL": {
       "type": "featured-categories",
       "blocks": {
@@ -137,13 +132,20 @@
           "settings": {
             "product": "test"
           }
+        },
+        "product_4pz7zP": {
+          "type": "product",
+          "settings": {
+            "product": "test-product"
+          }
         }
       },
       "block_order": [
         "product_LCyfgQ",
         "product_EKmHhT",
         "product_hRmmqD",
-        "product_Rp88M3"
+        "product_Rp88M3",
+        "product_4pz7zP"
       ],
       "settings": {
         "heading": "Now Trending"
@@ -185,13 +187,18 @@
       "settings": {
         "heading": "Must-Have Toys"
       }
+    },
+    "homepage": {
+      "type": "homepage",
+      "disabled": true,
+      "settings": {}
     }
   },
   "order": [
     "hero_slider_c9yric",
-    "homepage",
     "featured_categories_4nQniL",
     "trending_products_K33rfc",
-    "must_have_toys_3GRYar"
+    "must_have_toys_3GRYar",
+    "homepage"
   ]
 }
