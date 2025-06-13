@@ -1,13 +1,12 @@
 {% comment %}
-  Custom Footer Section — KidsToys Style (Fixed with blocks)
+  Custom Footer Section
 {% endcomment %}
 
 <footer class="custom-footer">
   <div class="footer-top">
     <div class="footer-left">
-      <h4>Booster & Revolution</h4>
-      <p>Use this text to share information about your brand with your customers. Describe a product, share announcements or welcome customers to your store.</p>
-      <p>This is a Demo Store created for booster theme. You may buy products on <a href="https://www.hamleys.in/" target="_blank">Hamleys website</a>.</p>
+      <h4>{{ section.settings.company_name }}</h4>
+      <p>{{ section.settings.description }}</p>
     </div>
 
     <div class="footer-center">
@@ -15,7 +14,7 @@
     </div>
 
     <div class="footer-right">
-      <h4>More links</h4>
+      <h4>{{ section.settings.links_heading }}</h4>
       <ul>
         {% for block in section.blocks %}
           {% if block.type == 'link' %}
@@ -26,8 +25,10 @@
 
       <div class="footer-icons">
         {% for block in section.blocks %}
-          {% if block.type == 'icon' %}
-            <a href="{{ block.settings.url }}" target="_blank">{{ block.settings.icon | raw }}</a>
+          {% if block.type == 'social' %}
+            <a href="{{ block.settings.url }}" target="_blank">
+              {{ block.settings.icon | default: block.settings.platform | capitalize }}
+            </a>
           {% endif %}
         {% endfor %}
       </div>
@@ -35,9 +36,10 @@
   </div>
 
   <div class="footer-bottom">
-    <p>Designed and developed by <a href="https://boostertheme.com" target="_blank">BoosterTheme™</a></p>
+    <p>&copy; {{ 'now' | date: "%Y" }} {{ section.settings.copyright_text }}</p>
   </div>
 </footer>
+
 
 {% schema %}
 {
@@ -45,45 +47,67 @@
   "settings": [
     {
       "type": "text",
+      "id": "company_name",
+      "label": "Company Name",
+      "default": "My Store"
+    },
+    {
+      "type": "textarea",
+      "id": "description",
+      "label": "Description",
+      "default": "About your store..."
+    },
+    {
+      "type": "text",
       "id": "logo_text",
-      "label": "Footer Logo Text",
-      "default": "KidsToys"
+      "label": "Logo Text",
+      "default": "LOGO"
+    },
+    {
+      "type": "text",
+      "id": "links_heading",
+      "label": "Links Heading",
+      "default": "Quick Links"
+    },
+    {
+      "type": "text",
+      "id": "copyright_text",
+      "label": "Copyright Text",
+      "default": "All rights reserved."
     }
   ],
   "blocks": [
     {
       "type": "link",
-      "name": "Footer Link",
+      "name": "Link",
       "settings": [
         {
           "type": "text",
           "id": "title",
           "label": "Link Text",
-          "default": "Helpdesk"
+          "default": "Home"
         },
         {
           "type": "url",
           "id": "url",
-          "label": "Link URL",
-          "default": "#"
+          "label": "Link URL"
         }
       ]
     },
     {
-      "type": "icon",
-      "name": "Social Icon",
+      "type": "social",
+      "name": "Social Media",
       "settings": [
         {
-          "type": "html",
-          "id": "icon",
-          "label": "HTML Icon",
-          "default": "<i class='fa fa-facebook'></i>"
+          "type": "text",
+          "id": "platform",
+          "label": "Platform Name",
+          "info": "e.g. Facebook, Instagram"
         },
         {
           "type": "url",
           "id": "url",
-          "label": "Icon Link",
-          "default": "https://facebook.com"
+          "label": "Profile URL"
         }
       ]
     }
@@ -91,28 +115,28 @@
   "max_blocks": 12,
   "presets": [
     {
-      "name": "KidsToys Footer",
+      "name": "Default Footer",
       "category": "Custom",
       "blocks": [
         {
           "type": "link",
           "settings": {
-            "title": "Helpdesk",
-            "url": "#"
+            "title": "Home",
+            "url": "/"
           }
         },
         {
           "type": "link",
           "settings": {
-            "title": "FAQs",
-            "url": "#"
+            "title": "Products",
+            "url": "/collections/all"
           }
         },
         {
-          "type": "icon",
+          "type": "social",
           "settings": {
-            "icon": "<i class='fa fa-instagram'></i>",
-            "url": "https://instagram.com"
+            "platform": "facebook",
+            "url": "https://facebook.com"
           }
         }
       ]
