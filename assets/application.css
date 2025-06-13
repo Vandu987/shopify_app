@@ -477,10 +477,11 @@ text-decoration: none;
 }
 .nt-image-wrapper {
   position: relative;
+  height: 220px;
 }
 .nt-image-wrapper img {
   width: 100%;
-  height: auto;
+  height: 100%;
   display: block;
 }
 .nt-discount-badge {
