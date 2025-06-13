@@ -111,6 +111,45 @@
         "subheading": "Shop all"
       }
     },
+    "trending_products_K33rfc": {
+      "type": "trending-products",
+      "blocks": {
+        "product_LCyfgQ": {
+          "type": "product",
+          "settings": {
+            "product": "adorable-crawling-crab"
+          }
+        },
+        "product_EKmHhT": {
+          "type": "product",
+          "settings": {
+            "product": "adorable-crawling-crab"
+          }
+        },
+        "product_hRmmqD": {
+          "type": "product",
+          "settings": {
+            "product": "adorable-crawling-crab"
+          }
+        },
+        "product_Rp88M3": {
+          "type": "product",
+          "settings": {
+            "product": "test"
+          }
+        }
+      },
+      "block_order": [
+        "product_LCyfgQ",
+        "product_EKmHhT",
+        "product_hRmmqD",
+        "product_Rp88M3"
+      ],
+      "name": "Now Trending",
+      "settings": {
+        "heading": "Now Trending"
+      }
+    },
     "featured_categories_YrTjYR": {
       "type": "featured-categories",
       "blocks": {
@@ -154,6 +193,7 @@
     "hero_slider_c9yric",
     "homepage",
     "featured_categories_4nQniL",
+    "trending_products_K33rfc",
     "featured_categories_YrTjYR"
   ]
 }
