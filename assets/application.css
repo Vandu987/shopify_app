@@ -217,17 +217,17 @@ main{
 }
 .slide-content{
     display: flex;
+    align-items: center;
+    justify-content: space-between;
     width: 90%;
     margin: auto;
     position: relative;
 }
 .slide-image {
-  flex: 3;
   padding: 10px;
-  width: 75%;
+  width: 50%;
 }
 .slide-text {
-  flex: 1;
   width: 25%;
   display: flex;
   flex-direction: column;
