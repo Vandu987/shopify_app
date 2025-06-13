@@ -22,24 +22,7 @@
           </a>
           <div class="nt-product-info">
             <div class="nt-stars-text">
-              {% assign rating = product.metafields.custom.rating.value | default: 5.0 | plus: 0 %}
-              {% assign full_stars = rating | floor %}
-              {% assign has_half_star = rating > full_stars %}
-
-              <span class="stars">
-                {% for i in (1..full_stars) %}
-                  <span class="star full">★</span>
-                {% endfor %}
-
-                {% if has_half_star %}
-                  <span class="star half">★</span>
-                {% endif %}
-
-                {% assign empty_stars = 5 | minus: full_stars | minus: (has_half_star | plus: 0) %}
-                {% for i in (1..empty_stars) %}
-                  <span class="star empty">★</span>
-                {% endfor %}
-              </span>
+              test
             </div>
 
             <p class="nt-title">{{ product.title }}</p>
