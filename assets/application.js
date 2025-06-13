@@ -4,7 +4,7 @@
 // ================================ header section ================================
 document.addEventListener("DOMContentLoaded", function () {
   const header = document.querySelector('.site-header');
-  
+
   window.addEventListener('scroll', function () {
     if (window.scrollY > 50) {
       header.classList.add('scrolled');
@@ -12,6 +12,12 @@ document.addEventListener("DOMContentLoaded", function () {
       header.classList.remove('scrolled');
     }
   });
+});
+document.addEventListener("DOMContentLoaded", function () {
+  const header = document.querySelector('.site-header');
+  const main = document.querySelector('main');
+  const headerHeight = header.offsetHeight;
+  main.style.paddingTop = headerHeight + "px";
 });
 
 // Mobile menu toggle functionality
