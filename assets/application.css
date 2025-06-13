@@ -570,6 +570,115 @@ text-decoration: none;
   color: #888;
   text-decoration: line-through;
 }
+/* =========================== must-have-toys-section =========================== */
+
+ .must-have-toys-section {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 40px 20px;
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+  }
+  
+  .section-heading {
+    text-align: center;
+    font-size: 32px;
+    color: #333;
+    margin-bottom: 30px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    position: relative;
+  }
+  
+  .section-heading:after {
+    content: "";
+    display: block;
+    width: 80px;
+    height: 3px;
+    background: #FF6B6B;
+    margin: 15px auto 0;
+  }
+  
+  .toys-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 25px;
+  }
+  
+  .toy-category {
+    background: white;
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+    transition: transform 0.3s ease;
+  }
+  
+  .toy-category:hover {
+    transform: translateY(-5px);
+  }
+  
+  .category-name {
+    font-size: 20px;
+    font-weight: 700;
+    color: #2C3E50;
+    margin-bottom: 15px;
+    padding-bottom: 10px;
+    border-bottom: 1px dashed #ECF0F1;
+  }
+  
+  .toy-product {
+    margin-bottom: 15px;
+  }
+  
+  .toy-product a {
+    text-decoration: none;
+    display: block;
+  }
+  
+  .product-title {
+    font-size: 16px;
+    color: #34495E;
+    margin: 0 0 5px;
+    font-weight: 600;
+  }
+  
+  .product-price {
+    font-size: 15px;
+    color: #E74C3C;
+    font-weight: 700;
+    margin: 0;
+  }
+  
+  .view-all {
+    display: inline-block;
+    margin-top: 10px;
+    font-size: 14px;
+    color: #3498DB;
+    text-decoration: none;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+  
+  .view-all:hover {
+    text-decoration: underline;
+  }
+  
+  .standalone-product {
+    background: white;
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+    transition: transform 0.3s ease;
+    grid-column: span 1;
+  }
+  
+  .standalone-product:hover {
+    transform: translateY(-5px);
+  }
+  
+  .standalone-product .product-title {
+    font-size: 18px;
+  }
 /* Responsive Styles */
 @media (max-width: 768px) {
   .header-nav {
@@ -633,6 +742,13 @@ text-decoration: none;
 .slide-image img{
   border-radius: 0;
 }
+ .toys-grid {
+      grid-template-columns: 1fr;
+    }
+    
+    .section-heading {
+      font-size: 26px;
+    }
 }
 @media (max-width: 576px) {
     .slide-text h2 {
