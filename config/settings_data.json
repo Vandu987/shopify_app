@@ -21,6 +21,86 @@
       "homepage": {
         "type": "homepage",
         "settings": {}
+      },
+      "footer": {
+        "type": "footer",
+        "blocks": {
+          "footer-0": {
+            "type": "link",
+            "settings": {
+              "title": "Helpdesk",
+              "url": "/pages/helpdesk"
+            }
+          },
+          "footer-1": {
+            "type": "link",
+            "settings": {
+              "title": "FAQs",
+              "url": "/pages/faqs"
+            }
+          },
+          "footer-2": {
+            "type": "link",
+            "settings": {
+              "title": "Orders",
+              "url": "/pages/orders"
+            }
+          },
+          "footer-3": {
+            "type": "link",
+            "settings": {
+              "title": "Returns",
+              "url": "/pages/returns"
+            }
+          },
+          "footer-4": {
+            "type": "social",
+            "settings": {
+              "alt": "facebook",
+              "url": "#"
+            }
+          },
+          "footer-5": {
+            "type": "social",
+            "settings": {
+              "alt": "instagram",
+              "url": "https://instagram.com"
+            }
+          },
+          "footer-6": {
+            "type": "social",
+            "settings": {
+              "alt": "youtube",
+              "url": "https://youtube.com"
+            }
+          },
+          "social_XYiNRF": {
+            "type": "social",
+            "settings": {
+              "alt": "twitter",
+              "url": "#"
+            }
+          }
+        },
+        "block_order": [
+          "footer-0",
+          "footer-1",
+          "footer-2",
+          "footer-3",
+          "footer-4",
+          "footer-5",
+          "footer-6",
+          "social_XYiNRF"
+        ],
+        "settings": {
+          "brand_name": "Bacho Ka Adda™",
+          "tagline": "About Us",
+          "description": "<p>Use this text to share information about your brand with your customers. Describe a product, share announcements or welcome customers to your store.</p>",
+          "disclaimer": "<p>This is a Demo Store created for booster theme. If you would like to buy the products in this store you may buy them on <a href=\"https://www.hamleys.com/\" target=\"_blank\" title=\"https://www.hamleys.com/\"><strong>Hamleys website.</strong></a></p>",
+          "links_heading": "Quick Links",
+          "social_heading": "Follow Us",
+          "copyright_text": "<p>© 2025 KidsToys™. All rights reserved.</p>"
+        }
       }
     },
     "content_for_index": []
