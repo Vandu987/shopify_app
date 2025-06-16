@@ -18,7 +18,7 @@
   <div class="product-info">
     <h1>{{ product.title }}</h1>
 
-    <div class="rating-stars">★★★★★</div>
+    {% for product in collection.products %}
 
     <div class="price">
       {% if current_variant.compare_at_price > current_variant.price %}
