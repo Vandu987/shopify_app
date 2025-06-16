@@ -510,16 +510,17 @@ text-decoration: none;
   }
  /* ratting */
 .product-rating {
-  display: flex;
+  display: inline-flex;
   align-items: center;
-  gap: 4px;
-  height: 24px;
+  gap: 2px;
+  line-height: 1;
 }
 
 .product-rating .star-icon {
   width: 20px;
   height: 20px;
   flex-shrink: 0;
+  display: block;
 }
 
   /* Sold Out Styling */
