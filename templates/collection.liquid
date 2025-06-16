@@ -79,7 +79,9 @@
                   <span class="current">{{ product.price | money }}</span>
                 {% endif %}
               </div>
-
+                 <div class="product-description">
+                  {{ product.description }}
+                </div>
               <form method="post" action="/cart/add">
                 <input type="hidden" name="id" value="{{ first_variant.id }}">
                 {% if first_variant.available %}
