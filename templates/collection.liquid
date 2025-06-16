@@ -46,15 +46,15 @@
 
         <!-- View Toggle -->
         <div class="view-toggle">
-          <button class="toggle-grid active">Grid</button>
-          <button class="toggle-list">List</button>
+          <button type="button" class="toggle-grid active">Grid</button>
+          <button type="button" class="toggle-list">List</button>
         </div>
       </div>
     </div>
 
     <!-- Product Grid/List -->
     {% if collection.products.size > 0 %}
-      <div class="products-container grid-view">
+      <div class="products-container grid-view" id="productGrid">
         {% for product in collection.products %}
           <div class="product-card">
             <a href="{{ product.url | within: collection }}">
@@ -103,4 +103,29 @@
 
   </div>
 </div>
+
+<!-- View Switcher JS -->
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+  const gridBtn = document.querySelector('.toggle-grid');
+  const listBtn = document.querySelector('.toggle-list');
+  const productGrid = document.getElementById('productGrid');
+
+  if(gridBtn && listBtn && productGrid){
+    gridBtn.addEventListener('click', function () {
+      productGrid.classList.add('grid-view');
+      productGrid.classList.remove('list-view');
+      gridBtn.classList.add('active');
+      listBtn.classList.remove('active');
+    });
+
+    listBtn.addEventListener('click', function () {
+      productGrid.classList.add('list-view');
+      productGrid.classList.remove('grid-view');
+      listBtn.classList.add('active');
+      gridBtn.classList.remove('active');
+    });
+  }
+});
+</script>
 {% endpaginate %}
