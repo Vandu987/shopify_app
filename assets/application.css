@@ -410,6 +410,9 @@ text-decoration: none;
   position: relative;
 }
 
+.product-image{
+  width: 100%;
+}
 .product-image img {
   width: 100%;
   height: 220px;
