@@ -105,7 +105,14 @@
                 <div class="product-info">
                   {% render 'rating', product: product %}
                   <h3 class="product-title">{{ product.title }}</h3>
-                  <p class="product-price">{{ product.price | money }}</p>
+                   <div class="nt-price">
+                      {% if product.compare_at_price_max > product.price %}
+                        <span class="nt-price-current">{{ product.price | money }}</span>
+                        <span class="nt-price-old">{{ product.compare_at_price_max | money }}</span>
+                      {% else %}
+                        <span class="nt-price-current">{{ product.price | money }}</span>
+                      {% endif %}
+                    </div>
                   <p class="product-description">{{ product.description | strip_html | truncatewords: 30 }}</p>
                 </div>
               </a>
