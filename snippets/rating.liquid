@@ -13,22 +13,27 @@
 
 <div class="product-rating">
   {%- for i in (1..full_stars) -%}
-    <svg width="20" height="20" fill="#FFD700" viewBox="0 0 24 24"><path d="M12 .587l3.668 7.568 8.332 1.151-6.064 5.998 1.504 8.313L12 18.896l-7.44 4.721 1.504-8.313-6.064-5.998 8.332-1.151z"/></svg>
+    <svg width="20" height="20" fill="#FFD700" viewBox="0 0 24 24">
+      <path d="M12 .587l3.668 7.568 8.332 1.151-6.064 5.998 1.504 8.313L12 18.896l-7.44 4.721 1.504-8.313-6.064-5.998 8.332-1.151z"/>
+    </svg>
   {%- endfor -%}
 
   {%- if half_star == 1 -%}
-   <svg width="20" height="20" viewBox="0 0 24 24">
+    {%- assign unique_id = 'half-grad-' | append: product.id | append: '-' | append: forloop.index0 | append: '-' | append: 'uniq' -%}
+    <svg width="20" height="20" viewBox="0 0 24 24">
       <defs>
-        <linearGradient id="half-grad">
+        <linearGradient id="{{ unique_id }}">
           <stop offset="50%" stop-color="#FFD700"></stop>
           <stop offset="50%" stop-color="#e0e0e0"></stop>
         </linearGradient>
       </defs>
-      <path fill="url(#half-grad)" d="M12 .587l3.668 7.568 8.332 1.151-6.064 5.998 1.504 8.313L12 18.896l-7.44 4.721 1.504-8.313-6.064-5.998 8.332-1.151z"></path>
+      <path fill="url(#{{ unique_id }})" d="M12 .587l3.668 7.568 8.332 1.151-6.064 5.998 1.504 8.313L12 18.896l-7.44 4.721 1.504-8.313-6.064-5.998 8.332-1.151z"/>
     </svg>
   {%- endif -%}
 
   {%- for i in (1..empty_stars) -%}
-    <svg width="20" height="20" fill="#e0e0e0" viewBox="0 0 24 24"><path d="M12 .587l3.668 7.568 8.332 1.151-6.064 5.998 1.504 8.313L12 18.896l-7.44 4.721 1.504-8.313-6.064-5.998 8.332-1.151z"/></svg>
+    <svg width="20" height="20" fill="#e0e0e0" viewBox="0 0 24 24">
+      <path d="M12 .587l3.668 7.568 8.332 1.151-6.064 5.998 1.504 8.313L12 18.896l-7.44 4.721 1.504-8.313-6.064-5.998 8.332-1.151z"/>
+    </svg>
   {%- endfor -%}
 </div>
