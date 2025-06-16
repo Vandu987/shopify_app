@@ -1,15 +1,11 @@
 {% assign rating = product.metafields.custom.rating.value | default: 0.0 %}
 {% assign rating_count = product.metafields.custom.rating_count.value | default: 0 %}
 
-{% assign full_stars = rating | floor %}
+{% assign rounded_rating = rating | times: 2 | round | divided_by: 2 %}
+{% assign full_stars = rounded_rating | floor %}
 {% assign half_star = 0 %}
-{% if rating >= full_stars and rating < full_stars | plus: 1 %}
-  {% assign decimal_part = rating | minus: full_stars %}
-  {% if decimal_part >= 0.25 and decimal_part < 0.75 %}
-    {% assign half_star = 1 %}
-  {% elsif decimal_part >= 0.75 %}
-    {% assign full_stars = full_stars | plus: 1 %}
-  {% endif %}
+{% if rounded_rating > full_stars %}
+  {% assign half_star = 1 %}
 {% endif %}
 {% assign empty_stars = 5 | minus: full_stars | minus: half_star %}
 
