@@ -516,7 +516,7 @@ text-decoration: none;
 
 /* Rating System - Fixed for both views */
 .product-rating {
-    display: inline-flex;
+    display: flex !important;
     align-items: center;
     gap: 2px;
     line-height: 1;
