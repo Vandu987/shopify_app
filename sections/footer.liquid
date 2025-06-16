@@ -3,10 +3,10 @@
 {% endcomment %}
 
 <div class="kids-toys-footer">
+<h2 class="footer-logo">{{ section.settings.brand_name }}</h2>
   <div class="footer-container">
     <!-- Brand Info -->
     <div class="footer-brand">
-      <h2 class="footer-logo">{{ section.settings.brand_name }}</h2>
       <h3 class="footer-tagline">{{ section.settings.tagline }}</h3>
       <div class="footer-description">
         {{ section.settings.description }}
@@ -47,102 +47,6 @@
     {{ section.settings.copyright_text }}
   </div>
 </div>
-
-<style>
-.kids-toys-footer {
-  background-color: #0066cc;
-  color: #fff;
-  padding: 40px 0 0 0;
-  font-family: Arial, sans-serif;
-}
-
-.footer-container {
-  max-width: 1200px;
-  margin: auto;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 40px;
-  justify-content: space-between;
-}
-
-.footer-brand {
-  flex: 2;
-  min-width: 300px;
-}
-
-.footer-logo {
-  font-size: 36px;
-  margin-bottom: 10px;
-}
-
-.footer-tagline {
-  font-size: 20px;
-  margin-bottom: 15px;
-  color: #ffcc00;
-}
-
-.footer-description, .footer-disclaimer {
-  line-height: 1.6;
-  margin-bottom: 15px;
-}
-
-.footer-description p, .footer-disclaimer p {
-  margin: 0;
-}
-
-.footer-links-section, .footer-social-section {
-  flex: 1;
-  min-width: 200px;
-}
-
-.links-heading, .social-heading {
-  font-size: 18px;
-  margin-bottom: 15px;
-}
-
-.footer-links {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-}
-
-.footer-links li {
-  margin-bottom: 10px;
-}
-
-.footer-link {
-  color: #fff;
-  text-decoration: none;
-}
-
-.footer-link:hover {
-  text-decoration: underline;
-}
-
-.social-icons a {
-  margin-right: 10px;
-  display: inline-block;
-}
-
-.social-icons img {
-  width: 32px;
-  height: 32px;
-  border-radius: 50%;
-}
-
-.footer-copyright {
-  background: #2b3a4a;
-  padding: 20px;
-  text-align: center;
-  margin-top: 20px;
-  font-size: 14px;
-}
-@media(max-width:768px){
-  .footer-container {
-    flex-direction: column;
-  }
-}
-</style>
 
 {% schema %}
 {
