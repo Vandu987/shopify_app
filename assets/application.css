@@ -509,12 +509,19 @@ text-decoration: none;
     border-radius: 3px;
   }
  /* ratting */
- .product-rating {
+.product-rating {
   display: flex;
   align-items: center;
   gap: 4px;
   height: 24px;
 }
+
+.product-rating .star-icon {
+  width: 20px;
+  height: 20px;
+  flex-shrink: 0;
+}
+
   /* Sold Out Styling */
   .product-item.sold-out .product-image {
     opacity: 0.7;
