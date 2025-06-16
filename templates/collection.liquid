@@ -101,7 +101,7 @@
   /* Product Grid/List Views */
   .products-grid-view {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(4, 1fr);
     gap: 20px;
   }
 
@@ -174,26 +174,7 @@
 
   /* Responsive */
   @media (max-width: 768px) {
-    .collection-container {
-      flex-direction: column;
-    }
-
-    .collection-sidebar {
-      width: 100%;
-      position: static;
-    }
-
-    .products-grid-view {
-      grid-template-columns: repeat(2, 1fr);
-    }
-
-    .products-list-view .product-item {
-      flex-direction: column;
-    }
-
-    .products-list-view .product-image {
-      width: 100%;
-    }
+    
   }
 </style>
 
