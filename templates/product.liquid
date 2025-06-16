@@ -17,9 +17,7 @@
   <!-- Right Section: Product Info -->
   <div class="product-info">
     <h1>{{ product.title }}</h1>
-
     {% render 'rating', product: product %}
-
     <div class="price">
       {% if current_variant.compare_at_price > current_variant.price %}
         <span class="sale-price">{{ current_variant.price | money }}</span>
