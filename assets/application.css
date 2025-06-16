@@ -384,7 +384,12 @@ text-decoration: none;
 .products-container.list-view {
   display: block;
 }
-
+.grid-view .product-description {
+  display: none;
+}
+.list-view .product-description {
+  display: block;
+}
 .product-card {
   border: 1px solid #eee;
   padding: 10px;
