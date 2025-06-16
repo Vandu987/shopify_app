@@ -1,9 +1,14 @@
 {%- assign rating = product.metafields.custom.rating.value | default: 0 -%}
 {%- assign full_stars = rating | floor -%}
+{%- assign decimal_part = rating | minus: full_stars -%}
 {%- assign half_star = 0 -%}
-{%- if rating > full_stars and rating < full_stars | plus: 1 -%}
+
+{%- if decimal_part >= 0.75 -%}
+  {%- assign full_stars = full_stars | plus: 1 -%}
+{%- elsif decimal_part >= 0.25 -%}
   {%- assign half_star = 1 -%}
 {%- endif -%}
+
 {%- assign empty_stars = 5 | minus: full_stars | minus: half_star -%}
 
 <div class="product-rating">
