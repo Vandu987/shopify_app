@@ -396,7 +396,7 @@ text-decoration: none;
   justify-content: start;
   gap: 40px;
 }
-.list-view .product-card .product-image {
+.list-view .product-card .product_image {
   width: 30%;
 }
 .list-view .product-card .product-info {
