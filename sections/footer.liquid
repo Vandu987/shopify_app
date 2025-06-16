@@ -1,10 +1,12 @@
 {% comment %}
-  Footer - Fully Dynamic & Editable
+  Professional Shopify Footer - Fully Dynamic & Editable
 {% endcomment %}
 
 <div class="kids-toys-footer">
-<h2 class="footer-logo">{{ section.settings.brand_name }}</h2>
+  <h2 class="footer-logo">{{ section.settings.brand_name }}</h2>
+
   <div class="footer-container">
+
     <!-- Brand Info -->
     <div class="footer-brand">
       <h3 class="footer-tagline">{{ section.settings.tagline }}</h3>
@@ -15,6 +17,7 @@
         {{ section.settings.disclaimer }}
       </div>
     </div>
+
     <!-- Links -->
     <div class="footer-links-section">
       <h3 class="links-heading">{{ section.settings.links_heading }}</h3>
@@ -34,12 +37,17 @@
         {% for block in section.blocks %}
           {% if block.type == 'social' %}
             <a href="{{ block.settings.url }}" target="_blank">
-              <img src="{{ block.settings.icon | img_url: '32x32' }}" alt="{{ block.settings.alt }}">
+              {% if block.settings.icon != blank %}
+                <img src="{{ block.settings.icon | img_url: '32x32' }}" alt="{{ block.settings.alt }}">
+              {% else %}
+                <span class="default-social-icon">{{ block.settings.alt }}</span>
+              {% endif %}
             </a>
           {% endif %}
         {% endfor %}
       </div>
     </div>
+
   </div>
 
   <!-- Copyright -->
@@ -48,129 +56,97 @@
   </div>
 </div>
 
+<style>
+.kids-toys-footer {
+  background: #f8f8f8;
+  padding: 40px 20px;
+  font-family: Arial, sans-serif;
+  color: #333;
+}
+.footer-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 40px;
+}
+.footer-brand, .footer-links-section, .footer-social-section {
+  flex: 1 1 250px;
+}
+.footer-logo {
+  font-size: 28px;
+  margin-bottom: 15px;
+}
+.footer-tagline {
+  font-size: 18px;
+  color: #e74c3c;
+}
+.footer-links li {
+  margin-bottom: 8px;
+}
+.footer-link {
+  color: #333;
+  text-decoration: none;
+}
+.footer-link:hover {
+  color: #e74c3c;
+}
+.social-icons a {
+  margin-right: 10px;
+}
+.default-social-icon {
+  font-weight: bold;
+  font-size: 16px;
+  color: #555;
+}
+@media (max-width: 768px) {
+  .footer-container {
+    flex-direction: column;
+  }
+}
+</style>
+
 {% schema %}
 {
   "name": "Footer",
   "tag": "footer",
   "class": "kids-toys-footer-section",
   "settings": [
-    {
-      "type": "text",
-      "id": "brand_name",
-      "label": "Brand Name",
-      "default": "KidsToys™"
-    },
-    {
-      "type": "text",
-      "id": "tagline",
-      "label": "Tagline",
-      "default": "Booster 6 revolution"
-    },
-    {
-      "type": "richtext",
-      "id": "description",
-      "label": "Description",
-      "default": "<p>Use this text to share information about your brand with your customers. Describe a product, share announcements or welcome customers to your store.</p>"
-    },
-    {
-      "type": "richtext",
-      "id": "disclaimer",
-      "label": "Disclaimer",
-      "default": "<p>This is a Demo Store created for booster theme. If you would like to buy the products in this store you may buy them on <a href=\"https://www.hamleys.in/\" target=\"_blank\">Hamleys website</a>.</p>"
-    },
-    {
-      "type": "text",
-      "id": "links_heading",
-      "label": "Links Heading",
-      "default": "More Links"
-    },
-    {
-      "type": "text",
-      "id": "social_heading",
-      "label": "Social Heading",
-      "default": "Follow Us"
-    },
-    {
-      "type": "richtext",
-      "id": "copyright_text",
-      "label": "Copyright Text",
-      "default": "<p>Designed and developed by BoosterTheme™</p>"
-    }
+    { "type": "text", "id": "brand_name", "label": "Brand Name", "default": "KidsToys™" },
+    { "type": "text", "id": "tagline", "label": "Tagline", "default": "Booster 6 revolution" },
+    { "type": "richtext", "id": "description", "label": "Description", "default": "<p>Use this text to share about your brand.</p>" },
+    { "type": "richtext", "id": "disclaimer", "label": "Disclaimer", "default": "<p>This is demo footer disclaimer.</p>" },
+    { "type": "text", "id": "links_heading", "label": "Links Heading", "default": "Quick Links" },
+    { "type": "text", "id": "social_heading", "label": "Social Heading", "default": "Follow Us" },
+    { "type": "richtext", "id": "copyright_text", "label": "Copyright Text", "default": "<p>© 2025 KidsToys™. All rights reserved.</p>" }
   ],
   "blocks": [
     {
       "type": "link",
       "name": "Footer Link",
       "settings": [
-        {
-          "type": "text",
-          "id": "title",
-          "label": "Link Text",
-          "default": "Helpdesk"
-        },
-        {
-          "type": "url",
-          "id": "url",
-          "label": "Link URL",
-          "default": "/"
-        }
+        { "type": "text", "id": "title", "label": "Link Text", "default": "Helpdesk" },
+        { "type": "url", "id": "url", "label": "Link URL", "default": "/" }
       ]
     },
     {
       "type": "social",
       "name": "Social Icon",
       "settings": [
-        {
-          "type": "image_picker",
-          "id": "icon",
-          "label": "Icon Image"
-        },
-        {
-          "type": "text",
-          "id": "alt",
-          "label": "Alt Text",
-          "default": "Social Icon"
-        },
-        {
-          "type": "url",
-          "id": "url",
-          "label": "Link URL",
-          "default": "/"
-        }
+        { "type": "image_picker", "id": "icon", "label": "Icon Image" },
+        { "type": "text", "id": "alt", "label": "Alt Text", "default": "Social" },
+        { "type": "url", "id": "url", "label": "Link URL", "default": "/" }
       ]
     }
   ],
   "max_blocks": 20,
   "default": {
     "blocks": [
-      {
-        "type": "link",
-        "settings": { "title": "Helpdesk", "url": "/pages/helpdesk" }
-      },
-      {
-        "type": "link",
-        "settings": { "title": "FAQs", "url": "/pages/faqs" }
-      },
-      {
-        "type": "link",
-        "settings": { "title": "Orders", "url": "/pages/orders" }
-      },
-      {
-        "type": "link",
-        "settings": { "title": "Returns", "url": "/pages/returns" }
-      },
-      {
-        "type": "social",
-        "settings": { "alt": "Facebook", "url": "https://facebook.com" }
-      },
-      {
-        "type": "social",
-        "settings": { "alt": "Instagram", "url": "https://instagram.com" }
-      },
-      {
-        "type": "social",
-        "settings": { "alt": "YouTube", "url": "https://youtube.com" }
-      }
+      { "type": "link", "settings": { "title": "Helpdesk", "url": "/pages/helpdesk" } },
+      { "type": "link", "settings": { "title": "FAQs", "url": "/pages/faqs" } },
+      { "type": "link", "settings": { "title": "Orders", "url": "/pages/orders" } },
+      { "type": "link", "settings": { "title": "Returns", "url": "/pages/returns" } },
+      { "type": "social", "settings": { "alt": "Facebook", "url": "https://facebook.com" } },
+      { "type": "social", "settings": { "alt": "Instagram", "url": "https://instagram.com" } },
+      { "type": "social", "settings": { "alt": "YouTube", "url": "https://youtube.com" } }
     ]
   }
 }

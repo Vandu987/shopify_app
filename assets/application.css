@@ -751,7 +751,7 @@ text-decoration: none;
   background-color: #1a4172;
 }
 /* =========================== footer-section =========================== */
- .kids-toys-footer {
+ /* .kids-toys-footer {
   background-color: #0066cc;
   color: #fff;
   padding: 30px 0 0 0;
@@ -843,7 +843,7 @@ text-decoration: none;
   text-align: center;
   margin-top: 20px;
   font-size: 14px;
-}
+} */
 
 /* Responsive Styles */
 @media (max-width: 768px) {
