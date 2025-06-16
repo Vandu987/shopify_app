@@ -3,7 +3,6 @@
   Description: Collection page with availability filter, multiple sort options, and view toggle
 {% endcomment %}
 
-
 <div class="collection-container">
   <!-- Left Sidebar - Filters -->
   <div class="collection-sidebar">
@@ -14,17 +13,6 @@
         In Stock Only
       </label>
     </div>
-
-    <!-- Add more filter groups as needed -->
-    <!-- Example for other filters:
-    <div class="filter-group">
-      <h3>Price</h3>
-      <label class="filter-checkbox">
-        <input type="checkbox" name="price" value="under-50">
-        Under $50
-      </label>
-    </div>
-    -->
   </div>
 
   <!-- Main Content Area -->
@@ -51,37 +39,37 @@
         </button>
         <button class="view-btn list-view" data-view="list">
           <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" fill="#000000" version="1.1" id="Layer_1" viewBox="0 0 504 504" xml:space="preserve">
-<g>
-	<g>
-		<path d="M0,86.784v144.56h167.968V86.784H0z M151.968,215.344H16v-112.56h135.968V215.344z"></path>
-	</g>
-</g>
-<g>
-	<g>
-		<path d="M0,272.656v144.56h167.968v-144.56H0z M151.968,401.216H16v-112.56h135.968V401.216z"></path>
-	</g>
-</g>
-<g>
-	<g>
-		<rect x="252" y="119.856" width="188.96" height="16"></rect>
-	</g>
-</g>
-<g>
-	<g>
-		<rect x="251.952" y="182.288" width="252.048" height="16"></rect>
-	</g>
-</g>
-<g>
-	<g>
-		<rect x="252" y="305.712" width="188.96" height="16"></rect>
-	</g>
-</g>
-<g>
-	<g>
-		<rect x="251.952" y="368.144" width="252.048" height="16"></rect>
-	</g>
-</g>
-</svg>
+            <g>
+              <g>
+                <path d="M0,86.784v144.56h167.968V86.784H0z M151.968,215.344H16v-112.56h135.968V215.344z"></path>
+              </g>
+            </g>
+            <g>
+              <g>
+                <path d="M0,272.656v144.56h167.968v-144.56H0z M151.968,401.216H16v-112.56h135.968V401.216z"></path>
+              </g>
+            </g>
+            <g>
+              <g>
+                <rect x="252" y="119.856" width="188.96" height="16"></rect>
+              </g>
+            </g>
+            <g>
+              <g>
+                <rect x="251.952" y="182.288" width="252.048" height="16"></rect>
+              </g>
+            </g>
+            <g>
+              <g>
+                <rect x="252" y="305.712" width="188.96" height="16"></rect>
+              </g>
+            </g>
+            <g>
+              <g>
+                <rect x="251.952" y="368.144" width="252.048" height="16"></rect>
+              </g>
+            </g>
+          </svg>
         </button>
       </div>
     </div>
@@ -99,6 +87,9 @@
                 </div>
                 <div class="product-info">
                   <h3 class="product-title">{{ product.title }}</h3>
+                  <div class="product-rating">
+                    {% render 'product-rating', product: product %}
+                  </div>
                   <p class="product-price">{{ product.price | money }}</p>
                 </div>
               </a>
@@ -116,6 +107,9 @@
                 </div>
                 <div class="product-info">
                   <h3 class="product-title">{{ product.title }}</h3>
+                  <div class="product-rating">
+                    {% render 'product-rating', product: product %}
+                  </div>
                   <p class="product-price">{{ product.price | money }}</p>
                   <p class="product-description">{{ product.description | strip_html | truncatewords: 30 }}</p>
                 </div>
@@ -182,9 +176,5 @@ document.addEventListener('DOMContentLoaded', function() {
     
     window.location.href = url.toString();
   });
-
-  // For more complex filtering, you would need to either:
-  // 1. Use Shopify's native filtering system with tags
-  // 2. Implement AJAX filtering with a Shopify app or custom solution
 });
 </script>
