@@ -436,7 +436,9 @@ text-decoration: none;
     color: #fff;
     border-color: #000;
   }
-
+.view-btn.active svg {
+  fill: #fff;
+}
   /* Product Grid/List Views */
   .products-grid-view {
     display: grid;
