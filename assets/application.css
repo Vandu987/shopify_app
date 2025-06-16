@@ -456,7 +456,7 @@ text-decoration: none;
     position: relative;
   }
   .product-item a{
-    text-decoration: none !important;
+    text-decoration: none;
   }
 
   .products-list-view .product-item {
