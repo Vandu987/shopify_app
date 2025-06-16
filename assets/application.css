@@ -348,7 +348,6 @@ text-decoration: none;
     display: flex;
     gap: 30px;
     margin-top: 30px;
-    padding: 20px;
   }
 
   .collection-sidebar {
@@ -379,10 +378,14 @@ text-decoration: none;
     display: block;
     margin-bottom: 10px;
     cursor: pointer;
+    position: relative;
+    padding-left: 25px;
   }
 
   .filter-checkbox input {
-    margin-right: 10px;
+    position: absolute;
+    left: 0;
+    top: 2px;
   }
 
   /* Sorting and View Options */
@@ -393,6 +396,8 @@ text-decoration: none;
     margin-bottom: 30px;
     flex-wrap: wrap;
     gap: 15px;
+    padding: 15px 0;
+    border-bottom: 1px solid #eee;
   }
 
   .sort-by {
@@ -403,32 +408,41 @@ text-decoration: none;
 
   .sort-by label {
     font-weight: 600;
+    font-size: 14px;
   }
 
   .sort-by select {
     padding: 8px 12px;
     border: 1px solid #ddd;
     border-radius: 4px;
+    font-size: 14px;
+    min-width: 180px;
   }
 
   .view-options {
     display: flex;
     gap: 10px;
   }
+
   .view-btn {
     background: none;
     border: 1px solid #ddd;
-    padding: 5px;
+    padding: 8px 12px;
     cursor: pointer;
     border-radius: 4px;
     display: flex;
     align-items: center;
     justify-content: center;
+    transition: all 0.3s ease;
+  }
+
+  .view-btn:hover {
+    border-color: #999;
   }
 
   .view-btn svg {
-    width: 30px;
-    height: 30px;
+    width: 16px;
+    height: 16px;
   }
 
   .view-btn.active {
@@ -436,14 +450,12 @@ text-decoration: none;
     color: #fff;
     border-color: #000;
   }
-.view-btn.active svg {
-  fill: #fff;
-}
+
   /* Product Grid/List Views */
   .products-grid-view {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    gap: 20px;
+    gap: 25px;
   }
 
   .products-list-view {
@@ -454,17 +466,36 @@ text-decoration: none;
 
   .product-item {
     position: relative;
+    transition: transform 0.3s ease;
   }
-  .product-item a{
-    text-decoration: none;
-    color: #000;
+
+  .product-item:hover {
+    transform: translateY(-5px);
   }
 
   .products-list-view .product-item {
     display: flex;
-    gap: 20px;
+    gap: 25px;
     border: 1px solid #eee;
     padding: 20px;
+    border-radius: 8px;
+  }
+
+  .product-image {
+    position: relative;
+    overflow: hidden;
+    border-radius: 8px;
+  }
+
+  .product-image img {
+    width: 100%;
+    height: auto;
+    display: block;
+    transition: transform 0.5s ease;
+  }
+
+  .product-item:hover .product-image img {
+    transform: scale(1.03);
   }
 
   .products-list-view .product-image {
@@ -472,32 +503,75 @@ text-decoration: none;
     flex-shrink: 0;
   }
 
-  .product-image img {
-    width: 100%;
-    height: auto;
-    display: block;
-  }
-
   .product-info {
-    margin-top: 10px;
+    margin-top: 12px;
   }
 
- .products-list-view .product-info {
-    margin-left: 20px;
+  .products-list-view .product-info {
     margin-top: 0;
     flex: 1;
-}
+  }
 
   .product-title {
     font-size: 16px;
-    margin-bottom: 5px;
+    margin-bottom: 8px;
+    font-weight: 500;
+    color: #333;
   }
 
   .product-price {
     font-weight: 600;
     color: #333;
+    margin: 8px 0;
+    font-size: 16px;
   }
 
+  .product-description {
+    color: #666;
+    font-size: 14px;
+    line-height: 1.5;
+    margin-top: 8px;
+  }
+
+  /* Rating Styles */
+  .product-rating {
+    display: flex;
+    align-items: center;
+    margin: 8px 0;
+  }
+
+  .rating-stars {
+    position: relative;
+    display: inline-block;
+    font-size: 14px;
+    letter-spacing: 2px;
+    color: #ddd;
+  }
+
+  .rating-stars::before {
+    content: '★★★★★';
+  }
+
+  .stars-active {
+    position: absolute;
+    top: 0;
+    left: 0;
+    white-space: nowrap;
+    overflow: hidden;
+    color: #ffb300;
+  }
+
+  .stars-active::before {
+    content: '★★★★★';
+  }
+
+  .rating-count {
+    font-size: 12px;
+    color: #777;
+    margin-left: 5px;
+  }
+
+  /* Availability */
   .product-availability {
     position: absolute;
     top: 10px;
@@ -507,49 +581,40 @@ text-decoration: none;
     padding: 3px 8px;
     font-size: 12px;
     border-radius: 3px;
+    z-index: 1;
   }
- /* ratting */
-  .product-rating {
-    display: flex;
-    align-items: center;
-    margin: 5px 0;
-  }
-  
-  .rating-stars {
-    color: #ffb300;
-    letter-spacing: 2px;
-    position: relative;
-    font-size: 14px;
-  }
-  
-  .rating-stars::before {
-    content: '☆☆☆☆☆';
-  }
-  
-  .rating-stars .stars-active {
-    position: absolute;
-    top: 0;
-    left: 0;
-    white-space: nowrap;
-    overflow: hidden;
-  }
-  
-  .rating-stars .stars-active::before {
-    content: '★★★★★';
-  }
-  
-  .rating-count {
-    font-size: 12px;
-    color: #777;
-    margin-left: 5px;
-  }
+
   /* Sold Out Styling */
   .product-item.sold-out .product-image {
-    opacity: 0.7;
+    opacity: 0.8;
   }
 
   .product-item.sold-out .product-availability {
     display: block;
+  }
+
+  /* Pagination */
+  .pagination {
+    margin-top: 40px;
+    text-align: center;
+  }
+
+  .pagination a, .pagination span {
+    padding: 8px 16px;
+    margin: 0 4px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    display: inline-block;
+  }
+
+  .pagination a:hover {
+    background: #f5f5f5;
+  }
+
+  .pagination .current {
+    background: #000;
+    color: #fff;
+    border-color: #000;
   }
 /* ============================ single product page ============================ */
 .product-page-wrapper {
