@@ -516,14 +516,15 @@ text-decoration: none;
 }
 
 .product-rating-wrapper svg {
-  width: 16px;
-  height: 16px;
+  width: 20px;
+  height: 20px;
 }
 
-.product-rating-wrapper .rating-count {
-  font-size: 12px;
+.rating-count {
+  font-size: 13px;
   color: #666;
 }
+
 
   /* Sold Out Styling */
   .product-item.sold-out .product-image {
