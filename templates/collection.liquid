@@ -1,64 +1,95 @@
 {% paginate collection.products by 12 %}
-  <div class="collaction_section_bx">
-    <div>
+<div class="collection-page-wrapper">
+
+  <!-- Sidebar Filters -->
+  <aside class="collection-sidebar">
+    <h4>Availability</h4>
+    <label>
+      <input type="checkbox" onchange="location.href='{{ collection.url }}?constraint=in-stock';" {% if current_tags contains 'in-stock' %}checked{% endif %}>
+      In stock
+    </label>
+  </aside>
+
+  <!-- Main Content -->
+  <div class="collection-main-content">
+
+    <!-- Top Bar -->
+    <div class="collection-topbar">
       <h1 class="collection-title">{{ collection.title }}</h1>
 
-      <div class="collection-filters">
-        <label>
-          <input type="checkbox" onchange="location.href='{{ collection.url }}?constraint=in-stock';" {% if current_tags contains 'in-stock' %}checked{% endif %}>
-          In stock
-        </label>
+      <div class="collection-toolbar">
+        <div class="view-icons">
+          <span class="view-grid">🔳</span>
+          <span class="view-list">📄</span>
+        </div>
+
+        <div class="sortby-dropdown">
+          <form method="get" id="SortByForm">
+            <select name="sort_by" id="SortBy" onchange="this.form.submit()">
+              <option value="best-selling" {% if collection.sort_by == "best-selling" %}selected{% endif %}>Featured</option>
+              <option value="price-ascending" {% if collection.sort_by == "price-ascending" %}selected{% endif %}>Price: Low to High</option>
+              <option value="price-descending" {% if collection.sort_by == "price-descending" %}selected{% endif %}>Price: High to Low</option>
+              <option value="title-ascending" {% if collection.sort_by == "title-ascending" %}selected{% endif %}>A-Z</option>
+              <option value="title-descending" {% if collection.sort_by == "title-descending" %}selected{% endif %}>Z-A</option>
+            </select>
+          </form>
+        </div>
       </div>
     </div>
 
+    <!-- Product Grid -->
     {% if collection.products.size > 0 %}
-      <div class="product-grid">
-        {% for product in collection.products %}
-          <div class="product-card">
-            <a href="{{ product.url | within: collection }}">
-              <div class="product-image-wrapper">
-                <img src="{{ product.featured_image | img_url: '400x' }}" alt="{{ product.title }}">
-                
-                {% assign first_variant = product.variants.first %}
-                {% if product.compare_at_price_max > product.price %}
-                  {% assign discount = 100 | minus: product.price | times: 100 | divided_by: product.compare_at_price_max %}
-                  <span class="badge sale">-{{ discount | round }}% SALE</span>
-                {% endif %}
-              </div>
-            </a>
-            
-            <div class="product-details">
-              <div class="rating-placeholder">⭐️⭐️⭐️⭐️⭐️</div>
-              
-              <a class="product-title" href="{{ product.url | within: collection }}">{{ product.title }}</a>
-              
-              <div class="product-price">
-                {% if product.compare_at_price_max > product.price %}
-                  <span class="current-price">{{ product.price | money }}</span>
-                  <span class="old-price">{{ product.compare_at_price_max | money }}</span>
-                {% else %}
-                  <span class="current-price">{{ product.price | money }}</span>
-                {% endif %}
-              </div>
-
-              {% assign first_variant = product.variants.first %}
-              <form method="post" action="/cart/add">
-                <input type="hidden" name="id" value="{{ first_variant.id }}">
-                {% if first_variant.available %}
-                  <button type="submit">Add to cart</button>
-                {% else %}
-                  <button type="submit" disabled>Sold Out</button>
-                {% endif %}
-              </form>
-            </div>
+    <div class="product-grid">
+      {% for product in collection.products %}
+      <div class="product-card">
+        <a href="{{ product.url | within: collection }}">
+          <div class="product-image-wrapper">
+            <img src="{{ product.featured_image | img_url: '400x' }}" alt="{{ product.title }}">
+            {% assign first_variant = product.variants.first %}
+            {% if product.compare_at_price_max > product.price %}
+            {% assign discount = 100 | minus: product.price | times: 100 | divided_by: product.compare_at_price_max %}
+            <span class="badge sale">-{{ discount | round }}% SALE</span>
+            {% endif %}
           </div>
-        {% endfor %}
+        </a>
+
+        <div class="product-details">
+          <div class="rating-placeholder">⭐️⭐️⭐️⭐️⭐️</div>
+
+          <a class="product-title" href="{{ product.url | within: collection }}">{{ product.title }}</a>
+
+          <div class="product-price">
+            {% if product.compare_at_price_max > product.price %}
+            <span class="current-price">{{ product.price | money }}</span>
+            <span class="old-price">{{ product.compare_at_price_max | money }}</span>
+            {% else %}
+            <span class="current-price">{{ product.price | money }}</span>
+            {% endif %}
+          </div>
+
+          {% assign first_variant = product.variants.first %}
+          <form method="post" action="/cart/add">
+            <input type="hidden" name="id" value="{{ first_variant.id }}">
+            {% if first_variant.available %}
+            <button type="submit">Add to cart</button>
+            {% else %}
+            <button type="submit" disabled>Sold Out</button>
+            {% endif %}
+          </form>
+        </div>
       </div>
+      {% endfor %}
+    </div>
     {% else %}
-      <p>No products found in this collection.</p>
+    <p>No products found in this collection.</p>
     {% endif %}
+    
+    <!-- Pagination -->
+    <div class="pagination">
+      {{ paginate | default_pagination }}
+    </div>
+
   </div>
-  <div class="pagination">
-    {{ paginate | default_pagination }}
-  </div>
+
+</div>
 {% endpaginate %}
