@@ -484,7 +484,7 @@ text-decoration: none;
   .product-image {
     position: relative;
     overflow: hidden;
-    border-radius: 8px;
+    width: 250px;
   }
 
   .product-image img {
