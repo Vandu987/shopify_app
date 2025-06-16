@@ -511,7 +511,9 @@ text-decoration: none;
  /* ratting */
  .product-rating {
   display: flex;
-  gap: 2px;
+  align-items: center;
+  gap: 4px;
+  height: 24px;
 }
   /* Sold Out Styling */
   .product-item.sold-out .product-image {
