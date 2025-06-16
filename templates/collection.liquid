@@ -1,11 +1,14 @@
 {% paginate collection.products by 12 %}
-  <h1 class="collection-title">{{ collection.title }}</h1>
+  
+  <div>
+    <h1 class="collection-title">{{ collection.title }}</h1>
 
-  <div class="collection-filters">
-    <label>
-      <input type="checkbox" onchange="location.href='{{ collection.url }}?constraint=in-stock';" {% if current_tags contains 'in-stock' %}checked{% endif %}>
-      In stock
-    </label>
+    <div class="collection-filters">
+      <label>
+        <input type="checkbox" onchange="location.href='{{ collection.url }}?constraint=in-stock';" {% if current_tags contains 'in-stock' %}checked{% endif %}>
+        In stock
+      </label>
+    </div>
   </div>
 
   {% if collection.products.size > 0 %}
