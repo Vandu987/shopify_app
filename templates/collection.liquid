@@ -106,10 +106,10 @@
                   {% unless product.available %}<span class="product-availability">Sold Out</span>{% endunless %}
                 </div>
                 <div class="product-info">
-                  <h3 class="product-title">{{ product.title }}</h3>
                   <div class="product-rating">
                     {% render 'product-rating', product: product %}
                   </div>
+                  <h3 class="product-title">{{ product.title }}</h3>
                   <p class="product-price">{{ product.price | money }}</p>
                   <p class="product-description">{{ product.description | strip_html | truncatewords: 30 }}</p>
                 </div>
