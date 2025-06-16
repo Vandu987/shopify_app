@@ -477,10 +477,11 @@ text-decoration: none;
     margin-top: 10px;
   }
 
-  .products-list-view .product-info {
+ .products-list-view .product-info {
+    margin-left: 20px;
     margin-top: 0;
     flex: 1;
-  }
+}
 
   .product-title {
     font-size: 16px;
