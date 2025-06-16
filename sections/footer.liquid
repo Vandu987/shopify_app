@@ -1,5 +1,5 @@
 {% comment %}
-  Professional Shopify Footer - Fully Dynamic & Editable
+  Professional Shopify Footer - Fully Dynamic & Editable with SVG Fallback Icons
 {% endcomment %}
 
 <div class="kids-toys-footer">
@@ -40,7 +40,18 @@
               {% if block.settings.icon != blank %}
                 <img src="{{ block.settings.icon | img_url: '32x32' }}" alt="{{ block.settings.alt }}">
               {% else %}
-                <span class="default-social-icon">{{ block.settings.alt }}</span>
+                {% case block.settings.alt | downcase %}
+                  {% when 'facebook' %}
+                    {% render 'icon-facebook' %}
+                  {% when 'instagram' %}
+                    {% render 'icon-instagram' %}
+                  {% when 'youtube' %}
+                    {% render 'icon-youtube' %}
+                  {% when 'twitter' %}
+                    {% render 'icon-twitter' %}
+                  {% else %}
+                    <span class="default-social-icon">{{ block.settings.alt }}</span>
+                {% endcase %}
               {% endif %}
             </a>
           {% endif %}
@@ -55,8 +66,6 @@
     {{ section.settings.copyright_text }}
   </div>
 </div>
-
-
 
 {% schema %}
 {
