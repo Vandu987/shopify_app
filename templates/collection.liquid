@@ -3,17 +3,17 @@
 
   <!-- Sidebar Filters -->
   <aside class="collection-sidebar">
-    <h4>Availability</h4>
+    <h3>Filter by Availability</h3>
     <label>
       <input type="checkbox" onchange="location.href='{{ collection.url }}?constraint=in-stock';" {% if current_tags contains 'in-stock' %}checked{% endif %}>
       In stock
     </label>
 
-    <h4>Tags</h4>
-    <ul>
+    <h3>Filter by Tags</h3>
+    <ul class="tag-filter">
       {% for tag in collection.all_tags %}
         <li>
-          <a href="{{ collection.url }}{{ tag | link_to_tag }}">
+          <a href="{{ collection.url }}/{{ tag | handle }}">
             {% if current_tags contains tag %}
               <strong>{{ tag }}</strong>
             {% else %}
@@ -28,31 +28,33 @@
   <!-- Main Content -->
   <div class="collection-main">
 
-    <!-- Top Bar -->
+    <!-- Toolbar -->
     <div class="collection-toolbar">
       <h1>{{ collection.title }}</h1>
 
-      <div class="collection-controls">
-        <div class="view-toggle">
-          <a href="#" class="grid-view active">🔳</a>
-          <a href="#" class="list-view">📄</a>
-        </div>
-
-        <form method="get" id="SortByForm">
-          <select name="sort_by" id="SortBy" onchange="this.form.submit()">
-            <option value="best-selling" {% if collection.sort_by == "best-selling" %}selected{% endif %}>Featured</option>
-            <option value="price-ascending" {% if collection.sort_by == "price-ascending" %}selected{% endif %}>Price: Low to High</option>
-            <option value="price-descending" {% if collection.sort_by == "price-descending" %}selected{% endif %}>Price: High to Low</option>
-            <option value="title-ascending" {% if collection.sort_by == "title-ascending" %}selected{% endif %}>A-Z</option>
-            <option value="title-descending" {% if collection.sort_by == "title-descending" %}selected{% endif %}>Z-A</option>
+      <div class="controls">
+        <!-- Sort -->
+        <form method="get">
+          <select name="sort_by" onchange="this.form.submit()">
+            <option value="best-selling" {% if collection.sort_by == 'best-selling' %}selected{% endif %}>Featured</option>
+            <option value="price-ascending" {% if collection.sort_by == 'price-ascending' %}selected{% endif %}>Price: Low to High</option>
+            <option value="price-descending" {% if collection.sort_by == 'price-descending' %}selected{% endif %}>Price: High to Low</option>
+            <option value="title-ascending" {% if collection.sort_by == 'title-ascending' %}selected{% endif %}>A-Z</option>
+            <option value="title-descending" {% if collection.sort_by == 'title-descending' %}selected{% endif %}>Z-A</option>
           </select>
         </form>
+
+        <!-- View Toggle -->
+        <div class="view-toggle">
+          <button class="toggle-grid active">Grid</button>
+          <button class="toggle-list">List</button>
+        </div>
       </div>
     </div>
 
-    <!-- Product Grid -->
+    <!-- Product Grid/List -->
     {% if collection.products.size > 0 %}
-      <div class="product-grid-view">
+      <div class="products-container grid-view">
         {% for product in collection.products %}
           <div class="product-card">
             <a href="{{ product.url | within: collection }}">
@@ -67,15 +69,14 @@
             </a>
 
             <div class="product-info">
-              <div class="stars">⭐️⭐️⭐️⭐️⭐️</div>
-              <a class="title" href="{{ product.url }}">{{ product.title }}</a>
+              <h2><a href="{{ product.url }}">{{ product.title }}</a></h2>
 
               <div class="price">
                 {% if product.compare_at_price_max > product.price %}
-                  <span class="new">{{ product.price | money }}</span>
-                  <span class="old">{{ product.compare_at_price_max | money }}</span>
+                  <span class="current">{{ product.price | money }}</span>
+                  <span class="compare">{{ product.compare_at_price_max | money }}</span>
                 {% else %}
-                  <span class="new">{{ product.price | money }}</span>
+                  <span class="current">{{ product.price | money }}</span>
                 {% endif %}
               </div>
 
@@ -84,13 +85,14 @@
                 {% if first_variant.available %}
                   <button type="submit">Add to cart</button>
                 {% else %}
-                  <button type="submit" disabled>Sold Out</button>
+                  <button disabled>Sold Out</button>
                 {% endif %}
               </form>
             </div>
           </div>
         {% endfor %}
       </div>
+
     {% else %}
       <p>No products found.</p>
     {% endif %}
@@ -100,6 +102,5 @@
     </div>
 
   </div>
-
 </div>
 {% endpaginate %}
