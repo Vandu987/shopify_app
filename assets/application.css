@@ -348,7 +348,7 @@ text-decoration: none;
     display: flex;
     gap: 30px;
     margin-top: 30px;
-    padding: 20px; 
+    padding: 20px;
   }
 
   .collection-sidebar {
@@ -454,6 +454,9 @@ text-decoration: none;
 
   .product-item {
     position: relative;
+  }
+  .product-item a{
+    text-decoration: none;
   }
 
   .products-list-view .product-item {
