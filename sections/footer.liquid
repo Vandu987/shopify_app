@@ -1,10 +1,10 @@
 {% comment %}
-  Dynamic KidsToys Footer - Fully Editable
+  Kids Toys Footer - Fully Dynamic & Editable
 {% endcomment %}
 
 <footer class="kids-toys-footer">
   <div class="footer-container">
-    <!-- Brand Information Section -->
+    <!-- Brand Info -->
     <div class="footer-brand">
       <h2 class="footer-logo">{{ section.settings.brand_name }}</h2>
       <h3 class="footer-tagline">{{ section.settings.tagline }}</h3>
@@ -12,142 +12,145 @@
         {{ section.settings.description }}
       </div>
       <div class="footer-disclaimer">
-        {{ section.settings.disclaimer | replace: 'Hamleys website', '<a href="' | append: section.settings.hamleys_url | append: '" class="external-link" target="_blank">Hamleys website</a>' }}
+        {{ section.settings.disclaimer }}
       </div>
     </div>
 
-    <!-- Links Section -->
+    <!-- Links -->
     <div class="footer-links-section">
       <h3 class="links-heading">{{ section.settings.links_heading }}</h3>
       <ul class="footer-links">
         {% for block in section.blocks %}
           {% if block.type == 'link' %}
-            <li>
-              <a href="{{ block.settings.url }}" class="footer-link">
-                {{ block.settings.title }}
-              </a>
-            </li>
+            <li><a href="{{ block.settings.url }}" class="footer-link">{{ block.settings.title }}</a></li>
           {% endif %}
         {% endfor %}
       </ul>
     </div>
+
+    <!-- Social Icons -->
+    <div class="footer-social-section">
+      <h3 class="social-heading">{{ section.settings.social_heading }}</h3>
+      <div class="social-icons">
+        {% for block in section.blocks %}
+          {% if block.type == 'social' %}
+            <a href="{{ block.settings.url }}" target="_blank">
+              <img src="{{ block.settings.icon | img_url: '32x32' }}" alt="{{ block.settings.alt }}">
+            </a>
+          {% endif %}
+        {% endfor %}
+      </div>
+    </div>
   </div>
 
-  <!-- Copyright Section -->
+  <!-- Copyright -->
   <div class="footer-copyright">
     {{ section.settings.copyright_text }}
   </div>
 </footer>
 
 <style>
-  .kids-toys-footer {
-    background-color: #f8f9fa;
-    padding: 40px 20px;
-    font-family: 'Arial', sans-serif;
-    color: #333;
-    border-top: 1px solid #e1e1e1;
-  }
-  
+.kids-toys-footer {
+  background-color: #0066cc;
+  color: #fff;
+  padding: 40px 20px;
+  font-family: Arial, sans-serif;
+}
+
+.footer-container {
+  max-width: 1200px;
+  margin: auto;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 40px;
+  justify-content: space-between;
+}
+
+.footer-brand {
+  flex: 2;
+  min-width: 300px;
+}
+
+.footer-logo {
+  font-size: 36px;
+  margin-bottom: 10px;
+}
+
+.footer-tagline {
+  font-size: 20px;
+  margin-bottom: 15px;
+  color: #ffcc00;
+}
+
+.footer-description, .footer-disclaimer {
+  line-height: 1.6;
+  margin-bottom: 15px;
+}
+
+.footer-description p, .footer-disclaimer p {
+  margin: 0;
+}
+
+.footer-links-section, .footer-social-section {
+  flex: 1;
+  min-width: 200px;
+}
+
+.links-heading, .social-heading {
+  font-size: 18px;
+  margin-bottom: 15px;
+}
+
+.footer-links {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.footer-links li {
+  margin-bottom: 10px;
+}
+
+.footer-link {
+  color: #fff;
+  text-decoration: none;
+}
+
+.footer-link:hover {
+  text-decoration: underline;
+}
+
+.social-icons a {
+  margin-right: 10px;
+  display: inline-block;
+}
+
+.social-icons img {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+}
+
+.footer-copyright {
+  background: #2b3a4a;
+  padding: 20px;
+  text-align: center;
+  margin-top: 20px;
+  font-size: 14px;
+}
+@media(max-width:768px){
   .footer-container {
-    max-width: 1200px;
-    margin: 0 auto;
-    display: flex;
-    flex-wrap: wrap;
-    gap: 40px;
-    padding-bottom: 20px;
+    flex-direction: column;
   }
-  
-  .footer-brand {
-    flex: 2;
-    min-width: 300px;
-  }
-  
-  .footer-logo {
-    font-size: 28px;
-    margin-bottom: 10px;
-    color: #2c3e50;
-  }
-  
-  .footer-tagline {
-    font-size: 18px;
-    margin-bottom: 15px;
-    color: #e74c3c;
-  }
-  
-  .footer-description,
-  .footer-disclaimer {
-    line-height: 1.6;
-    margin-bottom: 15px;
-  }
-  
-  .external-link {
-    color: #3498db;
-    font-weight: bold;
-    text-decoration: none;
-  }
-  
-  .external-link:hover {
-    text-decoration: underline;
-  }
-  
-  .footer-links-section {
-    flex: 1;
-    min-width: 200px;
-  }
-  
-  .links-heading {
-    font-size: 18px;
-    margin-bottom: 15px;
-    color: #2c3e50;
-  }
-  
-  .footer-links {
-    list-style: none;
-    padding: 0;
-  }
-  
-  .footer-links li {
-    margin-bottom: 10px;
-  }
-  
-  .footer-link {
-    color: #7f8c8d;
-    text-decoration: none;
-    transition: color 0.3s;
-  }
-  
-  .footer-link:hover {
-    color: #e74c3c;
-  }
-  
-  .footer-copyright {
-    max-width: 1200px;
-    margin: 20px auto 0;
-    padding-top: 20px;
-    border-top: 1px solid #e1e1e1;
-    text-align: center;
-    color: #7f8c8d;
-    font-size: 14px;
-  }
-  
-  @media (max-width: 768px) {
-    .footer-container {
-      flex-direction: column;
-      gap: 30px;
-    }
-  }
+}
 </style>
 
 {% schema %}
 {
-  "name": "Footer",
+  "name": "Kids Toys Footer",
   "tag": "footer",
-  "class": "shopify-section-footer",
+  "class": "kids-toys-footer-section",
   "settings": [
-    {
-      "type": "header",
-      "content": "Brand Information"
-    },
     {
       "type": "text",
       "id": "brand_name",
@@ -170,33 +173,25 @@
       "type": "richtext",
       "id": "disclaimer",
       "label": "Disclaimer",
-      "default": "<p>This is a Demo Store created for booster theme. If you would like to buy the products in this store you may buy them on Hamleys website.</p>"
-    },
-    {
-      "type": "url",
-      "id": "hamleys_url",
-      "label": "Hamleys Website URL",
-      "default": "https://www.hamleys.in/"
-    },
-    {
-      "type": "header",
-      "content": "Links Section"
+      "default": "<p>This is a Demo Store created for booster theme. If you would like to buy the products in this store you may buy them on <a href=\"https://www.hamleys.in/\" target=\"_blank\">Hamleys website</a>.</p>"
     },
     {
       "type": "text",
       "id": "links_heading",
       "label": "Links Heading",
-      "default": "More links"
+      "default": "More Links"
     },
     {
-      "type": "header",
-      "content": "Copyright"
+      "type": "text",
+      "id": "social_heading",
+      "label": "Social Heading",
+      "default": "Follow Us"
     },
     {
       "type": "richtext",
       "id": "copyright_text",
       "label": "Copyright Text",
-      "default": "<p>Designed and developed by BoosterThemes™</p>"
+      "default": "<p>Designed and developed by BoosterTheme™</p>"
     }
   ],
   "blocks": [
@@ -217,37 +212,61 @@
           "default": "/"
         }
       ]
+    },
+    {
+      "type": "social",
+      "name": "Social Icon",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "icon",
+          "label": "Icon Image"
+        },
+        {
+          "type": "text",
+          "id": "alt",
+          "label": "Alt Text",
+          "default": "Social Icon"
+        },
+        {
+          "type": "url",
+          "id": "url",
+          "label": "Link URL",
+          "default": "/"
+        }
+      ]
     }
   ],
+  "max_blocks": 20,
   "default": {
     "blocks": [
       {
         "type": "link",
-        "settings": {
-          "title": "Helpdesk",
-          "url": "/pages/helpdesk"
-        }
+        "settings": { "title": "Helpdesk", "url": "/pages/helpdesk" }
       },
       {
         "type": "link",
-        "settings": {
-          "title": "FAQs",
-          "url": "/pages/faqs"
-        }
+        "settings": { "title": "FAQs", "url": "/pages/faqs" }
       },
       {
         "type": "link",
-        "settings": {
-          "title": "Orders",
-          "url": "/pages/orders"
-        }
+        "settings": { "title": "Orders", "url": "/pages/orders" }
       },
       {
         "type": "link",
-        "settings": {
-          "title": "Returns",
-          "url": "/pages/returns"
-        }
+        "settings": { "title": "Returns", "url": "/pages/returns" }
+      },
+      {
+        "type": "social",
+        "settings": { "alt": "Facebook", "url": "https://facebook.com" }
+      },
+      {
+        "type": "social",
+        "settings": { "alt": "Instagram", "url": "https://instagram.com" }
+      },
+      {
+        "type": "social",
+        "settings": { "alt": "YouTube", "url": "https://youtube.com" }
       }
     ]
   }
