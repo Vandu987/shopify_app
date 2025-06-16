@@ -1,13 +1,35 @@
 {% assign rating = product.metafields.custom.rating.value | default: 0 %}
 {% assign rating_count = product.metafields.custom.rating_count.value | default: 0 %}
 
-<div class="product-rating-wrapper">
-  {% for i in (1..5) %}
-    {% if i <= rating %}
-      <svg width="16" height="16" fill="#FFD700" viewBox="0 0 24 24"><path d="M12 .587l3.668 7.431 8.332 1.151-6.064 5.885 1.472 8.292L12 18.896l-7.408 4.45 1.472-8.292L0 9.169l8.332-1.151z"/></svg>
-    {% else %}
-      <svg width="16" height="16" fill="#ccc" viewBox="0 0 24 24"><path d="M12 .587l3.668 7.431 8.332 1.151-6.064 5.885 1.472 8.292L12 18.896l-7.408 4.45 1.472-8.292L0 9.169l8.332-1.151z"/></svg>
-    {% endif %}
-  {% endfor %}
-  <span class="rating-count">({{ rating_count }})</span>
+<div class="product-rating-wrapper" itemscope itemtype="https://schema.org/Product">
+  <div class="stars" itemprop="aggregateRating" itemscope itemtype="https://schema.org/AggregateRating">
+    <meta itemprop="ratingValue" content="{{ rating }}">
+    <meta itemprop="reviewCount" content="{{ rating_count }}">
+
+    {% for i in (1..5) %}
+      {% assign star_position = i %}
+      {% if rating >= star_position %}
+        <!-- Full Star -->
+        <svg width="16" height="16" fill="#FFD700" viewBox="0 0 24 24"><path d="M12 .587l3.668 7.431 8.332 1.151-6.064 5.885 1.472 8.292L12 18.896l-7.408 4.45 1.472-8.292L0 9.169l8.332-1.151z"/></svg>
+      {% elsif rating >= star_position | minus: 0.5 %}
+        <!-- Half Star -->
+        <svg width="16" height="16" viewBox="0 0 24 24">
+          <defs>
+            <linearGradient id="half-grad-{{ i }}">
+              <stop offset="50%" stop-color="#FFD700"/>
+              <stop offset="50%" stop-color="#ccc"/>
+            </linearGradient>
+          </defs>
+          <path fill="url(#half-grad-{{ i }})" d="M12 .587l3.668 7.431 8.332 1.151-6.064 5.885 1.472 8.292L12 18.896l-7.408 4.45 1.472-8.292L0 9.169l8.332-1.151z"/>
+        </svg>
+      {% else %}
+        <!-- Empty Star -->
+        <svg width="16" height="16" fill="#ccc" viewBox="0 0 24 24"><path d="M12 .587l3.668 7.431 8.332 1.151-6.064 5.885 1.472 8.292L12 18.896l-7.408 4.45 1.472-8.292L0 9.169l8.332-1.151z"/></svg>
+      {% endif %}
+    {% endfor %}
+  </div>
+
+  {% if rating_count > 0 %}
+    <span class="rating-count">({{ rating_count }})</span>
+  {% endif %}
 </div>
