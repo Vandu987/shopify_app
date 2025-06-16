@@ -1,6 +1,6 @@
 {% comment %}
-  Template Name: Collection - Advanced Filter with Dynamic Ratings
-  Description: Enhanced collection page with availability filter, sorting, view toggle, and dynamic ratings
+  Template Name: Collection - Advanced Filter
+  Description: Collection page with availability filter, multiple sort options, and view toggle
 {% endcomment %}
 
 <div class="collection-container">
@@ -12,18 +12,6 @@
         <input type="checkbox" name="availability" value="in-stock" {% unless current_tags contains 'out-of-stock' %}checked{% endunless %}>
         In Stock Only
       </label>
-    </div>
-
-    <!-- Add more filter groups as needed -->
-    <div class="filter-group">
-      <h3>Price Range</h3>
-      <div class="price-range-slider">
-        <input type="range" min="0" max="1000" value="1000" class="slider" id="priceRange">
-        <div class="price-values">
-          <span id="minPrice">$0</span>
-          <span id="maxPrice">$1000+</span>
-        </div>
-      </div>
     </div>
   </div>
 
@@ -46,11 +34,42 @@
       </div>
 
       <div class="view-options">
-        <button class="view-btn grid-view active" data-view="grid" aria-label="Grid view">
+        <button class="view-btn grid-view active" data-view="grid">
           <svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
         </button>
-        <button class="view-btn list-view" data-view="list" aria-label="List view">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 13h2v-2H3v2zm0 4h2v-2H3v2zm0-8h2V7H3v2zm4 4h14v-2H7v2zm0 4h14v-2H7v2zM7 7v2h14V7H7z"/></svg>
+        <button class="view-btn list-view" data-view="list">
+          <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" fill="#000000" version="1.1" id="Layer_1" viewBox="0 0 504 504" xml:space="preserve">
+            <g>
+              <g>
+                <path d="M0,86.784v144.56h167.968V86.784H0z M151.968,215.344H16v-112.56h135.968V215.344z"></path>
+              </g>
+            </g>
+            <g>
+              <g>
+                <path d="M0,272.656v144.56h167.968v-144.56H0z M151.968,401.216H16v-112.56h135.968V401.216z"></path>
+              </g>
+            </g>
+            <g>
+              <g>
+                <rect x="252" y="119.856" width="188.96" height="16"></rect>
+              </g>
+            </g>
+            <g>
+              <g>
+                <rect x="251.952" y="182.288" width="252.048" height="16"></rect>
+              </g>
+            </g>
+            <g>
+              <g>
+                <rect x="252" y="305.712" width="188.96" height="16"></rect>
+              </g>
+            </g>
+            <g>
+              <g>
+                <rect x="251.952" y="368.144" width="252.048" height="16"></rect>
+              </g>
+            </g>
+          </svg>
         </button>
       </div>
     </div>
@@ -58,46 +77,40 @@
     <!-- Products Display -->
     <div class="products-display">
       {% paginate collection.products by 12 %}
-        <div id="products-grid-view" class="products-grid-view">
+        <div id="products-grid-view" class="products-grid-view" style="display: block;">
           {% for product in collection.products %}
             <div class="product-item {% unless product.available %}sold-out{% endunless %}">
-              <a href="{{ product.url }}" class="product-link">
+              <a href="{{ product.url }}">
                 <div class="product-image">
-                  <img src="{{ product.featured_image | img_url: '400x' }}" alt="{{ product.title | escape }}" loading="lazy">
+                  <img src="{{ product.featured_image | img_url: '400x400', crop: 'center' }}" alt="{{ product.title | escape }}">
                   {% unless product.available %}<span class="product-availability">Sold Out</span>{% endunless %}
                 </div>
                 <div class="product-info">
-                  {% render 'dynamic-product-rating', product: product %}
+                   <div class="product-rating">
+                    {% render 'product-rating', product: product %}
+                  </div>
                   <h3 class="product-title">{{ product.title }}</h3>
                   <p class="product-price">{{ product.price | money }}</p>
-                  {% if product.compare_at_price > product.price %}
-                    <p class="product-compare-price">{{ product.compare_at_price | money }}</p>
-                  {% endif %}
                 </div>
               </a>
             </div>
           {% endfor %}
         </div>
-
-        <div id="products-list-view" class="products-list-view" style="display:none;">
+        <div id="products-list-view" class="products-list-view" style="display: none;">
           {% for product in collection.products %}
             <div class="product-item {% unless product.available %}sold-out{% endunless %}">
-              <a href="{{ product.url }}" class="product-link" style="display:flex;width:100%;">
+              <a href="{{ product.url }}" style="display: flex; width: 100%;">
                 <div class="product-image">
-                  <img src="{{ product.featured_image | img_url: '300x' }}" alt="{{ product.title | escape }}" loading="lazy">
+                  <img src="{{ product.featured_image | img_url: '300x300', crop: 'center' }}" alt="{{ product.title | escape }}">
                   {% unless product.available %}<span class="product-availability">Sold Out</span>{% endunless %}
                 </div>
                 <div class="product-info">
-                  {% render 'dynamic-product-rating', product: product %}
+                  <div class="product-rating">
+                    {% render 'product-rating', product: product %}
+                  </div>
                   <h3 class="product-title">{{ product.title }}</h3>
-                  <p class="product-price">
-                    {{ product.price | money }}
-                    {% if product.compare_at_price > product.price %}
-                      <span class="product-compare-price">{{ product.compare_at_price | money }}</span>
-                    {% endif %}
-                  </p>
+                  <p class="product-price">{{ product.price | money }}</p>
                   <p class="product-description">{{ product.description | strip_html | truncatewords: 30 }}</p>
-                  <button class="quick-view-btn" data-product-handle="{{ product.handle }}">Quick View</button>
                 </div>
               </a>
             </div>
@@ -113,7 +126,6 @@
     </div>
   </div>
 </div>
-
 <script>
 document.addEventListener('DOMContentLoaded', function() {
   // Set initial view from localStorage or default to grid
@@ -153,32 +165,14 @@ document.addEventListener('DOMContentLoaded', function() {
     const url = new URL(window.location.href);
     
     if (this.checked) {
-      url.searchParams.set('availability', 'in-stock');
+      // Remove out-of-stock tag if it exists
+      url.searchParams.delete('constraint');
     } else {
-      url.searchParams.delete('availability');
+      // Show all products (including out of stock)
+      url.searchParams.set('constraint', 'available');
     }
     
     window.location.href = url.toString();
-  });
-
-  // Price range filter (example implementation)
-  const priceRangeSlider = document.getElementById('priceRange');
-  if (priceRangeSlider) {
-    priceRangeSlider.addEventListener('input', function() {
-      // This would need to be connected to your actual filtering mechanism
-      const maxPrice = this.value;
-      document.getElementById('maxPrice').textContent = maxPrice < 1000 ? `$${maxPrice}` : '$1000+';
-    });
-  }
-
-  // Quick view functionality
-  document.querySelectorAll('.quick-view-btn').forEach(button => {
-    button.addEventListener('click', function(e) {
-      e.preventDefault();
-      const productHandle = this.dataset.productHandle;
-      // Implement your quick view functionality here
-      console.log('Quick view for:', productHandle);
-    });
   });
 });
 </script>
