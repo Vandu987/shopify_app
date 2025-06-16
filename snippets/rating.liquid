@@ -10,7 +10,6 @@
 {%- endif -%}
 
 {%- assign empty_stars = 5 | minus: full_stars | minus: half_star -%}
-{%- assign unique_id = product.id | default: 'star' -%}
 
 <div class="product-rating">
   {%- for i in (1..full_stars) -%}
@@ -18,15 +17,14 @@
   {%- endfor -%}
 
   {%- if half_star == 1 -%}
-    <svg width="20" height="20" viewBox="0 0 24 24">
-      <defs>
-        <linearGradient id="half-grad-{{ unique_id }}">
-          <stop offset="50%" stop-color="#FFD700"/>
-          <stop offset="50%" stop-color="#e0e0e0"/>
-        </linearGradient>
-      </defs>
-      <path fill="url(#half-grad-{{ unique_id }})" d="M12 .587l3.668 7.568 8.332 1.151-6.064 5.998 1.504 8.313L12 18.896l-7.44 4.721 1.504-8.313-6.064-5.998 8.332-1.151z"/>
-    </svg>
+    <span class="star-half">
+      <span class="star-bg">
+        <svg width="20" height="20" fill="#e0e0e0" viewBox="0 0 24 24"><path d="M12 .587l3.668 7.568 8.332 1.151-6.064 5.998 1.504 8.313L12 18.896l-7.44 4.721 1.504-8.313-6.064-5.998 8.332-1.151z"/></svg>
+      </span>
+      <span class="star-fg">
+        <svg width="20" height="20" fill="#FFD700" viewBox="0 0 24 24"><path d="M12 .587l3.668 7.568 8.332 1.151-6.064 5.998 1.504 8.313L12 18.896l-7.44 4.721 1.504-8.313-6.064-5.998 8.332-1.151z"/></svg>
+      </span>
+    </span>
   {%- endif -%}
 
   {%- for i in (1..empty_stars) -%}
