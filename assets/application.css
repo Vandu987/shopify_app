@@ -793,6 +793,7 @@ text-decoration: none;
 
 .footer-description p, .footer-disclaimer p {
   margin: 0;
+  font-size: 13.5px;
 }
 
 .footer-links-section, .footer-social-section {
@@ -809,6 +810,7 @@ text-decoration: none;
   list-style: none;
   padding: 0;
   margin: 0;
+  font-size: 13.5px;
 }
 
 .footer-links li {
