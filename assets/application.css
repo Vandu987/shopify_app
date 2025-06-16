@@ -418,7 +418,7 @@ text-decoration: none;
   .view-btn {
     background: none;
     border: 1px solid #ddd;
-    padding: 8px;
+    padding: 5px;
     cursor: pointer;
     border-radius: 4px;
     display: flex;
