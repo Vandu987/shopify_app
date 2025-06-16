@@ -754,7 +754,7 @@ text-decoration: none;
  .kids-toys-footer {
   background-color: #0066cc;
   color: #fff;
-  padding: 40px 0 0 0;
+  padding: 30px 0 0 0;
   font-family: Arial, sans-serif;
 }
 
@@ -775,7 +775,8 @@ text-decoration: none;
 .footer-logo {
   font-size: 36px;
   font-family: Comic Sans MS, cursive, sans-serif;
-  margin-bottom: 10px;
+  margin-bottom: 30px;
+  margin-top: 0;
   text-align:center;
 }
 
