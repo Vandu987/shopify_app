@@ -33,19 +33,6 @@
     </main>
     {% section 'footer' %}
     {{ 'application.js' | asset_url | script_tag }}
-    document.querySelector('.toggle-grid').addEventListener('click', function() {
-  document.querySelector('.products-container').classList.add('grid-view');
-  document.querySelector('.products-container').classList.remove('list-view');
-  this.classList.add('active');
-  document.querySelector('.toggle-list').classList.remove('active');
-});
-
-document.querySelector('.toggle-list').addEventListener('click', function() {
-  document.querySelector('.products-container').classList.add('list-view');
-  document.querySelector('.products-container').classList.remove('grid-view');
-  this.classList.add('active');
-  document.querySelector('.toggle-grid').classList.remove('active');
-});
-
+    
   </body>
 </html>
