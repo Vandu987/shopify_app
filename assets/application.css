@@ -396,8 +396,12 @@ text-decoration: none;
   justify-content: start;
   gap: 40px;
 }
+.list-view .product-card .product-image {
+  width: 30%;
+}
 .list-view .product-card .product-info {
-  align-items: start;
+  text-align: start;
+  width: 70%;
 }
 .product-card {
   border: 1px solid #eee;
