@@ -2,7 +2,11 @@
    Advanced Contact Page Styling
    For Kids Toy Shopping Website
    ================================ */
-
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
 /* Base Styles */
 .contact-page {
   font-family: 'Comic Neue', 'Segoe UI', sans-serif;
@@ -263,6 +267,7 @@
 .form-group {
   flex: 1 1 100%;
   position: relative;
+  box-sizing: border-box;
 }
 
 .form-group.full-width {
@@ -287,6 +292,7 @@
   background-color: #fff;
   transition: all 0.3s;
   font-family: inherit;
+  box-sizing: border-box;
 }
 
 .form-group input:focus,
