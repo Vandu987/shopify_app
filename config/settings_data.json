@@ -120,7 +120,7 @@
               "title": "Visit Here",
               "content": "123 Main Street, New Delhi, India",
               "link_url": "",
-              "icon_snippet": "location",
+              "icon_snippet": "icon-location",
               "animation_style": "spin",
               "bg_color": "#7b5cfa",
               "text_color": "#ffffff"
@@ -132,7 +132,7 @@
               "title": "Mail Here",
               "content": "example@gmail.com",
               "link_url": "",
-              "icon_snippet": "icon-location",
+              "icon_snippet": "icon-email",
               "animation_style": "spin",
               "bg_color": "#7b5cfa",
               "text_color": "#ffffff"
@@ -144,7 +144,7 @@
               "title": "Contact Here",
               "content": "+91 1234567890",
               "link_url": "",
-              "icon_snippet": "icon-location",
+              "icon_snippet": "icon-phone",
               "animation_style": "spin",
               "bg_color": "#7b5cfa",
               "text_color": "#ffffff"
