@@ -1,55 +1,56 @@
+{% comment %} contact-template.liquid {% endcomment %}
+
 <div class="contact-page">
-  <!-- Hero Section -->
-  <section class="contact-hero">
+  <!-- Dynamic Hero Section -->
+  <section class="contact-hero" style="background: {{ section.settings.hero_bg_gradient }};">
     <div class="hero-content">
-      <h1>Let's Play Together!</h1>
-      <p>Got questions about our magical toys? Our friendly team is here to help!</p>
+      <h1>{{ section.settings.hero_title }}</h1>
+      <p>{{ section.settings.hero_subtitle }}</p>
       <div class="hero-icons">
-        <div class="icon-bounce">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M164.9 24.6c-7.7-18.6-28-28.5-47.4-23.2l-88 24C12.1 30.2 0 46 0 64C0 311.4 200.6 512 448 512c18 0 33.8-12.1 38.6-29.5l24-88c5.3-19.4-4.6-39.7-23.2-47.4l-96-40c-16.3-6.8-35.2-2.1-46.3 11.6L304.7 368C234.3 334.7 177.3 277.7 144 207.3L193.3 167c13.7-11.2 18.4-30 11.6-46.3l-40-96z"/></svg>
-        </div>
-        <div class="icon-bounce delay-1">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M48 64C21.5 64 0 85.5 0 112c0 15.1 7.1 29.3 19.2 38.4L236.8 313.6c11.4 8.5 27 8.5 38.4 0L492.8 150.4c12.1-9.1 19.2-23.3 19.2-38.4c0-26.5-21.5-48-48-48H48zM0 176V384c0 35.3 28.7 64 64 64H448c35.3 0 64-28.7 64-64V176L294.4 339.2c-22.8 17.1-54 17.1-76.8 0L0 176z"/></svg>
-        </div>
-        <div class="icon-bounce delay-2">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512"><path d="M215.7 499.2C267 435 384 279.4 384 192C384 86 298 0 192 0S0 86 0 192c0 87.4 117 243 168.3 307.2c12.3 15.3 35.1 15.3 47.4 0zM192 256c-35.3 0-64-28.7-64-64s28.7-64 64-64s64 28.7 64 64s-28.7 64-64 64z"/></svg>
-        </div>
+        {% for i in (1..3) %}
+          {% assign icon_setting = 'hero_icon_' | append: i %}
+          {% if section.settings[icon_setting] != blank %}
+            <div class="icon-bounce {% if forloop.index == 2 %}delay-1{% elsif forloop.index == 3 %}delay-2{% endif %}">
+              {{ section.settings[icon_setting] | replace: '<svg', '<svg width="30" height="30"' }}
+            </div>
+          {% endif %}
+        {% endfor %}
       </div>
     </div>
     <div class="hero-image">
-      <img src="{{ 'contact-hero-toy.png' | asset_url }}" alt="Happy kids playing with toys">
+      {% if section.settings.hero_image != blank %}
+        {{ section.settings.hero_image | image_url: width: 600 | image_tag: loading: 'lazy', alt: section.settings.hero_title }}
+      {% endif %}
     </div>
   </section>
 
   <!-- Main Contact Container -->
   <div class="custom-contact-container">
-    <!-- Contact Info - Now with toy icons -->
+    <!-- Dynamic Contact Info -->
     <section class="contact-info">
-      <div class="info-item">
-        <div class="info-icon spin">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512"><path d="M215.7 499.2C267 435 384 279.4 384 192C384 86 298 0 192 0S0 86 0 192c0 87.4 117 243 168.3 307.2c12.3 15.3 35.1 15.3 47.4 0zM192 128a64 64 0 1 1 0 128 64 64 0 1 1 0-128z"/></svg>
-        </div>
-        <h3>Visit Our Toyland</h3>
-        <p>123 Play Street, New Delhi, India</p>
-      </div>
-      <div class="info-item">
-        <div class="info-icon float">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M48 64C21.5 64 0 85.5 0 112c0 15.1 7.1 29.3 19.2 38.4L236.8 313.6c11.4 8.5 27 8.5 38.4 0L492.8 150.4c12.1-9.1 19.2-23.3 19.2-38.4c0-26.5-21.5-48-48-48H48zM0 176V384c0 35.3 28.7 64 64 64H448c35.3 0 64-28.7 64-64V176L294.4 339.2c-22.8 17.1-54 17.1-76.8 0L0 176z"/></svg>
-        </div>
-        <h3>Send a Toygram</h3>
-        <p><a href="mailto:play@toyland.com">play@toyland.com</a></p>
-      </div>
-      <div class="info-item">
-        <div class="info-icon shake">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M164.9 24.6c-7.7-18.6-28-28.5-47.4-23.2l-88 24C12.1 30.2 0 46 0 64C0 311.4 200.6 512 448 512c18 0 33.8-12.1 38.6-29.5l24-88c5.3-19.4-4.6-39.7-23.2-47.4l-96-40c-16.3-6.8-35.2-2.1-46.3 11.6L304.7 368C234.3 334.7 177.3 277.7 144 207.3L193.3 167c13.7-11.2 18.4-30 11.6-46.3l-40-96z"/></svg>
-        </div>
-        <h3>Call the Toy Hotline</h3>
-        <p><a href="tel:+911234567890">+91 12345 67890</a></p>
-      </div>
+      {% for block in section.blocks %}
+        {% case block.type %}
+          {% when 'contact_info' %}
+            <div class="info-item" style="background: {{ block.settings.bg_color }};">
+              <div class="info-icon {{ block.settings.animation_style }}">
+                {{ block.settings.icon_svg | replace: '<svg', '<svg width="35" height="35"' }}
+              </div>
+              <h3>{{ block.settings.title }}</h3>
+              {% if block.settings.link_url != blank %}
+                <a href="{{ block.settings.link_url }}" style="color: {{ block.settings.text_color }};">
+                  {{ block.settings.content }}
+                </a>
+              {% else %}
+                <p style="color: {{ block.settings.text_color }};">{{ block.settings.content }}</p>
+              {% endif %}
+            </div>
+        {% endcase %}
+      {% endfor %}
     </section>
 
-    <!-- Contact Form with playful elements -->
-    <section class="contact-form-section">
+    <!-- Contact Form (remains unchanged) -->
+    {% form 'contact' %}
+      <section class="contact-form-section">
       <div class="form-decoration left">
         <img src="{{ 'toy-cloud.png' | asset_url }}" alt="Toy cloud" class="float-slow">
       </div>
@@ -108,29 +109,248 @@
         <img src="{{ 'toy-balloon.png' | asset_url }}" alt="Toy balloon" class="float-fast">
       </div>
     </section>
+    {% endform %}
 
-    <!-- Interactive Map Section -->
+    <!-- Dynamic Map Section -->
     <section class="map-section">
-      <h2>Find Our Toy Store</h2>
+      <h2>{{ section.settings.map_title }}</h2>
       <div class="map-container">
-        <iframe src="https://www.google.com/maps/embed?pb=..." 
-                width="100%" height="400" style="border:0;" 
-                allowfullscreen="" loading="lazy"></iframe>
+        {% if section.settings.map_embed_code != blank %}
+          {{ section.settings.map_embed_code }}
+        {% else %}
+          <iframe src="{{ section.settings.map_url }}" 
+                  width="100%" height="400" style="border:0;" 
+                  allowfullscreen="" loading="lazy"></iframe>
+        {% endif %}
         <div class="map-marker">
-          <img src="{{ 'map-marker-toy.png' | asset_url }}" alt="Toy store location">
+          {% if section.settings.map_marker_svg != blank %}
+            {{ section.settings.map_marker_svg | replace: '<svg', '<svg width="50" height="50"' }}
+          {% else %}
+            <img src="{{ section.settings.map_marker_image | image_url: width: 50 }}" alt="Store location">
+          {% endif %}
         </div>
       </div>
-      <div class="store-hours">
-        <h3>Store Hours</h3>
-        <ul>
-          <li>Monday-Friday: 10AM - 7PM</li>
-          <li>Saturday: 9AM - 8PM</li>
-          <li>Sunday: 11AM - 6PM</li>
-        </ul>
-      </div>
+      {% if section.settings.store_hours != blank %}
+        <div class="store-hours">
+          <h3>{{ section.settings.store_hours_title }}</h3>
+          {{ section.settings.store_hours }}
+        </div>
+      {% endif %}
     </section>
   </div>
 </div>
 
+{% schema %}
+{
+  "name": "Contact Page",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Hero Section"
+    },
+    {
+      "type": "text",
+      "id": "hero_title",
+      "label": "Hero Title",
+      "default": "Let's Play Together!"
+    },
+    {
+      "type": "text",
+      "id": "hero_subtitle",
+      "label": "Hero Subtitle",
+      "default": "Got questions about our magical toys? Our friendly team is here to help!"
+    },
+    {
+      "type": "image_picker",
+      "id": "hero_image",
+      "label": "Hero Image"
+    },
+    {
+      "type": "html",
+      "id": "hero_icon_1",
+      "label": "Hero Icon 1 (SVG code)",
+      "default": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512'><path d='M164.9 24.6c-7.7-18.6-28-28.5-47.4-23.2l-88 24C12.1 30.2 0 46 0 64C0 311.4 200.6 512 448 512c18 0 33.8-12.1 38.6-29.5l24-88c5.3-19.4-4.6-39.7-23.2-47.4l-96-40c-16.3-6.8-35.2-2.1-46.3 11.6L304.7 368C234.3 334.7 177.3 277.7 144 207.3L193.3 167c13.7-11.2 18.4-30 11.6-46.3l-40-96z'/></svg>"
+    },
+    {
+      "type": "html",
+      "id": "hero_icon_2",
+      "label": "Hero Icon 2 (SVG code)"
+    },
+    {
+      "type": "html",
+      "id": "hero_icon_3",
+      "label": "Hero Icon 3 (SVG code)"
+    },
+    {
+      "type": "text",
+      "id": "hero_bg_gradient",
+      "label": "Hero Background Gradient",
+      "default": "linear-gradient(135deg, #ff9a9e 0%, #fad0c4 100%)"
+    },
+    {
+      "type": "header",
+      "content": "Map Section"
+    },
+    {
+      "type": "text",
+      "id": "map_title",
+      "label": "Map Section Title",
+      "default": "Find Our Toy Store"
+    },
+    {
+      "type": "text",
+      "id": "map_url",
+      "label": "Google Maps URL",
+      "info": "Alternative to embed code"
+    },
+    {
+      "type": "html",
+      "id": "map_embed_code",
+      "label": "Map Embed Code",
+      "info": "Will override the URL if both are provided"
+    },
+    {
+      "type": "html",
+      "id": "map_marker_svg",
+      "label": "Map Marker SVG Code"
+    },
+    {
+      "type": "image_picker",
+      "id": "map_marker_image",
+      "label": "Map Marker Image",
+      "info": "Alternative to SVG"
+    },
+    {
+      "type": "text",
+      "id": "store_hours_title",
+      "label": "Store Hours Title",
+      "default": "Store Hours"
+    },
+    {
+      "type": "richtext",
+      "id": "store_hours",
+      "label": "Store Hours",
+      "default": "<p><strong>Monday-Friday:</strong> 10AM - 7PM</p><p><strong>Saturday:</strong> 9AM - 8PM</p><p><strong>Sunday:</strong> 11AM - 6PM</p>"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "contact_info",
+      "name": "Contact Information",
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title",
+          "default": "Visit Us"
+        },
+        {
+          "type": "text",
+          "id": "content",
+          "label": "Content",
+          "default": "123 Main Street, New Delhi, India"
+        },
+        {
+          "type": "url",
+          "id": "link_url",
+          "label": "Link URL",
+          "info": "Optional - for email or phone links"
+        },
+        {
+          "type": "html",
+          "id": "icon_svg",
+          "label": "Icon SVG Code",
+          "default": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 384 512'><path d='M215.7 499.2C267 435 384 279.4 384 192C384 86 298 0 192 0S0 86 0 192c0 87.4 117 243 168.3 307.2c12.3 15.3 35.1 15.3 47.4 0zM192 128a64 64 0 1 1 0 128 64 64 0 1 1 0-128z'/></svg>"
+        },
+        {
+          "type": "select",
+          "id": "animation_style",
+          "label": "Animation Style",
+          "options": [
+            {
+              "value": "spin",
+              "label": "Spin"
+            },
+            {
+              "value": "float",
+              "label": "Float"
+            },
+            {
+              "value": "shake",
+              "label": "Shake"
+            },
+            {
+              "value": "none",
+              "label": "None"
+            }
+          ],
+          "default": "spin"
+        },
+        {
+          "type": "color",
+          "id": "bg_color",
+          "label": "Background Color",
+          "default": "#7b5cfa"
+        },
+        {
+          "type": "color",
+          "id": "text_color",
+          "label": "Text Color",
+          "default": "#ffffff"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Default Contact Page",
+      "settings": {
+        "hero_title": "Let's Play Together!",
+        "hero_subtitle": "Got questions about our magical toys? Our friendly team is here to help!",
+        "hero_bg_gradient": "linear-gradient(135deg, #ff9a9e 0%, #fad0c4 100%)",
+        "map_title": "Find Our Toy Store",
+        "store_hours_title": "Store Hours"
+      },
+      "blocks": [
+        {
+          "type": "contact_info",
+          "settings": {
+            "title": "Visit Our Toyland",
+            "content": "123 Play Street, New Delhi, India",
+            "icon_svg": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 384 512'><path d='M215.7 499.2C267 435 384 279.4 384 192C384 86 298 0 192 0S0 86 0 192c0 87.4 117 243 168.3 307.2c12.3 15.3 35.1 15.3 47.4 0zM192 128a64 64 0 1 1 0 128 64 64 0 1 1 0-128z'/></svg>",
+            "animation_style": "spin",
+            "bg_color": "#7b5cfa",
+            "text_color": "#ffffff"
+          }
+        },
+        {
+          "type": "contact_info",
+          "settings": {
+            "title": "Send a Toygram",
+            "content": "play@toyland.com",
+            "link_url": "mailto:play@toyland.com",
+            "icon_svg": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512'><path d='M48 64C21.5 64 0 85.5 0 112c0 15.1 7.1 29.3 19.2 38.4L236.8 313.6c11.4 8.5 27 8.5 38.4 0L492.8 150.4c12.1-9.1 19.2-23.3 19.2-38.4c0-26.5-21.5-48-48-48H48zM0 176V384c0 35.3 28.7 64 64 64H448c35.3 0 64-28.7 64-64V176L294.4 339.2c-22.8 17.1-54 17.1-76.8 0L0 176z'/></svg>",
+            "animation_style": "float",
+            "bg_color": "#7b5cfa",
+            "text_color": "#ffffff"
+          }
+        },
+        {
+          "type": "contact_info",
+          "settings": {
+            "title": "Call the Toy Hotline",
+            "content": "+91 12345 67890",
+            "link_url": "tel:+911234567890",
+            "icon_svg": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512'><path d='M164.9 24.6c-7.7-18.6-28-28.5-47.4-23.2l-88 24C12.1 30.2 0 46 0 64C0 311.4 200.6 512 448 512c18 0 33.8-12.1 38.6-29.5l24-88c5.3-19.4-4.6-39.7-23.2-47.4l-96-40c-16.3-6.8-35.2-2.1-46.3 11.6L304.7 368C234.3 334.7 177.3 277.7 144 207.3L193.3 167c13.7-11.2 18.4-30 11.6-46.3l-40-96z'/></svg>",
+            "animation_style": "shake",
+            "bg_color": "#7b5cfa",
+            "text_color": "#ffffff"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}
 <!-- Include CSS -->
 {{ 'contact-form.css' | asset_url | stylesheet_tag }}
