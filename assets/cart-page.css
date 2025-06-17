@@ -19,13 +19,13 @@
 }
 .cart_container {
     display: flex;
-    align-items: start;
-    justify-content: center;
+    align-items: stretch;
+    justify-content: space-between;
 }
 
 /* FLEX Layout for Items */
 .cart-items {
-    width: 70%;
+    width: 68%;
   display: flex;
   flex-direction: column;
   gap: 1.5rem;
@@ -51,7 +51,11 @@
   justify-content: space-between;
 }
 .checkout_box {
-    width: 30%;
+    width: 28%;
+    background: #fff;
+  padding: 1.5rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
 }
 .cart-item-info {
   margin-bottom: 1rem;
