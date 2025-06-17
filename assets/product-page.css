@@ -20,7 +20,6 @@
   align-items: flex-start;
 }
 .image_view{
-    flex: 1 1 400px;
     display: flex;
     gap: 15px;
     flex-wrap: wrap;
