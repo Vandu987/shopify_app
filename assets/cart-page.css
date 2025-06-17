@@ -156,6 +156,7 @@
 .btn-update {
   background: #06c;
   color: #ffffff;
+  border: none;
 }
 
 .btn-checkout {
