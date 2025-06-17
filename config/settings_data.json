@@ -101,6 +101,75 @@
           "social_heading": "Follow Us",
           "copyright_text": "<p>© 2025 Bacho Ka Adda™. All rights reserved.</p>"
         }
+      },
+      "contact-hero": {
+        "type": "contact-hero",
+        "settings": {
+          "hero_title": "Let's Play Together!",
+          "hero_subtitle": "Got questions about our magical toys? Our friendly team is here to help!",
+          "hero_bg_gradient": "linear-gradient(135deg, #ff9a9e 0%, #fad0c4 100%)"
+        }
+      },
+      "contact-info": {
+        "type": "contact-info",
+        "blocks": {
+          "contact_info_Kjha9p": {
+            "type": "contact_info",
+            "settings": {
+              "title": "Visit Here",
+              "content": "123 Main Street, New Delhi, India",
+              "link_url": "",
+              "icon_snippet": "location",
+              "animation_style": "spin",
+              "bg_color": "#7b5cfa",
+              "text_color": "#ffffff"
+            }
+          },
+          "contact_info_4mwra3": {
+            "type": "contact_info",
+            "settings": {
+              "title": "Mail Here",
+              "content": "example@gmail.com",
+              "link_url": "",
+              "icon_snippet": "icon-location",
+              "animation_style": "spin",
+              "bg_color": "#7b5cfa",
+              "text_color": "#ffffff"
+            }
+          },
+          "contact_info_GRYxzQ": {
+            "type": "contact_info",
+            "settings": {
+              "title": "Contact Here",
+              "content": "+91 1234567890",
+              "link_url": "",
+              "icon_snippet": "icon-location",
+              "animation_style": "spin",
+              "bg_color": "#7b5cfa",
+              "text_color": "#ffffff"
+            }
+          }
+        },
+        "block_order": [
+          "contact_info_Kjha9p",
+          "contact_info_4mwra3",
+          "contact_info_GRYxzQ"
+        ],
+        "settings": {}
+      },
+      "contact-form": {
+        "type": "contact-form",
+        "settings": {}
+      },
+      "contact-map": {
+        "type": "contact-map",
+        "settings": {
+          "map_title": "Find Our Toy Store",
+          "map_url": "",
+          "map_embed_code": "",
+          "store_hours_title": "Store Hours",
+          "store_hours": "<p><strong>Monday-Friday:</strong> 10AM - 7PM</p><p><strong>Saturday:</strong> 9AM - 8PM</p><p><strong>Sunday:</strong> 11AM - 6PM</p>"
+        }
       }
     },
     "content_for_index": []
