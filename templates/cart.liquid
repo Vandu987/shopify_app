@@ -65,5 +65,18 @@
     <p class="empty-cart">🎈 Oops! Your cart is empty. Start exploring magical toys now!</p>
   </section>
 {% endif %}
+<script>
+  function updateQuantity(index, change) {
+    const inputs = document.querySelectorAll('.quantity-input');
+    const input = inputs[index];
+    let currentVal = parseInt(input.value);
+    if (!isNaN(currentVal)) {
+      currentVal += change;
+      if (currentVal < 1) currentVal = 1;
+      input.value = currentVal;
+    }
+  }
+</script>
+
 
 {{ 'cart-page.css' | asset_url | stylesheet_tag }}
