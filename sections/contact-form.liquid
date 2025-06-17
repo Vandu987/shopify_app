@@ -1,67 +1,163 @@
 {% comment %} Contact form section {% endcomment %}
 <section class="contact-form-section">
   <div class="form-decoration left">
-    <img src="{{ 'toy-cloud.png' | asset_url }}" alt="Toy cloud" class="float-slow">
+    {% if section.settings.left_decor_image != blank %}
+      <img src="{{ section.settings.left_decor_image | image_url: width: 150 }}" alt="Decoration Left" class="float-slow">
+    {% else %}
+      <img src="{{ 'toy-cloud.png' | asset_url }}" alt="Toy cloud" class="float-slow">
+    {% endif %}
   </div>
-  
+
   {% form 'contact' %}
     {% if form.posted_successfully? %}
       <div class="contact-success">
         {% render 'icon-success' %}
-        <h3>Hooray! Message Sent!</h3>
-        <p>Our toy experts will get back to you soon!</p>
+        <h3>{{ section.settings.success_heading }}</h3>
+        <p>{{ section.settings.success_text }}</p>
       </div>
     {% endif %}
 
-    {{ form.errors | default_errors | replace: 'errors', 'oops! some fields need attention' }}
+    {{ form.errors | default_errors | replace: 'errors', section.settings.error_text }}
 
     <div class="contact-form">
-      <h2 class="form-title">Send a Message to Toyland</h2>
-      
+      <h2 class="form-title">{{ section.settings.form_title }}</h2>
+
       <div class="form-row">
         <div class="form-group">
-          <label for="ContactFormName">Your Name</label>
-          <input type="text" id="ContactFormName" name="contact[name]" required placeholder="e.g. Rohan or Priya">
+          <label for="ContactFormName">{{ section.settings.label_name }}</label>
+          <input type="text" id="ContactFormName" name="contact[name]" required placeholder="{{ section.settings.placeholder_name }}">
           <div class="input-decoration teddy"></div>
         </div>
         <div class="form-group">
-          <label for="ContactFormEmail">Email Address</label>
-          <input type="email" id="ContactFormEmail" name="contact[email]" required placeholder="your@email.com">
+          <label for="ContactFormEmail">{{ section.settings.label_email }}</label>
+          <input type="email" id="ContactFormEmail" name="contact[email]" required placeholder="{{ section.settings.placeholder_email }}">
           <div class="input-decoration rocket"></div>
         </div>
       </div>
 
       <div class="form-row">
         <div class="form-group">
-          <label for="ContactFormPhone">Phone Number</label>
-          <input type="tel" id="ContactFormPhone" name="contact[phone]" placeholder="+91 _________">
+          <label for="ContactFormPhone">{{ section.settings.label_phone }}</label>
+          <input type="tel" id="ContactFormPhone" name="contact[phone]" placeholder="{{ section.settings.placeholder_phone }}">
           <div class="input-decoration car"></div>
         </div>
       </div>
 
       <div class="form-row">
         <div class="form-group full-width">
-          <label for="ContactFormMessage">Your Message</label>
-          <textarea rows="6" id="ContactFormMessage" name="contact[body]" required placeholder="Tell us about your toy questions or ideas..."></textarea>
+          <label for="ContactFormMessage">{{ section.settings.label_message }}</label>
+          <textarea rows="6" id="ContactFormMessage" name="contact[body]" required placeholder="{{ section.settings.placeholder_message }}"></textarea>
           <div class="input-decoration blocks"></div>
         </div>
       </div>
 
       <button type="submit" class="submit-btn">
-        <span>Send Message</span>
+        <span>{{ section.settings.button_text }}</span>
         {% render 'icon-send' %}
       </button>
     </div>
   {% endform %}
-  
+
   <div class="form-decoration right">
-    <img src="{{ 'toy-balloon.png' | asset_url }}" alt="Toy balloon" class="float-fast">
+    {% if section.settings.right_decor_image != blank %}
+      <img src="{{ section.settings.right_decor_image | image_url: width: 150 }}" alt="Decoration Right" class="float-fast">
+    {% else %}
+      <img src="{{ 'toy-balloon.png' | asset_url }}" alt="Toy balloon" class="float-fast">
+    {% endif %}
   </div>
 </section>
-
 {% schema %}
 {
   "name": "Contact Form",
-  "settings": []
+  "settings": [
+    {
+      "type": "text",
+      "id": "form_title",
+      "label": "Form Title",
+      "default": "Send a Message to Toyland"
+    },
+    {
+      "type": "text",
+      "id": "label_name",
+      "label": "Name Label",
+      "default": "Your Name"
+    },
+    {
+      "type": "text",
+      "id": "placeholder_name",
+      "label": "Name Placeholder",
+      "default": "e.g. Rohan or Priya"
+    },
+    {
+      "type": "text",
+      "id": "label_email",
+      "label": "Email Label",
+      "default": "Email Address"
+    },
+    {
+      "type": "text",
+      "id": "placeholder_email",
+      "label": "Email Placeholder",
+      "default": "your@email.com"
+    },
+    {
+      "type": "text",
+      "id": "label_phone",
+      "label": "Phone Label",
+      "default": "Phone Number"
+    },
+    {
+      "type": "text",
+      "id": "placeholder_phone",
+      "label": "Phone Placeholder",
+      "default": "+91 _________"
+    },
+    {
+      "type": "text",
+      "id": "label_message",
+      "label": "Message Label",
+      "default": "Your Message"
+    },
+    {
+      "type": "text",
+      "id": "placeholder_message",
+      "label": "Message Placeholder",
+      "default": "Tell us about your toy questions or ideas..."
+    },
+    {
+      "type": "text",
+      "id": "button_text",
+      "label": "Submit Button Text",
+      "default": "Send Message"
+    },
+    {
+      "type": "text",
+      "id": "success_heading",
+      "label": "Success Message Heading",
+      "default": "Hooray! Message Sent!"
+    },
+    {
+      "type": "text",
+      "id": "success_text",
+      "label": "Success Message Text",
+      "default": "Our toy experts will get back to you soon!"
+    },
+    {
+      "type": "text",
+      "id": "error_text",
+      "label": "Error Text",
+      "default": "Oops! Some fields need attention."
+    },
+    {
+      "type": "image_picker",
+      "id": "left_decor_image",
+      "label": "Left Decorative Image"
+    },
+    {
+      "type": "image_picker",
+      "id": "right_decor_image",
+      "label": "Right Decorative Image"
+    }
+  ]
 }
 {% endschema %}
