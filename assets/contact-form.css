@@ -14,24 +14,6 @@
   border-radius: 10px;
 }
 
-.contact-form-wrapper label {
-  display: block;
-  margin-bottom: 5px;
-  font-weight: bold;
-}
-
-.contact-form-wrapper input[type="text"],
-.contact-form-wrapper input[type="email"],
-.contact-form-wrapper input[type="tel"],
-.contact-form-wrapper textarea {
-  width: 100%;
-  padding: 10px;
-  margin-bottom: 15px;
-  border: 1px solid #ccc;
-  border-radius: 6px;
-  font-size: 1rem;
-}
-
 .contact-submit-btn {
   background-color: #222;
   color: white;
