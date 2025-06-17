@@ -31,16 +31,16 @@
 
     <!-- Availability -->
     {% if current_variant.available %}
-      <p><strong>LEFT IN STOCK</strong></p>
+      <p class="stock-status in-stock"><strong>✅ In Stock</strong></p>
     {% else %}
-      <p style="color: red;"><strong>Sold Out</strong></p>
+      <p class="stock-status out-of-stock"><strong>❌ Sold Out</strong></p>
     {% endif %}
 
     <!-- Delivery Estimate -->
     {% assign today = 'now' | date: '%s' %}
     {% assign start_date = today | plus: 2 | date: "%a, %b %d, %Y" %}
     {% assign end_date = today | plus: 6 | date: "%a, %b %d, %Y" %}
-    <p>📦 Products will be delivered between <strong>{{ start_date }}</strong> and <strong>{{ end_date }}</strong>.</p>
+    <p class="delivery-estimate">📦 Estimated delivery: <strong>{{ start_date }}</strong> - <strong>{{ end_date }}</strong></p>
 
     <!-- Add to Cart Form -->
     <form action="/cart/add" method="post" enctype="multipart/form-data" id="AddToCartForm">
@@ -61,29 +61,30 @@
       <input type="number" id="Quantity" name="quantity" value="1" min="1">
 
       {% if current_variant.available %}
-        <button type="submit" name="add" id="AddToCart">Add to cart</button>
+        <button type="submit" name="add" id="AddToCart" class="btn add-to-cart">Add to Cart</button>
       {% else %}
-        <button type="submit" disabled>Sold Out</button>
+        <button type="submit" class="btn" disabled>Sold Out</button>
       {% endif %}
     </form>
 
     <div class="buy-now-button">
-      <button onclick="document.getElementById('AddToCartForm').submit()">Buy it now</button>
+      <button onclick="document.getElementById('AddToCartForm').submit()" class="btn buy-now">Buy it Now</button>
     </div>
 
     <!-- Trust Badges -->
     <div class="trust-badges">
       <div>🚚 Orders ship in 1 business day</div>
-      <div>🚀 Free shipping</div>
-      <div>🔄 30 day guarantee</div>
-      <div>🛡️ 2 year warranty</div>
+      <div>🚀 Free shipping on orders above ₹500</div>
+      <div>🔄 30-day easy returns</div>
+      <div>🛡️ 2-year warranty included</div>
     </div>
+
     <!-- Product Description -->
     <div class="product-description">
-      <h3>Product description</h3>
+      <h3>Product Description</h3>
       {{ product.description }}
     </div>
   </div>
 </div>
 
-
+{{ 'product-page.css' | asset_url | stylesheet_tag }}
