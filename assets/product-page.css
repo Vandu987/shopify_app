@@ -15,7 +15,7 @@
   display: flex;
   gap: 15px;
   flex-wrap: wrap;
-  justify-content: center;
+  justify-content: flex-start;
 }
 
 .main-image {
@@ -35,6 +35,8 @@
   gap: 10px;
   flex-wrap: wrap;
   justify-content: center;
+  justify-content: flex-start;
+  flex-direction: column;
 }
 
 .thumbnails img {
