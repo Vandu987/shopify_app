@@ -1,5 +1,6 @@
 {% if cart.item_count > 0 %}
-  <section class="cart-wrapper">
+  <section class="cart-section">
+  <div class="cart-wrapper">
     <h1 class="cart-title">🛒 Your Toy Box</h1>
     <form action="/cart" method="post" novalidate class="cart_container">
       <div class="cart-items">
@@ -41,9 +42,10 @@
         </div>
       </div>
     </form>
+    </div>
   </section>
 {% else %}
-  <section class="cart-wrapper">
+  <section class="cart-section">
     <h1 class="cart-title">Your Toy Box</h1>
     <p class="empty-cart">🎈 Oops! Your cart is empty. Start exploring magical toys now!</p>
   </section>
