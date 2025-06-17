@@ -160,7 +160,23 @@
       },
       "contact-form": {
         "type": "contact-form",
-        "settings": {}
+        "settings": {
+          "form_title": "Send a Message to Toyland",
+          "label_name": "Your Name",
+          "placeholder_name": "e.g. Rohan or Priya",
+          "label_email": "Email Address",
+          "placeholder_email": "your@email.com",
+          "label_phone": "Phone Number",
+          "placeholder_phone": "+91 _________",
+          "label_message": "Your Message",
+          "placeholder_message": "Tell us about your toy questions or ideas...",
+          "button_text": "Send Message",
+          "success_heading": "Hooray! Message Sent!",
+          "success_text": "Our toy experts will get back to you soon!",
+          "error_text": "Oops! Some fields need attention.",
+          "left_decor_image": "shopify://shop_images/bachon-ka-adda.png",
+          "right_decor_image": "shopify://shop_images/bachon-ka-adda.png"
+        }
       },
       "contact-map": {
         "type": "contact-map",
