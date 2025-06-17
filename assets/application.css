@@ -463,8 +463,6 @@ text-decoration: none;
 
 .product-item {
   position: relative;
-  background: #fff;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
 }
 
 .product-item a {
@@ -473,10 +471,12 @@ text-decoration: none;
 }
 
 .products-list-view .product-item {
-    display: flex;
-    gap: 20px;
-    border: 1px solid #eee;
-    padding: 20px;
+  display: flex;
+  gap: 20px;
+  border: 1px solid #eee;
+  padding: 20px;
+  background: #fff;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
 }
 
 .products-list-view .product-image {
