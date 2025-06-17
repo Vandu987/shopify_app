@@ -1,14 +1,28 @@
-<h1>{{ page.title }}</h1>
+<h1 class="contact-title">{{ page.title }}</h1>
+
 {% form 'contact' %}
-  {% if form.posted_successfully? %} Thank you for your contact {% endif %}
+  {% if form.posted_successfully? %}
+    <p class="contact-success">Thank you for your contact</p>
+  {% endif %}
+
   {{ form.errors | default_errors }}
-  <label for="ContactFormName">name</label>
-  <input type="text" id="ContactFormName" name="contact[name]">
-  <label for="ContactFormEmail">email</label>
-  <input type="email" id="ContactFormEmail" name="contact[email]">
-  <label for="ContactFormPhone">phone</label>
-  <input type="tel" id="ContactFormPhone" name="contact[phone]">
-  <label for="ContactFormMessage">message</label>
-  <textarea rows="10" id="ContactFormMessage" name="contact[body]"></textarea>
-  <input type="submit" value="send">
+
+  <div class="contact-form-wrapper">
+    <label for="ContactFormName">Name</label>
+    <input type="text" id="ContactFormName" name="contact[name]" required>
+
+    <label for="ContactFormEmail">Email</label>
+    <input type="email" id="ContactFormEmail" name="contact[email]" required>
+
+    <label for="ContactFormPhone">Phone</label>
+    <input type="tel" id="ContactFormPhone" name="contact[phone]">
+
+    <label for="ContactFormMessage">Message</label>
+    <textarea rows="6" id="ContactFormMessage" name="contact[body]" required></textarea>
+
+    <input type="submit" value="Send Message" class="contact-submit-btn">
+  </div>
 {% endform %}
+
+<!-- Link external CSS file -->
+{{ 'contact-form.css' | asset_url | stylesheet_tag }}
