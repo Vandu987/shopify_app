@@ -12,6 +12,11 @@
         <img src="{{ image | img_url: '100x100' }}" alt="{{ image.alt | escape }}" class="thumb" onclick="document.getElementById('ProductPhotoImg').src='{{ image | img_url: '800x' }}'">
       {% endfor %}
     </div>
+     <!-- Product Description -->
+    <div class="product-description">
+      <h3>Product Description</h3>
+      {{ product.description }}
+    </div>
   </div>
 
   <!-- Right Section: Product Info -->
@@ -79,11 +84,6 @@
       <div>🛡️ 2-year warranty included</div>
     </div>
 
-    <!-- Product Description -->
-    <div class="product-description">
-      <h3>Product Description</h3>
-      {{ product.description }}
-    </div>
   </div>
 </div>
 
