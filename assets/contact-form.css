@@ -57,10 +57,12 @@ body {
   text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
   margin-bottom: 20px;
   animation: fadeInDown 1s ease;
+  font-family: Comic Sans MS, cursive, sans-serif;
 }
 
 .hero-content p {
   font-size: 1.5rem;
+  font-family: Comic Sans MS, cursive, sans-serif;
   color: #fff;
   margin-bottom: 30px;
   animation: fadeIn 1.5s ease;
@@ -162,11 +164,13 @@ body {
   color: #ffffff;
   position: relative;
   z-index: 1;
+  font-family: Comic Sans MS, cursive, sans-serif;
 }
 
 .info-item p, .info-item a {
   margin: 0;
   font-size: 1.1rem;
+  font-family: Comic Sans MS, cursive, sans-serif;
   color: #ffffff;
   text-decoration: none;
   position: relative;
@@ -250,6 +254,7 @@ body {
   color: #7b5cfa;
   font-size: 2rem;
   margin-bottom: 30px;
+  font-family: Comic Sans MS, cursive, sans-serif;
   position: relative;
 }
 
@@ -286,6 +291,7 @@ body {
   font-weight: 600;
   color: #555;
   font-size: 1rem;
+  font-family: Comic Sans MS, cursive, sans-serif;
 }
 
 .form-group input,
@@ -299,6 +305,7 @@ body {
   transition: all 0.3s;
   font-family: inherit;
   box-sizing: border-box;
+  font-family: Comic Sans MS, cursive, sans-serif;
 }
 
 .form-group input:focus,
@@ -341,6 +348,7 @@ body {
   border-radius: 12px;
   font-size: 1.1rem;
   font-weight: 600;
+  font-family: Comic Sans MS, cursive, sans-serif;
   cursor: pointer;
   display: flex;
   align-items: center;
@@ -394,11 +402,13 @@ body {
   color: #2ecc71;
   font-size: 1.5rem;
   margin-bottom: 10px;
+  font-family: Comic Sans MS, cursive, sans-serif;
 }
 
 .contact-success p {
   color: #555;
   font-size: 1rem;
+  font-family: Comic Sans MS, cursive, sans-serif;
 }
 
 /* Map Section */
@@ -411,6 +421,7 @@ body {
   font-size: 2rem;
   color: #7b5cfa;
   margin-bottom: 30px;
+  font-family: Comic Sans MS, cursive, sans-serif;
 }
 
 .map-container {
@@ -444,6 +455,7 @@ body {
   color: #7b5cfa;
   margin-bottom: 15px;
   font-size: 1.3rem;
+  font-family: Comic Sans MS, cursive, sans-serif;
 }
 
 .store-hours ul {
@@ -465,6 +477,7 @@ body {
   color: #ff9a9e;
   font-size: 1.5rem;
   position: absolute;
+  font-family: Comic Sans MS, cursive, sans-serif;
   left: 0;
   top: 2px;
 }

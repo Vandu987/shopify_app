@@ -83,12 +83,14 @@ body {
   color: #333;
   margin-bottom: 10px;
   animation: popIn 0.5s ease;
+  font-family: Comic Sans MS, cursive, sans-serif;
 }
 
 .price {
   font-size: 1.4rem;
   margin: 15px 0;
   font-weight: 600;
+  font-family: Comic Sans MS, cursive, sans-serif;
 }
 
 .sale-price {
@@ -106,6 +108,7 @@ body {
   color: white;
   padding: 3px 8px;
   font-size: 0.85rem;
+  font-family: Comic Sans MS, cursive, sans-serif;
   border-radius: 6px;
   margin-left: 10px;
 }
@@ -115,6 +118,7 @@ body {
   margin: 10px 0;
   font-size: 1rem;
   color: #444;
+  font-family: Comic Sans MS, cursive, sans-serif;
 }
 
 .product-info strong {
@@ -129,6 +133,7 @@ select#productSelect,
 input#Quantity {
   padding: 10px;
   font-size: 1rem;
+  font-family: Comic Sans MS, cursive, sans-serif;
   width: 100%;
   margin-top: 10px;
   margin-bottom: 10px;
@@ -142,6 +147,7 @@ input#Quantity {
   color: white;
   padding: 14px 24px;
   font-size: 1rem;
+  font-family: Comic Sans MS, cursive, sans-serif;
   border: none;
   border-radius: 10px;
   cursor: pointer;
@@ -166,6 +172,7 @@ input#Quantity {
   padding: 15px;
   border-radius: 10px;
   font-size: 0.95rem;
+  font-family: Comic Sans MS, cursive, sans-serif;
   line-height: 1.6;
   color: #444;
   display: flex;
@@ -180,12 +187,14 @@ input#Quantity {
     text-align: start;
   margin-top: 0;
   font-size: 1rem;
+  font-family: Comic Sans MS, cursive, sans-serif;
   line-height: 1.8;
   color: #555;
 }
 
 .product-description h3 {
   font-size: 1.5rem;
+  font-family: Comic Sans MS, cursive, sans-serif;
   margin-bottom: 10px;
   color: #222;
 }
@@ -200,6 +209,7 @@ input#Quantity {
   width: 36px;
   height: 36px;
   font-size: 20px;
+  font-family: Comic Sans MS, cursive, sans-serif;
   font-weight: bold;
   background-color: #ff6f61;
   color: #fff;
@@ -218,6 +228,7 @@ input#Quantity {
   text-align: center;
   padding: 10px;
   font-size: 16px;
+  font-family: Comic Sans MS, cursive, sans-serif;
   border-radius: 6px;
   border: 1px solid #ccc;
 }
