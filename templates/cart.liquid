@@ -1,53 +1,44 @@
 {% if cart.item_count > 0 %}
   <section class="cart-wrapper">
     <h1 class="cart-title">🛒 Your Toy Box</h1>
-
     <form action="/cart" method="post" novalidate>
-      <table class="cart-table">
-        <thead>
-          <tr>
-            <th colspan="2">Product</th>
-            <th>Price</th>
-            <th>Qty</th>
-            <th>Total</th>
-          </tr>
-        </thead>
-        <tbody>
-          {% for item in cart.items %}
-            <tr class="cart-item-row animate-item">
-              <td>
-                <a href="{{ item.url | within: collections.all }}">
-                  <img src="{{ item | img_url: 'medium' }}" alt="{{ item.title | escape }}" class="product-image">
-                </a>
-              </td>
-              <td>
+      <div class="cart-items">
+        {% for item in cart.items %}
+          <div class="cart-item animate-item">
+            <div class="cart-item-image">
+              <a href="{{ item.url | within: collections.all }}">
+                <img src="{{ item | img_url: 'medium' }}" alt="{{ item.title | escape }}" class="product-image">
+              </a>
+            </div>
+            <div class="cart-item-details">
+              <div class="cart-item-info">
                 <a class="product-title" href="{{ item.url }}">{{ item.product.title }}</a>
                 {% unless item.variant.title contains 'Default' %}
                   <div class="product-variant">{{ item.variant.title }}</div>
                 {% endunless %}
                 <a class="remove-btn" href="/cart/change?line={{ forloop.index }}&amp;quantity=0">Remove</a>
-              </td>
-              <td class="product-price">{{ item.price | money }}</td>
-              <td>
-                 <div class="quantity-wrapper">
+              </div>
+              <div class="cart-item-pricing">
+                <div class="product-price">{{ item.price | money }}</div>
+                <div class="quantity-wrapper">
                   <button type="button" class="qty-btn qty-minus" onclick="updateQuantity({{ forloop.index0 }}, -1)">−</button>
                   <input type="number" name="updates[]" id="updates_{{ item.key }}" value="{{ item.quantity }}" min="1" class="quantity-input" />
                   <button type="button" class="qty-btn qty-plus" onclick="updateQuantity({{ forloop.index0 }}, 1)">+</button>
                 </div>
-              </td>
-              <td class="product-total">
-                {% if item.original_line_price != item.line_price %}
-                  <s>{{ item.original_line_price | money }}</s><br>
-                {% endif %}
-                {{ item.line_price | money }}
-                {% for discount in item.discounts %}
-                  <div class="discount-label">{{ discount.title }}</div>
-                {% endfor %}
-              </td>
-            </tr>
-          {% endfor %}
-        </tbody>
-      </table>
+                <div class="product-total">
+                  {% if item.original_line_price != item.line_price %}
+                    <s>{{ item.original_line_price | money }}</s><br>
+                  {% endif %}
+                  {{ item.line_price | money }}
+                  {% for discount in item.discounts %}
+                    <div class="discount-label">{{ discount.title }}</div>
+                  {% endfor %}
+                </div>
+              </div>
+            </div>
+          </div>
+        {% endfor %}
+      </div>
 
       <div class="cart-totals">
         <p class="subtotal">Subtotal: {{ cart.total_price | money }}</p>
@@ -65,6 +56,7 @@
     <p class="empty-cart">🎈 Oops! Your cart is empty. Start exploring magical toys now!</p>
   </section>
 {% endif %}
+
 <script>
   function updateQuantity(index, change) {
     const inputs = document.querySelectorAll('.quantity-input');
