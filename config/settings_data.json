@@ -107,6 +107,7 @@
         "settings": {
           "hero_title": "Let's Play Together!",
           "hero_subtitle": "Got questions about our magical toys? Our friendly team is here to help!",
+          "hero_image": "shopify://shop_images/bachon-ka-adda.png",
           "hero_bg_gradient": "linear-gradient(135deg, #ff9a9e 0%, #fad0c4 100%)"
         }
       },
