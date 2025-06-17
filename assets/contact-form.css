@@ -49,18 +49,18 @@
     max-width: 300px;
     width: 100%;
 }
-.info-box h3 {
+.info-item h3 {
   margin-bottom: 10px;
   font-size: 1.2rem;
   color: #ffffff;
 }
 
-.info-box p {
+.info-item p {
   margin: 0;
   font-size: 1rem;
   color: #ffffff;
 }
-.info-box a {
+.info-item a {
   margin: 0;
   font-size: 1rem;
   color: #ffffff;
