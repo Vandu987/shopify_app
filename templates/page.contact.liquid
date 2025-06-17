@@ -1,1 +1,12 @@
-{% section 'custom-contact-section' %}
+{% comment %} Main contact page template {% endcomment %}
+<div class="contact-page">
+  {% section 'contact-hero' %}
+  
+  <div class="custom-contact-container">
+    {% section 'contact-info' %}
+    {% section 'contact-form' %}
+    {% section 'contact-map' %}
+  </div>
+</div>
+
+{{ 'contact-form.css' | asset_url | stylesheet_tag }}
