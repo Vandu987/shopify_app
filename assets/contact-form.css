@@ -105,7 +105,7 @@
 
 
 /* Submit Button */
-.contact-submit-btn {
+.submit-btn {
   background-color: #222;
   color: white;
   padding: 14px 20px;
@@ -117,7 +117,7 @@
   transition: background 0.3s;
 }
 
-.contact-submit-btn:hover {
+.submit-btn:hover {
   background-color: #444;
 }
 
