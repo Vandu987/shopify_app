@@ -66,8 +66,11 @@
         <input type="hidden" name="id" value="{{ current_variant.id }}">
       {% endif %}
 
-      <label for="Quantity">Quantity:</label>
-      <input type="number" id="Quantity" name="quantity" value="1" min="1">
+     <div class="quantity-wrapper">
+        <button type="button" class="qty-btn minus" onclick="changeQty(-1)">−</button>
+        <input type="number" id="Quantity" name="quantity" value="1" min="1">
+        <button type="button" class="qty-btn plus" onclick="changeQty(1)">+</button>
+      </div>
 
       {% if current_variant.available %}
         <button type="submit" name="add" id="AddToCart" class="btn add-to-cart">Add to Cart</button>
@@ -91,5 +94,15 @@
   </div>
 </div>
 </div>
+<script>
+  function changeQty(change) {
+    const qtyInput = document.getElementById('Quantity');
+    let current = parseInt(qtyInput.value) || 1;
+    current += change;
+    if (current < 1) current = 1;
+    qtyInput.value = current;
+  }
+</script>
+
 
 {{ 'product-page.css' | asset_url | stylesheet_tag }}
