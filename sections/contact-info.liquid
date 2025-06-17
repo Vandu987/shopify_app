@@ -1,0 +1,118 @@
+{% comment %} Contact information blocks {% endcomment %}
+<section class="contact-info">
+  {% for block in section.blocks %}
+    <div class="info-item" style="background: {{ block.settings.bg_color }};">
+      <div class="info-icon {{ block.settings.animation_style }}">
+        {% render block.settings.icon_snippet %}
+      </div>
+      <h3>{{ block.settings.title }}</h3>
+      {% if block.settings.link_url != blank %}
+        <a href="{{ block.settings.link_url }}" style="color: {{ block.settings.text_color }};">
+          {{ block.settings.content }}
+        </a>
+      {% else %}
+        <p style="color: {{ block.settings.text_color }};">{{ block.settings.content }}</p>
+      {% endif %}
+    </div>
+  {% endfor %}
+</section>
+
+{% schema %}
+{
+  "name": "Contact Information",
+  "blocks": [
+    {
+      "type": "contact_info",
+      "name": "Contact Information",
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title",
+          "default": "Visit Us"
+        },
+        {
+          "type": "text",
+          "id": "content",
+          "label": "Content",
+          "default": "123 Main Street, New Delhi, India"
+        },
+        {
+          "type": "url",
+          "id": "link_url",
+          "label": "Link URL"
+        },
+        {
+          "type": "text",
+          "id": "icon_snippet",
+          "label": "Icon Snippet Name",
+          "default": "icon-location"
+        },
+        {
+          "type": "select",
+          "id": "animation_style",
+          "label": "Animation Style",
+          "options": [
+            {"value": "spin", "label": "Spin"},
+            {"value": "float", "label": "Float"},
+            {"value": "shake", "label": "Shake"},
+            {"value": "none", "label": "None"}
+          ],
+          "default": "spin"
+        },
+        {
+          "type": "color",
+          "id": "bg_color",
+          "label": "Background Color",
+          "default": "#7b5cfa"
+        },
+        {
+          "type": "color",
+          "id": "text_color",
+          "label": "Text Color",
+          "default": "#ffffff"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Default Contact Info",
+      "blocks": [
+        {
+          "type": "contact_info",
+          "settings": {
+            "title": "Visit Our Toyland",
+            "content": "123 Play Street, New Delhi, India",
+            "icon_snippet": "icon-location",
+            "animation_style": "spin",
+            "bg_color": "#7b5cfa"
+          }
+        },
+        {
+          "type": "contact_info",
+          "settings": {
+            "title": "Send a Toygram",
+            "content": "play@toyland.com",
+            "link_url": "mailto:play@toyland.com",
+            "icon_snippet": "icon-email",
+            "animation_style": "float",
+            "bg_color": "#7b5cfa"
+          }
+        },
+        {
+          "type": "contact_info",
+          "settings": {
+            "title": "Call the Toy Hotline",
+            "content": "+91 12345 67890",
+            "link_url": "tel:+911234567890",
+            "icon_snippet": "icon-phone",
+            "animation_style": "shake",
+            "bg_color": "#7b5cfa"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

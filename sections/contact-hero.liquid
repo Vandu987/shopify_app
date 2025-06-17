@@ -1,0 +1,53 @@
+{% comment %} Hero section with dynamic content {% endcomment %}
+<section class="contact-hero" style="background: {{ section.settings.hero_bg_gradient }};">
+  <div class="hero-content">
+    <h1>{{ section.settings.hero_title }}</h1>
+    <p>{{ section.settings.hero_subtitle }}</p>
+    <div class="hero-icons">
+      {% for i in (1..3) %}
+        {% assign icon_setting = 'hero_icon_' | append: i %}
+        {% if section.settings[icon_setting] != blank %}
+          <div class="icon-bounce {% if forloop.index == 2 %}delay-1{% elsif forloop.index == 3 %}delay-2{% endif %}">
+            {% render icon_setting %}
+          </div>
+        {% endif %}
+      {% endfor %}
+    </div>
+  </div>
+  <div class="hero-image">
+    {% if section.settings.hero_image != blank %}
+      {{ section.settings.hero_image | image_url: width: 600 | image_tag: loading: 'lazy', alt: section.settings.hero_title }}
+    {% endif %}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Contact Hero",
+  "settings": [
+    {
+      "type": "text",
+      "id": "hero_title",
+      "label": "Hero Title",
+      "default": "Let's Play Together!"
+    },
+    {
+      "type": "text",
+      "id": "hero_subtitle",
+      "label": "Hero Subtitle",
+      "default": "Got questions about our magical toys? Our friendly team is here to help!"
+    },
+    {
+      "type": "image_picker",
+      "id": "hero_image",
+      "label": "Hero Image"
+    },
+    {
+      "type": "text",
+      "id": "hero_bg_gradient",
+      "label": "Hero Background Gradient",
+      "default": "linear-gradient(135deg, #ff9a9e 0%, #fad0c4 100%)"
+    }
+  ]
+}
+{% endschema %}

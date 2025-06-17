@@ -1,0 +1,67 @@
+{% comment %} Contact form section {% endcomment %}
+<section class="contact-form-section">
+  <div class="form-decoration left">
+    <img src="{{ 'toy-cloud.png' | asset_url }}" alt="Toy cloud" class="float-slow">
+  </div>
+  
+  {% form 'contact' %}
+    {% if form.posted_successfully? %}
+      <div class="contact-success">
+        {% render 'icon-success' %}
+        <h3>Hooray! Message Sent!</h3>
+        <p>Our toy experts will get back to you soon!</p>
+      </div>
+    {% endif %}
+
+    {{ form.errors | default_errors | replace: 'errors', 'oops! some fields need attention' }}
+
+    <div class="contact-form">
+      <h2 class="form-title">Send a Message to Toyland</h2>
+      
+      <div class="form-row">
+        <div class="form-group">
+          <label for="ContactFormName">Your Name</label>
+          <input type="text" id="ContactFormName" name="contact[name]" required placeholder="e.g. Rohan or Priya">
+          <div class="input-decoration teddy"></div>
+        </div>
+        <div class="form-group">
+          <label for="ContactFormEmail">Email Address</label>
+          <input type="email" id="ContactFormEmail" name="contact[email]" required placeholder="your@email.com">
+          <div class="input-decoration rocket"></div>
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div class="form-group">
+          <label for="ContactFormPhone">Phone Number</label>
+          <input type="tel" id="ContactFormPhone" name="contact[phone]" placeholder="+91 _________">
+          <div class="input-decoration car"></div>
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div class="form-group full-width">
+          <label for="ContactFormMessage">Your Message</label>
+          <textarea rows="6" id="ContactFormMessage" name="contact[body]" required placeholder="Tell us about your toy questions or ideas..."></textarea>
+          <div class="input-decoration blocks"></div>
+        </div>
+      </div>
+
+      <button type="submit" class="submit-btn">
+        <span>Send Message</span>
+        {% render 'icon-send' %}
+      </button>
+    </div>
+  {% endform %}
+  
+  <div class="form-decoration right">
+    <img src="{{ 'toy-balloon.png' | asset_url }}" alt="Toy balloon" class="float-fast">
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Contact Form",
+  "settings": []
+}
+{% endschema %}
