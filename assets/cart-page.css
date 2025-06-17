@@ -35,6 +35,8 @@
   font-size: 1.2rem;
   font-weight: bold;
   color: #333;
+  text-decoration: none;
+  margin-right: 20px;
 }
 
 .product-variant {
@@ -47,7 +49,7 @@
   margin-top: 8px;
   color: #ff4d4f;
   font-size: 0.9rem;
-  text-decoration: underline;
+  text-decoration: none;
 }
 
 .quantity-wrapper {
