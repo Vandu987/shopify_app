@@ -345,6 +345,7 @@ text-decoration: none;
 
 /* ==========================================  collection listing  ========================================== */
 .collection_section{
+  width: 100%;
     background: #fff9f2;
 }
 .collection-container {
