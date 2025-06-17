@@ -1,7 +1,12 @@
-.cart-wrapper {
+.cart-section {
   padding: 3rem 1rem;
   background: #fff9f2;
   animation: fadeIn 0.8s ease-in-out;
+}
+.cart-wrapper {
+ max-width: 1200px;
+    margin: 0 auto;
+    padding: 1rem;
 }
 
 .cart-title {
