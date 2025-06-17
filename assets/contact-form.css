@@ -103,11 +103,6 @@
   transition: border 0.3s;
 }
 
-.form-group input:focus,
-#ContactFormMessage:focus {
-  border-color: #999;
-  outline: none;
-}
 
 /* Submit Button */
 .contact-submit-btn {
