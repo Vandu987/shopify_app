@@ -19,7 +19,7 @@
 }
 .cart_container {
     display: flex;
-    align-items: stretch;
+    align-items: start;
     justify-content: space-between;
     gap: 4%;
 }
@@ -204,8 +204,7 @@
     width: 100%;
     }
   .cart-item {
-    flex-direction: column;
-    align-items: flex-start;
+    align-items: center;
   }
 
   .cart-item-pricing {
