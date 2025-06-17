@@ -4,6 +4,7 @@
 <div class="product-page-wrapper">
   <!-- Left Section: Product Images -->
   <div class="product-gallery">
+  <div class="image_view">
     <div class="main-image">
       <img id="ProductPhotoImg" src="{{ featured_image | img_url: '800x' }}" alt="{{ featured_image.alt | escape }}">
     </div>
@@ -12,7 +13,8 @@
         <img src="{{ image | img_url: '100x100' }}" alt="{{ image.alt | escape }}" class="thumb" onclick="document.getElementById('ProductPhotoImg').src='{{ image | img_url: '800x' }}'">
       {% endfor %}
     </div>
-    
+    </div>
+
      <!-- Product Description -->
     <div class="product-description">
       <h3>Product Description</h3>
