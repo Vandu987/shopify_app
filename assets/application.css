@@ -3,6 +3,7 @@ body {
     /* background-color: rgb(251, 251, 232); */
     margin: 0;
     padding: 0;
+      font-family: Comic Sans MS, cursive, sans-serif;
 }
 .homepage {
     text-align: center;
@@ -347,6 +348,7 @@ text-decoration: none;
 .collection_section{
   width: 100%;
     background: #fff9f2;
+    font-family: Comic Sans MS, cursive, sans-serif;
 }
 .collection-container {
     display: flex;
@@ -373,6 +375,7 @@ text-decoration: none;
     margin-bottom: 30px;
     border-bottom: 1px solid #e1e1e1;
     padding-bottom: 20px;
+    font-family: Comic Sans MS, cursive, sans-serif;
 }
 
 .filter-group h3 {
