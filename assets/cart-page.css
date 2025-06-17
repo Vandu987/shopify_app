@@ -35,12 +35,10 @@
   border-radius: 12px;
   box-shadow: 0 4px 12px rgba(0,0,0,0.05);
 }
-
 .cart-item-image img {
   width: 100px;
   border-radius: 10px;
 }
-
 .cart-item-details {
   flex: 1;
   display: flex;
