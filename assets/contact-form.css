@@ -106,7 +106,7 @@
 
 /* Submit Button */
 .submit-btn {
-  background-color: #222;
+  background-color: #ff6b6b;
   color: white;
   padding: 14px 20px;
   border: none;
@@ -118,7 +118,7 @@
 }
 
 .submit-btn:hover {
-  background-color: #444;
+  background-color: #df5f5f;
 }
 
 /* Google Map Section */
