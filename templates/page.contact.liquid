@@ -8,21 +8,34 @@
   {{ form.errors | default_errors }}
 
   <div class="contact-form-wrapper">
-    <label for="ContactFormName">Name</label>
-    <input type="text" id="ContactFormName" name="contact[name]" required>
 
-    <label for="ContactFormEmail">Email</label>
-    <input type="email" id="ContactFormEmail" name="contact[email]" required>
+    <div class="input-row">
+      <div class="input-group">
+        <label for="ContactFormName">Name</label>
+        <input type="text" id="ContactFormName" name="contact[name]" required>
+      </div>
 
-    <label for="ContactFormPhone">Phone</label>
-    <input type="tel" id="ContactFormPhone" name="contact[phone]">
+      <div class="input-group">
+        <label for="ContactFormEmail">Email</label>
+        <input type="email" id="ContactFormEmail" name="contact[email]" required>
+      </div>
+    </div>
 
-    <label for="ContactFormMessage">Message</label>
-    <textarea rows="6" id="ContactFormMessage" name="contact[body]" required></textarea>
+    <div class="input-row">
+      <div class="input-group">
+        <label for="ContactFormPhone">Phone</label>
+        <input type="tel" id="ContactFormPhone" name="contact[phone]">
+      </div>
+    </div>
+
+    <div class="input-row">
+      <label for="ContactFormMessage">Message</label>
+      <textarea rows="6" id="ContactFormMessage" name="contact[body]" required></textarea>
+    </div>
 
     <input type="submit" value="Send Message" class="contact-submit-btn">
   </div>
 {% endform %}
 
-<!-- Link external CSS file -->
+<!-- Link external CSS -->
 {{ 'contact-form.css' | asset_url | stylesheet_tag }}
