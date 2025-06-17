@@ -69,7 +69,7 @@
 }
 
 /* Flex rows */
-.input-row {
+.form-row {
   display: flex;
   flex-wrap: wrap;
   gap: 20px;
@@ -78,20 +78,20 @@
 }
 
 /* Fields */
-.input-group {
+.form-group {
   flex: 1 1 100%;
   display: flex;
   flex-direction: column;
 }
 
-.input-group label {
+.form-group label {
   margin-bottom: 6px;
   font-weight: 600;
   font-size: 1rem;
   color: #333;
 }
 
-.input-group input,
+.form-group input,
 #ContactFormMessage {
   width: 100%;
   padding: 12px 14px;
@@ -103,7 +103,7 @@
   transition: border 0.3s;
 }
 
-.input-group input:focus,
+.form-group input:focus,
 #ContactFormMessage:focus {
   border-color: #999;
   outline: none;
@@ -137,7 +137,7 @@
 
 /* Media Queries */
 @media (min-width: 768px) {
-  .input-group {
+  .form-group {
     flex: 1 1 calc(50% - 10px);
   }
 }
@@ -152,7 +152,7 @@
     width: 100%;
   }
 
-  .input-group {
+  .form-group {
     flex: 1 1 100%;
   }
 
