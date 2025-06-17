@@ -344,11 +344,16 @@ text-decoration: none;
 }
 
 /* ==========================================  collection listing  ========================================== */
+.collection_section{
+    background: #fff9f2;
+}
 .collection-container {
     display: flex;
     gap: 30px;
     margin-top: 30px;
     padding: 20px;
+    max-width: 1200px;
+    margin: auto;
 }
 
 .collection-sidebar {
