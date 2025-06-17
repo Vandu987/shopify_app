@@ -7,6 +7,12 @@
 *::after {
   box-sizing: border-box;
 }
+body {
+  background-color: #fff;
+    margin: 0;
+    padding: 0;
+    font-family: Comic Sans MS, cursive, sans-serif;
+}
 /* Base Styles */
 .contact-page {
   font-family: 'Comic Neue', 'Segoe UI', sans-serif;
