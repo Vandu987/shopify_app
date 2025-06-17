@@ -25,15 +25,6 @@
                   <input type="number" name="updates[]" id="updates_{{ item.key }}" value="{{ item.quantity }}" min="1" class="quantity-input" />
                   <button type="button" class="qty-btn qty-plus" onclick="updateQuantity({{ forloop.index0 }}, 1)">+</button>
                 </div>
-                <div class="product-total">
-                  {% if item.original_line_price != item.line_price %}
-                    <s>{{ item.original_line_price | money }}</s><br>
-                  {% endif %}
-                  {{ item.line_price | money }}
-                  {% for discount in item.discounts %}
-                    <div class="discount-label">{{ discount.title }}</div>
-                  {% endfor %}
-                </div>
               </div>
             </div>
           </div>

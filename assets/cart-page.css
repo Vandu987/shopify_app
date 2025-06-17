@@ -101,8 +101,7 @@
   padding: 6px;
 }
 
-.product-price,
-.product-total {
+.product-price {
   font-weight: 600;
   color: #333;
 }
