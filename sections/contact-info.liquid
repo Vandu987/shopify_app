@@ -3,7 +3,16 @@
   {% for block in section.blocks %}
     <div class="info-item" style="background: {{ block.settings.bg_color }};">
       <div class="info-icon {{ block.settings.animation_style }}">
-        {% render block.settings.icon_snippet %}
+        {% case block.settings.icon_snippet %}
+          {% when 'icon-location' %}
+            {% render 'icon-location' %}
+          {% when 'icon-mail' %}
+            {% render 'icon-mail' %}
+          {% when 'icon-phone' %}
+            {% render 'icon-phone' %}
+          {% else %}
+            <p style="color:red;">Icon "{{ block.settings.icon_snippet }}" not found</p>
+        {% endcase %}
       </div>
       <h3>{{ block.settings.title }}</h3>
       {% if block.settings.link_url != blank %}
@@ -16,6 +25,7 @@
     </div>
   {% endfor %}
 </section>
+
 
 {% schema %}
 {
@@ -95,7 +105,7 @@
             "title": "Send a Toygram",
             "content": "play@toyland.com",
             "link_url": "mailto:play@toyland.com",
-            "icon_snippet": "icon-email",
+            "icon_snippet": "icon-mail",
             "animation_style": "float",
             "bg_color": "#7b5cfa"
           }
