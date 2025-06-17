@@ -97,7 +97,7 @@
 }
 
 .qty-btn {
-  background-color: #06c;
+  background-color: #ff6f61;
   border: none;
   padding: 6px 10px 2px 10px;
   font-size: 1.2rem;
@@ -109,7 +109,7 @@
 }
 
 .qty-btn:hover {
-  background-color: rgb(19, 121, 223);
+  background-color: #e2554f;
 }
 
 .quantity-input {
@@ -153,7 +153,7 @@
     transition: all .3s ease-in-out;
 }
 .btn-update {
-  background: #ff6f61;
+  background: #06c;
   color: #ffffff;
   border: none;
 }
@@ -163,8 +163,10 @@
   color: white;
   border: none;
 }
-
-.btn-update:hover,.btn-checkout:hover {
+.btn-update:hover {
+    background: rgb(16, 107, 199);
+}
+.btn-checkout:hover {
   background: #e2554f;
 }
 
