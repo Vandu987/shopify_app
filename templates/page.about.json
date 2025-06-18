@@ -11,28 +11,6 @@
   "sections": {
     "main": {
       "type": "about-page",
-      "blocks": {
-        "hero_DmaAfq": {
-          "type": "hero",
-          "settings": {
-            "hero_image": "shopify://shop_images/6330053146.webp",
-            "hero_title": "Welcome to Our Toy World",
-            "hero_text": ""
-          }
-        },
-        "image_with_text_NNMaGy": {
-          "type": "image_with_text",
-          "settings": {
-            "img": "shopify://shop_images/7161033686.jpg",
-            "title": "about",
-            "text": ""
-          }
-        }
-      },
-      "block_order": [
-        "hero_DmaAfq",
-        "image_with_text_NNMaGy"
-      ],
       "settings": {}
     }
   },
