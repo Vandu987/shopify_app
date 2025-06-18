@@ -1,0 +1,90 @@
+<section class="about-us">
+  <div class="container about-flex">
+    <div class="about-text">
+      <h2>{{ section.settings.heading }}</h2>
+      <p>{{ section.settings.description }}</p>
+    </div>
+    {% if section.settings.image %}
+      <div class="about-image">
+        <img src="{{ section.settings.image | image_url: width: 600 }}" alt="About Us Image">
+      </div>
+    {% endif %}
+  </div>
+</section>
+
+<style>
+.about-us {
+  padding: 4rem 2rem;
+  background: #fdfdfd;
+  color: #333;
+}
+.about-flex {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  align-items: center;
+}
+.about-text {
+  max-width: 600px;
+  text-align: center;
+}
+.about-text h2 {
+  color: #ff6b6b;
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+}
+.about-text p {
+  font-size: 1.1rem;
+  line-height: 1.7;
+}
+.about-image img {
+  max-width: 100%;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Responsive row layout on desktop */
+@media(min-width: 768px) {
+  .about-flex {
+    flex-direction: row;
+    justify-content: space-between;
+    text-align: left;
+  }
+  .about-text, .about-image {
+    flex: 1;
+  }
+  .about-text {
+    padding-right: 2rem;
+  }
+}
+</style>
+
+{% schema %}
+{
+  "name": "About Us",
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Who We Are"
+    },
+    {
+      "type": "textarea",
+      "id": "description",
+      "label": "Description",
+      "default": "We are a passionate team committed to delivering high-quality products that make a difference."
+    },
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Right Side Image"
+    }
+  ],
+  "presets": [
+    {
+      "name": "About Us"
+    }
+  ]
+}
+{% endschema %}
