@@ -19,6 +19,7 @@
         "hero_AnaeVV": {
           "type": "hero",
           "settings": {
+            "hero_image": "shopify://shop_images/bachon-ka-adda.png",
             "hero_title": "Welcome to Our Toy World",
             "hero_text": "Where imagination comes to play! Discover magical toys that spark creativity and joy."
           }
