@@ -191,37 +191,55 @@
       "about-hero": {
         "type": "about-hero",
         "settings": {
-          "layout": "row",
-          "height_desktop": 80,
-          "height_mobile": 70,
-          "enable_animations": true,
-          "show_decorations": true,
-          "background_type": "gradient",
-          "color_primary": "#ff5e7d",
-          "color_secondary": "#47b8e0",
-          "background_gradient": "linear-gradient(135deg, #FF9A9E 0%, #FAD0C4 100%)",
-          "background_image": "shopify://shop_images/bachon-ka-adda.png",
-          "image_position": "center",
-          "video_url": "",
-          "pre_title": "Welcome to Toyland!",
-          "title": "Discover Magical Toys",
-          "title_size": 48,
-          "title_size_mobile": 36,
-          "subtitle": "<p>Where imagination comes to life through play</p>",
-          "subtitle_size": 20,
-          "subtitle_size_mobile": 16,
-          "text_color": "#ffffff",
-          "button_1_text": "Shop Now",
-          "button_1_link": "",
-          "button_bg_color": "#ffffff",
-          "button_text_color": "#ff5e7d",
-          "button_2_text": "Learn More",
-          "button_2_link": "",
-          "show_media": true,
-          "media_image": "shopify://shop_images/bachon-ka-adda_51cf270b-99d4-4222-85f5-4b08d7f54b16.png",
-          "image_radius": 20,
-          "image_rotate": -10
+          "title": "About Us",
+          "subtitle": "We believe in quality, trust, and style that lasts."
         }
+      },
+      "about-who-we-are": {
+        "type": "about-who-we-are",
+        "settings": {
+          "heading": "Who We Are",
+          "text": "We are a team passionate about delivering the best fashion and experiences."
+        }
+      },
+      "about-our-team": {
+        "type": "about-our-team",
+        "settings": {
+          "heading": "Meet Our Team",
+          "text": "Our team is committed to delivering a stylish and smooth experience for every customer."
+        }
+      },
+      "about-values": {
+        "type": "about-values",
+        "blocks": {
+          "value_aD39PH": {
+            "type": "value",
+            "settings": {
+              "title": "Our Mission",
+              "description": "To help people feel confident and stylish."
+            }
+          },
+          "value_hYrHPT": {
+            "type": "value",
+            "settings": {
+              "title": "Our Mission",
+              "description": "To help people feel confident and stylish."
+            }
+          },
+          "value_zJTEjd": {
+            "type": "value",
+            "settings": {
+              "title": "Our Mission",
+              "description": "To help people feel confident and stylish."
+            }
+          }
+        },
+        "block_order": [
+          "value_aD39PH",
+          "value_hYrHPT",
+          "value_zJTEjd"
+        ],
+        "settings": {}
       }
     },
     "content_for_index": []
