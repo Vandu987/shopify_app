@@ -1,12 +1,13 @@
-<section class="about-cta" id="{{ section.id }}">
-  <div class="container cta-content">
-    <div class="cta-text">
-      <h2>{{ section.settings.heading }}</h2>
-      <p>{{ section.settings.subtext }}</p>
-
+<!-- File: sections/about-cta.liquid -->
+<section class="vibecart-about-cta" id="{{ section.id }}">
+  <div class="vibecart-cta-container">
+    <div class="vibecart-cta-content">
+      <h2 class="vibecart-cta-heading">{{ section.settings.heading | default: "Ready to work with us?" }}</h2>
+      <p class="vibecart-cta-text">{{ section.settings.subtext | default: "Contact us today and let's bring your vision to life!" }}</p>
+      
       {% if section.settings.button_text != blank %}
-        <a href="{{ section.settings.button_link }}" class="cta-button">
-          {{ section.settings.button_text }}
+        <a href="{{ section.settings.button_link | default: '/contact' }}" class="vibecart-cta-button">
+          {{ section.settings.button_text | escape }}
         </a>
       {% endif %}
     </div>
@@ -14,58 +15,77 @@
 </section>
 
 <style>
-  #{{ section.id }}.about-cta {
+  #{{ section.id }}.vibecart-about-cta {
     padding: 4rem 2rem;
-    background: {{ section.settings.bg_color }};
-    color: {{ section.settings.text_color }};
+    background: {{ section.settings.bg_color | default: '#ff6b6b' }};
+    color: {{ section.settings.text_color | default: '#ffffff' }};
     text-align: center;
+    font-family: 'Helvetica Neue', Arial, sans-serif;
   }
 
-  .cta-content {
-    max-width: 800px;
+  #{{ section.id }} .vibecart-cta-container {
+    max-width: 1200px;
     margin: 0 auto;
+    padding: 0 15px;
   }
 
-  .cta-text h2 {
-    font-size: {{ section.settings.heading_size }};
+  #{{ section.id }} .vibecart-cta-heading {
+    font-size: {{ section.settings.heading_size | default: '2rem' }};
     margin-bottom: 1rem;
+    color: inherit;
+    font-weight: 700;
+    line-height: 1.2;
   }
 
-  .cta-text p {
-    font-size: {{ section.settings.subtext_size }};
+  #{{ section.id }} .vibecart-cta-text {
+    font-size: {{ section.settings.subtext_size | default: '1.1rem' }};
     margin-bottom: 2rem;
+    color: inherit;
+    line-height: 1.6;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
   }
 
-  .cta-button {
-    background: {{ section.settings.button_bg_color }};
-    color: {{ section.settings.button_text_color }};
-    padding: 0.8rem 1.6rem;
+  #{{ section.id }} .vibecart-cta-button {
+    display: inline-block;
+    padding: 12px 24px;
+    background: {{ section.settings.button_bg_color | default: '#ffffff' }};
+    color: {{ section.settings.button_text_color | default: '#ff6b6b' }};
     border-radius: 8px;
     font-weight: bold;
     text-decoration: none;
-    display: inline-block;
     transition: all 0.3s ease;
+    border: 2px solid transparent;
+    cursor: pointer;
   }
 
-  .cta-button:hover {
-    background: {{ section.settings.button_hover_bg_color }};
+  #{{ section.id }} .vibecart-cta-button:hover {
+    background: {{ section.settings.button_hover_bg_color | default: '#f1f1f1' }};
     transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
   }
 
   @media (max-width: 768px) {
-    .about-cta {
+    #{{ section.id }}.vibecart-about-cta {
       padding: 2rem 1rem;
     }
-    .cta-text h2 {
+    
+    #{{ section.id }} .vibecart-cta-heading {
       font-size: 1.5rem;
+    }
+    
+    #{{ section.id }} .vibecart-cta-button {
+      padding: 10px 20px;
     }
   }
 </style>
 
 {% schema %}
 {
-  "name": "About CTA",
+  "name": "Vibecart About CTA",
   "tag": "section",
+  "class": "vibecart-section",
   "settings": [
     {
       "type": "text",
@@ -90,6 +110,10 @@
       "id": "button_link",
       "label": "Button Link",
       "default": "/contact"
+    },
+    {
+      "type": "header",
+      "content": "Color Settings"
     },
     {
       "type": "color",
@@ -122,13 +146,26 @@
       "default": "#f1f1f1"
     },
     {
+      "type": "header",
+      "content": "Typography"
+    },
+    {
       "type": "select",
       "id": "heading_size",
       "label": "Heading Size",
       "options": [
-        { "value": "1.5rem", "label": "Small" },
-        { "value": "2rem", "label": "Medium" },
-        { "value": "2.5rem", "label": "Large" }
+        {
+          "value": "1.5rem",
+          "label": "Small"
+        },
+        {
+          "value": "2rem",
+          "label": "Medium"
+        },
+        {
+          "value": "2.5rem",
+          "label": "Large"
+        }
       ],
       "default": "2rem"
     },
@@ -137,17 +174,32 @@
       "id": "subtext_size",
       "label": "Subtext Size",
       "options": [
-        { "value": "0.9rem", "label": "Small" },
-        { "value": "1.1rem", "label": "Medium" },
-        { "value": "1.3rem", "label": "Large" }
+        {
+          "value": "0.9rem",
+          "label": "Small"
+        },
+        {
+          "value": "1.1rem",
+          "label": "Medium"
+        },
+        {
+          "value": "1.3rem",
+          "label": "Large"
+        }
       ],
       "default": "1.1rem"
     }
   ],
   "presets": [
     {
-      "name": "About CTA",
-      "category": "Custom"
+      "name": "Vibecart About CTA",
+      "category": "Custom Sections",
+      "settings": {
+        "heading": "Ready to work with us?",
+        "subtext": "Contact us today and let's bring your vision to life!",
+        "button_text": "Contact Us",
+        "button_link": "/contact"
+      }
     }
   ]
 }
