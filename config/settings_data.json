@@ -202,13 +202,6 @@
           "text": "We are a team passionate about delivering the best fashion and experiences."
         }
       },
-      "about-our-team": {
-        "type": "about-our-team",
-        "settings": {
-          "heading": "Meet Our Team",
-          "text": "Our team is committed to delivering a stylish and smooth experience for every customer."
-        }
-      },
       "about-values": {
         "type": "about-values",
         "blocks": {
