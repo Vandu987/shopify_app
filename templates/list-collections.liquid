@@ -1,6 +1,7 @@
 {% for collection in collections %}
   {% unless collection.handle == 'frontpage' %}
     {% capture collection_title %}{{ collection.title | escape }}{% endcapture %}
+    <h2>hello</h2>
     <a href="{{ collection.url }}">More {{ collection_title }} &rsaquo;</a>
     {% for product in collection.products limit:5 %}
       {% assign grid_item_width = 'large--one-fifth medium--one-half' %}
