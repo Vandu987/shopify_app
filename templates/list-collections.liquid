@@ -1,18 +1,105 @@
+<style>
+  .collection-wrapper {
+    margin-bottom: 3rem;
+  }
+
+  .collection-title {
+    font-size: 1.6rem;
+    font-weight: bold;
+    margin-bottom: 1rem;
+    color: #222;
+    text-decoration: none;
+    display: inline-block;
+  }
+
+  .products-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+  }
+
+  .product-card {
+    background: #fff;
+    border: 1px solid #eee;
+    border-radius: 8px;
+    width: calc(20% - 1.2rem);
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    transition: transform 0.2s ease;
+    text-align: center;
+    padding: 1rem;
+  }
+
+  .product-card:hover {
+    transform: translateY(-5px);
+  }
+
+  .product-card img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 4px;
+    margin-bottom: 0.8rem;
+  }
+
+  .product-title {
+    font-size: 1rem;
+    font-weight: 500;
+    margin-bottom: 0.4rem;
+    color: #333;
+  }
+
+  .product-price {
+    font-size: 1rem;
+    font-weight: bold;
+    color: #06c;
+    margin-bottom: 0.4rem;
+  }
+
+  .sold-out {
+    display: inline-block;
+    margin-top: 0.5rem;
+    padding: 0.2rem 0.5rem;
+    background: #e53935;
+    color: #fff;
+    font-size: 0.85rem;
+    border-radius: 4px;
+  }
+
+  @media (max-width: 768px) {
+    .product-card {
+      width: calc(50% - 1.2rem);
+    }
+  }
+
+  @media (max-width: 480px) {
+    .product-card {
+      width: 100%;
+    }
+  }
+</style>
+
 {% for collection in collections %}
   {% unless collection.handle == 'frontpage' %}
     {% capture collection_title %}{{ collection.title | escape }}{% endcapture %}
-    <h2>hello</h2>
-    <a href="{{ collection.url }}">More {{ collection_title }} &rsaquo;</a>
-    {% for product in collection.products limit:5 %}
-      {% assign grid_item_width = 'large--one-fifth medium--one-half' %}
-      <div>
-        <a href="{{ product.url | within: collection }}">{{ product.title }}</a>
-        {{ product.price | money }}
-        {% unless product.available %}<br><strong>sold out</strong>{% endunless %}
-        <a href="{{ product.url | within: collection }}">
-          <img src="{{ product.featured_image.src | img_url: 'large' }}" alt="{{ product.featured_image.alt | escape }}">
-        </a>
+
+    <div class="collection-wrapper">
+      <a href="{{ collection.url }}" class="collection-title">More {{ collection_title }} &rsaquo;</a>
+
+      <div class="products-grid">
+        {% for product in collection.products limit:5 %}
+          <div class="product-card">
+            <a href="{{ product.url | within: collection }}">
+              <img src="{{ product.featured_image.src | img_url: 'large' }}" alt="{{ product.featured_image.alt | escape }}">
+            </a>
+            <div class="product-title">
+              <a href="{{ product.url | within: collection }}">{{ product.title }}</a>
+            </div>
+            <div class="product-price">{{ product.price | money }}</div>
+            {% unless product.available %}
+              <div class="sold-out">Sold Out</div>
+            {% endunless %}
+          </div>
+        {% endfor %}
       </div>
-    {% endfor %}
+    </div>
   {% endunless %}
 {% endfor %}
