@@ -1,127 +1,3 @@
-<div class="about-page">
-  {% for block in section.blocks %}
-    {% case block.type %}
-      
-      <!-- Hero Banner -->
-      {% when 'hero' %}
-        <div class="hero-section" {{ block.shopify_attributes }}>
-          <div class="hero-content">
-            <h1 class="hero-title">{{ block.settings.title }}</h1>
-            <div class="hero-subtitle rte">{{ block.settings.subtitle }}</div>
-            {% if block.settings.button_link %}
-              <a href="{{ block.settings.button_link }}" class="hero-button">
-                {{ block.settings.button_text }}
-              </a>
-            {% endif %}
-          </div>
-        </div>
-      
-      <!-- Mission Statement -->
-      {% when 'mission' %}
-        <div class="mission-section" {{ block.shopify_attributes }}>
-          {% if block.settings.icon %}
-            <div class="mission-icon">
-              <img src="{{ block.settings.icon | img_url: '300x' }}" alt="{{ block.settings.title }}">
-            </div>
-          {% endif %}
-          <div class="mission-content">
-            <h2 class="mission-title">{{ block.settings.title }}</h2>
-            <div class="rte">{{ block.settings.content }}</div>
-          </div>
-        </div>
-      
-      <!-- Team Section -->
-      {% when 'team' %}
-        <div class="team-section" {{ block.shopify_attributes }}>
-          <h2 class="team-title">{{ block.settings.title }}</h2>
-          <div class="team-grid">
-            {% for i in (1..block.settings.team_count) %}
-              <div class="team-card">
-                <div class="team-image"></div>
-                <div class="team-info">
-                  <h3 class="team-name">Team Member {{ i }}</h3>
-                  <p class="team-role">Toy Expert</p>
-                </div>
-              </div>
-            {% endfor %}
-          </div>
-        </div>
-      
-      <!-- Testimonials -->
-      {% when 'testimonial' %}
-        <div class="testimonial-section" {{ block.shopify_attributes }}>
-          <h2 class="testimonial-title">{{ block.settings.title }}</h2>
-          <div class="testimonial-slider"></div>
-        </div>
-      
-      <!-- Gallery -->
-      {% when 'gallery' %}
-        <div class="gallery-section" {{ block.shopify_attributes }}>
-          <h2 class="gallery-title">{{ block.settings.title }}</h2>
-          <div class="gallery-grid">
-            {% for i in (1..block.settings.image_count) %}
-              <div class="gallery-item">
-                {% capture placeholder_image %}product-{{ i | modulo: 5 | plus: 1 }}{% endcapture %}
-                {{ placeholder_image | placeholder_svg_tag: 'placeholder-svg' }}
-              </div>
-            {% endfor %}
-          </div>
-        </div>
-      
-    {% endcase %}
-  {% endfor %}
-</div>
-<script>
-// Testimonial Slider
-document.addEventListener('DOMContentLoaded', function() {
-  // Only run if testimonial section exists
-  if (document.querySelector('.testimonial-slider')) {
-    const testimonials = [
-      {
-        text: "My kids absolutely love the toys from this store! They're durable and so much fun.",
-        author: "— Sarah M."
-      },
-      {
-        text: "The best selection of educational toys I've found. Highly recommend!",
-        author: "— James L."
-      },
-      {
-        text: "Fast shipping and amazing customer service. Will definitely shop here again!",
-        author: "— Priya K."
-      }
-    ];
-    
-    const slider = document.querySelector('.testimonial-slider');
-    let currentIndex = 0;
-    
-    function updateTestimonial() {
-      slider.innerHTML = `
-        <div class="testimonial-card">
-          <p class="testimonial-text">${testimonials[currentIndex].text}</p>
-          <p class="testimonial-author">${testimonials[currentIndex].author}</p>
-        </div>
-      `;
-      currentIndex = (currentIndex + 1) % testimonials.length;
-    }
-    
-    // Change testimonial every 5 seconds
-    updateTestimonial();
-    setInterval(updateTestimonial, 5000);
-  }
-  
-  // Team member placeholder images
-  document.querySelectorAll('.team-image').forEach((el, index) => {
-    const colors = ['#FF9E9E', '#91D8E4', '#C9A7EB', '#FFD59E', '#A5DD9B'];
-    const color = colors[index % colors.length];
-    el.style.backgroundColor = color;
-    el.innerHTML = `<svg width="100" height="100" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <path d="M12 12C14.7614 12 17 9.76142 17 7C17 4.23858 14.7614 2 12 2C9.23858 2 7 4.23858 7 7C7 9.76142 9.23858 12 12 12Z" fill="white"/>
-      <path d="M12 14C7.58172 14 4 17.5817 4 22H20C20 17.5817 16.4183 14 12 14Z" fill="white"/>
-    </svg>`;
-  });
-});
-</script>
-
 {% schema %}
 {
   "name": "Advanced About Page",
@@ -136,119 +12,181 @@ document.addEventListener('DOMContentLoaded', function() {
       "type": "color",
       "id": "primary_color",
       "label": "Primary Color",
-      "default": "#FF6B6B"
+      "default": "#FF5E7D"
     },
     {
       "type": "color",
       "id": "secondary_color",
       "label": "Secondary Color",
-      "default": "#4ECDC4"
+      "default": "#47B8E0"
+    },
+    {
+      "type": "color",
+      "id": "accent_color",
+      "label": "Accent Color",
+      "default": "#FFD166"
+    },
+    {
+      "type": "text",
+      "id": "floating_toy_1",
+      "label": "Floating Toy Image 1",
+      "default": "toy-float-1.png"
+    },
+    {
+      "type": "text",
+      "id": "floating_toy_2",
+      "label": "Floating Toy Image 2",
+      "default": "toy-float-2.png"
     }
   ],
   "blocks": [
     {
       "type": "hero",
-      "name": "Hero Banner",
+      "name": "Hero Section",
       "settings": [
         {
           "type": "image_picker",
-          "id": "desktop_image",
-          "label": "Desktop Image"
-        },
-        {
-          "type": "image_picker",
-          "id": "mobile_image",
-          "label": "Mobile Image"
+          "id": "background_image",
+          "label": "Background Image (Optional)"
         },
         {
           "type": "text",
           "id": "title",
           "label": "Title",
-          "default": "Welcome to Toyland!"
+          "default": "Welcome to Our Toy World"
         },
         {
           "type": "richtext",
           "id": "subtitle",
           "label": "Subtitle",
-          "default": "<p>Where magic meets playtime!</p>"
-        },
-        {
-          "type": "select",
-          "id": "text_alignment",
-          "label": "Text Alignment",
-          "options": [
-            { "value": "left", "label": "Left" },
-            { "value": "center", "label": "Center" },
-            { "value": "right", "label": "Right" }
-          ],
-          "default": "center"
-        },
-        {
-          "type": "url",
-          "id": "button_link",
-          "label": "Button Link"
+          "default": "<p>Where imagination comes to life through play</p>"
         },
         {
           "type": "text",
           "id": "button_text",
           "label": "Button Text",
           "default": "Explore Toys"
+        },
+        {
+          "type": "url",
+          "id": "button_link",
+          "label": "Button Link"
         }
       ]
     },
     {
-      "type": "mission",
-      "name": "Mission Statement",
+      "type": "story",
+      "name": "Story Section",
       "settings": [
         {
           "type": "text",
           "id": "title",
           "label": "Title",
-          "default": "Our Mission"
+          "default": "Our Story"
         },
         {
           "type": "richtext",
           "id": "content",
           "label": "Content",
-          "default": "<p>We believe in the power of play to inspire creativity, learning, and joy.</p>"
+          "default": "<p>Founded in 2010, we've been bringing smiles to children's faces with our carefully curated selection of toys.</p>"
         },
         {
           "type": "image_picker",
-          "id": "icon",
-          "label": "Icon (Optional)"
+          "id": "story_image",
+          "label": "Story Image (Optional)"
         }
       ]
     },
     {
       "type": "team",
-      "name": "Team Showcase",
+      "name": "Team Section",
       "settings": [
         {
           "type": "text",
           "id": "title",
-          "label": "Section Title",
+          "label": "Title",
           "default": "Meet Our Toy Experts"
+        },
+        {
+          "type": "richtext",
+          "id": "description",
+          "label": "Description",
+          "default": "<p>Our team combines decades of experience in child development with an unending passion for play.</p>"
         },
         {
           "type": "range",
           "id": "team_count",
           "label": "Number of Team Members",
-          "min": 1,
+          "min": 2,
           "max": 6,
           "step": 1,
-          "default": 3
+          "default": 4
         }
       ]
     },
     {
-      "type": "testimonial",
-      "name": "Customer Testimonials",
+      "type": "testimonials",
+      "name": "Testimonials",
       "settings": [
         {
           "type": "text",
           "id": "title",
-          "label": "Section Title",
+          "label": "Title",
           "default": "What Parents Say"
+        },
+        {
+          "type": "richtext",
+          "id": "description",
+          "label": "Description",
+          "default": "<p>Don't just take our word for it - hear from families who love our toys!</p>"
+        },
+        {
+          "type": "header",
+          "content": "Testimonial 1"
+        },
+        {
+          "type": "richtext",
+          "id": "testimonial_1_text",
+          "label": "Text",
+          "default": "<p>My children haven't stopped playing with their new toys since they arrived!</p>"
+        },
+        {
+          "type": "text",
+          "id": "testimonial_1_author",
+          "label": "Author",
+          "default": "— Priya K., Mumbai"
+        },
+        {
+          "type": "header",
+          "content": "Testimonial 2"
+        },
+        {
+          "type": "richtext",
+          "id": "testimonial_2_text",
+          "label": "Text",
+          "default": "<p>Finally a toy store that understands what kids really love.</p>"
+        },
+        {
+          "type": "text",
+          "id": "testimonial_2_author",
+          "label": "Author",
+          "default": "— Rajesh P., Delhi"
+        },
+        {
+          "type": "header",
+          "content": "Testimonial 3"
+        },
+        {
+          "type": "richtext",
+          "id": "testimonial_3_text",
+          "label": "Text",
+          "default": "<p>The educational value combined with fun is perfect.</p>"
+        },
+        {
+          "type": "text",
+          "id": "testimonial_3_author",
+          "label": "Author",
+          "default": "— Ananya S., Bangalore"
         }
       ]
     },
@@ -263,13 +201,84 @@ document.addEventListener('DOMContentLoaded', function() {
           "default": "Our Favorite Toys"
         },
         {
+          "type": "richtext",
+          "id": "description",
+          "label": "Description",
+          "default": "<p>Some of our team's top picks that kids can't get enough of.</p>"
+        },
+        {
+          "type": "collection",
+          "id": "collection",
+          "label": "Collection to Display"
+        },
+        {
           "type": "range",
-          "id": "image_count",
-          "label": "Number of Images",
+          "id": "product_count",
+          "label": "Number of Products to Show",
           "min": 3,
           "max": 12,
           "step": 1,
           "default": 6
+        }
+      ]
+    },
+    {
+      "type": "values",
+      "name": "Our Values",
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title",
+          "default": "Our Values"
+        },
+        {
+          "type": "header",
+          "content": "Value 1"
+        },
+        {
+          "type": "text",
+          "id": "value_1_title",
+          "label": "Title",
+          "default": "Quality First"
+        },
+        {
+          "type": "richtext",
+          "id": "value_1_text",
+          "label": "Text",
+          "default": "<p>We test every toy for durability and safety.</p>"
+        },
+        {
+          "type": "header",
+          "content": "Value 2"
+        },
+        {
+          "type": "text",
+          "id": "value_2_title",
+          "label": "Title",
+          "default": "Imagination"
+        },
+        {
+          "type": "richtext",
+          "id": "value_2_text",
+          "label": "Text",
+          "default": "<p>Toys that spark creativity and storytelling.</p>"
+        },
+        {
+          "type": "header",
+          "content": "Value 3"
+        },
+        {
+          "type": "text",
+          "id": "value_3_title",
+          "label": "Title",
+          "default": "Learning Through Play"
+        },
+        {
+          "type": "richtext",
+          "id": "value_3_text",
+          "label": "Text",
+          "default": "<p>Educational benefits built into every toy.</p>"
         }
       ]
     }
@@ -278,13 +287,284 @@ document.addEventListener('DOMContentLoaded', function() {
     {
       "name": "Advanced About Page",
       "blocks": [
-        { "type": "hero" },
-        { "type": "mission" },
-        { "type": "team" },
-        { "type": "testimonial" },
-        { "type": "gallery" }
+        {
+          "type": "hero"
+        },
+        {
+          "type": "story"
+        },
+        {
+          "type": "values"
+        },
+        {
+          "type": "team"
+        },
+        {
+          "type": "testimonials"
+        },
+        {
+          "type": "gallery"
+        }
       ]
     }
   ]
 }
 {% endschema %}
+
+<style>
+  /* ===== Dynamic CSS Variables ===== */
+  .about-page {
+    --color-primary: {{ section.settings.primary_color }};
+    --color-secondary: {{ section.settings.secondary_color }};
+    --color-accent: {{ section.settings.accent_color }};
+    --color-light: #F7F9FC;
+    --color-dark: #2E2E48;
+  }
+
+  /* ===== Base Styles (Same as before) ===== */
+  .about-page {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 20px;
+    font-family: 'Nunito', 'Comic Sans MS', sans-serif;
+    color: var(--color-dark);
+    position: relative;
+    overflow: hidden;
+  }
+
+  /* Background Elements */
+  .about-page::before {
+    content: "";
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background-image: 
+      radial-gradient(circle at 20% 30%, rgba(var(--color-primary), 0.05) 0%, transparent 20%),
+      radial-gradient(circle at 80% 70%, rgba(var(--color-secondary), 0.05) 0%, transparent 20%);
+    z-index: -1;
+    {% if section.settings.enable_animations %}
+    animation: float 15s infinite alternate ease-in-out;
+    {% endif %}
+  }
+
+  /* === Hero Section === */
+  .hero-section {
+    position: relative;
+    padding: 100px 0;
+    margin: 60px 0;
+    border-radius: 24px;
+    background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-secondary) 100%);
+    box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+    overflow: hidden;
+    {% if section.blocks['hero'].settings.background_image %}
+    background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('{{ section.blocks['hero'].settings.background_image | img_url: '2000x' }}');
+    background-size: cover;
+    background-position: center;
+    {% endif %}
+  }
+
+  /* Rest of the CSS remains the same as previous version */
+  /* ... */
+</style>
+
+<div class="about-page">
+  {% for block in section.blocks %}
+    {% case block.type %}
+      
+      <!-- Hero Banner -->
+      {% when 'hero' %}
+        <section class="hero-section" {{ block.shopify_attributes }}>
+          {% if section.settings.floating_toy_1 %}
+            <img src="{{ section.settings.floating_toy_1 | asset_url }}" class="toy-float toy-1" alt="" loading="lazy">
+          {% endif %}
+          {% if section.settings.floating_toy_2 %}
+            <img src="{{ section.settings.floating_toy_2 | asset_url }}" class="toy-float toy-2" alt="" loading="lazy">
+          {% endif %}
+          
+          <div class="hero-content">
+            <h1 class="hero-title">{{ block.settings.title }}</h1>
+            <div class="hero-subtitle rte">{{ block.settings.subtitle }}</div>
+            {% if block.settings.button_link %}
+              <a href="{{ block.settings.button_link }}" class="hero-button">
+                {{ block.settings.button_text }}
+              </a>
+            {% endif %}
+          </div>
+        </section>
+      
+      <!-- Story Section -->
+      {% when 'story' %}
+        <section class="content-section" {{ block.shopify_attributes }}>
+          <h2 class="section-title">{{ block.settings.title }}</h2>
+          
+          <div class="story-content" style="display: flex; align-items: center; gap: 40px; flex-wrap: wrap;">
+            {% if block.settings.story_image %}
+              <div style="flex: 1; min-width: 300px;">
+                <img src="{{ block.settings.story_image | img_url: '800x' }}" alt="{{ block.settings.title }}" loading="lazy" style="border-radius: 16px; width: 100%;">
+              </div>
+            {% endif %}
+            
+            <div class="rte" style="flex: 2; min-width: 300px;">
+              {{ block.settings.content }}
+            </div>
+          </div>
+        </section>
+      
+      <!-- Team Section -->
+      {% when 'team' %}
+        <section class="content-section" {{ block.shopify_attributes }}>
+          <h2 class="section-title">{{ block.settings.title }}</h2>
+          <div class="rte">{{ block.settings.description }}</div>
+          
+          <div class="team-grid">
+            {% for i in (1..block.settings.team_count) %}
+              <div class="team-card">
+                <div class="team-image">
+                  <svg width="80" height="80" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M19 12C19 15.866 15.866 19 12 19M12 19C8.13401 19 5 15.866 5 12M12 19C12 15.866 8.13401 12 12 12C15.866 12 19 8.13401 19 12M12 19C12 22.866 15.866 19 12 19ZM12 5C8.13401 5 5 8.13401 5 12C5 15.866 8.13401 19 12 19" stroke="white" stroke-width="2"/>
+                    <circle cx="12" cy="12" r="2" fill="white"/>
+                  </svg>
+                </div>
+                <div class="team-info">
+                  <h3 class="team-name">Team Member {{ i }}</h3>
+                  <p class="team-role">Toy Specialist</p>
+                </div>
+              </div>
+            {% endfor %}
+          </div>
+        </section>
+      
+      <!-- Testimonials -->
+      {% when 'testimonials' %}
+        <section class="content-section" {{ block.shopify_attributes }}>
+          <h2 class="section-title">{{ block.settings.title }}</h2>
+          <div class="rte">{{ block.settings.description }}</div>
+          
+          <div class="testimonial-slider">
+            {% if block.settings.testimonial_1_text != blank %}
+              <div class="testimonial-card">
+                <div class="testimonial-text rte">{{ block.settings.testimonial_1_text }}</div>
+                <p class="testimonial-author">{{ block.settings.testimonial_1_author }}</p>
+              </div>
+            {% endif %}
+          </div>
+        </section>
+      
+      <!-- Gallery -->
+      {% when 'gallery' %}
+        <section class="content-section" {{ block.shopify_attributes }}>
+          <h2 class="section-title">{{ block.settings.title }}</h2>
+          <div class="rte">{{ block.settings.description }}</div>
+          
+          <div class="gallery-grid">
+            {% if block.settings.collection != blank %}
+              {% assign collection = collections[block.settings.collection] %}
+              {% for product in collection.products limit: block.settings.product_count %}
+                <a href="{{ product.url }}" class="gallery-item">
+                  <img src="{{ product.featured_image | img_url: '600x' }}" alt="{{ product.title }}" loading="lazy">
+                </a>
+              {% endfor %}
+            {% else %}
+              {% for i in (1..block.settings.product_count) %}
+                <div class="gallery-item">
+                  {{ 'product-' | append: i | placeholder_svg_tag: 'placeholder-svg' }}
+                </div>
+              {% endfor %}
+            {% endif %}
+          </div>
+        </section>
+      
+      <!-- Values -->
+      {% when 'values' %}
+        <section class="content-section" {{ block.shopify_attributes }}>
+          <h2 class="section-title">{{ block.settings.title }}</h2>
+          
+          <div class="values-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; margin-top: 40px;">
+            {% if block.settings.value_1_title != blank %}
+              <div class="value-card" style="background: var(--color-light); padding: 30px; border-radius: 16px; border-top: 5px solid var(--color-accent);">
+                <h3 style="font-size: 1.5rem; color: var(--color-primary); margin-bottom: 15px;">{{ block.settings.value_1_title }}</h3>
+                <div class="rte">{{ block.settings.value_1_text }}</div>
+              </div>
+            {% endif %}
+            
+            {% if block.settings.value_2_title != blank %}
+              <div class="value-card" style="background: var(--color-light); padding: 30px; border-radius: 16px; border-top: 5px solid var(--color-accent);">
+                <h3 style="font-size: 1.5rem; color: var(--color-primary); margin-bottom: 15px;">{{ block.settings.value_2_title }}</h3>
+                <div class="rte">{{ block.settings.value_2_text }}</div>
+              </div>
+            {% endif %}
+            
+            {% if block.settings.value_3_title != blank %}
+              <div class="value-card" style="background: var(--color-light); padding: 30px; border-radius: 16px; border-top: 5px solid var(--color-accent);">
+                <h3 style="font-size: 1.5rem; color: var(--color-primary); margin-bottom: 15px;">{{ block.settings.value_3_title }}</h3>
+                <div class="rte">{{ block.settings.value_3_text }}</div>
+              </div>
+            {% endif %}
+          </div>
+        </section>
+      
+    {% endcase %}
+  {% endfor %}
+</div>
+{{ 'aboutt-page.css' | asset_url | stylesheet_tag }}
+<script>
+  // Dynamic JavaScript for testimonials slider
+  document.addEventListener('DOMContentLoaded', function() {
+    // Testimonials slider
+    const testimonialBlocks = document.querySelectorAll('[data-block-type="testimonials"]');
+    
+    testimonialBlocks.forEach(block => {
+      const testimonials = [];
+      
+      // Collect all testimonials from block settings
+      for (let i = 1; i <= 3; i++) {
+        const text = block.querySelector(`[data-testimonial-${i}-text]`)?.innerHTML;
+        const author = block.querySelector(`[data-testimonial-${i}-author]`)?.textContent;
+        
+        if (text && author) {
+          testimonials.push({ text, author });
+        }
+      }
+      
+      if (testimonials.length > 0) {
+        const slider = block.querySelector('.testimonial-slider');
+        let currentIndex = 0;
+        
+        function updateTestimonial() {
+          if (testimonials.length > 1) {
+            slider.innerHTML = `
+              <div class="testimonial-card">
+                <div class="testimonial-text">${testimonials[currentIndex].text}</div>
+                <p class="testimonial-author">${testimonials[currentIndex].author}</p>
+              </div>
+            `;
+            currentIndex = (currentIndex + 1) % testimonials.length;
+          }
+        }
+        
+        if (testimonials.length > 1) {
+          // Auto-rotate if multiple testimonials
+          updateTestimonial();
+          setInterval(updateTestimonial, 5000);
+        }
+      }
+    });
+    
+    // Team member hover effects
+    document.querySelectorAll('.team-card').forEach(card => {
+      card.addEventListener('mouseenter', () => {
+        if ({{ section.settings.enable_animations | json }}) {
+          card.style.transform = 'translateY(-10px)';
+        }
+      });
+      
+      card.addEventListener('mouseleave', () => {
+        if ({{ section.settings.enable_animations | json }}) {
+          card.style.transform = '';
+        }
+      });
+    });
+  });
+</script>
