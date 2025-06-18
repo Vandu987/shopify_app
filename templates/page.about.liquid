@@ -2,29 +2,46 @@
 
 <section class="about-hero">
   <div class="container">
-    <h1 class="about-title">About Our Brand</h1>
-    <p class="about-subtitle">We believe in quality, trust, and style that lasts.</p>
+    <h1 class="about-title">हमारी कहानी</h1>
+    <p class="about-subtitle">हम गुणवत्ता, विश्वास और स्टाइल में यकीन रखते हैं।</p>
   </div>
 </section>
 
-<section class="about-content container">
+<section class="about-main container">
   <div class="about-row">
     <div class="about-text">
-      <h2>Who We Are</h2>
-      <p>We are a passionate team of designers and entrepreneurs delivering the best clothing and accessories to people who care about both quality and fashion. Our story began with a vision to blend comfort with trend.</p>
+      <h2>हम कौन हैं?</h2>
+      <p>हम एक समर्पित टीम हैं जो आपके लिए गुणवत्ता और ट्रेंड का मेल लाने में विश्वास रखती है। हमारा लक्ष्य है कि आप सिर्फ अच्छा दिखें नहीं, बल्कि अच्छा महसूस भी करें।</p>
     </div>
     <div class="about-image">
-      <img src="{{ 'about-img.jpg' | asset_url }}" alt="About Us" />
+      <img src="{{ 'about-img.jpg' | asset_url }}" alt="हमारे बारे में" />
     </div>
   </div>
 
   <div class="about-row reverse">
     <div class="about-image">
-      <img src="{{ 'team.jpg' | asset_url }}" alt="Our Team" />
+      <img src="{{ 'team.jpg' | asset_url }}" alt="हमारी टीम" />
     </div>
     <div class="about-text">
-      <h2>Meet The Team</h2>
-      <p>From our founders to our customer service team, everyone at [Your Store Name] is committed to making your shopping experience smooth, enjoyable, and stylish.</p>
+      <h2>हमारी टीम से मिलिए</h2>
+      <p>हमारी टीम हर कदम पर आपके अनुभव को बेहतरीन बनाने के लिए समर्पित है। आपके स्टाइल को नया आयाम देने के लिए हम हमेशा तैयार रहते हैं।</p>
+    </div>
+  </div>
+</section>
+
+<section class="about-values">
+  <div class="container values-grid">
+    <div class="value-box">
+      <h3>🎯 हमारा मिशन</h3>
+      <p>हर व्यक्ति को आत्मविश्वास के साथ स्टाइलिश बनाने में मदद करना।</p>
+    </div>
+    <div class="value-box">
+      <h3>💡 हमारा विजन</h3>
+      <p>दुनिया भर में भरोसेमंद फैशन ब्रांड के रूप में पहचाना जाना।</p>
+    </div>
+    <div class="value-box">
+      <h3>❤️ हमारे मूल्य</h3>
+      <p>गुणवत्ता, ईमानदारी और ग्राहक संतुष्टि।</p>
     </div>
   </div>
 </section>
@@ -37,27 +54,34 @@
   }
 
   .about-hero {
-    background: linear-gradient(to right, #1e3c72, #2a5298);
-    color: white;
+    background-color: #ff6b6b;
+    color: #fff;
     text-align: center;
     padding: 4rem 1rem;
   }
 
   .about-title {
     font-size: 3rem;
+    font-weight: bold;
     margin-bottom: 1rem;
   }
 
   .about-subtitle {
-    font-size: 1.5rem;
-    opacity: 0.9;
+    font-size: 1.4rem;
+    max-width: 700px;
+    margin: auto;
+    line-height: 1.6;
+  }
+
+  .about-main {
+    padding: 4rem 0;
   }
 
   .about-row {
     display: flex;
     flex-wrap: wrap;
     align-items: center;
-    margin: 4rem 0;
+    margin-bottom: 4rem;
   }
 
   .about-row.reverse {
@@ -70,19 +94,67 @@
   }
 
   .about-text h2 {
+    color: #ff6b6b;
     font-size: 2rem;
     margin-bottom: 1rem;
+  }
+
+  .about-text p {
+    font-size: 1.1rem;
+    color: #333;
+    line-height: 1.7;
   }
 
   .about-image img {
     width: 100%;
     border-radius: 12px;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+  }
+
+  .about-values {
+    background: #f8f8f8;
+    padding: 4rem 0;
+  }
+
+  .values-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2rem;
+    justify-content: center;
+    text-align: center;
+  }
+
+  .value-box {
+    flex: 1 1 300px;
+    background: #fff;
+    padding: 2rem;
+    border: 1px solid #eee;
+    border-radius: 10px;
+    transition: transform 0.3s;
+  }
+
+  .value-box h3 {
+    color: #ff6b6b;
+    margin-bottom: 1rem;
+  }
+
+  .value-box p {
+    color: #000;
+    font-size: 1rem;
+  }
+
+  .value-box:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.1);
   }
 
   @media (max-width: 768px) {
     .about-row {
       flex-direction: column;
+    }
+
+    .value-box {
+      margin-bottom: 1rem;
     }
   }
 </style>
