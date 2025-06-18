@@ -12,9 +12,44 @@
     "main": {
       "type": "about-page",
       "settings": {}
+    },
+    "about_page_QLrEnU": {
+      "type": "about-page",
+      "blocks": {
+        "hero_AnaeVV": {
+          "type": "hero",
+          "settings": {
+            "hero_title": "Welcome to Our Toy World",
+            "hero_text": "Where imagination comes to play! Discover magical toys that spark creativity and joy."
+          }
+        },
+        "text_section_WyGrAj": {
+          "type": "text_section",
+          "settings": {
+            "section_title": "Our Story",
+            "section_content": "<p>Founded in 2010, we've been bringing smiles to children's faces with our carefully curated selection of toys. Our mission is to provide high-quality, educational, and fun toys that inspire creativity and learning through play.</p>"
+          }
+        },
+        "image_with_text_mkmNyX": {
+          "type": "image_with_text",
+          "settings": {
+            "title": "Our Promise to You",
+            "text": "We carefully test every toy to ensure it meets our high standards for safety, durability, and fun factor. Our team of play experts selects only the best toys that will stand up to hours of imaginative play.",
+            "layout": "left"
+          }
+        }
+      },
+      "block_order": [
+        "hero_AnaeVV",
+        "text_section_WyGrAj",
+        "image_with_text_mkmNyX"
+      ],
+      "name": "About Page",
+      "settings": {}
     }
   },
   "order": [
-    "main"
+    "main",
+    "about_page_QLrEnU"
   ]
 }
