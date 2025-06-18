@@ -1,0 +1,107 @@
+{% schema %}
+{
+  "name": "About Page Builder",
+  "settings": [],
+  "blocks": [
+    {
+      "type": "hero",
+      "name": "Hero Section",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "hero_image",
+          "label": "Hero Image"
+        },
+        {
+          "type": "text",
+          "id": "hero_title",
+          "label": "Heading",
+          "default": "Welcome to Our Toy World"
+        },
+        {
+          "type": "textarea",
+          "id": "hero_text",
+          "label": "Subtext"
+        }
+      ]
+    },
+    {
+      "type": "text_section",
+      "name": "Text Content",
+      "settings": [
+        {
+          "type": "text",
+          "id": "section_title",
+          "label": "Title"
+        },
+        {
+          "type": "richtext",
+          "id": "section_content",
+          "label": "Content"
+        }
+      ]
+    },
+    {
+      "type": "image_with_text",
+      "name": "Image with Text",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "img",
+          "label": "Image"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title"
+        },
+        {
+          "type": "textarea",
+          "id": "text",
+          "label": "Description"
+        }
+      ]
+    }
+  ],
+  "max_blocks": 20,
+  "presets": [
+    {
+      "name": "About Page"
+    }
+  ]
+}
+{% endschema %}
+
+<div class="about-page">
+  {% for block in section.blocks %}
+    {% case block.type %}
+
+      {% when "hero" %}
+        <div class="about-hero" style="text-align: center; padding: 2rem;">
+          {% if block.settings.hero_image %}
+            <img src="{{ block.settings.hero_image | img_url: '800x' }}" alt="Hero Image" style="max-width: 100%; border-radius: 10px;">
+          {% endif %}
+          <h1>{{ block.settings.hero_title }}</h1>
+          <p>{{ block.settings.hero_text }}</p>
+        </div>
+
+      {% when "text_section" %}
+        <div class="about-text" style="padding: 2rem;">
+          <h2>{{ block.settings.section_title }}</h2>
+          <div>{{ block.settings.section_content }}</div>
+        </div>
+
+      {% when "image_with_text" %}
+        <div class="image-with-text" style="display: flex; gap: 2rem; align-items: center; padding: 2rem; flex-wrap: wrap;">
+          {% if block.settings.img %}
+            <img src="{{ block.settings.img | img_url: '500x' }}" alt="" style="max-width: 40%; border-radius: 10px;">
+          {% endif %}
+          <div style="flex: 1;">
+            <h3>{{ block.settings.title }}</h3>
+            <p>{{ block.settings.text }}</p>
+          </div>
+        </div>
+
+    {% endcase %}
+  {% endfor %}
+</div>
