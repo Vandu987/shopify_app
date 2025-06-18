@@ -12,23 +12,73 @@
     "main": {
       "type": "about-page",
       "blocks": {
-        "testimonial_x77djf": {
-          "type": "testimonial",
+        "hero_PLqtRz": {
+          "type": "hero",
           "settings": {
-            "title": "What Parents Say"
+            "background_image": "shopify://shop_images/bachon-ka-adda_51cf270b-99d4-4222-85f5-4b08d7f54b16.png",
+            "title": "Welcome to Our Toy World",
+            "subtitle": "<p>Where imagination comes to life through play</p>",
+            "button_text": "Explore Toys",
+            "button_link": ""
           }
         },
-        "gallery_yC9zXj": {
+        "story_NH4e9i": {
+          "type": "story",
+          "settings": {
+            "title": "Our Story",
+            "content": "<p>Founded in 2010, we've been bringing smiles to children's faces with our carefully curated selection of toys.</p>"
+          }
+        },
+        "team_ThfVkt": {
+          "type": "team",
+          "settings": {
+            "title": "Meet Our Toy Experts",
+            "description": "<p>Our team combines decades of experience in child development with an unending passion for play.</p>",
+            "team_count": 4
+          }
+        },
+        "testimonials_DVaVHb": {
+          "type": "testimonials",
+          "settings": {
+            "title": "What Parents Say",
+            "description": "<p>Don't just take our word for it - hear from families who love our toys!</p>",
+            "testimonial_1_text": "<p>My children haven't stopped playing with their new toys since they arrived!</p>",
+            "testimonial_1_author": "— Priya K., Mumbai",
+            "testimonial_2_text": "<p>Finally a toy store that understands what kids really love.</p>",
+            "testimonial_2_author": "— Rajesh P., Delhi",
+            "testimonial_3_text": "<p>The educational value combined with fun is perfect.</p>",
+            "testimonial_3_author": "— Ananya S., Bangalore"
+          }
+        },
+        "gallery_jaUXKg": {
           "type": "gallery",
           "settings": {
             "title": "Our Favorite Toys",
-            "image_count": 5
+            "description": "<p>Some of our team's top picks that kids can't get enough of.</p>",
+            "collection": "",
+            "product_count": 6
+          }
+        },
+        "values_iwxhzg": {
+          "type": "values",
+          "settings": {
+            "title": "Our Values",
+            "value_1_title": "Quality First",
+            "value_1_text": "<p>We test every toy for durability and safety.</p>",
+            "value_2_title": "Imagination",
+            "value_2_text": "<p>Toys that spark creativity and storytelling.</p>",
+            "value_3_title": "Learning Through Play",
+            "value_3_text": "<p>Educational benefits built into every toy.</p>"
           }
         }
       },
       "block_order": [
-        "testimonial_x77djf",
-        "gallery_yC9zXj"
+        "hero_PLqtRz",
+        "story_NH4e9i",
+        "team_ThfVkt",
+        "testimonials_DVaVHb",
+        "gallery_jaUXKg",
+        "values_iwxhzg"
       ],
       "settings": {}
     }
