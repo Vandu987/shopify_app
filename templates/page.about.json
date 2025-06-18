@@ -1,9 +1,0 @@
-{
-  "name": "About Page",
-  "sections": {
-    "main": {
-      "type": "about-hero"
-    }
-  },
-  "order": ["main"]
-}
