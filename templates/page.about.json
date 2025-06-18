@@ -19,10 +19,19 @@
             "hero_title": "Welcome to Our Toy World",
             "hero_text": ""
           }
+        },
+        "image_with_text_NNMaGy": {
+          "type": "image_with_text",
+          "settings": {
+            "img": "shopify://shop_images/7161033686.jpg",
+            "title": "about",
+            "text": ""
+          }
         }
       },
       "block_order": [
-        "hero_DmaAfq"
+        "hero_DmaAfq",
+        "image_with_text_NNMaGy"
       ],
       "settings": {}
     }
