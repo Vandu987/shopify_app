@@ -1,0 +1,79 @@
+<section class="cta-section">
+  <div class="container cta-box">
+    <div class="cta-text">
+      <h2>{{ section.settings.heading }}</h2>
+      <p>{{ section.settings.subheading }}</p>
+    </div>
+    <a href="{{ section.settings.button_link }}" class="cta-button">{{ section.settings.button_label }}</a>
+  </div>
+</section>
+
+<style>
+.cta-section {
+  padding: 4rem 2rem;
+  background: #ff6b6b;
+  color: #fff;
+  text-align: center;
+}
+.cta-box {
+  max-width: 800px;
+  margin: 0 auto;
+}
+.cta-text h2 {
+  font-size: 2rem;
+  margin-bottom: 0.5rem;
+}
+.cta-text p {
+  font-size: 1.1rem;
+  margin-bottom: 1.5rem;
+}
+.cta-button {
+  background: #fff;
+  color: #ff6b6b;
+  padding: 0.8rem 1.5rem;
+  font-weight: bold;
+  text-decoration: none;
+  border-radius: 8px;
+  transition: background 0.3s;
+}
+.cta-button:hover {
+  background: #f2f2f2;
+}
+</style>
+
+{% schema %}
+{
+  "name": "Call to Action",
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Ready to join us?"
+    },
+    {
+      "type": "text",
+      "id": "subheading",
+      "label": "Subheading",
+      "default": "Get in touch or sign up today."
+    },
+    {
+      "type": "text",
+      "id": "button_label",
+      "label": "Button Label",
+      "default": "Contact Us"
+    },
+    {
+      "type": "url",
+      "id": "button_link",
+      "label": "Button Link",
+      "default": "/contact"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Call to Action"
+    }
+  ]
+}
+{% endschema %}
