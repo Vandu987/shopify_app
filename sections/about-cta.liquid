@@ -38,7 +38,7 @@
   }
 
   @media (max-width: 768px) {
-    .about-cta {
+    #{{ section.id }}.about-cta {
       padding: 2rem 1rem;
     }
 
@@ -47,13 +47,19 @@
     }
   }
 </style>
+
 <section class="about-cta" id="{{ section.id }}">
   <div class="container cta-content">
     <div class="cta-text">
-      <h2>{{ section.settings.heading }}</h2>
-      <p>{{ section.settings.subtext }}</p>
+      {% if section.settings.heading != blank %}
+        <h2>{{ section.settings.heading }}</h2>
+      {% endif %}
 
-      {% if section.settings.button_text != blank %}
+      {% if section.settings.subtext != blank %}
+        <p>{{ section.settings.subtext }}</p>
+      {% endif %}
+
+      {% if section.settings.button_text != blank and section.settings.button_link != blank %}
         <a href="{{ section.settings.button_link }}" class="cta-button">
           {{ section.settings.button_text }}
         </a>
@@ -148,7 +154,7 @@
   "presets": [
     {
       "name": "Call to Action",
-      "category": "Custom Sections"
+      "category": "Custom"
     }
   ]
 }
