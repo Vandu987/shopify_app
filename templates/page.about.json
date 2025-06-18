@@ -16,6 +16,15 @@
         "subtitle": "We believe in quality, trust, and style that lasts."
       }
     },
+    "about_us_section_fPYPTV": {
+      "type": "about-us-section",
+      "name": "About Us",
+      "settings": {
+        "heading": "Who We Are",
+        "description": "We are a passionate team committed to delivering high-quality products that make a difference.",
+        "image": "shopify://shop_images/4322112064.jpg"
+      }
+    },
     "about_team_ntc4DE": {
       "type": "about-team",
       "blocks": {
@@ -57,6 +66,7 @@
   },
   "order": [
     "main",
+    "about_us_section_fPYPTV",
     "about_team_ntc4DE"
   ]
 }
