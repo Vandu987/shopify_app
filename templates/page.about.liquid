@@ -1,0 +1,88 @@
+{% layout 'theme' %}
+
+<section class="about-hero">
+  <div class="container">
+    <h1 class="about-title">About Our Brand</h1>
+    <p class="about-subtitle">We believe in quality, trust, and style that lasts.</p>
+  </div>
+</section>
+
+<section class="about-content container">
+  <div class="about-row">
+    <div class="about-text">
+      <h2>Who We Are</h2>
+      <p>We are a passionate team of designers and entrepreneurs delivering the best clothing and accessories to people who care about both quality and fashion. Our story began with a vision to blend comfort with trend.</p>
+    </div>
+    <div class="about-image">
+      <img src="{{ 'about-img.jpg' | asset_url }}" alt="About Us" />
+    </div>
+  </div>
+
+  <div class="about-row reverse">
+    <div class="about-image">
+      <img src="{{ 'team.jpg' | asset_url }}" alt="Our Team" />
+    </div>
+    <div class="about-text">
+      <h2>Meet The Team</h2>
+      <p>From our founders to our customer service team, everyone at [Your Store Name] is committed to making your shopping experience smooth, enjoyable, and stylish.</p>
+    </div>
+  </div>
+</section>
+
+<style>
+  .container {
+    max-width: 1200px;
+    margin: auto;
+    padding: 2rem;
+  }
+
+  .about-hero {
+    background: linear-gradient(to right, #1e3c72, #2a5298);
+    color: white;
+    text-align: center;
+    padding: 4rem 1rem;
+  }
+
+  .about-title {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+  }
+
+  .about-subtitle {
+    font-size: 1.5rem;
+    opacity: 0.9;
+  }
+
+  .about-row {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    margin: 4rem 0;
+  }
+
+  .about-row.reverse {
+    flex-direction: row-reverse;
+  }
+
+  .about-text, .about-image {
+    flex: 1 1 50%;
+    padding: 1rem;
+  }
+
+  .about-text h2 {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+  }
+
+  .about-image img {
+    width: 100%;
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  }
+
+  @media (max-width: 768px) {
+    .about-row {
+      flex-direction: column;
+    }
+  }
+</style>
