@@ -194,13 +194,6 @@
           "title": "About Us",
           "subtitle": "We believe in quality, trust, and style that lasts."
         }
-      },
-      "about-who-we-are": {
-        "type": "about-who-we-are",
-        "settings": {
-          "heading": "Who We Are",
-          "text": "We are a team passionate about delivering the best fashion and experiences."
-        }
       }
     },
     "content_for_index": []
