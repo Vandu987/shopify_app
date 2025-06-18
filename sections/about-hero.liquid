@@ -1,7 +1,14 @@
 <section class="about-hero">
-  <div class="container">
-    <h1 class="about-title">{{ section.settings.title }}</h1>
-    <p class="about-subtitle">{{ section.settings.subtitle }}</p>
+  <div class="container hero-flex">
+    <div class="hero-text">
+      <h1 class="about-title">{{ section.settings.title }}</h1>
+      <p class="about-subtitle">{{ section.settings.subtitle }}</p>
+    </div>
+    {% if section.settings.image != blank %}
+      <div class="hero-image">
+        <img src="{{ section.settings.image | image_url: width: 600 }}" alt="About Hero Image">
+      </div>
+    {% endif %}
   </div>
 </section>
 
@@ -9,8 +16,19 @@
   .about-hero {
     background: linear-gradient(135deg, #ff9a9e 0%, #fad0c4 100%);
     color: #fff;
-    text-align: center;
     padding: 4rem 1rem;
+  }
+
+  .hero-flex {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
+  }
+
+  .hero-text {
+    text-align: center;
+    max-width: 600px;
   }
 
   .about-title {
@@ -21,9 +39,31 @@
 
   .about-subtitle {
     font-size: 1.4rem;
-    max-width: 700px;
-    margin: auto;
     line-height: 1.6;
+  }
+
+  .hero-image img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 1rem;
+  }
+
+  /* For larger screens */
+  @media(min-width: 768px) {
+    .hero-flex {
+      flex-direction: row;
+      justify-content: space-between;
+      text-align: left;
+    }
+    .hero-text {
+      flex: 1;
+    }
+    .hero-image {
+      flex: 1;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
   }
 </style>
 
@@ -42,6 +82,16 @@
       "id": "subtitle",
       "label": "Subtitle",
       "default": "We believe in quality, trust, and style that lasts."
+    },
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Right Side Image"
+    }
+  ],
+  "presets": [
+    {
+      "name": "About Hero with Image"
     }
   ]
 }
