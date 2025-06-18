@@ -15,9 +15,48 @@
         "title": "About Us",
         "subtitle": "We believe in quality, trust, and style that lasts."
       }
+    },
+    "about_team_ntc4DE": {
+      "type": "about-team",
+      "blocks": {
+        "member_nnKHK4": {
+          "type": "member",
+          "settings": {
+            "image": "shopify://shop_images/6330053146.webp",
+            "name": "Jane Doe",
+            "role": "Designer"
+          }
+        },
+        "member_4Aqhde": {
+          "type": "member",
+          "settings": {
+            "image": "shopify://shop_images/7161033686.jpg",
+            "name": "Jane Doe",
+            "role": "Designer"
+          }
+        },
+        "member_KPcdaH": {
+          "type": "member",
+          "settings": {
+            "image": "shopify://shop_images/earbuds.webp",
+            "name": "Jane Doe",
+            "role": "Designer"
+          }
+        }
+      },
+      "block_order": [
+        "member_nnKHK4",
+        "member_4Aqhde",
+        "member_KPcdaH"
+      ],
+      "name": "About Team",
+      "settings": {
+        "heading": "Meet Our Team"
+      }
     }
   },
   "order": [
-    "main"
+    "main",
+    "about_team_ntc4DE"
   ]
 }
