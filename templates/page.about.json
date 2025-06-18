@@ -79,11 +79,19 @@
             "quote": "This product changed my life!",
             "author": "John Doe"
           }
+        },
+        "testimonial_nYLefr": {
+          "type": "testimonial",
+          "settings": {
+            "quote": "This product changed my life!",
+            "author": "John Doe"
+          }
         }
       },
       "block_order": [
         "testimonial_txYKRG",
-        "testimonial_JFLGdL"
+        "testimonial_JFLGdL",
+        "testimonial_nYLefr"
       ],
       "name": "Customer Testimonials",
       "settings": {
