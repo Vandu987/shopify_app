@@ -772,7 +772,7 @@ text-decoration: none;
 }
 
 .nerf-btn {
-  background-color: #2b5d9b;
+  background-color: #ff6b6b;
   color: white;
   padding: 12px 20px;
   font-size: 14px;
@@ -784,7 +784,7 @@ text-decoration: none;
 }
 
 .nerf-btn:hover {
-  background-color: #1a4172;
+  background-color: #ec6565;
 }
 
 /* =========================== newsletter-section =========================== */
@@ -830,7 +830,7 @@ text-decoration: none;
 
 .newsletter-button {
   padding: 12px 20px;
-  background-color: #2b5d9b;
+  background-color: #ff6b6b;
   color: white;
   border: none;
   font-size: 14px;
@@ -841,7 +841,7 @@ text-decoration: none;
 }
 
 .newsletter-button:hover {
-  background-color: #1a4172;
+  background-color: #ec6565;
 }
 /* =========================== footer-section =========================== */
 .kids-toys-footer {
