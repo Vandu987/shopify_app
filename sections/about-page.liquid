@@ -1,12 +1,10 @@
 {% schema %}
 {
-  "name": "Advanced About Page",
+  "name": "Ultimate About Page",
   "settings": [
     {
-      "type": "checkbox",
-      "id": "enable_animations",
-      "label": "Enable Animations",
-      "default": true
+      "type": "header",
+      "content": "Global Settings"
     },
     {
       "type": "color",
@@ -21,22 +19,10 @@
       "default": "#47B8E0"
     },
     {
-      "type": "color",
-      "id": "accent_color",
-      "label": "Accent Color",
-      "default": "#FFD166"
-    },
-    {
-      "type": "text",
-      "id": "floating_toy_1",
-      "label": "Floating Toy Image 1",
-      "default": "toy-float-1.png"
-    },
-    {
-      "type": "text",
-      "id": "floating_toy_2",
-      "label": "Floating Toy Image 2",
-      "default": "toy-float-2.png"
+      "type": "checkbox",
+      "id": "enable_animations",
+      "label": "Enable Animations",
+      "default": true
     }
   ],
   "blocks": [
@@ -46,14 +32,19 @@
       "settings": [
         {
           "type": "image_picker",
-          "id": "background_image",
-          "label": "Background Image (Optional)"
+          "id": "desktop_image",
+          "label": "Desktop Background Image"
+        },
+        {
+          "type": "image_picker",
+          "id": "mobile_image",
+          "label": "Mobile Background Image"
         },
         {
           "type": "text",
           "id": "title",
           "label": "Title",
-          "default": "Welcome to Our Toy World"
+          "default": "Welcome to Toytopia!"
         },
         {
           "type": "richtext",
@@ -75,235 +66,76 @@
       ]
     },
     {
-      "type": "story",
-      "name": "Story Section",
+      "type": "team_member",
+      "name": "Team Member",
       "settings": [
-        {
-          "type": "text",
-          "id": "title",
-          "label": "Title",
-          "default": "Our Story"
-        },
-        {
-          "type": "richtext",
-          "id": "content",
-          "label": "Content",
-          "default": "<p>Founded in 2010, we've been bringing smiles to children's faces with our carefully curated selection of toys.</p>"
-        },
         {
           "type": "image_picker",
-          "id": "story_image",
-          "label": "Story Image (Optional)"
+          "id": "image",
+          "label": "Profile Image"
+        },
+        {
+          "type": "text",
+          "id": "name",
+          "label": "Name",
+          "default": "Team Member"
+        },
+        {
+          "type": "text",
+          "id": "role",
+          "label": "Role",
+          "default": "Toy Expert"
+        },
+        {
+          "type": "richtext",
+          "id": "bio",
+          "label": "Bio",
+          "default": "<p>Passionate about finding the perfect toys for every child.</p>"
         }
       ]
     },
     {
-      "type": "team",
-      "name": "Team Section",
-      "settings": [
-        {
-          "type": "text",
-          "id": "title",
-          "label": "Title",
-          "default": "Meet Our Toy Experts"
-        },
-        {
-          "type": "richtext",
-          "id": "description",
-          "label": "Description",
-          "default": "<p>Our team combines decades of experience in child development with an unending passion for play.</p>"
-        },
-        {
-          "type": "range",
-          "id": "team_count",
-          "label": "Number of Team Members",
-          "min": 2,
-          "max": 6,
-          "step": 1,
-          "default": 4
-        }
-      ]
-    },
-    {
-      "type": "testimonials",
-      "name": "Testimonials",
-      "settings": [
-        {
-          "type": "text",
-          "id": "title",
-          "label": "Title",
-          "default": "What Parents Say"
-        },
-        {
-          "type": "richtext",
-          "id": "description",
-          "label": "Description",
-          "default": "<p>Don't just take our word for it - hear from families who love our toys!</p>"
-        },
-        {
-          "type": "header",
-          "content": "Testimonial 1"
-        },
-        {
-          "type": "richtext",
-          "id": "testimonial_1_text",
-          "label": "Text",
-          "default": "<p>My children haven't stopped playing with their new toys since they arrived!</p>"
-        },
-        {
-          "type": "text",
-          "id": "testimonial_1_author",
-          "label": "Author",
-          "default": "— Priya K., Mumbai"
-        },
-        {
-          "type": "header",
-          "content": "Testimonial 2"
-        },
-        {
-          "type": "richtext",
-          "id": "testimonial_2_text",
-          "label": "Text",
-          "default": "<p>Finally a toy store that understands what kids really love.</p>"
-        },
-        {
-          "type": "text",
-          "id": "testimonial_2_author",
-          "label": "Author",
-          "default": "— Rajesh P., Delhi"
-        },
-        {
-          "type": "header",
-          "content": "Testimonial 3"
-        },
-        {
-          "type": "richtext",
-          "id": "testimonial_3_text",
-          "label": "Text",
-          "default": "<p>The educational value combined with fun is perfect.</p>"
-        },
-        {
-          "type": "text",
-          "id": "testimonial_3_author",
-          "label": "Author",
-          "default": "— Ananya S., Bangalore"
-        }
-      ]
-    },
-    {
-      "type": "gallery",
+      "type": "toy_gallery",
       "name": "Toy Gallery",
       "settings": [
         {
           "type": "text",
           "id": "title",
-          "label": "Title",
+          "label": "Section Title",
           "default": "Our Favorite Toys"
-        },
-        {
-          "type": "richtext",
-          "id": "description",
-          "label": "Description",
-          "default": "<p>Some of our team's top picks that kids can't get enough of.</p>"
         },
         {
           "type": "collection",
           "id": "collection",
-          "label": "Collection to Display"
+          "label": "Select Collection"
         },
         {
           "type": "range",
           "id": "product_count",
-          "label": "Number of Products to Show",
+          "label": "Number of Toys to Show",
           "min": 3,
           "max": 12,
           "step": 1,
           "default": 6
         }
       ]
-    },
-    {
-      "type": "values",
-      "name": "Our Values",
-      "settings": [
-        {
-          "type": "text",
-          "id": "title",
-          "label": "Title",
-          "default": "Our Values"
-        },
-        {
-          "type": "header",
-          "content": "Value 1"
-        },
-        {
-          "type": "text",
-          "id": "value_1_title",
-          "label": "Title",
-          "default": "Quality First"
-        },
-        {
-          "type": "richtext",
-          "id": "value_1_text",
-          "label": "Text",
-          "default": "<p>We test every toy for durability and safety.</p>"
-        },
-        {
-          "type": "header",
-          "content": "Value 2"
-        },
-        {
-          "type": "text",
-          "id": "value_2_title",
-          "label": "Title",
-          "default": "Imagination"
-        },
-        {
-          "type": "richtext",
-          "id": "value_2_text",
-          "label": "Text",
-          "default": "<p>Toys that spark creativity and storytelling.</p>"
-        },
-        {
-          "type": "header",
-          "content": "Value 3"
-        },
-        {
-          "type": "text",
-          "id": "value_3_title",
-          "label": "Title",
-          "default": "Learning Through Play"
-        },
-        {
-          "type": "richtext",
-          "id": "value_3_text",
-          "label": "Text",
-          "default": "<p>Educational benefits built into every toy.</p>"
-        }
-      ]
     }
   ],
   "presets": [
     {
-      "name": "Advanced About Page",
+      "name": "Ultimate About Page",
       "blocks": [
         {
           "type": "hero"
         },
         {
-          "type": "story"
+          "type": "team_member"
         },
         {
-          "type": "values"
+          "type": "team_member"
         },
         {
-          "type": "team"
-        },
-        {
-          "type": "testimonials"
-        },
-        {
-          "type": "gallery"
+          "type": "toy_gallery"
         }
       ]
     }
@@ -312,200 +144,268 @@
 {% endschema %}
 
 <style>
-  /* ===== Dynamic CSS Variables ===== */
-  .about-page {
+  /* ===== DYNAMIC COLORS ===== */
+  :root {
     --color-primary: {{ section.settings.primary_color }};
     --color-secondary: {{ section.settings.secondary_color }};
-    --color-accent: {{ section.settings.accent_color }};
-    --color-light: #F7F9FC;
-    --color-dark: #2E2E48;
   }
 
-  /* ===== Base Styles (Same as before) ===== */
-  .about-page {
-    max-width: 1400px;
-    margin: 0 auto;
-    padding: 0 20px;
-    font-family: 'Nunito', 'Comic Sans MS', sans-serif;
-    color: var(--color-dark);
-    position: relative;
-    overflow: hidden;
-  }
-
-  /* Background Elements */
-  .about-page::before {
-    content: "";
-    position: absolute;
-    top: -50%;
-    left: -50%;
-    width: 200%;
-    height: 200%;
-    background-image: 
-      radial-gradient(circle at 20% 30%, rgba(var(--color-primary), 0.05) 0%, transparent 20%),
-      radial-gradient(circle at 80% 70%, rgba(var(--color-secondary), 0.05) 0%, transparent 20%);
-    z-index: -1;
-    {% if section.settings.enable_animations %}
-    animation: float 15s infinite alternate ease-in-out;
-    {% endif %}
-  }
-
-  /* === Hero Section === */
+  /* ===== HERO SECTION ===== */
   .hero-section {
     position: relative;
-    padding: 100px 0;
-    margin: 60px 0;
-    border-radius: 24px;
+    height: 90vh;
+    min-height: 600px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-secondary) 100%);
-    box-shadow: 0 20px 40px rgba(0,0,0,0.1);
     overflow: hidden;
-    {% if section.blocks['hero'].settings.background_image %}
-    background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('{{ section.blocks['hero'].settings.background_image | img_url: '2000x' }}');
-    background-size: cover;
-    background-position: center;
+    {% if section.blocks['hero'].settings.desktop_image %}
+      background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('{{ section.blocks['hero'].settings.desktop_image | img_url: '2000x' }}');
+      background-size: cover;
+      background-position: center;
     {% endif %}
   }
 
-  /* Rest of the CSS remains the same as previous version */
-  /* ... */
+  @media (max-width: 768px) {
+    .hero-section {
+      {% if section.blocks['hero'].settings.mobile_image %}
+        background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('{{ section.blocks['hero'].settings.mobile_image | img_url: '800x' }}') !important;
+        background-size: cover !important;
+        background-position: center !important;
+      {% endif %}
+    }
+  }
+
+  .hero-content {
+    text-align: center;
+    color: white;
+    padding: 0 20px;
+    max-width: 800px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 2;
+  }
+
+  .hero-title {
+    font-size: 4.5rem;
+    font-weight: 800;
+    margin-bottom: 20px;
+    text-shadow: 2px 2px 10px rgba(0,0,0,0.3);
+    {% if section.settings.enable_animations %}
+      animation: fadeInUp 1s ease;
+    {% endif %}
+  }
+
+  .hero-subtitle {
+    font-size: 1.5rem;
+    margin-bottom: 30px;
+    opacity: 0.9;
+    {% if section.settings.enable_animations %}
+      animation: fadeInUp 1s ease 0.3s forwards;
+      opacity: 0;
+    {% endif %}
+  }
+
+  .hero-button {
+    display: inline-block;
+    padding: 15px 35px;
+    background: white;
+    color: var(--color-primary);
+    border-radius: 50px;
+    font-weight: 700;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    {% if section.settings.enable_animations %}
+      animation: fadeInUp 1s ease 0.6s forwards;
+      opacity: 0;
+    {% endif %}
+  }
+
+  .hero-button:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+  }
+
+  /* ===== TEAM SECTION ===== */
+  .team-section {
+    padding: 80px 0;
+    background: #f9f9f9;
+  }
+
+  .team-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+  }
+
+  .team-card {
+    background: white;
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+    transition: all 0.3s ease;
+  }
+
+  .team-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 40px rgba(0,0,0,0.1);
+  }
+
+  .team-image {
+    height: 300px;
+    background: #f5f5f5;
+  }
+
+  .team-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .team-info {
+    padding: 25px;
+  }
+
+  .team-name {
+    font-size: 1.5rem;
+    color: var(--color-primary);
+    margin-bottom: 5px;
+  }
+
+  .team-role {
+    color: var(--color-secondary);
+    font-weight: 600;
+    margin-bottom: 15px;
+  }
+
+  /* ===== TOY GALLERY ===== */
+  .gallery-section {
+    padding: 80px 0;
+    background: white;
+  }
+
+  .gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+  }
+
+  .gallery-item {
+    border-radius: 16px;
+    overflow: hidden;
+    position: relative;
+    height: 350px;
+  }
+
+  .gallery-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+  }
+
+  .gallery-item:hover img {
+    transform: scale(1.05);
+  }
+
+  /* ===== ANIMATIONS ===== */
+  @keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  /* ===== RESPONSIVE ===== */
+  @media (max-width: 768px) {
+    .hero-title {
+      font-size: 2.8rem;
+    }
+    .hero-subtitle {
+      font-size: 1.2rem;
+    }
+  }
 </style>
 
 <div class="about-page">
+  <!-- HERO SECTION -->
   {% for block in section.blocks %}
-    {% case block.type %}
-      
-      <!-- Hero Banner -->
-      {% when 'hero' %}
-        <section class="hero-section" {{ block.shopify_attributes }}>
-          {% if section.settings.floating_toy_1 %}
-            <img src="{{ section.settings.floating_toy_1 | asset_url }}" class="toy-float toy-1" alt="" loading="lazy">
+    {% if block.type == 'hero' %}
+      <section class="hero-section" {{ block.shopify_attributes }}>
+        <div class="hero-content">
+          <h1 class="hero-title">{{ block.settings.title }}</h1>
+          <div class="hero-subtitle rte">{{ block.settings.subtitle }}</div>
+          {% if block.settings.button_link %}
+            <a href="{{ block.settings.button_link }}" class="hero-button">
+              {{ block.settings.button_text }}
+            </a>
           {% endif %}
-          {% if section.settings.floating_toy_2 %}
-            <img src="{{ section.settings.floating_toy_2 | asset_url }}" class="toy-float toy-2" alt="" loading="lazy">
-          {% endif %}
-          
-          <div class="hero-content">
-            <h1 class="hero-title">{{ block.settings.title }}</h1>
-            <div class="hero-subtitle rte">{{ block.settings.subtitle }}</div>
-            {% if block.settings.button_link %}
-              <a href="{{ block.settings.button_link }}" class="hero-button">
-                {{ block.settings.button_text }}
-              </a>
-            {% endif %}
-          </div>
-        </section>
-      
-      <!-- Story Section -->
-      {% when 'story' %}
-        <section class="content-section" {{ block.shopify_attributes }}>
-          <h2 class="section-title">{{ block.settings.title }}</h2>
-          
-          <div class="story-content" style="display: flex; align-items: center; gap: 40px; flex-wrap: wrap;">
-            {% if block.settings.story_image %}
-              <div style="flex: 1; min-width: 300px;">
-                <img src="{{ block.settings.story_image | img_url: '800x' }}" alt="{{ block.settings.title }}" loading="lazy" style="border-radius: 16px; width: 100%;">
-              </div>
-            {% endif %}
-            
-            <div class="rte" style="flex: 2; min-width: 300px;">
-              {{ block.settings.content }}
+        </div>
+      </section>
+    {% endif %}
+  {% endfor %}
+
+  <!-- TEAM SECTION -->
+  <section class="team-section">
+    <h2 style="text-align: center; font-size: 2.5rem; margin-bottom: 50px; color: var(--color-primary);">Our Toy Experts</h2>
+    <div class="team-grid">
+      {% for block in section.blocks %}
+        {% if block.type == 'team_member' %}
+          <div class="team-card" {{ block.shopify_attributes }}>
+            <div class="team-image">
+              {% if block.settings.image %}
+                <img src="{{ block.settings.image | img_url: '600x' }}" alt="{{ block.settings.name }}" loading="lazy">
+              {% else %}
+                {{ 'image' | placeholder_svg_tag: 'placeholder-svg' }}
+              {% endif %}
+            </div>
+            <div class="team-info">
+              <h3 class="team-name">{{ block.settings.name }}</h3>
+              <p class="team-role">{{ block.settings.role }}</p>
+              <div class="rte">{{ block.settings.bio }}</div>
             </div>
           </div>
-        </section>
-      
-      <!-- Team Section -->
-      {% when 'team' %}
-        <section class="content-section" {{ block.shopify_attributes }}>
-          <h2 class="section-title">{{ block.settings.title }}</h2>
-          <div class="rte">{{ block.settings.description }}</div>
-          
-          <div class="team-grid">
-            {% for i in (1..block.settings.team_count) %}
-              <div class="team-card">
-                <div class="team-image">
-                  <svg width="80" height="80" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M19 12C19 15.866 15.866 19 12 19M12 19C8.13401 19 5 15.866 5 12M12 19C12 15.866 8.13401 12 12 12C15.866 12 19 8.13401 19 12M12 19C12 22.866 15.866 19 12 19ZM12 5C8.13401 5 5 8.13401 5 12C5 15.866 8.13401 19 12 19" stroke="white" stroke-width="2"/>
-                    <circle cx="12" cy="12" r="2" fill="white"/>
-                  </svg>
-                </div>
-                <div class="team-info">
-                  <h3 class="team-name">Team Member {{ i }}</h3>
-                  <p class="team-role">Toy Specialist</p>
-                </div>
+        {% endif %}
+      {% endfor %}
+    </div>
+  </section>
+
+  <!-- TOY GALLERY -->
+  {% for block in section.blocks %}
+    {% if block.type == 'toy_gallery' %}
+      <section class="gallery-section" {{ block.shopify_attributes }}>
+        <h2 style="text-align: center; font-size: 2.5rem; margin-bottom: 50px; color: var(--color-primary);">
+          {{ block.settings.title }}
+        </h2>
+        <div class="gallery-grid">
+          {% if block.settings.collection != blank %}
+            {% assign collection = collections[block.settings.collection] %}
+            {% for product in collection.products limit: block.settings.product_count %}
+              <a href="{{ product.url }}" class="gallery-item">
+                <img src="{{ product.featured_image | img_url: '600x' }}" alt="{{ product.title }}" loading="lazy">
+              </a>
+            {% endfor %}
+          {% else %}
+            {% for i in (1..block.settings.product_count) %}
+              <div class="gallery-item">
+                {{ 'product-' | append: i | placeholder_svg_tag: 'placeholder-svg' }}
               </div>
             {% endfor %}
-          </div>
-        </section>
-      
-      <!-- Testimonials -->
-      {% when 'testimonials' %}
-        <section class="content-section" {{ block.shopify_attributes }}>
-          <h2 class="section-title">{{ block.settings.title }}</h2>
-          <div class="rte">{{ block.settings.description }}</div>
-          
-          <div class="testimonial-slider">
-            {% if block.settings.testimonial_1_text != blank %}
-              <div class="testimonial-card">
-                <div class="testimonial-text rte">{{ block.settings.testimonial_1_text }}</div>
-                <p class="testimonial-author">{{ block.settings.testimonial_1_author }}</p>
-              </div>
-            {% endif %}
-          </div>
-        </section>
-      
-      <!-- Gallery -->
-      {% when 'gallery' %}
-        <section class="content-section" {{ block.shopify_attributes }}>
-          <h2 class="section-title">{{ block.settings.title }}</h2>
-          <div class="rte">{{ block.settings.description }}</div>
-          
-          <div class="gallery-grid">
-            {% if block.settings.collection != blank %}
-              {% assign collection = collections[block.settings.collection] %}
-              {% for product in collection.products limit: block.settings.product_count %}
-                <a href="{{ product.url }}" class="gallery-item">
-                  <img src="{{ product.featured_image | img_url: '600x' }}" alt="{{ product.title }}" loading="lazy">
-                </a>
-              {% endfor %}
-            {% else %}
-              {% for i in (1..block.settings.product_count) %}
-                <div class="gallery-item">
-                  {{ 'product-' | append: i | placeholder_svg_tag: 'placeholder-svg' }}
-                </div>
-              {% endfor %}
-            {% endif %}
-          </div>
-        </section>
-      
-      <!-- Values -->
-      {% when 'values' %}
-        <section class="content-section" {{ block.shopify_attributes }}>
-          <h2 class="section-title">{{ block.settings.title }}</h2>
-          
-          <div class="values-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; margin-top: 40px;">
-            {% if block.settings.value_1_title != blank %}
-              <div class="value-card" style="background: var(--color-light); padding: 30px; border-radius: 16px; border-top: 5px solid var(--color-accent);">
-                <h3 style="font-size: 1.5rem; color: var(--color-primary); margin-bottom: 15px;">{{ block.settings.value_1_title }}</h3>
-                <div class="rte">{{ block.settings.value_1_text }}</div>
-              </div>
-            {% endif %}
-            
-            {% if block.settings.value_2_title != blank %}
-              <div class="value-card" style="background: var(--color-light); padding: 30px; border-radius: 16px; border-top: 5px solid var(--color-accent);">
-                <h3 style="font-size: 1.5rem; color: var(--color-primary); margin-bottom: 15px;">{{ block.settings.value_2_title }}</h3>
-                <div class="rte">{{ block.settings.value_2_text }}</div>
-              </div>
-            {% endif %}
-            
-            {% if block.settings.value_3_title != blank %}
-              <div class="value-card" style="background: var(--color-light); padding: 30px; border-radius: 16px; border-top: 5px solid var(--color-accent);">
-                <h3 style="font-size: 1.5rem; color: var(--color-primary); margin-bottom: 15px;">{{ block.settings.value_3_title }}</h3>
-                <div class="rte">{{ block.settings.value_3_text }}</div>
-              </div>
-            {% endif %}
-          </div>
-        </section>
-      
-    {% endcase %}
+          {% endif %}
+        </div>
+      </section>
+    {% endif %}
   {% endfor %}
 </div>
 {{ 'aboutt-page.css' | asset_url | stylesheet_tag }}
