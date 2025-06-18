@@ -1,42 +1,44 @@
-<section class="cta-section">
-  <div class="container cta-box">
+<section class="about-cta">
+  <div class="container cta-content">
     <div class="cta-text">
       <h2>{{ section.settings.heading }}</h2>
-      <p>{{ section.settings.subheading }}</p>
+      <p>{{ section.settings.subtext }}</p>
     </div>
-    <a href="{{ section.settings.button_link }}" class="cta-button">{{ section.settings.button_label }}</a>
+    {% if section.settings.button_text != blank %}
+      <a href="{{ section.settings.button_link }}" class="cta-button">{{ section.settings.button_text }}</a>
+    {% endif %}
   </div>
 </section>
+
 <style>
-.cta-section {
+.about-cta {
   padding: 4rem 2rem;
   background: #ff6b6b;
   color: #fff;
   text-align: center;
 }
-.cta-box {
+.cta-content {
   max-width: 800px;
-  margin: 0 auto;
+  margin: auto;
 }
 .cta-text h2 {
   font-size: 2rem;
-  margin-bottom: 0.5rem;
+  margin-bottom: 1rem;
 }
 .cta-text p {
   font-size: 1.1rem;
-  margin-bottom: 1.5rem;
+  margin-bottom: 2rem;
 }
 .cta-button {
   background: #fff;
   color: #ff6b6b;
-  padding: 0.8rem 1.5rem;
+  padding: 0.8rem 1.6rem;
+  border-radius: 8px;
   font-weight: bold;
   text-decoration: none;
-  border-radius: 8px;
-  transition: background 0.3s;
 }
 .cta-button:hover {
-  background: #f2f2f2;
+  background: #f1f1f1;
 }
 </style>
 
@@ -48,18 +50,18 @@
       "type": "text",
       "id": "heading",
       "label": "Heading",
-      "default": "Ready to join us?"
+      "default": "Ready to work with us?"
+    },
+    {
+      "type": "textarea",
+      "id": "subtext",
+      "label": "Subtext",
+      "default": "Contact us today and let’s bring your vision to life!"
     },
     {
       "type": "text",
-      "id": "subheading",
-      "label": "Subheading",
-      "default": "Get in touch or sign up today."
-    },
-    {
-      "type": "text",
-      "id": "button_label",
-      "label": "Button Label",
+      "id": "button_text",
+      "label": "Button Text",
       "default": "Contact Us"
     },
     {
