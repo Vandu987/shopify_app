@@ -4,7 +4,7 @@
     <div class="vibecart-cta-content">
       <h2 class="vibecart-cta-heading">{{ section.settings.heading | default: "Ready to work with us?" }}</h2>
       <p class="vibecart-cta-text">{{ section.settings.subtext | default: "Contact us today and let's bring your vision to life!" }}</p>
-      
+
       {% if section.settings.button_text != blank %}
         <a href="{{ section.settings.button_link | default: '/contact' }}" class="vibecart-cta-button">
           {{ section.settings.button_text | escape }}
@@ -70,11 +70,11 @@
     #{{ section.id }}.vibecart-about-cta {
       padding: 2rem 1rem;
     }
-    
+
     #{{ section.id }} .vibecart-cta-heading {
       font-size: 1.5rem;
     }
-    
+
     #{{ section.id }} .vibecart-cta-button {
       padding: 10px 20px;
     }
