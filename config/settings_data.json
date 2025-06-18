@@ -211,6 +211,34 @@
       },
       "about-values": {
         "type": "about-values",
+        "blocks": {
+          "value_aD39PH": {
+            "type": "value",
+            "settings": {
+              "title": "Our Mission",
+              "description": "To help people feel confident and stylish."
+            }
+          },
+          "value_hYrHPT": {
+            "type": "value",
+            "settings": {
+              "title": "Our Mission",
+              "description": "To help people feel confident and stylish."
+            }
+          },
+          "value_zJTEjd": {
+            "type": "value",
+            "settings": {
+              "title": "Our Mission",
+              "description": "To help people feel confident and stylish."
+            }
+          }
+        },
+        "block_order": [
+          "value_aD39PH",
+          "value_hYrHPT",
+          "value_zJTEjd"
+        ],
         "settings": {}
       }
     },
