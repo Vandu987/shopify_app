@@ -1,55 +1,66 @@
-<section class="about-cta">
-  <div class="container cta-content">
-    <div class="cta-text">
-      <h2>{{ section.settings.heading }}</h2>
-      <p>{{ section.settings.subtext }}</p>
+<!-- File: sections/about-cta.liquid -->
+<section class="custom-about-cta" id="{{ section.id }}">
+  <div class="custom-cta-container">
+    <div class="custom-cta-content">
+      <h2 class="custom-cta-heading">{{ section.settings.heading | default: "Ready to work with us?" }}</h2>
+      <p class="custom-cta-text">{{ section.settings.subtext | default: "Contact us today and let's bring your vision to life!" }}</p>
+      
+      {% if section.settings.button_text != blank %}
+        <a href="{{ section.settings.button_link | default: '/contact' }}" class="custom-cta-button">
+          {{ section.settings.button_text | escape }}
+        </a>
+      {% endif %}
     </div>
-    {% if section.settings.button_text != blank %}
-      <a href="{{ section.settings.button_link }}" class="cta-button">{{ section.settings.button_text }}</a>
-    {% endif %}
   </div>
 </section>
 
 <style>
-  .about-cta {
+  #{{ section.id }}.custom-about-cta {
     padding: 4rem 2rem;
     background: {{ section.settings.bg_color | default: '#ff6b6b' }};
-    color: {{ section.settings.text_color | default: '#fff' }};
+    color: {{ section.settings.text_color | default: '#ffffff' }};
     text-align: center;
   }
-  .cta-content {
-    max-width: 800px;
+
+  #{{ section.id }} .custom-cta-container {
+    max-width: 1200px;
     margin: 0 auto;
   }
-  .cta-text h2 {
+
+  #{{ section.id }} .custom-cta-heading {
     font-size: {{ section.settings.heading_size | default: '2rem' }};
     margin-bottom: 1rem;
+    color: inherit;
   }
-  .cta-text p {
+
+  #{{ section.id }} .custom-cta-text {
     font-size: {{ section.settings.subtext_size | default: '1.1rem' }};
     margin-bottom: 2rem;
+    color: inherit;
   }
-  .cta-button {
-    background: {{ section.settings.button_bg_color | default: '#fff' }};
+
+  #{{ section.id }} .custom-cta-button {
+    display: inline-block;
+    padding: 12px 24px;
+    background: {{ section.settings.button_bg_color | default: '#ffffff' }};
     color: {{ section.settings.button_text_color | default: '#ff6b6b' }};
-    padding: 0.8rem 1.6rem;
     border-radius: 8px;
     font-weight: bold;
     text-decoration: none;
-    display: inline-block;
     transition: all 0.3s ease;
   }
-  .cta-button:hover {
+
+  #{{ section.id }} .custom-cta-button:hover {
     background: {{ section.settings.button_hover_bg_color | default: '#f1f1f1' }};
     transform: translateY(-2px);
   }
 
-  /* Responsive Design */
   @media (max-width: 768px) {
-    .about-cta {
+    #{{ section.id }}.custom-about-cta {
       padding: 2rem 1rem;
     }
-    .cta-text h2 {
+    
+    #{{ section.id }} .custom-cta-heading {
       font-size: 1.5rem;
     }
   }
@@ -57,7 +68,9 @@
 
 {% schema %}
 {
-  "name": "About CTA",
+  "name": "Custom About CTA",
+  "tag": "section",
+  "class": "section",
   "settings": [
     {
       "type": "text",
@@ -69,7 +82,7 @@
       "type": "textarea",
       "id": "subtext",
       "label": "Subtext",
-      "default": "Contact us today and let’s bring your vision to life!"
+      "default": "Contact us today and let's bring your vision to life!"
     },
     {
       "type": "text",
@@ -82,6 +95,10 @@
       "id": "button_link",
       "label": "Button Link",
       "default": "/contact"
+    },
+    {
+      "type": "header",
+      "content": "Color Settings"
     },
     {
       "type": "color",
@@ -114,13 +131,26 @@
       "default": "#f1f1f1"
     },
     {
+      "type": "header",
+      "content": "Typography"
+    },
+    {
       "type": "select",
       "id": "heading_size",
       "label": "Heading Size",
       "options": [
-        { "value": "1.5rem", "label": "Small" },
-        { "value": "2rem", "label": "Medium" },
-        { "value": "2.5rem", "label": "Large" }
+        {
+          "value": "1.5rem",
+          "label": "Small"
+        },
+        {
+          "value": "2rem",
+          "label": "Medium"
+        },
+        {
+          "value": "2.5rem",
+          "label": "Large"
+        }
       ],
       "default": "2rem"
     },
@@ -129,17 +159,26 @@
       "id": "subtext_size",
       "label": "Subtext Size",
       "options": [
-        { "value": "0.9rem", "label": "Small" },
-        { "value": "1.1rem", "label": "Medium" },
-        { "value": "1.3rem", "label": "Large" }
+        {
+          "value": "0.9rem",
+          "label": "Small"
+        },
+        {
+          "value": "1.1rem",
+          "label": "Medium"
+        },
+        {
+          "value": "1.3rem",
+          "label": "Large"
+        }
       ],
       "default": "1.1rem"
     }
   ],
   "presets": [
     {
-      "name": "About CTA",
-      "category": "Promotional"
+      "name": "Custom About CTA",
+      "category": "Custom Sections"
     }
   ]
 }
