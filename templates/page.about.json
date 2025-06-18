@@ -1,3 +1,12 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "sections": {
     "main": {
@@ -85,13 +94,22 @@
       "settings": {
         "heading": "What Our Customers Say"
       }
+    },
+    "newsletter_signup_mbWNUr": {
+      "type": "newsletter-signup",
+      "name": "Newsletter Signup",
+      "settings": {
+        "heading": "Get top deals, latest trends, and more.",
+        "subtext": "Our regular newsletters are packed full of events at our stores, fun facts, competitions and the latest in the magical world of toys.",
+        "button_label": "Subscribe"
+      }
     }
-    
   },
   "order": [
     "main",
     "about_us_section_amJDWc",
     "about_team_Q77FDV",
-    "about_testimpnials_DpgcCX"
+    "about_testimpnials_DpgcCX",
+    "newsletter_signup_mbWNUr"
   ]
 }
