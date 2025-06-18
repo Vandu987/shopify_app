@@ -11,6 +11,23 @@
   "sections": {
     "main": {
       "type": "about-page",
+      "blocks": {
+        "hero_WV8Fdy": {
+          "type": "hero",
+          "settings": {
+            "desktop_image": "shopify://shop_images/bachon-ka-adda_51cf270b-99d4-4222-85f5-4b08d7f54b16.png",
+            "mobile_image": "shopify://shop_images/bachon-ka-adda.png",
+            "title": "Welcome to Bachon Ka Adda",
+            "subtitle": "<p>Where magic meets playtime!</p>",
+            "text_alignment": "center",
+            "button_link": "#",
+            "button_text": "Explore Toys"
+          }
+        }
+      },
+      "block_order": [
+        "hero_WV8Fdy"
+      ],
       "settings": {}
     }
   },
