@@ -1,0 +1,104 @@
+<section class="about-team">
+  <div class="container">
+    <h2 class="team-heading">{{ section.settings.heading }}</h2>
+    <div class="team-grid">
+      {% for block in section.blocks %}
+        <div class="team-member">
+          {% if block.settings.image %}
+            <img src="{{ block.settings.image | image_url: width: 300 }}" alt="{{ block.settings.name }}">
+          {% endif %}
+          <h4>{{ block.settings.name }}</h4>
+          <p>{{ block.settings.role }}</p>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<style>
+.about-team {
+  padding: 4rem 2rem;
+  background: #fff;
+  text-align: center;
+}
+.team-heading {
+  color: #000;
+  font-size: 2rem;
+  margin-bottom: 2rem;
+}
+.team-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+  justify-content: center;
+}
+.team-member {
+  width: 200px;
+  padding: 1rem;
+  background-color: #f9f9f9;
+  border-radius: 12px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+}
+.team-member img {
+  width: 100%;
+  border-radius: 50%;
+}
+.team-member h4 {
+  margin-top: 1rem;
+  color: #ff6b6b;
+  font-size: 1.2rem;
+}
+.team-member p {
+  font-size: 0.95rem;
+  color: #333;
+}
+</style>
+
+{% schema %}
+{
+  "name": "About Team",
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Meet Our Team"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "member",
+      "name": "Team Member",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Photo"
+        },
+        {
+          "type": "text",
+          "id": "name",
+          "label": "Name",
+          "default": "Jane Doe"
+        },
+        {
+          "type": "text",
+          "id": "role",
+          "label": "Role",
+          "default": "Designer"
+        }
+      ]
+    }
+  ],
+  "max_blocks": 10,
+  "presets": [
+    {
+      "name": "About Team",
+      "blocks": [
+        { "type": "member" },
+        { "type": "member" }
+      ]
+    }
+  ]
+}
+{% endschema %}
