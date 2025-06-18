@@ -1,15 +1,9 @@
 {
   "name": "About Page",
   "sections": {
-    "hero": {
+    "main": {
       "type": "about-hero"
-    },
-    "content": {
-      "type": "rich-text"
     }
   },
-  "order": [
-    "hero",
-    "content"
-  ]
+  "order": ["main"]
 }
