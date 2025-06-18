@@ -12,22 +12,25 @@
     "main": {
       "type": "about-page",
       "blocks": {
-        "testimonial_x77djf": {
-          "type": "testimonial",
+        "hero_PLqtRz": {
+          "type": "hero",
           "settings": {
-            "title": "What Parents Say"
+            "background_image": "shopify://shop_images/bachon-ka-adda_51cf270b-99d4-4222-85f5-4b08d7f54b16.png",
+            "title": "Welcome to Our Toy World",
+            "subtitle": "<p>Where imagination comes to life through play</p>",
+            "button_text": "Explore Toys",
+            "button_link": ""
           }
         },
         "gallery_yC9zXj": {
           "type": "gallery",
           "settings": {
-            "title": "Our Favorite Toys",
-            "image_count": 5
+            "title": "Our Favorite Toys"
           }
         }
       },
       "block_order": [
-        "testimonial_x77djf",
+        "hero_PLqtRz",
         "gallery_yC9zXj"
       ],
       "settings": {}
