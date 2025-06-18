@@ -13,7 +13,8 @@
       "type": "about-hero",
       "settings": {
         "title": "About Us",
-        "subtitle": "We believe in quality, trust, and style that lasts."
+        "subtitle": "We believe in quality, trust, and style that lasts.",
+        "image": "shopify://shop_images/bachon-ka-adda_51cf270b-99d4-4222-85f5-4b08d7f54b16.png"
       }
     }
   },
