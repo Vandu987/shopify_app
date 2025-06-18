@@ -1,12 +1,3 @@
-/*
- * ------------------------------------------------------------
- * IMPORTANT: The contents of this file are auto-generated.
- *
- * This file may be updated by the Shopify admin theme editor
- * or related systems. Please exercise caution as any changes
- * made to this file may be overwritten.
- * ------------------------------------------------------------
- */
 {
   "sections": {
     "main": {
@@ -94,12 +85,30 @@
       "settings": {
         "heading": "What Our Customers Say"
       }
+    },
+    "about_cta_final": {
+      "type": "about-cta",
+      "name": "About CTA",
+      "settings": {
+        "heading": "Ready to work with us?",
+        "subtext": "Contact us today and let's bring your vision to life!",
+        "button_text": "Contact Us",
+        "button_link": "/contact",
+        "bg_color": "#ff6b6b",
+        "text_color": "#ffffff",
+        "button_bg_color": "#ffffff",
+        "button_text_color": "#ff6b6b",
+        "button_hover_bg_color": "#f1f1f1",
+        "heading_size": "2rem",
+        "subtext_size": "1.1rem"
+      }
     }
   },
   "order": [
     "main",
     "about_us_section_amJDWc",
     "about_team_Q77FDV",
-    "about_testimpnials_DpgcCX"
+    "about_testimpnials_DpgcCX",
+    "about_cta_final"
   ]
 }
