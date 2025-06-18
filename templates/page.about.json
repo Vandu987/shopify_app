@@ -62,11 +62,39 @@
       "settings": {
         "heading": "Meet Our Team"
       }
+    },
+    "about_testimpnials_VqKRVt": {
+      "type": "about-testimpnials",
+      "blocks": {
+        "testimonial_txYKRG": {
+          "type": "testimonial",
+          "settings": {
+            "quote": "This product changed my life!",
+            "author": "John Doe"
+          }
+        },
+        "testimonial_JFLGdL": {
+          "type": "testimonial",
+          "settings": {
+            "quote": "This product changed my life!",
+            "author": "John Doe"
+          }
+        }
+      },
+      "block_order": [
+        "testimonial_txYKRG",
+        "testimonial_JFLGdL"
+      ],
+      "name": "Customer Testimonials",
+      "settings": {
+        "heading": "What Our Customers Say"
+      }
     }
   },
   "order": [
     "main",
     "about_us_section_fPYPTV",
-    "about_team_ntc4DE"
+    "about_team_ntc4DE",
+    "about_testimpnials_VqKRVt"
   ]
 }
