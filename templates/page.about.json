@@ -97,18 +97,12 @@
       "settings": {
         "heading": "What Our Customers Say"
       }
-    },
-    "about_cta_XgDeY8": {
-      "type": "about-cta",
-      "name": "About CTA",
-      "settings": {}
     }
   },
   "order": [
     "main",
     "about_us_section_fPYPTV",
     "about_team_ntc4DE",
-    "about_testimpnials_VqKRVt",
-    "about_cta_XgDeY8"
+    "about_testimpnials_VqKRVt"
   ]
 }
