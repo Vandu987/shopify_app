@@ -1,41 +1,48 @@
+<section class="about-hero">
+  <div class="container">
+    <h1 class="about-title">{{ section.settings.title }}</h1>
+    <p class="about-subtitle">{{ section.settings.subtitle }}</p>
+  </div>
+</section>
+
+<style>
+  .about-hero {
+    background-color: #ff6b6b;
+    color: #fff;
+    text-align: center;
+    padding: 4rem 1rem;
+  }
+
+  .about-title {
+    font-size: 3rem;
+    font-weight: bold;
+    margin-bottom: 1rem;
+  }
+
+  .about-subtitle {
+    font-size: 1.4rem;
+    max-width: 700px;
+    margin: auto;
+    line-height: 1.6;
+  }
+</style>
+
 {% schema %}
 {
   "name": "About Hero",
-  "tag": "section",
   "settings": [
     {
       "type": "text",
-      "id": "about_hero_title",
-      "label": "Hero Title",
-      "default": "Welcome to Our About Page"
-    }
-  ],
-  "presets": [
+      "id": "title",
+      "label": "Title",
+      "default": "Our Story"
+    },
     {
-      "name": "About Hero"
+      "type": "textarea",
+      "id": "subtitle",
+      "label": "Subtitle",
+      "default": "We believe in quality, trust, and style that lasts."
     }
   ]
 }
 {% endschema %}
-
-{% stylesheet %}
-<style>
-  .about-hero {
-    text-align: center;
-    padding: 80px 20px;
-    background-color: #f9f9f9;
-  }
-
-  .about-hero h1 {
-    font-size: 3rem;
-    font-weight: bold;
-    margin: 0;
-  }
-</style>
-{% endstylesheet %}
-
-<div class="about-hero">
-  {% if section.settings.about_hero_title != blank %}
-    <h1>{{ section.settings.about_hero_title }}</h1>
-  {% endif %}
-</div>

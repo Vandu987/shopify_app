@@ -1,0 +1,81 @@
+<section class="about-values">
+  <div class="container values-grid">
+    {% for block in section.blocks %}
+      <div class="value-box">
+        <h3>{{ block.settings.title }}</h3>
+        <p>{{ block.settings.description }}</p>
+      </div>
+    {% endfor %}
+  </div>
+</section>
+
+<style>
+  .about-values {
+    background: #f8f8f8;
+    padding: 4rem 0;
+  }
+  .values-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2rem;
+    justify-content: center;
+    text-align: center;
+  }
+  .value-box {
+    flex: 1 1 300px;
+    background: #fff;
+    padding: 2rem;
+    border: 1px solid #eee;
+    border-radius: 10px;
+    transition: transform 0.3s;
+  }
+  .value-box h3 {
+    color: #ff6b6b;
+    margin-bottom: 1rem;
+  }
+  .value-box p {
+    color: #000;
+    font-size: 1rem;
+  }
+  .value-box:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+  }
+</style>
+
+{% schema %}
+{
+  "name": "About - Values",
+  "max_blocks": 6,
+  "blocks": [
+    {
+      "type": "value",
+      "name": "Value Item",
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title",
+          "default": "Our Mission"
+        },
+        {
+          "type": "textarea",
+          "id": "description",
+          "label": "Description",
+          "default": "To help people feel confident and stylish."
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "About Values",
+      "blocks": [
+        { "type": "value" },
+        { "type": "value" },
+        { "type": "value" }
+      ]
+    }
+  ]
+}
+{% endschema %}
