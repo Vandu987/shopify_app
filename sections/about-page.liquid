@@ -1,140 +1,290 @@
+<div class="about-page">
+  {% for block in section.blocks %}
+    {% case block.type %}
+      
+      <!-- Hero Banner -->
+      {% when 'hero' %}
+        <div class="hero-section" {{ block.shopify_attributes }}>
+          <div class="hero-content">
+            <h1 class="hero-title">{{ block.settings.title }}</h1>
+            <div class="hero-subtitle rte">{{ block.settings.subtitle }}</div>
+            {% if block.settings.button_link %}
+              <a href="{{ block.settings.button_link }}" class="hero-button">
+                {{ block.settings.button_text }}
+              </a>
+            {% endif %}
+          </div>
+        </div>
+      
+      <!-- Mission Statement -->
+      {% when 'mission' %}
+        <div class="mission-section" {{ block.shopify_attributes }}>
+          {% if block.settings.icon %}
+            <div class="mission-icon">
+              <img src="{{ block.settings.icon | img_url: '300x' }}" alt="{{ block.settings.title }}">
+            </div>
+          {% endif %}
+          <div class="mission-content">
+            <h2 class="mission-title">{{ block.settings.title }}</h2>
+            <div class="rte">{{ block.settings.content }}</div>
+          </div>
+        </div>
+      
+      <!-- Team Section -->
+      {% when 'team' %}
+        <div class="team-section" {{ block.shopify_attributes }}>
+          <h2 class="team-title">{{ block.settings.title }}</h2>
+          <div class="team-grid">
+            {% for i in (1..block.settings.team_count) %}
+              <div class="team-card">
+                <div class="team-image"></div>
+                <div class="team-info">
+                  <h3 class="team-name">Team Member {{ i }}</h3>
+                  <p class="team-role">Toy Expert</p>
+                </div>
+              </div>
+            {% endfor %}
+          </div>
+        </div>
+      
+      <!-- Testimonials -->
+      {% when 'testimonial' %}
+        <div class="testimonial-section" {{ block.shopify_attributes }}>
+          <h2 class="testimonial-title">{{ block.settings.title }}</h2>
+          <div class="testimonial-slider"></div>
+        </div>
+      
+      <!-- Gallery -->
+      {% when 'gallery' %}
+        <div class="gallery-section" {{ block.shopify_attributes }}>
+          <h2 class="gallery-title">{{ block.settings.title }}</h2>
+          <div class="gallery-grid">
+            {% for i in (1..block.settings.image_count) %}
+              <div class="gallery-item">
+                {% capture placeholder_image %}product-{{ i | modulo: 5 | plus: 1 }}{% endcapture %}
+                {{ placeholder_image | placeholder_svg_tag: 'placeholder-svg' }}
+              </div>
+            {% endfor %}
+          </div>
+        </div>
+      
+    {% endcase %}
+  {% endfor %}
+</div>
+<script>
+// Testimonial Slider
+document.addEventListener('DOMContentLoaded', function() {
+  // Only run if testimonial section exists
+  if (document.querySelector('.testimonial-slider')) {
+    const testimonials = [
+      {
+        text: "My kids absolutely love the toys from this store! They're durable and so much fun.",
+        author: "— Sarah M."
+      },
+      {
+        text: "The best selection of educational toys I've found. Highly recommend!",
+        author: "— James L."
+      },
+      {
+        text: "Fast shipping and amazing customer service. Will definitely shop here again!",
+        author: "— Priya K."
+      }
+    ];
+    
+    const slider = document.querySelector('.testimonial-slider');
+    let currentIndex = 0;
+    
+    function updateTestimonial() {
+      slider.innerHTML = `
+        <div class="testimonial-card">
+          <p class="testimonial-text">${testimonials[currentIndex].text}</p>
+          <p class="testimonial-author">${testimonials[currentIndex].author}</p>
+        </div>
+      `;
+      currentIndex = (currentIndex + 1) % testimonials.length;
+    }
+    
+    // Change testimonial every 5 seconds
+    updateTestimonial();
+    setInterval(updateTestimonial, 5000);
+  }
+  
+  // Team member placeholder images
+  document.querySelectorAll('.team-image').forEach((el, index) => {
+    const colors = ['#FF9E9E', '#91D8E4', '#C9A7EB', '#FFD59E', '#A5DD9B'];
+    const color = colors[index % colors.length];
+    el.style.backgroundColor = color;
+    el.innerHTML = `<svg width="100" height="100" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M12 12C14.7614 12 17 9.76142 17 7C17 4.23858 14.7614 2 12 2C9.23858 2 7 4.23858 7 7C7 9.76142 9.23858 12 12 12Z" fill="white"/>
+      <path d="M12 14C7.58172 14 4 17.5817 4 22H20C20 17.5817 16.4183 14 12 14Z" fill="white"/>
+    </svg>`;
+  });
+});
+</script>
+
 {% schema %}
 {
-  "name": "About Page Builder",
-  "settings": [],
+  "name": "Advanced About Page",
+  "settings": [
+    {
+      "type": "checkbox",
+      "id": "enable_animations",
+      "label": "Enable Animations",
+      "default": true
+    },
+    {
+      "type": "color",
+      "id": "primary_color",
+      "label": "Primary Color",
+      "default": "#FF6B6B"
+    },
+    {
+      "type": "color",
+      "id": "secondary_color",
+      "label": "Secondary Color",
+      "default": "#4ECDC4"
+    }
+  ],
   "blocks": [
     {
       "type": "hero",
-      "name": "Hero Section",
+      "name": "Hero Banner",
       "settings": [
         {
           "type": "image_picker",
-          "id": "hero_image",
-          "label": "Hero Image"
+          "id": "desktop_image",
+          "label": "Desktop Image"
         },
-        {
-          "type": "text",
-          "id": "hero_title",
-          "label": "Heading",
-          "default": "Welcome to Our Toy World"
-        },
-        {
-          "type": "textarea",
-          "id": "hero_text",
-          "label": "Subtext",
-          "default": "Where imagination comes to play! Discover magical toys that spark creativity and joy."
-        }
-      ]
-    },
-    {
-      "type": "text_section",
-      "name": "Text Content",
-      "settings": [
-        {
-          "type": "text",
-          "id": "section_title",
-          "label": "Title",
-          "default": "Our Story"
-        },
-        {
-          "type": "richtext",
-          "id": "section_content",
-          "label": "Content",
-          "default": "<p>Founded in 2010, we've been bringing smiles to children's faces with our carefully curated selection of toys. Our mission is to provide high-quality, educational, and fun toys that inspire creativity and learning through play.</p>"
-        }
-      ]
-    },
-    {
-      "type": "image_with_text",
-      "name": "Image with Text",
-      "settings": [
         {
           "type": "image_picker",
-          "id": "img",
-          "label": "Image"
+          "id": "mobile_image",
+          "label": "Mobile Image"
         },
         {
           "type": "text",
           "id": "title",
           "label": "Title",
-          "default": "Our Promise to You"
+          "default": "Welcome to Toyland!"
         },
         {
-          "type": "textarea",
-          "id": "text",
-          "label": "Description",
-          "default": "We carefully test every toy to ensure it meets our high standards for safety, durability, and fun factor. Our team of play experts selects only the best toys that will stand up to hours of imaginative play."
+          "type": "richtext",
+          "id": "subtitle",
+          "label": "Subtitle",
+          "default": "<p>Where magic meets playtime!</p>"
         },
         {
           "type": "select",
-          "id": "layout",
-          "label": "Image Position",
+          "id": "text_alignment",
+          "label": "Text Alignment",
           "options": [
-            {
-              "value": "left",
-              "label": "Left"
-            },
-            {
-              "value": "right",
-              "label": "Right"
-            }
+            { "value": "left", "label": "Left" },
+            { "value": "center", "label": "Center" },
+            { "value": "right", "label": "Right" }
           ],
-          "default": "left"
+          "default": "center"
+        },
+        {
+          "type": "url",
+          "id": "button_link",
+          "label": "Button Link"
+        },
+        {
+          "type": "text",
+          "id": "button_text",
+          "label": "Button Text",
+          "default": "Explore Toys"
+        }
+      ]
+    },
+    {
+      "type": "mission",
+      "name": "Mission Statement",
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title",
+          "default": "Our Mission"
+        },
+        {
+          "type": "richtext",
+          "id": "content",
+          "label": "Content",
+          "default": "<p>We believe in the power of play to inspire creativity, learning, and joy.</p>"
+        },
+        {
+          "type": "image_picker",
+          "id": "icon",
+          "label": "Icon (Optional)"
+        }
+      ]
+    },
+    {
+      "type": "team",
+      "name": "Team Showcase",
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Section Title",
+          "default": "Meet Our Toy Experts"
+        },
+        {
+          "type": "range",
+          "id": "team_count",
+          "label": "Number of Team Members",
+          "min": 1,
+          "max": 6,
+          "step": 1,
+          "default": 3
+        }
+      ]
+    },
+    {
+      "type": "testimonial",
+      "name": "Customer Testimonials",
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Section Title",
+          "default": "What Parents Say"
+        }
+      ]
+    },
+    {
+      "type": "gallery",
+      "name": "Toy Gallery",
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title",
+          "default": "Our Favorite Toys"
+        },
+        {
+          "type": "range",
+          "id": "image_count",
+          "label": "Number of Images",
+          "min": 3,
+          "max": 12,
+          "step": 1,
+          "default": 6
         }
       ]
     }
   ],
-  "max_blocks": 20,
   "presets": [
     {
-      "name": "About Page",
+      "name": "Advanced About Page",
       "blocks": [
-        {
-          "type": "hero"
-        },
-        {
-          "type": "text_section"
-        },
-        {
-          "type": "image_with_text"
-        }
+        { "type": "hero" },
+        { "type": "mission" },
+        { "type": "team" },
+        { "type": "testimonial" },
+        { "type": "gallery" }
       ]
     }
   ]
 }
 {% endschema %}
-
-<div class="about-page">
-  {% for block in section.blocks %}
-    {% case block.type %}
-
-      {% when "hero" %}
-        <div class="about-hero" {{ block.shopify_attributes }}>
-          {% if block.settings.hero_image %}
-            <img src="{{ block.settings.hero_image | img_url: '1200x' }}" alt="{{ block.settings.hero_title | escape }}" loading="lazy">
-          {% endif %}
-          <h1>{{ block.settings.hero_title }}</h1>
-          <p>{{ block.settings.hero_text }}</p>
-        </div>
-
-      {% when "text_section" %}
-        <div class="about-text" {{ block.shopify_attributes }}>
-          <h2>{{ block.settings.section_title }}</h2>
-          <div class="rte">{{ block.settings.section_content }}</div>
-        </div>
-
-      {% when "image_with_text" %}
-        <div class="image-with-text {% if block.settings.layout == 'right' %}image-right{% endif %}" {{ block.shopify_attributes }}>
-          {% if block.settings.img %}
-            <img src="{{ block.settings.img | img_url: '800x' }}" alt="{{ block.settings.title | escape }}" loading="lazy">
-          {% endif %}
-          <div>
-            <h3>{{ block.settings.title }}</h3>
-            <p>{{ block.settings.text }}</p>
-          </div>
-        </div>
-
-    {% endcase %}
-  {% endfor %}
-</div>
-{{ 'aboutt-page.css' | asset_url | stylesheet_tag }}
