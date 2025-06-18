@@ -23,10 +23,19 @@
             "button_link": "#",
             "button_text": "Explore Toys"
           }
+        },
+        "mission_X7PVBk": {
+          "type": "mission",
+          "settings": {
+            "title": "Our Mission",
+            "content": "<p>We believe in the power of play to inspire creativity, learning, and joy.</p>",
+            "icon": "shopify://shop_images/bachon-ka-adda.png"
+          }
         }
       },
       "block_order": [
-        "hero_WV8Fdy"
+        "hero_WV8Fdy",
+        "mission_X7PVBk"
       ],
       "settings": {}
     }
