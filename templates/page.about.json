@@ -101,7 +101,19 @@
     "about_cta_VFQpdW": {
       "type": "about-cta",
       "name": "About CTA",
-      "settings": {}
+      "settings": {
+    "heading": "Ready to work with us?",
+    "subtext": "Contact us today and let's bring your vision to life!",
+    "button_text": "Contact Us",
+    "button_link": "/contact",
+    "bg_color": "#ff6b6b",
+    "text_color": "#ffffff",
+    "button_bg_color": "#ffffff",
+    "button_text_color": "#ff6b6b",
+    "button_hover_bg_color": "#f1f1f1",
+    "heading_size": "2rem",
+    "subtext_size": "1.1rem"
+  }
     }
   },
   "order": [
