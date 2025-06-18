@@ -1,0 +1,111 @@
+<section class="custom-about-page">
+  {% for block in section.blocks %}
+    {% case block.type %}
+      {% when 'hero' %}
+        <div class="about-hero">
+          <div class="container">
+            <h1>{{ block.settings.title }}</h1>
+            <p>{{ block.settings.subtitle }}</p>
+          </div>
+        </div>
+
+      {% when 'who_we_are' %}
+        <div class="about-main container">
+          <div class="about-row">
+            <div class="about-text">
+              <h2>{{ block.settings.heading }}</h2>
+              <p>{{ block.settings.text }}</p>
+            </div>
+            <div class="about-image">
+              <img src="{{ block.settings.image | image_url }}" alt="">
+            </div>
+          </div>
+        </div>
+
+      {% when 'team' %}
+        <div class="about-main container">
+          <div class="about-row reverse">
+            <div class="about-image">
+              <img src="{{ block.settings.image | image_url }}" alt="">
+            </div>
+            <div class="about-text">
+              <h2>{{ block.settings.heading }}</h2>
+              <p>{{ block.settings.text }}</p>
+            </div>
+          </div>
+        </div>
+
+      {% when 'value' %}
+        {% if forloop.first %}
+          <div class="about-values"><div class="container values-grid">
+        {% endif %}
+          <div class="value-box">
+            <h3>{{ block.settings.title }}</h3>
+            <p>{{ block.settings.description }}</p>
+          </div>
+        {% if forloop.last %}
+          </div></div>
+        {% endif %}
+    {% endcase %}
+  {% endfor %}
+</section>
+
+<style>
+  /* Use same CSS as earlier sections (copy from my previous message) */
+</style>
+
+{% schema %}
+{
+  "name": "About Page Sections",
+  "max_blocks": 20,
+  "blocks": [
+    {
+      "type": "hero",
+      "name": "Hero Section",
+      "settings": [
+        { "type": "text", "id": "title", "label": "Title", "default": "Our Story" },
+        { "type": "textarea", "id": "subtitle", "label": "Subtitle", "default": "We believe in style and confidence." }
+      ]
+    },
+    {
+      "type": "who_we_are",
+      "name": "Who We Are",
+      "settings": [
+        { "type": "text", "id": "heading", "label": "Heading", "default": "Who We Are" },
+        { "type": "textarea", "id": "text", "label": "Description", "default": "We deliver best fashion experiences." },
+        { "type": "image_picker", "id": "image", "label": "Image" }
+      ]
+    },
+    {
+      "type": "team",
+      "name": "Our Team",
+      "settings": [
+        { "type": "text", "id": "heading", "label": "Heading", "default": "Meet Our Team" },
+        { "type": "textarea", "id": "text", "label": "Description", "default": "Passionate team serving you the best." },
+        { "type": "image_picker", "id": "image", "label": "Image" }
+      ]
+    },
+    {
+      "type": "value",
+      "name": "Value Block",
+      "settings": [
+        { "type": "text", "id": "title", "label": "Title", "default": "Our Mission" },
+        { "type": "textarea", "id": "description", "label": "Description", "default": "To make fashion accessible to all." }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "About Page Sections",
+      "blocks": [
+        { "type": "hero" },
+        { "type": "who_we_are" },
+        { "type": "team" },
+        { "type": "value" },
+        { "type": "value" },
+        { "type": "value" }
+      ]
+    }
+  ]
+}
+{% endschema %}
