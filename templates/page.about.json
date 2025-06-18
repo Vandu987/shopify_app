@@ -11,72 +11,9 @@
   "sections": {
     "main": {
       "type": "about-page",
-      "blocks": {
-        "hero_PLqtRz": {
-          "type": "hero",
-          "settings": {
-            "title": "Welcome to Our Toy World",
-            "subtitle": "<p>Where imagination comes to life through play</p>",
-            "button_text": "Explore Toys",
-            "button_link": ""
-          }
-        },
-        "team_member_PGVFz3": {
-          "type": "team_member",
-          "settings": {
-            "image": "shopify://shop_images/4322112064.jpg",
-            "name": "Team Member",
-            "role": "Toy Expert",
-            "bio": "<p>Passionate about finding the perfect toys for every child.</p>"
-          }
-        },
-        "team_member_d6RYaY": {
-          "type": "team_member",
-          "settings": {
-            "image": "shopify://shop_images/4322112064.jpg",
-            "name": "Team Member",
-            "role": "Toy Expert",
-            "bio": "<p>Passionate about finding the perfect toys for every child.</p>"
-          }
-        },
-        "team_member_xGt9aE": {
-          "type": "team_member",
-          "settings": {
-            "image": "shopify://shop_images/4322112064.jpg",
-            "name": "Team Member",
-            "role": "Toy Expert",
-            "bio": "<p>Passionate about finding the perfect toys for every child.</p>"
-          }
-        },
-        "team_member_7FbkkC": {
-          "type": "team_member",
-          "settings": {
-            "image": "shopify://shop_images/4322112064.jpg",
-            "name": "Team Member",
-            "role": "Toy Expert",
-            "bio": "<p>Passionate about finding the perfect toys for every child.</p>"
-          }
-        },
-        "toy_gallery_ih9gdb": {
-          "type": "toy_gallery",
-          "settings": {
-            "title": "Our Favorite Toys",
-            "collection": "robots",
-            "product_count": 6
-          }
-        }
-      },
-      "block_order": [
-        "hero_PLqtRz",
-        "team_member_PGVFz3",
-        "team_member_d6RYaY",
-        "team_member_xGt9aE",
-        "team_member_7FbkkC",
-        "toy_gallery_ih9gdb"
-      ],
       "settings": {
-        "primary_color": "#ff5e7d",
-        "secondary_color": "#47b8e0",
+        "primary_color": "#ff4820",
+        "secondary_color": "#ff4820",
         "enable_animations": true
       }
     }
