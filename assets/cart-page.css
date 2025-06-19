@@ -19,6 +19,7 @@ body {
   font-size: 35px;
   color: #ff6f61;
   text-align: center;
+  margin-top: 0;
   margin-bottom: 2rem;
   font-weight: bold;
   animation: popIn 0.6s ease-in-out;
