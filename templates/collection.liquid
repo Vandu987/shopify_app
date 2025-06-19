@@ -77,7 +77,7 @@
         <div id="products-list-view" class="products-list-view" style="display: none;">
           {% for product in collection.products %}
             <div class="product-item {% unless product.available %}sold-out{% endunless %}">
-              <a href="{{ product.url }}" style="display: flex; width: 100%;">
+               <a href="{{ product.url }}" style="display: flex; width: 100%;">
                 <div class="product-image">
                   <img src="{{ product.featured_image | img_url: '300x300', crop: 'center' }}" alt="{{ product.title | escape }}">
                   {% unless product.available %}<span class="product-availability">Sold Out</span>{% endunless %}
