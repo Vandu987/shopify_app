@@ -42,28 +42,40 @@
     transform: translateY(-5px);
   }
 
-  .product-card img {
-    max-width: 100%;
+  .image-container {
+    position: relative;
+    height: 200px;
+    margin-bottom: 0.8rem;
+  }
+
+  .main-image,
+  .hover-image {
+    position: absolute;
+    top: 0;
+    left: 0;
     width: 100%;
     height: 200px;
-    border-radius: 4px;
-    margin-bottom: 0.8rem;
     object-fit: cover;
+    border-radius: 4px;
     transition: opacity 0.3s ease;
   }
 
+  .main-image {
+    z-index: 1;
+    opacity: 1;
+  }
+
   .hover-image {
-    position: absolute;
-    top: 1rem;
-    left: 1rem;
-    right: 1rem;
-    height: 200px;
-    opacity: 0;
     z-index: 2;
+    opacity: 0;
   }
 
   .product-card:hover .hover-image {
     opacity: 1;
+  }
+
+  .product-card:hover .main-image {
+    opacity: 0;
   }
 
   .product-title {
@@ -162,10 +174,12 @@
             <div class="product-card">
 
               <a href="{{ item.url | within: collection }}">
-                <img src="{{ item.featured_image.src | img_url: 'large' }}" alt="{{ item.featured_image.alt | escape }}">
-                {% if item.images.size > 1 %}
-                  <img class="hover-image" src="{{ item.images[1] | img_url: 'large' }}" alt="Hover image">
-                {% endif %}
+                <div class="image-container">
+                  <img class="main-image" src="{{ item.featured_image.src | img_url: 'large' }}" alt="{{ item.featured_image.alt | escape }}">
+                  {% if item.images.size > 1 %}
+                    <img class="hover-image" src="{{ item.images[1] | img_url: 'large' }}" alt="Hover image">
+                  {% endif %}
+                </div>
               </a>
 
               <div class="product-title">
