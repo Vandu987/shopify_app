@@ -82,9 +82,12 @@
                   <img src="{{ product.featured_image | img_url: '300x300', crop: 'center' }}" alt="{{ product.title | escape }}">
                   {% unless product.available %}<span class="product-availability">Sold Out</span>{% endunless %}
                 </div>
+                </a>
                 <div class="product-info">
                   {% render 'rating', product: product %}
+                  <a href="{{ product.url }}" style="display: flex; width: 100%;">
                   <h3 class="product-title">{{ product.title }}</h3>
+                  </a>
                    <div class="nt-price">
                       {% if product.compare_at_price_max > product.price %}
                         <span class="nt-price-current">{{ product.price | money }}</span>
@@ -94,8 +97,16 @@
                       {% endif %}
                     </div>
                   <p class="product-description">{{ product.description | strip_html | truncatewords: 30 }}</p>
+                   {% unless product.available %}
+                <div class="sold-out">Sold Out</div>
+              {% else %}
+                <form method="post" action="/cart/add">
+                  <input type="hidden" name="id" value="{{ product.variants.first.id }}">
+                  <button type="submit" class="add-to-cart-btn">Add to Cart</button>
+                </form>
+              {% endunless %}
                 </div>
-              </a>
+              
             </div>
           {% endfor %}
         </div>
