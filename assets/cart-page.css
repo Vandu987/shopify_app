@@ -68,7 +68,10 @@ body {
   box-sizing: border-box;
 }
 .cart-item-info {
-  margin-bottom: 1rem;
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 20px;
 }
 
 .product-title {
