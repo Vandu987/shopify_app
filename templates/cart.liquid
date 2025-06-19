@@ -44,10 +44,16 @@
     </form>
     </div>
   </section>
+  
 {% else %}
   <section class="cart-section">
     <h1 class="cart-title">Your Toy Box</h1>
-    <p class="empty-cart">🎈 Oops! Your cart is empty. Start exploring magical toys now!</p>
+    <img 
+      src="{{ 'empty.png' | asset_url }}" 
+      alt="Empty Cart" 
+      class="empty-cart-image"
+    >
+    <a href="/" class="explore-btn">🎈 Explore Now</a>
   </section>
 {% endif %}
 
