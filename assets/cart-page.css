@@ -176,11 +176,39 @@ body {
   background: #e2554f;
 }
 
-.empty-cart {
+.cart-section {
   text-align: center;
-  color: #888;
-  font-size: 1.2rem;
+  padding: 60px 20px;
 }
+
+.empty-cart-image {
+  max-width: 280px;
+  margin: 0 auto 30px;
+  display: block;
+  animation: float 3s ease-in-out infinite;
+}
+
+.explore-btn {
+  display: inline-block;
+  padding: 12px 24px;
+  background-color: #f25c54;
+  color: #fff;
+  text-decoration: none;
+  font-size: 1rem;
+  font-weight: 600;
+  border-radius: 8px;
+  transition: background-color 0.3s ease;
+}
+
+.explore-btn:hover {
+  background-color: #d9443e;
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
 
 /* Animations */
 @keyframes fadeIn {
