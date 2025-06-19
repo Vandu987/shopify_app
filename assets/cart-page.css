@@ -178,12 +178,12 @@ body {
 
 .cart-section {
   text-align: center;
-  padding: 60px 20px;
+  padding: 20px;
 }
 
 .empty-cart-image {
-  max-width: 280px;
-  margin: 0 auto 30px;
+  max-width: 140px;
+  margin: 0 auto;
   display: block;
   animation: float 3s ease-in-out infinite;
 }
