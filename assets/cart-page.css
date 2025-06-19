@@ -57,6 +57,7 @@ body {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  align-items: flex-start;
 }
 .checkout_box {
   width: 28%;
@@ -95,6 +96,7 @@ body {
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
+  align-items: flex-start;
 }
 
 .quantity-wrapper {
