@@ -1,132 +1,102 @@
 {% comment %}
-  Template Name: Collection - Advanced Filter
-  Description: Collection page with availability filter, multiple sort options, and view toggle
+  Template Name: Collection - Advanced Filter Grid/List
+  Description: Final Collection Template with Filters, Sorting, Toggle View (Grid + List), Hover Image, Price, Add to Cart
 {% endcomment %}
 
 <div class="collection_section">
-<div class="collection-container">
-  <!-- Left Sidebar - Filters -->
-  <div class="collection-sidebar">
-    <div class="filter-group">
-      <h3>Availability</h3>
-      <label class="filter-checkbox">
-        <input type="checkbox" name="availability" value="in-stock" {% unless current_tags contains 'out-of-stock' %}checked{% endunless %}>
-        In Stock Only
-      </label>
-    </div>
-  </div>
-
-  <!-- Main Content Area -->
-  <div class="collection-main">
-    <!-- Toolbar with Sort and View Options -->
-    <div class="collection-toolbar">
-      <div class="sort-by">
-        <label for="sort-by">Sort by:</label>
-        <select id="sort-by">
-          <option value="manual" {% if collection.sort_by == 'manual' %}selected{% endif %}>Featured</option>
-          <option value="best-selling" {% if collection.sort_by == 'best-selling' %}selected{% endif %}>Best Selling</option>
-          <option value="title-ascending" {% if collection.sort_by == 'title-ascending' %}selected{% endif %}>Alphabetically, A-Z</option>
-          <option value="title-descending" {% if collection.sort_by == 'title-descending' %}selected{% endif %}>Alphabetically, Z-A</option>
-          <option value="price-ascending" {% if collection.sort_by == 'price-ascending' %}selected{% endif %}>Price, low to high</option>
-          <option value="price-descending" {% if collection.sort_by == 'price-descending' %}selected{% endif %}>Price, high to low</option>
-          <option value="created-ascending" {% if collection.sort_by == 'created-ascending' %}selected{% endif %}>Date, old to new</option>
-          <option value="created-descending" {% if collection.sort_by == 'created-descending' %}selected{% endif %}>Date, new to old</option>
-        </select>
-      </div>
-
-      <div class="view-options">
-        <button class="view-btn grid-view active" data-view="grid">
-          <svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
-        </button>
-        <button class="view-btn list-view" data-view="list">
-          <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" fill="#000000" version="1.1" id="Layer_1" viewBox="0 0 504 504" xml:space="preserve">
-            <g>
-              <g>
-                <path d="M0,86.784v144.56h167.968V86.784H0z M151.968,215.344H16v-112.56h135.968V215.344z"></path>
-              </g>
-            </g>
-            <g>
-              <g>
-                <path d="M0,272.656v144.56h167.968v-144.56H0z M151.968,401.216H16v-112.56h135.968V401.216z"></path>
-              </g>
-            </g>
-            <g>
-              <g>
-                <rect x="252" y="119.856" width="188.96" height="16"></rect>
-              </g>
-            </g>
-            <g>
-              <g>
-                <rect x="251.952" y="182.288" width="252.048" height="16"></rect>
-              </g>
-            </g>
-            <g>
-              <g>
-                <rect x="252" y="305.712" width="188.96" height="16"></rect>
-              </g>
-            </g>
-            <g>
-              <g>
-                <rect x="251.952" y="368.144" width="252.048" height="16"></rect>
-              </g>
-            </g>
-          </svg>
-        </button>
+  <div class="collection-container">
+    <!-- Sidebar -->
+    <div class="collection-sidebar">
+      <div class="filter-group">
+        <h3>Availability</h3>
+        <label class="filter-checkbox">
+          <input type="checkbox" name="availability" value="in-stock" {% unless current_tags contains 'out-of-stock' %}checked{% endunless %}>
+          In Stock Only
+        </label>
       </div>
     </div>
 
-    <!-- Products Display -->
-    <div class="products-display">
+    <!-- Main Area -->
+    <div class="collection-main">
+      <div class="collection-toolbar">
+        <div class="sort-by">
+          <label for="sort-by">Sort by:</label>
+          <select id="sort-by">
+            <option value="manual" {% if collection.sort_by == 'manual' %}selected{% endif %}>Featured</option>
+            <option value="best-selling" {% if collection.sort_by == 'best-selling' %}selected{% endif %}>Best Selling</option>
+            <option value="title-ascending" {% if collection.sort_by == 'title-ascending' %}selected{% endif %}>A-Z</option>
+            <option value="title-descending" {% if collection.sort_by == 'title-descending' %}selected{% endif %}>Z-A</option>
+            <option value="price-ascending" {% if collection.sort_by == 'price-ascending' %}selected{% endif %}>Price, Low-High</option>
+            <option value="price-descending" {% if collection.sort_by == 'price-descending' %}selected{% endif %}>Price, High-Low</option>
+            <option value="created-descending" {% if collection.sort_by == 'created-descending' %}selected{% endif %}>Newest</option>
+            <option value="created-ascending" {% if collection.sort_by == 'created-ascending' %}selected{% endif %}>Oldest</option>
+          </select>
+        </div>
+        <div class="view-options">
+          <button class="view-btn grid-view active" data-view="grid">
+            <svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
+          </button>
+          <button class="view-btn list-view" data-view="list">
+            <svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="2"/><rect x="3" y="11" width="18" height="2"/><rect x="3" y="18" width="18" height="2"/></svg>
+          </button>
+        </div>
+      </div>
+
       {% paginate collection.products by 12 %}
-        <div id="products-grid-view" class="products-grid-view" style="display: block;">
+        <div id="products-grid-view" class="products-grid-view">
           {% for product in collection.products %}
-            <div class="product-item {% unless product.available %}sold-out{% endunless %}">
+            <div class="product-card">
               <a href="{{ product.url }}">
-                <div class="product-image">
-                  <img src="{{ product.featured_image | img_url: '400x400', crop: 'center' }}" alt="{{ product.title | escape }}">
-                  {% unless product.available %}<span class="product-availability">Sold Out</span>{% endunless %}
+                <div class="image-container">
+                  <img class="main-image" src="{{ product.featured_image | img_url: '400x400' }}" alt="{{ product.title }}">
+                  {% if product.images.size > 1 %}
+                    <img class="hover-image" src="{{ product.images[1] | img_url: '400x400' }}" alt="Hover image">
+                  {% endif %}
                 </div>
-                <div class="product-info">
-                  {% render 'rating', product: product %}
-                  <h3 class="product-title">{{ product.title }}</h3>
-                                     <div class="nt-price">
-                      {% if product.compare_at_price_max > product.price %}
-                        <span class="nt-price-current">{{ product.price | money }}</span>
-                        <span class="nt-price-old">{{ product.compare_at_price_max | money }}</span>
-                      {% else %}
-                        <span class="nt-price-current">{{ product.price | money }}</span>
-                      {% endif %}
-                    </div>
+                <div class="product-title">{{ product.title }}</div>
+                <div class="product-price">
+                  {{ product.price | money }}
+                  {% if product.compare_at_price > product.price %}
+                    <span class="compare-price">{{ product.compare_at_price | money }}</span>
+                  {% endif %}
                 </div>
               </a>
+              {% unless product.available %}
+                <div class="sold-out">Sold Out</div>
+              {% else %}
+                <form method="post" action="/cart/add">
+                  <input type="hidden" name="id" value="{{ product.variants.first.id }}">
+                  <button type="submit" class="add-to-cart-btn">Add to Cart</button>
+                </form>
+              {% endunless %}
             </div>
           {% endfor %}
         </div>
+
         <div id="products-list-view" class="products-list-view" style="display: none;">
           {% for product in collection.products %}
             <div class="product-item {% unless product.available %}sold-out{% endunless %}">
-              <a href="{{ product.url }}" style="display: flex; width: 100%;">
+              <a href="{{ product.url }}" style="display: flex;">
                 <div class="product-image">
-                  <img src="{{ product.featured_image | img_url: '300x300', crop: 'center' }}" alt="{{ product.title | escape }}">
-                  {% unless product.available %}<span class="product-availability">Sold Out</span>{% endunless %}
+                  <img src="{{ product.featured_image | img_url: '300x300' }}" alt="{{ product.title }}">
                 </div>
                 <div class="product-info">
-                  {% render 'rating', product: product %}
                   <h3 class="product-title">{{ product.title }}</h3>
-                   <div class="nt-price">
-                      {% if product.compare_at_price_max > product.price %}
-                        <span class="nt-price-current">{{ product.price | money }}</span>
-                        <span class="nt-price-old">{{ product.compare_at_price_max | money }}</span>
-                      {% else %}
-                        <span class="nt-price-current">{{ product.price | money }}</span>
-                      {% endif %}
-                    </div>
+                  <div class="nt-price">
+                    {% if product.compare_at_price > product.price %}
+                      <span class="nt-price-current">{{ product.price | money }}</span>
+                      <span class="nt-price-old">{{ product.compare_at_price | money }}</span>
+                    {% else %}
+                      <span class="nt-price-current">{{ product.price | money }}</span>
+                    {% endif %}
+                  </div>
                   <p class="product-description">{{ product.description | strip_html | truncatewords: 30 }}</p>
                 </div>
               </a>
             </div>
           {% endfor %}
         </div>
+
         {% if paginate.pages > 1 %}
           <div class="pagination">
             {{ paginate | default_pagination }}
@@ -136,138 +106,232 @@
     </div>
   </div>
 </div>
-</div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+  const savedView = localStorage.getItem('productView') || 'grid';
+  setView(savedView);
+
+  document.querySelectorAll('.view-btn').forEach(btn => {
+    btn.addEventListener('click', function () {
+      const view = this.dataset.view;
+      setView(view);
+      localStorage.setItem('productView', view);
+    });
+  });
+
+  function setView(view) {
+    document.querySelectorAll('.view-btn').forEach(btn => {
+      btn.classList.toggle('active', btn.dataset.view === view);
+    });
+    document.getElementById('products-grid-view').style.display = view === 'grid' ? 'grid' : 'none';
+    document.getElementById('products-list-view').style.display = view === 'list' ? 'flex' : 'none';
+  }
+
+  document.getElementById('sort-by').addEventListener('change', function (e) {
+    const value = e.target.value;
+    const url = new URL(window.location.href);
+    url.searchParams.set('sort_by', value);
+    window.location.href = url.toString();
+  });
+
+  document.querySelector('input[name="availability"]').addEventListener('change', function (e) {
+    const url = new URL(window.location.href);
+    if (this.checked) {
+      url.searchParams.delete('constraint');
+    } else {
+      url.searchParams.set('constraint', 'available');
+    }
+    window.location.href = url.toString();
+  });
+});
+</script>
 
 <style>
-/* ==========================================  collection listing  ========================================== */
-.collection_section{
+/* Wrapper */
+.collection_section {
   width: 100%;
-    background: #fff9f2;
-    font-family: Comic Sans MS, cursive, sans-serif;
+  background: #fff9f2;
+  font-family: sans-serif;
 }
 .collection-container {
-    display: flex;
-    gap: 30px;
-    margin-top: 30px;
-    padding: 50px 20px;
-    max-width: 1200px;
-    margin: auto;
+  display: flex;
+  gap: 30px;
+  margin-top: 30px;
+  padding: 50px 20px;
+  max-width: 1200px;
+  margin: auto;
 }
-
 .collection-sidebar {
-    width: 250px;
-    position: sticky;
-    top: 20px;
-    height: fit-content;
+  width: 250px;
+  position: sticky;
+  top: 20px;
+  height: fit-content;
 }
-
 .collection-main {
-    flex: 1;
+  flex: 1;
 }
 
-/* Filter Section */
+/* Filter */
 .filter-group {
-    margin-bottom: 30px;
-    border-bottom: 1px solid #e1e1e1;
-    padding-bottom: 20px;
-    font-family: Comic Sans MS, cursive, sans-serif;
+  margin-bottom: 30px;
+  border-bottom: 1px solid #e1e1e1;
+  padding-bottom: 20px;
 }
-
 .filter-group h3 {
-    margin-bottom: 15px;
-    font-size: 16px;
-    text-transform: uppercase;
+  margin-bottom: 15px;
+  font-size: 16px;
+  text-transform: uppercase;
 }
-
 .filter-checkbox {
-    display: block;
-    margin-bottom: 10px;
-    cursor: pointer;
+  display: block;
+  margin-bottom: 10px;
+  cursor: pointer;
 }
-
 .filter-checkbox input {
-    margin-right: 10px;
+  margin-right: 10px;
 }
 
-/* Sorting and View Options */
+/* Toolbar */
 .collection-toolbar {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 30px;
-    flex-wrap: wrap;
-    gap: 15px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 30px;
+  flex-wrap: wrap;
+  gap: 15px;
 }
-
 .sort-by {
-    display: flex;
-    align-items: center;
-    gap: 10px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
 }
-
 .sort-by label {
-    font-weight: 600;
+  font-weight: 600;
 }
-
 .sort-by select {
-    padding: 8px 12px;
-    border: 1px solid #ddd;
-    border-radius: 4px;
+  padding: 8px 12px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
 }
-
 .view-options {
-    display: flex;
-    gap: 10px;
+  display: flex;
+  gap: 10px;
 }
-
 .view-btn {
-    background: none;
-    border: 1px solid #ddd;
-    padding: 5px;
-    cursor: pointer;
-    border-radius: 4px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+  background: none;
+  border: 1px solid #ddd;
+  padding: 5px;
+  cursor: pointer;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
-
 .view-btn svg {
-    width: 30px;
-    height: 30px;
+  width: 30px;
+  height: 30px;
 }
-
 .view-btn.active {
-    background: #000;
-    color: #fff;
-    border-color: #000;
+  background: #000;
+  color: #fff;
+  border-color: #000;
 }
-
 .view-btn.active svg {
-    fill: #fff;
+  fill: #fff;
 }
 
-/* Product Grid/List Views */
+/* Grid View */
 .products-grid-view {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 20px;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
 }
-
-.products-list-view {
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
+.product-card {
+  background: #fff;
+  border: 1px solid #eee;
+  border-radius: 8px;
+  padding: 1rem;
+  text-align: center;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+  transition: transform 0.2s ease;
+  position: relative;
+  overflow: hidden;
 }
-
-.product-item {
+.product-card:hover {
+  transform: translateY(-5px);
+}
+.image-container {
   position: relative;
 }
-
-.product-item a {
-    text-decoration: none;
-    color: #000;
+.image-container img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 4px;
+  transition: opacity 0.3s ease;
+}
+.image-container .hover-image {
+  position: absolute;
+  top: 0;
+  left: 0;
+  opacity: 0;
+  z-index: 2;
+}
+.product-card:hover .main-image {
+  opacity: 0;
+}
+.product-card:hover .hover-image {
+  opacity: 1;
+}
+.product-title {
+  font-size: 1rem;
+  font-weight: 500;
+  margin-top: 0.8rem;
+  margin-bottom: 0.4rem;
+  color: #333;
+}
+.product-price {
+  font-size: 1rem;
+  font-weight: bold;
+  color: #06c;
+  margin-bottom: 0.4rem;
+}
+.compare-price {
+  text-decoration: line-through;
+  color: #999;
+  font-size: 0.9rem;
+  margin-left: 6px;
+}
+.sold-out {
+  display: inline-block;
+  margin-top: 0.5rem;
+  padding: 0.2rem 0.5rem;
+  background: #e53935;
+  color: #fff;
+  font-size: 0.85rem;
+  border-radius: 4px;
+}
+.add-to-cart-btn {
+  margin-top: 0.7rem;
+  padding: 6px 12px;
+  background: #ff6b6b;
+  color: #fff;
+  font-size: 0.9rem;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+.add-to-cart-btn:hover {
+  background: #ec6565;
 }
 
+/* List View */
+.products-list-view {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
 .products-list-view .product-item {
   display: flex;
   gap: 20px;
@@ -277,192 +341,104 @@
   border-radius: 12px;
   box-shadow: 0 4px 12px rgba(0,0,0,0.05);
 }
-
 .products-list-view .product-image {
-    width: 250px;
-    flex-shrink: 0;
+  width: 250px;
+  flex-shrink: 0;
 }
-
-.product-image img {
-    width: 100%;
-    height: auto;
-    display: block;
+.products-list-view .product-image img {
+  width: 100%;
+  height: auto;
+  display: block;
 }
-
-.product-info {
-    margin-top: 10px;
-}
-
 .products-list-view .product-info {
-    margin-left: 20px;
-    margin-top: 0;
-    flex: 1;
-    min-width: 0; /* Added to fix flex item shrinking */
+  flex: 1;
 }
-
-.product-title {
-    font-size: 16px;
-    margin-bottom: 5px;
+.products-list-view .product-title {
+  font-size: 16px;
+  margin-bottom: 5px;
 }
-
-.product-price {
-    font-weight: 600;
-    color: #333;
+.products-list-view .nt-price {
+  font-weight: 600;
+  margin-bottom: 0.5rem;
 }
-
+.products-list-view .nt-price-old {
+  text-decoration: line-through;
+  color: #999;
+  margin-left: 6px;
+}
+.product-description {
+  font-size: 0.9rem;
+  color: #555;
+}
 .product-availability {
-    position: absolute;
-    top: 10px;
-    left: 10px;
-    background: #f44336;
-    color: white;
-    padding: 3px 8px;
-    font-size: 12px;
-    border-radius: 3px;
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  background: #f44336;
+  color: white;
+  padding: 3px 8px;
+  font-size: 12px;
+  border-radius: 3px;
 }
-
-/* Rating System - Fixed for both views */
-.product-rating {
-    display: flex !important;
-    align-items: center;
-    gap: 2px;
-    line-height: 1;
-    margin-bottom: 8px;
-}
-.product-rating .star-icon {
-    width: 20px;
-    height: 20px;
-    flex-shrink: 0;
-    display: block;
-    position: relative;
-    overflow: hidden;
-}
-.product-rating .half-star {
-    position: relative;
-    display: inline-block;
-}
-.product-rating .half-star .star-bg {
-    position: absolute;
-    top: 0; left: 0;
-    width: 100%; height: 100%;
-    z-index: 1;
-}
-.product-rating .half-star .star-fg {
-    position: absolute;
-    top: 0; left: 0;
-    width: 50%; height: 100%;
-    z-index: 2;
-    overflow: hidden;
-}
-/* Specific fixes for list view rating */
-.products-list-view .product-rating {
-    min-width: 110px; /* Ensure enough space for 5 stars */
-    white-space: nowrap;
-}
-
-/* Sold Out Styling */
 .product-item.sold-out .product-image {
-    opacity: 0.7;
+  opacity: 0.7;
 }
-
 .product-item.sold-out .product-availability {
-    display: block;
+  display: block;
 }
 
+/* Pagination */
+.pagination {
+  text-align: center;
+  margin-top: 40px;
+}
+.pagination a {
+  padding: 8px 12px;
+  margin: 0 5px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  text-decoration: none;
+  color: #333;
+}
+.pagination .current {
+  background-color: #000;
+  color: #fff;
+}
+
+/* Responsive */
 @media (max-width: 1200px) {
-    .products-grid-view {
-        grid-template-columns: repeat(4, 1fr);
-    }
+  .products-grid-view {
+    grid-template-columns: repeat(3, 1fr);
+  }
 }
 @media (max-width: 768px) {
-     .collection-container {
-        flex-direction: column;
-    }
-    
-    .collection-sidebar {
-        width: 100%;
-        position: static;
-    }
-    
-    .products-grid-view {
-        grid-template-columns: repeat(2, 1fr);
-    }
-    
-    .products-list-view .product-image {
-        width: 150px;
-    }
-    .nt-section,.must-haves-wrapper  {
-  padding-left: 20px;
-  padding-right: 20px;
- }
+  .collection-container {
+    flex-direction: column;
+  }
+  .collection-sidebar {
+    width: 100%;
+    position: static;
+  }
+  .products-grid-view {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .products-list-view .product-image {
+    width: 150px;
+  }
 }
 @media (max-width: 480px) {
-    .products-grid-view {
-        grid-template-columns: 1fr;
-    }
-    
-    .products-list-view .product-item {
-        flex-direction: column;
-        gap: 15px;
-    }
-    
-    .products-list-view .product-image {
-        width: 100%;
-    }
-    
-    .products-list-view .product-info {
-        margin-left: 0;
-    }
+  .products-grid-view {
+    grid-template-columns: 1fr;
+  }
+  .products-list-view .product-item {
+    flex-direction: column;
+    gap: 15px;
+  }
+  .products-list-view .product-image {
+    width: 100%;
+  }
+  .products-list-view .product-info {
+    margin-left: 0;
+  }
 }
 </style>
-
-<script>
-document.addEventListener('DOMContentLoaded', function() {
-  // Set initial view from localStorage or default to grid
-  const savedView = localStorage.getItem('productView') || 'grid';
-  setView(savedView);
-
-  // View toggle buttons
-  document.querySelectorAll('.view-btn').forEach(button => {
-    button.addEventListener('click', function() {
-      const view = this.dataset.view;
-      setView(view);
-      localStorage.setItem('productView', view);
-    });
-  });
-
-  function setView(view) {
-    // Update active button
-    document.querySelectorAll('.view-btn').forEach(btn => {
-      btn.classList.toggle('active', btn.dataset.view === view);
-    });
-
-    // Show/hide views
-    document.getElementById('products-grid-view').style.display = view === 'grid' ? 'grid' : 'none';
-    document.getElementById('products-list-view').style.display = view === 'list' ? 'flex' : 'none';
-  }
-
-  // Sorting functionality
-  document.getElementById('sort-by').addEventListener('change', function(e) {
-    const value = e.target.value;
-    const url = new URL(window.location.href);
-    url.searchParams.set('sort_by', value);
-    window.location.href = url.toString();
-  });
-
-  // Availability filter
-  document.querySelector('input[name="availability"]').addEventListener('change', function(e) {
-    const url = new URL(window.location.href);
-    
-    if (this.checked) {
-      // Remove out-of-stock tag if it exists
-      url.searchParams.delete('constraint');
-    } else {
-      // Show all products (including out of stock)
-      url.searchParams.set('constraint', 'available');
-    }
-    
-    window.location.href = url.toString();
-  });
-});
-</script>
