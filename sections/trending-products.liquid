@@ -1,123 +1,179 @@
 <div class="nt-section">
   <h2 class="nt-heading text-center">{{ section.settings.heading }}</h2>
 
-  <div class="nt-grid">
+  <div class="products-grid">
     {% for block in section.blocks %}
       {% assign product = all_products[block.settings.product] %}
       {% if product %}
-        <div class="nt-product-card">
+        <div class="product-card">
+
           <a href="{{ product.url }}">
-            <div class="nt-image-wrapper">
-              {% assign second_image = product.images[1] %}
-              <img class="nt-main-image" src="{{ product.featured_image | img_url: '400x' }}" alt="{{ product.title }}">
-              {% if second_image %}
-                <img class="nt-hover-image" src="{{ second_image | img_url: '400x' }}" alt="{{ product.title }}">
+            <div class="image-container">
+              <img class="main-image" src="{{ product.featured_image | img_url: 'large' }}" alt="{{ product.title }}">
+              {% if product.images.size > 1 %}
+                <img class="hover-image" src="{{ product.images[1] | img_url: 'large' }}" alt="{{ product.title }}">
               {% endif %}
 
               {% if product.compare_at_price_max > product.price %}
                 {% assign discount = product.compare_at_price_max | minus: product.price | times: 100 | divided_by: product.compare_at_price_max %}
-                <span class="nt-discount-badge">-{{ discount | round }}% SALE</span>
+                <span class="sold-out" style="position:absolute;top:10px;left:10px;background:#06c;">-{{ discount | round }}% OFF</span>
               {% endif %}
             </div>
           </a>
 
-          <div class="nt-product-info">
-            {% render 'rating', product: product %}
-            <p class="nt-title">{{ product.title }}</p>
-            <div class="nt-price">
-              {% if product.compare_at_price_max > product.price %}
-                <span class="nt-price-current">{{ product.price | money }}</span>
-                <span class="nt-price-old">{{ product.compare_at_price_max | money }}</span>
-              {% else %}
-                <span class="nt-price-current">{{ product.price | money }}</span>
-              {% endif %}
-            </div>
+          <div class="product-title">
+            <a href="{{ product.url }}">{{ product.title }}</a>
           </div>
+
+          <div class="product-price">
+            {{ product.price | money }}
+            {% if product.compare_at_price_max > product.price %}
+              <span class="compare-price">{{ product.compare_at_price_max | money }}</span>
+            {% endif %}
+          </div>
+
+          {% unless product.available %}
+            <div class="sold-out">Sold Out</div>
+          {% else %}
+            <form method="post" action="/cart/add">
+              <input type="hidden" name="id" value="{{ product.variants.first.id }}">
+              <button type="submit" class="add-to-cart-btn">Add to Cart</button>
+            </form>
+          {% endunless %}
+
         </div>
       {% endif %}
     {% endfor %}
   </div>
 </div>
+
 <style>
-.nt-section {
-  padding: 50px 80px;
-  background: #fdfdfd;
-}
+  .nt-section {
+    padding: 50px 20px;
+    background: #fdfdfd;
+    max-width: 1200px;
+    margin: auto;
+  }
 
-.nt-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-  gap: 24px;
-}
-.nt-product-card {
-  background: #ffffff;
-  border: 1px solid #e2e2e2;
-  border-radius: 8px;
-  overflow: hidden;
-  transition: transform 0.3s ease;
-}
-.nt-product-card:hover {
-  transform: translateY(-5px);
-}
-.nt-image-wrapper {
-  position: relative;
-  overflow: hidden;
-  height:220px;
-}
-.nt-main-image,
-.nt-hover-image {
-  width: 100%;
-  height: 100%;
-  display: block;
-  transition: transform 0.4s ease, opacity 0.4s ease;
-}
-.nt-hover-image {
-  position: absolute;
-  top: 0;
-  left: 0;
-  opacity: 0;
-}
-.nt-product-card:hover .nt-main-image {
-  opacity: 0;
-  transform: scale(1.05);
-}
-.nt-product-card:hover .nt-hover-image {
-  opacity: 1;
-  transform: scale(1.05);
-}
+  .products-grid {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+  }
 
-.nt-product-info {
-  padding: 15px;
-  text-align: start;
-}
-.nt-stars {
-  color: #ffb400;
-  font-size: 14px;
-  margin-bottom: 5px;
-}
-.nt-title {
-  font-size: 16px;
-  font-weight: 600;
-  margin-bottom: 8px;
-  color: #333;
-}
-.nt-price {
-  display: flex;
-  justify-content: start;
-  align-items: center;
-  gap: 8px;
-}
-.nt-price-current {
-  font-size: 16px;
-  font-weight: bold;
-  color: #222;
-}
-.nt-price-old {
-  font-size: 14px;
-  color: #888;
-  text-decoration: line-through;
-}
+  .product-card {
+    background: #fff;
+    border: 1px solid #eee;
+    border-radius: 8px;
+    width: calc(23% - 1.2rem);
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    transition: transform 0.2s ease;
+    text-align: center;
+    padding: 1rem;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .product-card:hover {
+    transform: translateY(-5px);
+  }
+
+  .image-container {
+    position: relative;
+    height: 200px;
+    margin-bottom: 0.8rem;
+  }
+
+  .main-image,
+  .hover-image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 4px;
+    transition: opacity 0.3s ease;
+  }
+
+  .main-image {
+    z-index: 1;
+    opacity: 1;
+  }
+
+  .hover-image {
+    z-index: 2;
+    opacity: 0;
+  }
+
+  .product-card:hover .hover-image {
+    opacity: 1;
+  }
+
+  .product-card:hover .main-image {
+    opacity: 0;
+  }
+
+  .product-title {
+    font-size: 1rem;
+    font-weight: 500;
+    margin-bottom: 0.4rem;
+    color: #333;
+  }
+
+  .product-price {
+    font-size: 1rem;
+    font-weight: bold;
+    color: #06c;
+    margin-bottom: 0.4rem;
+  }
+
+  .compare-price {
+    text-decoration: line-through;
+    color: #999;
+    font-size: 0.9rem;
+    margin-left: 6px;
+  }
+
+  .sold-out {
+    display: inline-block;
+    margin-top: 0.5rem;
+    padding: 0.2rem 0.5rem;
+    background: #e53935;
+    color: #fff;
+    font-size: 0.85rem;
+    border-radius: 4px;
+  }
+
+  .add-to-cart-btn {
+    margin-top: 0.7rem;
+    padding: 6px 12px;
+    background: #ff6b6b;
+    color: #fff;
+    font-size: 0.9rem;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+
+  .add-to-cart-btn:hover {
+    background: #ec6565;
+  }
+
+  @media (max-width: 768px) {
+    .product-card {
+      width: calc(50% - 1.2rem);
+    }
+  }
+
+  @media (max-width: 480px) {
+    .product-card {
+      width: 100%;
+    }
+  }
 </style>
+
 {% schema %}
 {
   "name": "Now Trending",
@@ -148,15 +204,9 @@
       "name": "Now Trending",
       "category": "Custom",
       "blocks": [
-        {
-          "type": "product"
-        },
-        {
-          "type": "product"
-        },
-        {
-          "type": "product"
-        }
+        { "type": "product" },
+        { "type": "product" },
+        { "type": "product" }
       ]
     }
   ]
