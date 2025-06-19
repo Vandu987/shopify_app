@@ -2,7 +2,6 @@
 
   <style>
     .search-wrapper {
-      margin-bottom: 3rem;
       max-width: 1200px;
       margin: auto;
       padding: 50px 20px;
@@ -14,82 +13,117 @@
       font-weight: bold;
       margin-bottom: 3rem;
       color: #222;
-      text-decoration: none;
-      display: inline-block;
     }
 
     .search-grid {
       display: flex;
-      justify-content: space-between;
       flex-wrap: wrap;
       gap: 1.5rem;
+      justify-content: space-between;
     }
 
     .search-card {
+      width: calc(20% - 1.2rem);
       background: #fff;
       border: 1px solid #eee;
       border-radius: 8px;
-      width: calc(20% - 1.2rem);
+      overflow: hidden;
       box-shadow: 0 2px 8px rgba(0,0,0,0.05);
-      transition: transform 0.2s ease;
       text-align: center;
-      padding: 1rem;
-      display: flex;
-      flex-direction: column;
+      transition: transform 0.3s ease;
+      position: relative;
     }
 
     .search-card:hover {
       transform: translateY(-5px);
     }
 
-    .search-card img {
-      max-width: 100%;
+    .image-wrapper {
+      position: relative;
       width: 100%;
       height: 200px;
+    }
+
+    .image-wrapper img {
+      width: 100%;
+      height: 100%;
       object-fit: cover;
-      border-radius: 4px;
-      margin-bottom: 0.8rem;
+      transition: opacity 0.3s ease;
+      border-bottom: 1px solid #eee;
+    }
+
+    .image-wrapper img.hover-image {
+      position: absolute;
+      top: 0;
+      left: 0;
+      opacity: 0;
+    }
+
+    .search-card:hover .hover-image {
+      opacity: 1;
     }
 
     .search-card-title {
       font-size: 1rem;
-      font-weight: 500;
-      margin-bottom: 0.4rem;
-      color: #333;
+      font-weight: 600;
+      margin: 0.8rem 0 0.3rem;
+      color: #222;
     }
 
-    .search-card-snippet {
-      font-size: 0.9rem;
-      color: #666;
-      line-height: 1.4;
-      margin-bottom: 0.5rem;
+    .search-card-price {
+      font-size: 1rem;
+      color: #06c;
+      font-weight: bold;
     }
 
-    .pagination {
-      margin-top: 40px;
-      text-align: center;
+    .compare-price {
+      text-decoration: line-through;
+      font-weight: normal;
+      color: #999;
+      margin-left: 5px;
+      font-size: 0.95rem;
     }
 
-    .pagination a {
-      padding: 8px 12px;
-      border: 1px solid #ccc;
-      margin: 0 5px;
-      text-decoration: none;
-      color: #333;
-      border-radius: 4px;
-    }
-
-    .pagination .current {
+    .add-to-cart-btn {
+      margin: 0.8rem auto 1rem;
+      padding: 8px 16px;
       background-color: #000;
       color: #fff;
-      border: 1px solid #000;
+      border: none;
+      font-size: 0.9rem;
+      cursor: pointer;
+      border-radius: 4px;
+      transition: background 0.3s ease;
+    }
+
+    .add-to-cart-btn:hover {
+      background-color: #333;
     }
 
     .no-results {
       text-align: center;
       font-size: 1.2rem;
-      padding: 50px 0;
       color: #999;
+      padding: 80px 0;
+    }
+
+    .pagination {
+      text-align: center;
+      margin-top: 40px;
+    }
+
+    .pagination a {
+      padding: 8px 12px;
+      margin: 0 5px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      text-decoration: none;
+      color: #333;
+    }
+
+    .pagination .current {
+      background-color: #000;
+      color: #fff;
     }
 
     @media (max-width: 768px) {
@@ -112,23 +146,42 @@
       </div>
 
       {% if search.results.size > 0 %}
-        <div class="search-grid {% if search.results.size == 1 %}single-item{% endif %}">
+        <div class="search-grid">
           {% for item in search.results %}
-            <div class="search-card">
-              <a href="{{ item.url | within: collection }}">
-                {% if item.featured_image %}
-                  <img src="{{ item.featured_image.src | img_url: 'large' }}" alt="{{ item.featured_image.alt | escape }}">
+            {% if item.object_type == 'product' %}
+              <div class="search-card">
+
+                <a href="{{ item.url | within: collection }}">
+                  <div class="image-wrapper">
+                    <img src="{{ item.featured_image.src | img_url: 'large' }}" alt="{{ item.featured_image.alt | escape }}">
+                    {% if item.images.size > 1 %}
+                      <img class="hover-image" src="{{ item.images[1] | img_url: 'large' }}" alt="Hover image">
+                    {% endif %}
+                  </div>
+                </a>
+
+                <div class="search-card-title">
+                  <a href="{{ item.url | within: collection }}">{{ item.title }}</a>
+                </div>
+
+                <div class="search-card-price">
+                  {{ item.price | money }}
+                  {% if item.compare_at_price > item.price %}
+                    <span class="compare-price">{{ item.compare_at_price | money }}</span>
+                  {% endif %}
+                </div>
+
+                {% if item.available %}
+                  <form method="post" action="/cart/add">
+                    <input type="hidden" name="id" value="{{ item.variants.first.id }}">
+                    <button type="submit" class="add-to-cart-btn">Add to Cart</button>
+                  </form>
                 {% else %}
-                  <img src="//via.placeholder.com/500x200?text=No+Image" alt="No Image">
+                  <div class="add-to-cart-btn" style="background-color: #ccc; cursor: not-allowed;">Sold Out</div>
                 {% endif %}
-              </a>
-              <div class="search-card-title">
-                <a href="{{ item.url | within: collection }}">{{ item.title }}</a>
+
               </div>
-              <div class="search-card-snippet">
-                {{ item.content | strip_html | truncatewords: 20 }}
-              </div>
-            </div>
+            {% endif %}
           {% endfor %}
         </div>
       {% else %}
