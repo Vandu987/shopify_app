@@ -1,198 +1,207 @@
 {% paginate search.results by 10 %}
 
-  <style>
-    .search-wrapper {
-      max-width: 1200px;
-      margin: auto;
-      padding: 50px 20px;
-      font-family: sans-serif;
-    }
+<style>
+  .collection-wrapper {
+    margin-bottom: 3rem;
+    max-width: 1200px;
+    margin: auto;
+    padding: 50px 20px;
+    font-family: sans-serif;
+  }
 
-    .search-title {
-      font-size: 1.6rem;
-      font-weight: bold;
-      margin-bottom: 3rem;
-      color: #222;
-    }
+  .collection-title {
+    font-size: 1.6rem;
+    font-weight: bold;
+    margin-bottom: 3rem;
+    color: #222;
+    text-decoration: none;
+    display: inline-block;
+  }
 
-    .search-grid {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 1.5rem;
-      justify-content: space-between;
-    }
+  .products-grid {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+  }
 
-    .search-card {
-      width: calc(20% - 1.2rem);
-      background: #fff;
-      border: 1px solid #eee;
-      border-radius: 8px;
-      overflow: hidden;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
-      text-align: center;
-      transition: transform 0.3s ease;
-      position: relative;
-    }
+  .product-card {
+    background: #fff;
+    border: 1px solid #eee;
+    border-radius: 8px;
+    width: calc(20% - 1.2rem);
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    transition: transform 0.2s ease;
+    text-align: center;
+    padding: 1rem;
+    position: relative;
+    overflow: hidden;
+  }
 
-    .search-card:hover {
-      transform: translateY(-5px);
-    }
+  .product-card:hover {
+    transform: translateY(-5px);
+  }
 
-    .image-wrapper {
-      position: relative;
+  .product-card img {
+    max-width: 100%;
+    width: 100%;
+    height: 200px;
+    border-radius: 4px;
+    margin-bottom: 0.8rem;
+    object-fit: cover;
+    transition: opacity 0.3s ease;
+  }
+
+  .hover-image {
+    position: absolute;
+    top: 1rem;
+    left: 1rem;
+    right: 1rem;
+    height: 200px;
+    opacity: 0;
+    z-index: 2;
+  }
+
+  .product-card:hover .hover-image {
+    opacity: 1;
+  }
+
+  .product-title {
+    font-size: 1rem;
+    font-weight: 500;
+    margin-bottom: 0.4rem;
+    color: #333;
+  }
+
+  .product-price {
+    font-size: 1rem;
+    font-weight: bold;
+    color: #06c;
+    margin-bottom: 0.4rem;
+  }
+
+  .compare-price {
+    text-decoration: line-through;
+    color: #999;
+    font-size: 0.9rem;
+    margin-left: 6px;
+  }
+
+  .sold-out {
+    display: inline-block;
+    margin-top: 0.5rem;
+    padding: 0.2rem 0.5rem;
+    background: #e53935;
+    color: #fff;
+    font-size: 0.85rem;
+    border-radius: 4px;
+  }
+
+  .add-to-cart-btn {
+    margin-top: 0.7rem;
+    padding: 6px 12px;
+    background: #ff6b6b;
+    color: #fff;
+    font-size: 0.9rem;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+
+  .add-to-cart-btn:hover {
+    background: #ec6565;
+  }
+
+  @media (max-width: 768px) {
+    .product-card {
+      width: calc(50% - 1.2rem);
+    }
+  }
+
+  @media (max-width: 480px) {
+    .product-card {
       width: 100%;
-      height: 200px;
     }
+  }
 
-    .image-wrapper img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      transition: opacity 0.3s ease;
-      border-bottom: 1px solid #eee;
-    }
+  .pagination {
+    text-align: center;
+    margin-top: 40px;
+  }
 
-    .image-wrapper img.hover-image {
-      position: absolute;
-      top: 0;
-      left: 0;
-      opacity: 0;
-    }
+  .pagination a {
+    padding: 8px 12px;
+    margin: 0 5px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    text-decoration: none;
+    color: #333;
+  }
 
-    .search-card:hover .hover-image {
-      opacity: 1;
-    }
+  .pagination .current {
+    background-color: #000;
+    color: #fff;
+  }
 
-    .search-card-title {
-      font-size: 1rem;
-      font-weight: 600;
-      margin: 0.8rem 0 0.3rem;
-      color: #222;
-    }
+  .no-results {
+    text-align: center;
+    font-size: 1.2rem;
+    padding: 50px 0;
+    color: #999;
+  }
+</style>
 
-    .search-card-price {
-      font-size: 1rem;
-      color: #06c;
-      font-weight: bold;
-    }
+<div class="collection-wrapper">
+  {% if search.performed %}
+    <div class="collection-title">Search results for: <span style="color: #1a73e8;">"{{ search.terms }}"</span></div>
 
-    .compare-price {
-      text-decoration: line-through;
-      font-weight: normal;
-      color: #999;
-      margin-left: 5px;
-      font-size: 0.95rem;
-    }
+    {% if search.results.size > 0 %}
+      <div class="products-grid">
+        {% for item in search.results %}
+          {% if item.object_type == 'product' %}
+            <div class="product-card">
 
-    .add-to-cart-btn {
-      margin: 0.8rem auto 1rem;
-      padding: 8px 16px;
-      background-color: #000;
-      color: #fff;
-      border: none;
-      font-size: 0.9rem;
-      cursor: pointer;
-      border-radius: 4px;
-      transition: background 0.3s ease;
-    }
-
-    .add-to-cart-btn:hover {
-      background-color: #333;
-    }
-
-    .no-results {
-      text-align: center;
-      font-size: 1.2rem;
-      color: #999;
-      padding: 80px 0;
-    }
-
-    .pagination {
-      text-align: center;
-      margin-top: 40px;
-    }
-
-    .pagination a {
-      padding: 8px 12px;
-      margin: 0 5px;
-      border: 1px solid #ccc;
-      border-radius: 4px;
-      text-decoration: none;
-      color: #333;
-    }
-
-    .pagination .current {
-      background-color: #000;
-      color: #fff;
-    }
-
-    @media (max-width: 768px) {
-      .search-card {
-        width: calc(50% - 1.2rem);
-      }
-    }
-
-    @media (max-width: 480px) {
-      .search-card {
-        width: 100%;
-      }
-    }
-  </style>
-
-  <div class="search-wrapper">
-    {% if search.performed %}
-      <div class="search-title">
-        Search results for: <span style="color: #1a73e8;">"{{ search.terms }}"</span>
-      </div>
-
-      {% if search.results.size > 0 %}
-        <div class="search-grid">
-          {% for item in search.results %}
-            {% if item.object_type == 'product' %}
-              <div class="search-card">
-
-                <a href="{{ item.url | within: collection }}">
-                  <div class="image-wrapper">
-                    <img src="{{ item.featured_image.src | img_url: 'large' }}" alt="{{ item.featured_image.alt | escape }}">
-                    {% if item.images.size > 1 %}
-                      <img class="hover-image" src="{{ item.images[1] | img_url: 'large' }}" alt="Hover image">
-                    {% endif %}
-                  </div>
-                </a>
-
-                <div class="search-card-title">
-                  <a href="{{ item.url | within: collection }}">{{ item.title }}</a>
-                </div>
-
-                <div class="search-card-price">
-                  {{ item.price | money }}
-                  {% if item.compare_at_price > item.price %}
-                    <span class="compare-price">{{ item.compare_at_price | money }}</span>
-                  {% endif %}
-                </div>
-
-                {% if item.available %}
-                  <form method="post" action="/cart/add">
-                    <input type="hidden" name="id" value="{{ item.variants.first.id }}">
-                    <button type="submit" class="add-to-cart-btn">Add to Cart</button>
-                  </form>
-                {% else %}
-                  <div class="add-to-cart-btn" style="background-color: #ccc; cursor: not-allowed;">Sold Out</div>
+              <a href="{{ item.url | within: collection }}">
+                <img src="{{ item.featured_image.src | img_url: 'large' }}" alt="{{ item.featured_image.alt | escape }}">
+                {% if item.images.size > 1 %}
+                  <img class="hover-image" src="{{ item.images[1] | img_url: 'large' }}" alt="Hover image">
                 {% endif %}
+              </a>
 
+              <div class="product-title">
+                <a href="{{ item.url | within: collection }}">{{ item.title }}</a>
               </div>
-            {% endif %}
-          {% endfor %}
-        </div>
-      {% else %}
-        <div class="no-results">No results found for "{{ search.terms }}"</div>
-      {% endif %}
-    {% endif %}
-    {% if paginate.pages > 1 %}
-      <div class="pagination">
-        {{ paginate | default_pagination }}
+
+              <div class="product-price">
+                {{ item.price | money }}
+                {% if item.compare_at_price > item.price %}
+                  <span class="compare-price">{{ item.compare_at_price | money }}</span>
+                {% endif %}
+              </div>
+
+              {% unless item.available %}
+                <div class="sold-out">Sold Out</div>
+              {% else %}
+                <form method="post" action="/cart/add">
+                  <input type="hidden" name="id" value="{{ item.variants.first.id }}">
+                  <button type="submit" class="add-to-cart-btn">Add to Cart</button>
+                </form>
+              {% endunless %}
+
+            </div>
+          {% endif %}
+        {% endfor %}
       </div>
+    {% else %}
+      <div class="no-results">No results found for "{{ search.terms }}"</div>
     {% endif %}
-  </div>
+  {% endif %}
+
+  {% if paginate.pages > 1 %}
+    <div class="pagination">
+      {{ paginate | default_pagination }}
+    </div>
+  {% endif %}
+</div>
 
 {% endpaginate %}
