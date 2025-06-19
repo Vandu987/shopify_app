@@ -17,7 +17,7 @@
                 {% endif %}
               </div>
             </a>
-
+            {% render 'rating', product: product %}
             <div class="product-title">
               <a href="{{ product.url | within: collection }}">{{ product.title }}</a>
             </div>
