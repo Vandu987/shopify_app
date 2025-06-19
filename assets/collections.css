@@ -136,16 +136,15 @@
   opacity: 1;
 }
 .product-title {
-  font-size: 20px;
-  font-weight: 600;
-  margin-top: 10px;
-  font-family: Comic Sans MS, cursive, sans-serif;
-  margin-bottom: 20px;
-  color: #333;
+    margin-top: 10px;
+    font-family: Comic Sans MS, cursive, sans-serif;
+    margin-bottom: 20px;
 }
 .product-title a{
+    font-size: 20px;
+    font-weight: 600;
     text-decoration: none;
-    color: inherit;
+    color: #333;
 }
 .product-price {
   font-size: 1rem;
