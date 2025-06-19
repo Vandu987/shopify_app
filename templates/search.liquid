@@ -1,11 +1,19 @@
 {% paginate search.results by 10 %}
 
   <style>
-    .search-results-container {
+    .search-container {
       max-width: 1200px;
       margin: 0 auto;
-      padding: 20px;
-      font-family: sans-serif;
+      padding: 40px 20px;
+      font-family: 'Segoe UI', sans-serif;
+    }
+
+    .search-heading {
+      font-size: 28px;
+      font-weight: bold;
+      margin-bottom: 30px;
+      color: #222;
+      text-align: center;
     }
 
     .results-grid {
@@ -15,40 +23,38 @@
     }
 
     .result-card {
-      border: 1px solid #eee;
-      border-radius: 8px;
-      overflow: hidden;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.05);
-      transition: transform 0.2s ease;
       background-color: #fff;
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 5px 20px rgba(0, 0, 0, 0.07);
+      transition: all 0.3s ease;
+      display: flex;
+      flex-direction: column;
+      height: 100%;
     }
 
     .result-card:hover {
-      transform: translateY(-4px);
-      box-shadow: 0 6px 20px rgba(0,0,0,0.1);
+      transform: translateY(-5px);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
     }
 
     .result-card img {
       width: 100%;
       height: 200px;
       object-fit: cover;
-      display: block;
     }
 
-    .result-card .no-image {
-      width: 100%;
-      height: 200px;
-      background-color: #f0f0f0;
+    .result-card-content {
+      padding: 20px;
+      flex: 1;
       display: flex;
-      align-items: center;
-      justify-content: center;
-      color: #888;
-      font-size: 16px;
+      flex-direction: column;
     }
 
     .result-card h5 {
-      margin: 0 0 10px;
       font-size: 18px;
+      margin: 0 0 10px;
+      color: #000;
     }
 
     .result-card p {
@@ -57,19 +63,27 @@
       line-height: 1.6;
     }
 
+    .no-results {
+      text-align: center;
+      font-size: 20px;
+      color: #999;
+      padding: 80px 0;
+    }
+
     .pagination {
-      margin-top: 40px;
+      margin-top: 50px;
       text-align: center;
     }
 
     .pagination a {
-      padding: 8px 12px;
-      border: 1px solid #ddd;
-      margin: 0 5px;
-      text-decoration: none;
-      color: #333;
       display: inline-block;
+      padding: 8px 14px;
+      margin: 0 5px;
+      border: 1px solid #ccc;
       border-radius: 4px;
+      color: #333;
+      text-decoration: none;
+      transition: 0.3s;
     }
 
     .pagination .current {
@@ -77,22 +91,30 @@
       color: #fff;
       border: 1px solid #000;
     }
+
+    .pagination a:hover {
+      background-color: #f2f2f2;
+    }
   </style>
 
-  <div class="search-results-container">
+  <div class="search-container">
     {% if search.performed %}
+      <div class="search-heading">
+        Search results for: <span style="color:#1a73e8;">"{{ search.terms }}"</span>
+      </div>
+
       {% if search.results.size > 0 %}
         <div class="results-grid">
           {% for item in search.results %}
             <div class="result-card">
-              <a href="{{ item.url | within: collection }}" title="{{ item.title | escape }}">
+              <a href="{{ item.url | within: collection }}">
                 {% if item.featured_image %}
                   <img src="{{ item.featured_image.src | img_url: '500x' }}" alt="{{ item.featured_image.alt | escape }}">
                 {% else %}
-                  <div class="no-image">No Image</div>
+                  <img src="//via.placeholder.com/500x200?text=No+Image" alt="No Image">
                 {% endif %}
               </a>
-              <div style="padding: 15px;">
+              <div class="result-card-content">
                 <h5>{{ item.title | link_to: item.url }}</h5>
                 <p>{{ item.content | strip_html | truncatewords: 30 }}</p>
               </div>
@@ -100,7 +122,7 @@
           {% endfor %}
         </div>
       {% else %}
-        <p style="text-align: center; padding: 50px 0; font-size: 18px;">No results found.</p>
+        <p class="no-results">No results found for "{{ search.terms }}"</p>
       {% endif %}
     {% endif %}
 
