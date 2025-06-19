@@ -76,20 +76,22 @@
         <div id="products-list-view" class="products-list-view" style="display: none;">
           {% for product in collection.products %}
             <div class="product-item {% unless product.available %}sold-out{% endunless %}">
-              <a href="{{ product.url }}" style="display: flex;">
+              <a href="{{ product.url }}" style="display: flex; width: 100%;">
                 <div class="product-image">
-                  <img src="{{ product.featured_image | img_url: '300x300' }}" alt="{{ product.title }}">
+                  <img src="{{ product.featured_image | img_url: '300x300', crop: 'center' }}" alt="{{ product.title | escape }}">
+                  {% unless product.available %}<span class="product-availability">Sold Out</span>{% endunless %}
                 </div>
                 <div class="product-info">
+                  {% render 'rating', product: product %}
                   <h3 class="product-title">{{ product.title }}</h3>
-                  <div class="nt-price">
-                    {% if product.compare_at_price > product.price %}
-                      <span class="nt-price-current">{{ product.price | money }}</span>
-                      <span class="nt-price-old">{{ product.compare_at_price | money }}</span>
-                    {% else %}
-                      <span class="nt-price-current">{{ product.price | money }}</span>
-                    {% endif %}
-                  </div>
+                   <div class="nt-price">
+                      {% if product.compare_at_price_max > product.price %}
+                        <span class="nt-price-current">{{ product.price | money }}</span>
+                        <span class="nt-price-old">{{ product.compare_at_price_max | money }}</span>
+                      {% else %}
+                        <span class="nt-price-current">{{ product.price | money }}</span>
+                      {% endif %}
+                    </div>
                   <p class="product-description">{{ product.description | strip_html | truncatewords: 30 }}</p>
                 </div>
               </a>
