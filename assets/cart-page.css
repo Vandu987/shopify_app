@@ -176,13 +176,19 @@ body {
   background: #e2554f;
 }
 
+.empty-cart {
+  text-align: center;
+  color: #888;
+  font-size: 1.2rem;
+}
+
 .cart-section {
   text-align: center;
   padding: 20px;
 }
 
 .empty-cart-image {
-  max-width: 140px;
+  max-width: 250px;
   margin: 0 auto;
   display: block;
   animation: float 3s ease-in-out infinite;
@@ -204,13 +210,14 @@ body {
   background-color: #d9443e;
 }
 
+/* Animations */
+
 @keyframes float {
   0%, 100% { transform: translateY(0); }
   50% { transform: translateY(-10px); }
 }
 
 
-/* Animations */
 @keyframes fadeIn {
   0% { opacity: 0; transform: translateY(30px); }
   100% { opacity: 1; transform: translateY(0); }
