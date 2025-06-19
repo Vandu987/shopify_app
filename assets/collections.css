@@ -329,6 +329,11 @@ display: block;
     width: 150px;
   }
 }
+@media (max-width: 576px) {
+  .view-options{
+    display: none;
+  }
+}
 @media (max-width: 480px) {
   .products-grid-view {
     grid-template-columns: 1fr;
