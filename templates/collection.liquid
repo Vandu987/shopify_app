@@ -53,6 +53,7 @@
                     <img class="hover-image" src="{{ product.images[1] | img_url: '400x400' }}" alt="Hover image">
                   {% endif %}
                 </div>
+                {% render 'rating', product: product %}
                 <div class="product-title">{{ product.title }}</div>
                 <div class="product-price">
                   {{ product.price | money }}
@@ -287,10 +288,11 @@ document.addEventListener('DOMContentLoaded', function () {
   opacity: 1;
 }
 .product-title {
-  font-size: 1rem;
-  font-weight: 500;
-  margin-top: 0.8rem;
-  margin-bottom: 0.4rem;
+  font-size: 20px;
+  font-weight: 600;
+  margin-top: 20px;
+  font-family: Comic Sans MS, cursive, sans-serif;
+  margin-bottom: 20px;
   color: #333;
 }
 .product-price {
@@ -380,11 +382,13 @@ document.addEventListener('DOMContentLoaded', function () {
     font-size: 20px;
     font-weight:600;
     margin-bottom: 15px;
+    font-family: Comic Sans MS, cursive, sans-serif;
 }
 
 .product-price {
     font-weight: 600;
     color: #333;
+    font-family: Comic Sans MS, cursive, sans-serif;
 }
 
 .product-description{
