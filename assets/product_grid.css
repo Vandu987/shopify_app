@@ -79,9 +79,13 @@
   }
 
   .product-title {
-    font-size: 1rem;
+    font-size: 18px;
     font-weight: 500;
     margin-bottom: 0.4rem;
+    color: #333;
+  }
+  .product-title a{
+    text-decoration: none;
     color: #333;
   }
 
