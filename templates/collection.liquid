@@ -77,17 +77,14 @@
         <div id="products-list-view" class="products-list-view" style="display: none;">
           {% for product in collection.products %}
             <div class="product-item {% unless product.available %}sold-out{% endunless %}">
-               <a href="{{ product.url }}" style="display: flex; width: 100%;">
+              <a href="{{ product.url }}" style="display: flex; width: 100%;">
                 <div class="product-image">
                   <img src="{{ product.featured_image | img_url: '300x300', crop: 'center' }}" alt="{{ product.title | escape }}">
                   {% unless product.available %}<span class="product-availability">Sold Out</span>{% endunless %}
                 </div>
-                </a>
                 <div class="product-info">
                   {% render 'rating', product: product %}
-                  <a href="{{ product.url }}" style="display: flex; width: 100%;">
                   <h3 class="product-title">{{ product.title }}</h3>
-                  </a>
                    <div class="nt-price">
                       {% if product.compare_at_price_max > product.price %}
                         <span class="nt-price-current">{{ product.price | money }}</span>
@@ -106,7 +103,7 @@
                 </form>
               {% endunless %}
                 </div>
-              
+              </a>
             </div>
           {% endfor %}
         </div>
