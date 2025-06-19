@@ -53,15 +53,18 @@
                     <img class="hover-image" src="{{ product.images[1] | img_url: '400x400' }}" alt="Hover image">
                   {% endif %}
                 </div>
+                 </a>
                 {% render 'rating', product: product %}
+                <a href="{{ product.url }}">
                 <div class="product-title">{{ product.title }}</div>
+                 </a>
                 <div class="product-price">
                   {{ product.price | money }}
                   {% if product.compare_at_price > product.price %}
                     <span class="compare-price">{{ product.compare_at_price | money }}</span>
                   {% endif %}
                 </div>
-              </a>
+             
               {% unless product.available %}
                 <div class="sold-out">Sold Out</div>
               {% else %}
