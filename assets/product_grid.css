@@ -32,6 +32,7 @@
     padding: 1rem;
     position: relative;
     overflow: hidden;
+    margin-bottom: 20px;
   }
  .product-card .product-rating {
   justify-content:center;
