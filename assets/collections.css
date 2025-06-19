@@ -143,6 +143,10 @@
   margin-bottom: 20px;
   color: #333;
 }
+.product-title a{
+    text-decoration: none;
+    color: inherit;
+}
 .product-price {
   font-size: 1rem;
   font-weight: bold;
