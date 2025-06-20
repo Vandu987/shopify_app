@@ -340,7 +340,7 @@ body {
 }
 
 /* Submit Button */
-.submit-btn,.shopify-challenge__button {
+.submit-btn{
   background: linear-gradient(135deg, #7b5cfa 0%, #4a2cbd 100%);
   color: white;
   padding: 16px 30px;
@@ -361,11 +361,7 @@ body {
   box-shadow: 0 4px 15px rgba(123, 92, 250, 0.3);
 }
 
-.shopify-challenge__button{
-  margin-bottom: 30px;
-}
-
-.submit-btn:hover,.shopify-challenge__button:hover {
+.submit-btn:hover{
   transform: translateY(-3px);
   box-shadow: 0 6px 20px rgba(123, 92, 250, 0.4);
 }
