@@ -25,12 +25,12 @@
       <div class="form-row">
         <div class="form-group">
           <label for="ContactFormName">{{ section.settings.label_name }}</label>
-          <input type="text" id="ContactFormName" name="contact[name]" required placeholder="{{ section.settings.placeholder_name }}">
+          <input type="text" id="ContactFormName" name="contact[name]" autocomplete="name" required placeholder="{{ section.settings.placeholder_name }}">
           <div class="input-decoration teddy"></div>
         </div>
         <div class="form-group">
           <label for="ContactFormEmail">{{ section.settings.label_email }}</label>
-          <input type="email" id="ContactFormEmail" name="contact[email]" required placeholder="{{ section.settings.placeholder_email }}">
+          <input type="email" id="ContactFormEmail" name="contact[email]" autocomplete="email" required placeholder="{{ section.settings.placeholder_email }}">
           <div class="input-decoration rocket"></div>
         </div>
       </div>
@@ -38,7 +38,7 @@
       <div class="form-row">
         <div class="form-group">
           <label for="ContactFormPhone">{{ section.settings.label_phone }}</label>
-          <input type="tel" id="ContactFormPhone" name="contact[phone]" placeholder="{{ section.settings.placeholder_phone }}">
+          <input type="tel" id="ContactFormPhone" name="contact[phone]" autocomplete="tel" placeholder="{{ section.settings.placeholder_phone }}">
           <div class="input-decoration car"></div>
         </div>
       </div>
