@@ -8,7 +8,7 @@
     {% endif %}
   </div>
 
-  {% form 'contact', autocomplete: 'on' %}
+  {% form 'contact' %}
     {% if form.posted_successfully? %}
       <div class="contact-success">
         {% render 'icon-success' %}
@@ -38,7 +38,7 @@
       <div class="form-row">
         <div class="form-group">
           <label for="ContactFormPhone">{{ section.settings.label_phone }}</label>
-          <input type="tel" id="ContactFormPhone" name="contact[phone]" autocomplete="tel" placeholder="{{ section.settings.placeholder_phone }}">
+          <input type="tel" id="ContactFormPhone" name="contact[phone]" autocomplete="tel" inputmode="tel" placeholder="{{ section.settings.placeholder_phone }}">
           <div class="input-decoration car"></div>
         </div>
       </div>
@@ -46,7 +46,7 @@
       <div class="form-row">
         <div class="form-group full-width">
           <label for="ContactFormMessage">{{ section.settings.label_message }}</label>
-          <textarea rows="6" id="ContactFormMessage" name="contact[body]" required placeholder="{{ section.settings.placeholder_message }}"></textarea>
+          <textarea rows="6" id="ContactFormMessage" name="contact[body]" autocomplete="on" required placeholder="{{ section.settings.placeholder_message }}"></textarea>
           <div class="input-decoration blocks"></div>
         </div>
       </div>
@@ -66,6 +66,7 @@
     {% endif %}
   </div>
 </section>
+
 {% schema %}
 {
   "name": "Contact Form",
