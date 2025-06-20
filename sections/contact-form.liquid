@@ -8,7 +8,7 @@
     {% endif %}
   </div>
 
-  {% form 'contact' %}
+  {% form 'contact', autocomplete: 'on' %}
     {% if form.posted_successfully? %}
       <div class="contact-success">
         {% render 'icon-success' %}
