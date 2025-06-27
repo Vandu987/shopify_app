@@ -15,6 +15,9 @@ body {
 .text-center{
     text-align: center;
 }
+#checkout-main form,._1fragemlo,#checkout-main section,#deliveryAddress{
+  font-family: Comic Sans MS, cursive, sans-serif;
+}
 /* Header Styles */
 .site-header {
   background-color: #ffffff;
